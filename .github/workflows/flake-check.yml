@@ -1,0 +1,30 @@
+name: Flake Check
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.nix'
+      - '**.sh'
+      - '**.py'
+      - '**.lua'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  flake-checks:
+    name: Nix Flake Checks
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: "write"
+      contents: "read"
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@v25
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Run Nix Flake Check
+        run: nix flake check -L

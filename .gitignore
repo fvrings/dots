@@ -1,0 +1,8 @@
+.direnv/
+config/ags/README.md
+config/ags/tsconfig.json
+config/ags/types
+sqlite3.path
+.pre-commit-config.yaml
+history.txt
+config/nushell/vendor/autoload

@@ -1,0 +1,21 @@
+* Blogs                                                              :elfeed:
+** neovim
+*** https://neovim.io/news.xml
+*** https://dotfyle.com/this-week-in-neovim/rss.xml
+** emacs
+*** https://planet.emacslife.com/
+** news 
+*** https://v2ex.com/feed/python.xml
+*** https://v2ex.com/feed/linux.xml
+*** https://v2ex.com/feed/programmer.xml
+*** https://rsshub.app/zhihu/hotlist
+*** https://weekly.howie6879.com/rss/rss.xml
+*** https://news.ycombinator.com/rss
+*** https://plink.anyfeeder.com/weixin/DJ00123987
+*** https://plink.anyfeeder.com/weixin/liweitan2014
+*** https://plink.anyfeeder.com/weixin/runliu-pub
+*** https://plink.anyfeeder.com/weixin/eeo-com-cn
+** blog 
+*** https://mozillazg.com/feeds/all.atom.xml                             :ebpf:
+*** https://1byte.io/articles/index.xml
+*** https://www.ruanyifeng.com/blog/atom.xml

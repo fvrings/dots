@@ -1,0 +1,20 @@
+{
+  "edaf": {
+    "prefix": "edaf",
+    "body": [
+      "const ${1:name} = async () => {",
+      "  return <div>${1:name}</div>;",
+      "};",
+      "export default ${1:name};"
+    ]
+  },
+  "rafce": {
+    "body": [
+      "const ${1:name} = () => {",
+      "  return <div>${1:name}</div>;",
+      "};",
+      "export default ${1:name};"
+    ],
+    "prefix": "edf"
+  }
+}
