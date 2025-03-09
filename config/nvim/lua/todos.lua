@@ -12,16 +12,40 @@ local todo_all = 0
 local todos = 0
 for _, file in ipairs(files) do
   for _, headline in ipairs(file.headlines) do
-    if headline.scheduled and headline.scheduled:is_today_or_past 'week' then
+    if
+      headline.scheduled
+      and (headline.scheduled:is_today_or_past 'week' or headline.scheduled:is_today_or_future 'week')
+    then
       if headline.todo_type == 'TODO' then
-        print(headline.todo_value .. ' ' .. 'S ' .. headline.title)
+        print(
+          headline.todo_value
+            .. ' '
+            .. 'S '
+            .. headline.scheduled.month
+            .. '-'
+            .. headline.scheduled.day
+            .. ': '
+            .. headline.title
+        )
         todos = todos + 1
       end
       todo_all = 1 + todo_all
     end
-    if headline.deadline and headline.deadline:is_today_or_past 'week' then
+    if
+      headline.deadline
+      and (headline.deadline:is_today_or_past 'week' or headline.deadline:is_today_or_future 'week')
+    then
       if headline.todo_type == 'TODO' then
-        print(headline.todo_value .. ' ' .. 'D ' .. headline.title)
+        print(
+          headline.todo_value
+            .. ' '
+            .. 'D '
+            .. headline.deadline.month
+            .. '-'
+            .. headline.deadline.day
+            .. ': '
+            .. headline.title
+        )
         todos = todos + 1
       end
       todo_all = 1 + todo_all
