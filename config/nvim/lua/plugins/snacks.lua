@@ -253,7 +253,7 @@ return {
           local cmds = {
             {
               title = 'Notifications',
-              cmd = 'gh notify -s -a -n5',
+              cmd = 'gh notify -s -a -n5 e>| str capitalize',
               action = function()
                 vim.ui.open 'https://github.com/notifications'
               end,
