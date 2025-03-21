@@ -1,4 +1,10 @@
 return {
+  -- {
+  --   'OXY2DEV/markview.nvim',
+  --   dependencies = {
+  --     'saghen/blink.cmp',
+  --   },
+  -- },
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
@@ -535,8 +541,7 @@ return {
       { 'nvim-lua/plenary.nvim' },
     },
     init = function()
-      -- vim.env.DEEPSEEK_API_KEY = vim.fn.system 'cat ~/deepseek'
-      vim.env.DEEPSEEK_API_KEY = 'sk-c486de8d19d14d86a98c96c9a5e9a81c'
+      vim.env.DEEPSEEK_API_KEY = vim.fn.system 'cat ~/keys/deepseek'
     end,
   },
   -- {
