@@ -1,7 +1,6 @@
 let fish_completer = {|spans|
   fish --command $'complete "--do-complete=($spans | str join " ")"'
-    | $"value(char tab)description(char newline)" + $in
-    | from tsv --flexible --no-infer
+    | $"value(char tab)description(char newline)" + $in | from tsv --flexible --no-infer
 }
 
 let zoxide_completer = {|spans|
@@ -32,6 +31,24 @@ $env.config.hooks.pre_prompt = [{ ||
         $env.PATH = do $env.ENV_CONVERSIONS.PATH.from_string $env.PATH
       }
     }]
+$env.config = {
+  keybindings: [
+  {
+    name: enter_path_with_fzf
+    modifier: CONTROL
+    keycode: Char_f
+    mode: emacs
+    event:[
+        { 
+          edit: InsertString,
+          value: "(fzf | decode utf-8 | str trim)"
+        }
+        { send: Enter }
+      ]
+  }
+  ]
+}
+
 
 
 alias e = nvim

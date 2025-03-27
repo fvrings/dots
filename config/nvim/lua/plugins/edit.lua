@@ -8,7 +8,12 @@ return {
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    ft = { 'org', 'norg', 'markdown', 'codecompanion' },
+    ft = {
+      'org',
+      'norg',
+      'markdown',
+      'Avante',
+    },
     opts = {
       render_modes = true,
       -- on = {
@@ -24,7 +29,11 @@ return {
       },
       indent = { enabled = true },
       pipe_table = { style = 'normal' },
-      file_types = { 'markdown', 'octo', 'codecompanion' },
+      file_types = {
+        'markdown',
+        'octo',
+        'Avante',
+      },
     },
     config = function(_, opts)
       require('render-markdown').setup(opts)
@@ -454,74 +463,119 @@ return {
     },
   },
   {
-    'olimorris/codecompanion.nvim',
+    'yetone/avante.nvim',
+    event = 'VeryLazy',
+    version = false, -- Never set this value to "*"! Never!
+    opts = {
+      provider = 'deepseek',
+      vendors = {
+        deepseek = {
+          __inherited_from = 'openai',
+          api_key_name = 'DEEPSEEK_API_KEY',
+          endpoint = 'https://api.deepseek.com',
+          model = 'deepseek-coder',
+        },
+      },
+    },
+    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    build = 'make',
+    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
     dependencies = {
-      'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
+      'stevearc/dressing.nvim',
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
       {
-        'echasnovski/mini.diff',
+        -- support for image pasting
+        'HakonHarnes/img-clip.nvim',
+        event = 'VeryLazy',
         opts = {
-          -- use gitsigns' keymaps
-          mappings = {
-            apply = '',
-            reset = '',
-            textobject = '',
-            goto_first = '',
-            goto_prev = '',
-            goto_next = '',
-            goto_last = '',
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            -- required for Windows users
+            use_absolute_path = true,
           },
         },
       },
     },
-    opts = {
-      display = {
-        diff = {
-          provider = 'mini_diff',
-        },
-      },
-      strategies = {
-        chat = {
-          adapter = 'deepseek',
-        },
-        inline = {
-          adapter = 'deepseek',
-        },
-      },
-      adapters = {
-        openai = function()
-          return require('codecompanion.adapters').extend('openai', {
-            env = {
-              api_key = 'cmd:cat ~/keys/openai',
-            },
-          })
-        end,
-        deepseek = function()
-          return require('codecompanion.adapters').extend('deepseek', {
-            env = {
-              api_key = 'cmd:cat ~/keys/deepseek', -- optional: if your endpoint is authenticated
-            },
-            schema = {
-              model = {
-                -- default = 'deepseek-reasoner',
-                default = 'deepseek-chat',
-              },
-            },
-          })
-        end,
-      },
-    },
-    cmd = {
-      'CodeCompanionChat',
-      'CodeCompanion',
-      'CodeCompanionActions',
-    },
-    keys = {
-      { '<leader>dc', vim.cmd.CodeCompanionChat, desc = 'CodeCompanionChat' },
-      { '<leader>da', vim.cmd.CodeCompanionActions, desc = 'CodeCompanionActions' },
-      { '<leader>do', vim.cmd.CodeCompanion, mode = { 'n', 'v' }, desc = 'CodeCompanion' },
-    },
+    init = function()
+      vim.env.DEEPSEEK_API_KEY = vim.fn.system 'cat ~/keys/deepseek'
+    end,
   },
+  -- {
+  --   'olimorris/codecompanion.nvim',
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim',
+  --     'nvim-treesitter/nvim-treesitter',
+  --     {
+  --       'echasnovski/mini.diff',
+  --       opts = {
+  --         -- use gitsigns' keymaps
+  --         mappings = {
+  --           apply = '',
+  --           reset = '',
+  --           textobject = '',
+  --           goto_first = '',
+  --           goto_prev = '',
+  --           goto_next = '',
+  --           goto_last = '',
+  --         },
+  --       },
+  --     },
+  --   },
+  --   opts = {
+  --     display = {
+  --       diff = {
+  --         provider = 'mini_diff',
+  --       },
+  --     },
+  --     strategies = {
+  --       chat = {
+  --         adapter = 'deepseek',
+  --       },
+  --       inline = {
+  --         adapter = 'deepseek',
+  --       },
+  --     },
+  --     adapters = {
+  --       openai = function()
+  --         return require('codecompanion.adapters').extend('openai', {
+  --           env = {
+  --             api_key = 'cmd:cat ~/keys/openai',
+  --           },
+  --         })
+  --       end,
+  --       deepseek = function()
+  --         return require('codecompanion.adapters').extend('deepseek', {
+  --           env = {
+  --             api_key = 'cmd:cat ~/keys/deepseek', -- optional: if your endpoint is authenticated
+  --           },
+  --           schema = {
+  --             model = {
+  --               -- default = 'deepseek-reasoner',
+  --               default = 'deepseek-chat',
+  --             },
+  --           },
+  --         })
+  --       end,
+  --     },
+  --   },
+  --   cmd = {
+  --     'CodeCompanionChat',
+  --     'CodeCompanion',
+  --     'CodeCompanionActions',
+  --   },
+  --   keys = {
+  --     { '<leader>dc', vim.cmd.CodeCompanionChat, desc = 'CodeCompanionChat' },
+  --     { '<leader>da', vim.cmd.CodeCompanionActions, desc = 'CodeCompanionActions' },
+  --     { '<leader>do', vim.cmd.CodeCompanion, mode = { 'n', 'v' }, desc = 'CodeCompanion' },
+  --   },
+  -- },
   {
     'milanglacier/minuet-ai.nvim',
     opts = {

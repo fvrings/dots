@@ -35,8 +35,7 @@ return {
               action = function()
                 Snacks.lazygit()
               end,
-              --BUG: https://github.com/folke/snacks.nvim/issues/382
-              key = 'm',
+              key = 'g',
             },
             {
               icon = '🔯',
@@ -155,8 +154,7 @@ return {
             action = function()
               Snacks.lazygit()
             end,
-            --BUG: https://github.com/folke/snacks.nvim/issues/382
-            key = 'm',
+            key = 'g',
           },
           {
             icon = '🦄',
