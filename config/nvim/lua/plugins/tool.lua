@@ -81,20 +81,20 @@ return {
     keys = {
       -- { '<A-l>', '<c-o>>>', mode = 'i', ft = 'org', remap = true },
       -- { '<A-h>', '<c-o><<', mode = 'i', ft = 'org', remap = true },
-      {
-        '<leader>a',
-        function()
-          require('orgmode').agenda:agenda()
-        end,
-        desc = 'org agenda',
-      },
-      {
-        '<leader>c',
-        function()
-          require('orgmode').capture:prompt()
-        end,
-        desc = 'org capture',
-      },
+      -- {
+      --   '<leader>a',
+      --   function()
+      --     require('orgmode').agenda:agenda()
+      --   end,
+      --   desc = 'org agenda',
+      -- },
+      -- {
+      --   '<leader>c',
+      --   function()
+      --     require('orgmode').capture:prompt()
+      --   end,
+      --   desc = 'org capture',
+      -- },
     },
     opts = {
       mappings = {
@@ -112,13 +112,13 @@ return {
         -- note = {
         --   org_note_finalize = '<C-c><c-c>',
         -- },
-        org = {
-          org_insert_link = '<prefix>il',
-          org_store_link = '<prefix>s',
-          org_add_note = '<prefix>n',
-          org_babel_tangle = '<prefix>b',
-          org_toggle_timestamp_type = '<prefix>d',
-        },
+        -- org = {
+        --   org_insert_link = '<prefix>il',
+        --   org_store_link = '<prefix>s',
+        --   org_add_note = '<prefix>n',
+        --   org_babel_tangle = '<prefix>b',
+        --   org_toggle_timestamp_type = '<prefix>d',
+        -- },
 
         -- BUG: does not work as expected
         -- org_return_uses_meta_return = false,
