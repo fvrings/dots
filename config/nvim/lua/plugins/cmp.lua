@@ -51,6 +51,7 @@ return {
     -- optional: provides snippets for the snippet source
     dependencies = {
       'rafamadriz/friendly-snippets',
+      'Kaiser-Yang/blink-cmp-avante',
       -- 'giuxtaposition/blink-cmp-copilot',
       -- 'echasnovski/mini.icons',
       -- {
@@ -117,7 +118,7 @@ return {
     },
 
     -- use a release tag to download pre-built binaries
-    version = '*',
+    version = '1.*',
     -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
     -- build = 'cargo build --release',
     -- If you use nix, you can build from source using latest nightly rust with:
@@ -162,10 +163,6 @@ return {
       },
 
       appearance = {
-        -- sets the fallback highlight groups to nvim-cmp's highlight groups
-        -- useful for when your theme doesn't support blink.cmp
-        -- will be removed in a future release, assuming themes add support
-        use_nvim_cmp_as_default = false,
         nerd_font_variant = 'mono',
       },
       snippets = {
@@ -182,6 +179,7 @@ return {
             'snippets',
             'buffer',
             'ripgrep',
+            'avante',
             -- 'minuet',
             -- 'copilot',
           }
@@ -204,21 +202,17 @@ return {
             return patch { 'crates' }
           elseif ft == 'org' then
             return patch { 'orgmode', 'nerdfont', 'emoji' }
-          elseif ft == 'codecompanion' then
-            return patch { 'path', 'buffer', 'codecompanion' }
           else
             return common
           end
         end,
 
         providers = {
-          -- copilot = {
-          --   name = 'copilot',
-          --   module = 'blink-cmp-copilot',
-          --   kind = 'Copilot',
-          --   score_offset = 100,
-          --   async = true,
-          -- },
+          avante = {
+            module = 'blink-cmp-avante',
+            name = 'Avante',
+            opts = {},
+          },
           nerdfont = {
             name = 'nerdfont', -- IMPORTANT: use the same name as you would for nvim-cmp
             module = 'blink.compat.source',
@@ -285,10 +279,6 @@ return {
             name = 'Dadbod',
             module = 'vim_dadbod_completion.blink',
             score_offset = 1,
-          },
-          codecompanion = {
-            name = 'CodeCompanion',
-            module = 'codecompanion.providers.completion.blink',
           },
           lsp = {
             score_offset = 2, -- Boost/penalize the score of the items
