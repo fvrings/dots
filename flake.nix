@@ -9,9 +9,7 @@
       ...
     }@inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [
-        ./treefmt.nix
-      ];
+      imports = [ ./treefmt.nix ];
       systems = [ "x86_64-linux" ];
       flake = rec {
         nixosConfigurations = {
@@ -29,6 +27,7 @@
             system = "x86_64-linux";
             modules = [
               ./system/desktop
+              ./home/desktop
               ./home
               ./module
               ./overlay
@@ -66,10 +65,7 @@
         };
       };
       perSystem =
-        {
-          pkgs,
-          ...
-        }:
+        { pkgs, ... }:
         {
           devShells.default = pkgs.mkShell {
             name = "rings";

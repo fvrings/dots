@@ -7,7 +7,6 @@
     ./service
     ./hardware-configuration.nix
     ./fcitx.nix
-    ./niri.nix
 
     ../core.nix
     ../theme.nix

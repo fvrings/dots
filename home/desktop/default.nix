@@ -1,13 +1,10 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
+{ pkgs, lib, ... }:
 {
   imports = [
     ./hypridle.nix
     ./hyprland.nix
     ./hyprlock.nix
+    ./niri.nix
   ];
   home.pointerCursor = {
     gtk.enable = true;

@@ -7,7 +7,6 @@
     backupFileExtension = "backup";
     users.ring.imports = [
       ./ring.nix
-      ./desktop
       ./devtools.nix
       ./yazi.nix
       inputs.nix-index-database.hmModules.nix-index
