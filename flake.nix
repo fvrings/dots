@@ -27,7 +27,6 @@
             system = "x86_64-linux";
             modules = [
               ./system/desktop
-              ./home/desktop
               ./home
               ./module
               ./overlay

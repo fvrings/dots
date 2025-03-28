@@ -12,7 +12,7 @@
       inputs.nix-index-database.hmModules.nix-index
       inputs.ags.homeManagerModules.default
       inputs.catppuccin.homeManagerModules.catppuccin
-    ];
+    ] ++ (if config.networking.hostName == "art" then [ ./desktop ] else [ ]);
     extraSpecialArgs = { inherit inputs; };
   };
 }
