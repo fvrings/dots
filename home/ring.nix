@@ -1,9 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}:
-{
+{ inputs, pkgs, ... }: {
   home = {
     username = "ring";
     homeDirectory = "/home/ring";
@@ -13,12 +8,8 @@
   xdg = {
     enable = true;
     configFile = {
-      "hypr/scripts" = {
-        source = ./desktop/scripts;
-      };
-      "wezterm" = {
-        source = ../config/wezterm;
-      };
+      "hypr/scripts" = { source = ./desktop/scripts; };
+      "wezterm" = { source = ../config/wezterm; };
     };
   };
   home.file.".cargo/config.toml".text = ''
@@ -68,16 +59,13 @@
       font.size = 13;
       font.name = "monospace";
       settings = {
-        "clipboard_control" = "write-clipboard write-primary read-clipboard read-primary no-append";
+        "clipboard_control" =
+          "write-clipboard write-primary read-clipboard read-primary no-append";
       };
     };
     foot = {
       enable = true;
-      settings = {
-        main = {
-          font = "monospace:size=13";
-        };
-      };
+      settings = { main = { font = "monospace:size=13"; }; };
     };
     zathura = {
       enable = true;
@@ -89,32 +77,32 @@
     };
     alacritty = {
       enable = true;
-      settings = {
-        font = {
-          size = 13;
-        };
-      };
+      settings = { font = { size = 13; }; };
     };
-    wezterm = {
-      enable = true;
-    };
+    wezterm = { enable = true; };
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   dconf = {
     enable = true;
-    settings."org/gnome/shell" = {
-      disable-user-extensions = false;
-      enabled-extensions = with pkgs.gnomeExtensions; [
-        blur-my-shell.extensionUuid
-        gsconnect.extensionUuid
-        kimpanel.extensionUuid
-        system-monitor.extensionUuid
-        window-list.extensionUuid
-        workspace-indicator.extensionUuid
-        expandable-notifications.extensionUuid
-      ];
+    settings = {
+      "org/gnome/shell" = {
+        disable-user-extensions = false;
+        enabled-extensions = with pkgs.gnomeExtensions; [
+          blur-my-shell.extensionUuid
+          gsconnect.extensionUuid
+          kimpanel.extensionUuid
+          system-monitor.extensionUuid
+          window-list.extensionUuid
+          workspace-indicator.extensionUuid
+          expandable-notifications.extensionUuid
+        ];
+      };
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = [ "qemu:///system" ];
+        uris = [ "qemu:///system" ];
+      };
     };
   };
 }

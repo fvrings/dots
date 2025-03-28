@@ -25,13 +25,6 @@
     };
   };
 
-  dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
-    };
-  };
-
   xdg = {
     dataFile = {
       "fcitx5/themes".source = "${pkgs.fcitx5-rose-pine}/share/fcitx5/themes";
