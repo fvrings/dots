@@ -563,13 +563,6 @@ return {
       desc = 'Goto T[y]pe Definition',
     },
     {
-      'gO',
-      function()
-        Snacks.picker.lsp_symbols()
-      end,
-      desc = 'LSP Symbols',
-    },
-    {
       '<leader>\\',
       function()
         Snacks.scratch()
@@ -631,13 +624,6 @@ return {
         Snacks.lazygit.log()
       end,
       desc = 'Lazygit Log (cwd)',
-    },
-    {
-      '<leader>lr',
-      function()
-        vim.lsp.buf.rename()
-      end,
-      desc = 'Rename variable',
     },
     {
       '<leader>lR',

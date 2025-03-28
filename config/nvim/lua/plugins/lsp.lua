@@ -96,7 +96,7 @@ return {
         config = function()
           local linters = {
             -- markdown = { 'vale' },
-            cpp = { 'clangtidy' },
+            -- cpp = { 'clangtidy' },
             python = { 'ruff' },
             -- lua = { 'selene' },
             -- typescriptreact = { 'biomejs' },
@@ -115,11 +115,8 @@ return {
     },
     keys = {
       { 'gd', vim.lsp.buf.definition, desc = 'Goto Definition' },
-      { 'gr', vim.lsp.buf.references, desc = 'References', nowait = true },
-      { 'gI', vim.lsp.buf.implementation, desc = 'Goto Implementation' },
       { 'gy', vim.lsp.buf.type_definition, desc = 'Goto T[y]pe Definition' },
       { 'gD', vim.lsp.buf.declaration, desc = 'Goto Declaration' },
-      { 'ga', vim.lsp.buf.code_action, desc = 'Code Action', mode = { 'n', 'v' } },
     },
   },
   {

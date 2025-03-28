@@ -84,7 +84,7 @@ def --env yy [...args] {
 if $nu.os-info.name == "windows" {
     # $env.PATH ++= ['~/go/bin/' '~/.cargo/bin' '~/.local/bin']
 } else {
-    $env.PATH =  ['~/.nix-profile/bin/' '~/.local/share/bob/nightly/bin/'] ++ $env.PATH
+    $env.PATH =  ['~/.nix-profile/bin/' '~/.local/share/bob/nvim-bin'] ++ $env.PATH
     $env.PATH ++= ['~/go/bin/' ('~/.cargo/bin' |path expand) '~/.local/bin']
     $env.PATH ++= [ '/usr/share/bcc/tools/' ('~/Android/Sdk/platform-tools' |path expand)]
     $env.ANDROID_HOME = [$env.HOME "Android/Sdk/"] | path join
