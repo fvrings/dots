@@ -1,25 +1,28 @@
 { ... }:
 {
-  imports = [
-    ./hyprland.nix
-    ./gnome.nix
-    ./hardware.nix
-    ./service
-    ./hardware-configuration.nix
-    ./fcitx.nix
+  imports =
+    # TODO: have to find a way to optionally enable windowManager
+    # if osConfig.networking.hostName == "art" then
+    [
+      ./hyprland.nix
+      ./gnome.nix
+      ./hardware.nix
+      ./service
+      ./hardware-configuration.nix
+      ./fcitx.nix
 
-    ../core.nix
-    ../theme.nix
-    ../service
-    ../dae.nix
-    ../package.nix
-    ../fonts.nix
-    ../nixconfig.nix
-    ../sops.nix
-    ../network.nix
-    ../virtual.nix
-    ../boot.nix
-  ];
+      ../core.nix
+      ../theme.nix
+      ../service
+      ../dae.nix
+      ../package.nix
+      ../fonts.nix
+      ../nixconfig.nix
+      ../sops.nix
+      ../network.nix
+      ../virtual.nix
+      ../boot.nix
+    ];
 
   # disable ATM
   # services.ucodenix = {

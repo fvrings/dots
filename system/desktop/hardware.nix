@@ -1,14 +1,13 @@
-{ pkgs, ... }:
-{
+_: {
   hardware = {
     # List services that you want to enable:
     # i2c.enable = true;
     # pulseaudio.support32Bit = true;
     bluetooth.enable = true;
     bluetooth.powerOnBoot = true;
-    pulseaudio.enable = false;
   };
   services = {
+    pulseaudio.enable = false;
     pipewire = {
       enable = true;
       alsa.enable = true;

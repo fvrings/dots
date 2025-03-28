@@ -1,4 +1,4 @@
-{ inputs, osConfig, ... }:
+{ inputs, ... }:
 {
   # home-manager.users.ring = import ./home.nix {inherit inputs lib pkgs;};
   home-manager = {
@@ -12,7 +12,7 @@
       inputs.nix-index-database.hmModules.nix-index
       inputs.ags.homeManagerModules.default
       inputs.catppuccin.homeManagerModules.catppuccin
-    ] ++ (if osConfig.networking.hostName == "art" then [ ./desktop ] else [ ]);
+    ];
     extraSpecialArgs = { inherit inputs; };
   };
 }
