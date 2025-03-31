@@ -56,6 +56,4 @@ jobs:
           purge-primary-key: never
 
       - name: Run Nix Flake Check
-        with:
-          nix_conf: ${{ env.nix_conf }}
         run: nix flake check -L
