@@ -147,6 +147,7 @@
   };
   nixConfig = {
     extra-substituters = [
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.garnix.io"
       "https://nix-community.cachix.org"

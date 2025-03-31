@@ -347,50 +347,51 @@ in
       defaultApplications = associations;
     };
     configFile = {
-      "zellij/layouts/default.kdl".text = ''
-        layout {
-            default_tab_template {
-                children
-                pane size=1 borderless=true {
-                    plugin location="file:${inputs.zjstatus.packages.x86_64-linux.default}/bin/zjstatus.wasm" {
-                        format_left   "{mode} #[fg=#89B4FA,bold]{session}"
-                        format_center "{tabs}"
-                        format_right  "{command_git_branch} {datetime}"
-                        format_space  ""
-
-                        border_enabled  "false"
-                        border_char     "─"
-                        border_format   "#[fg=#FFAAFF]{char}"
-                        border_position "top"
-
-                        hide_frame_for_single_pane "true"
-
-                        mode_normal    "#[fg=#54DB8C]{name}"
-                        mode_tab       "#[fg=#ffc387]{name}"
-                        mode_scroll    "#[fg=#FF5587]{name}"
-                        mode_search    "#[fg=#AF5587]{name}"
-                        mode_pane      "#[fg=#FF7846]{name}"
-                        mode_locked    "#[fg=#FF0A32]{name}"
-
-                        tab_normal   "#[fg=#6C7086] {name} "
-                        tab_active   "#[fg=#FF99B2,bold] {name} "
-                        tab_sync_indicator       "<> "
-                        tab_fullscreen_indicator "[] "
-                        tab_floating_indicator   "⬚ "
-
-                        command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
-                        command_git_branch_format      "#[fg=blue] {stdout} "
-                        command_git_branch_interval    "10"
-                        command_git_branch_rendermode  "static"
-
-                        datetime        "#[fg=#B27086,bold] {format} "
-                        datetime_format "%A, %b %d"
-                        datetime_timezone "Asia/Shanghai"
-                    }
-                }
-            }
-        }
-      '';
+      # FIX: I don't want this plugin  slow down my valuable build time
+      # "zellij/layouts/default.kdl".text = ''
+      #   layout {
+      #       default_tab_template {
+      #           children
+      #           pane size=1 borderless=true {
+      #               plugin location="file:${inputs.zjstatus.packages.x86_64-linux.default}/bin/zjstatus.wasm" {
+      #                   format_left   "{mode} #[fg=#89B4FA,bold]{session}"
+      #                   format_center "{tabs}"
+      #                   format_right  "{command_git_branch} {datetime}"
+      #                   format_space  ""
+      #
+      #                   border_enabled  "false"
+      #                   border_char     "─"
+      #                   border_format   "#[fg=#FFAAFF]{char}"
+      #                   border_position "top"
+      #
+      #                   hide_frame_for_single_pane "true"
+      #
+      #                   mode_normal    "#[fg=#54DB8C]{name}"
+      #                   mode_tab       "#[fg=#ffc387]{name}"
+      #                   mode_scroll    "#[fg=#FF5587]{name}"
+      #                   mode_search    "#[fg=#AF5587]{name}"
+      #                   mode_pane      "#[fg=#FF7846]{name}"
+      #                   mode_locked    "#[fg=#FF0A32]{name}"
+      #
+      #                   tab_normal   "#[fg=#6C7086] {name} "
+      #                   tab_active   "#[fg=#FF99B2,bold] {name} "
+      #                   tab_sync_indicator       "<> "
+      #                   tab_fullscreen_indicator "[] "
+      #                   tab_floating_indicator   "⬚ "
+      #
+      #                   command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
+      #                   command_git_branch_format      "#[fg=blue] {stdout} "
+      #                   command_git_branch_interval    "10"
+      #                   command_git_branch_rendermode  "static"
+      #
+      #                   datetime        "#[fg=#B27086,bold] {format} "
+      #                   datetime_format "%A, %b %d"
+      #                   datetime_timezone "Asia/Shanghai"
+      #               }
+      #           }
+      #       }
+      #   }
+      # '';
       "nvim" = {
         source = mkOutOfStoreSymlink "/etc/nixos/dots/config/nvim";
       };

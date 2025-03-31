@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
   home = {
     username = "ring";
@@ -92,7 +92,7 @@
       };
     };
     wezterm = {
-      enable = true;
+      enable = false;
     };
   };
 
