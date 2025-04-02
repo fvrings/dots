@@ -77,6 +77,7 @@ return {
   {
     'nvim-orgmode/orgmode',
     ft = 'org',
+    event = 'VeryLazy',
     enabled = not vim.g.iswin,
     keys = {
       -- { '<A-l>', '<c-o>>>', mode = 'i', ft = 'org', remap = true },
