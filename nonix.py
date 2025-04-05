@@ -46,12 +46,12 @@ def init():
 
 
 def link():
-    try:
-        for item in todo:
-            print(f"symlink {item.source} to {item.des}")
+    for item in todo:
+        try:
             os.symlink(item.source, item.des)
-    except OSError as e:
-        print(f"create symlink error {e}")
+            print(f"symlink {item.source} to {item.des}")
+        except OSError as e:
+            print(f"create symlink error {e}")
 
 
 def clean():
