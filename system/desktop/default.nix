@@ -9,6 +9,7 @@
       ./hardware.nix
       ./service
       ./hardware-intel.nix
+      ../disko
       ./fcitx.nix
 
       ../core.nix

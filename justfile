@@ -27,3 +27,5 @@ home:
   nix run nixpkgs#home-manager -- switch --flake .#ring
 hypr:
   nix run nixpkgs#home-manager -- switch --flake .#hypr
+simple-disk:
+  sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount ./system/disko/simple.nix

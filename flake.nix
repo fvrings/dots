@@ -78,8 +78,9 @@
     };
   inputs = {
     #TODO: add disko until https://github.com/nix-community/disko/issues/511
-    #TODO: pin this to a tag version
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
     # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
