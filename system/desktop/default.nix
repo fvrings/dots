@@ -8,7 +8,7 @@
       ./gnome.nix
       ./hardware.nix
       ./service
-      ./hardware-configuration.nix
+      ./hardware-intel.nix
       ./fcitx.nix
 
       ../core.nix
