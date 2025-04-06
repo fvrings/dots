@@ -8,7 +8,7 @@
     users.ring.imports = [
       ./ring.nix
       ./devtools.nix
-      ./yazi.nix
+      ./yazi
       inputs.nix-index-database.hmModules.nix-index
       inputs.ags.homeManagerModules.default
       inputs.catppuccin.homeModules.catppuccin

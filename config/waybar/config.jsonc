@@ -72,7 +72,7 @@
   "network": {
     "format-wifi": "{bandwidthUpBytes}  {bandwidthDownBytes} ",
     "interval": 1,
-    "format-ethernet": "{ipaddr}/{cidr} ",
+    "format-ethernet": "{ipaddr}/{cidr} ",
     "format-disconnected": "Disconnected 󱘖",
     "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
