@@ -7,6 +7,7 @@
       vim
       #TODO: https://github.com/nvbn/thefuck/pull/1442
       libnotify
+      tpm2-tss
       nix-output-monitor
       w3m-nox
       ffmpeg

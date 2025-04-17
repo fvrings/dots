@@ -23,9 +23,6 @@
               ./home
               ./module
               ./overlay
-              disko.nixosModules.disko
-              lanzaboote.nixosModules.lanzaboote
-              impermanence.nixosModules.impermanence
             ];
             specialArgs = { inherit inputs; };
           };

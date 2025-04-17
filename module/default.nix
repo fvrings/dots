@@ -11,5 +11,7 @@
     inputs.catppuccin.nixosModules.catppuccin
     inputs.home-manager.nixosModules.home-manager
     inputs.niri.nixosModules.niri
+    inputs.lanzaboote.nixosModules.lanzaboote
+    inputs.impermanence.nixosModules.impermanence
   ];
 }
