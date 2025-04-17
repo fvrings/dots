@@ -10,6 +10,7 @@
       nix-output-monitor
       w3m-nox
       ffmpeg
+      sbctl
       qbittorrent-enhanced
       playerctl
       bc

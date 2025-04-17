@@ -6,6 +6,7 @@
       "/var/log"
       "/var/lib/bluetooth"
       "/var/lib/nixos"
+      "/var/lib/sbctl"
       "/var/lib/systemd/coredump"
       "/etc/NetworkManager/system-connections"
       {
@@ -45,15 +46,13 @@
           mode = "0700";
         }
         {
-          directory = ".nixops";
-          mode = "0700";
-        }
-        {
           directory = ".local/share/keyrings";
           mode = "0700";
         }
         ".local/share/direnv"
         ".local/share/nvim"
+        ".local/share/zoxide"
+        ".local/share/nushell"
       ];
       files = [
         ".screenrc"

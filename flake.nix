@@ -8,6 +8,7 @@
       home-manager,
       disko,
       impermanence,
+      lanzaboote,
       ...
     }@inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
@@ -23,6 +24,7 @@
               ./module
               ./overlay
               disko.nixosModules.disko
+              lanzaboote.nixosModules.lanzaboote
               impermanence.nixosModules.impermanence
             ];
             specialArgs = { inherit inputs; };
@@ -86,6 +88,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
