@@ -6,3 +6,4 @@ sqlite3.path
 .pre-commit-config.yaml
 history.txt
 config/nushell/vendor/autoload
+config/guix/current

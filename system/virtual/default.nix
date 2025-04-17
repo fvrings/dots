@@ -12,5 +12,7 @@
     ../virtual.nix
     ../boot.nix
     ./hardware-configuration.nix
+    ./disk.nix
+    ./impermanence.nix
   ];
 }

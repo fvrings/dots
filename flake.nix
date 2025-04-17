@@ -6,6 +6,8 @@
       # self,
       nixpkgs,
       home-manager,
+      disko,
+      impermanence,
       ...
     }@inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
@@ -20,6 +22,8 @@
               ./home
               ./module
               ./overlay
+              disko.nixosModules.disko
+              impermanence.nixosModules.impermanence
             ];
             specialArgs = { inherit inputs; };
           };
@@ -78,6 +82,7 @@
     };
   inputs = {
     #TODO: add disko until https://github.com/nix-community/disko/issues/511
+    impermanence.url = "github:nix-community/impermanence";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";

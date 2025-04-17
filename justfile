@@ -27,5 +27,9 @@ home:
   nix run nixpkgs#home-manager -- switch --flake .#ring
 hypr:
   nix run nixpkgs#home-manager -- switch --flake .#hypr
-simple-disk:
-  sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount ./system/disko/simple.nix
+setup-vm-disk:
+  sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount ./system/virtual/disk.nix
+nixos-install-vm:
+  sudo nixos-install --option substituters https://mirrors.ustc.edu.cn/nix-channels/store --flake .#vm
+install-vm:
+  sudo nix --extra-experimental-features "nix-command flakes" run --option substituters https://mirrors.ustc.edu.cn/nix-channels/store 'github:nix-community/disko/latest#disko-install' --  --flake '.#vm' --disk main /dev/vda
