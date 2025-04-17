@@ -27,7 +27,7 @@
       filebrowser
       go
       grim
-      ida-free
+      # ida-free
       lldb
       ddcutil
       gparted
@@ -84,7 +84,7 @@
     ]
     ++ [
       inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-      inputs.pwndbg.packages.${pkgs.system}.default
+      # inputs.pwndbg.packages.${pkgs.system}.default
     ];
   programs = {
     virt-manager.enable = true;

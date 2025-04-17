@@ -23,8 +23,7 @@
     ];
     files = [
       "/etc/machine-id"
-      "/etc/ssh/ssh_host_ed25519_key"
-      "/etc/ssh/ssh_host_ed25519_key.pub"
+      "/etc/nixos/keys.txt"
       {
         file = "/var/keys/secret_file";
         parentDirectory = {
@@ -60,5 +59,8 @@
         ".screenrc"
       ];
     };
+  };
+  fileSystems."/persistent" = {
+    neededForBoot = true;
   };
 }

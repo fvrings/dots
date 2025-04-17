@@ -2,7 +2,7 @@
 {
   sops.defaultSopsFile = ../secrets/mimi.yaml;
   sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/ring/.config/sops/age/keys.txt";
+  sops.age.keyFile = "/etc/nixos/keys.txt";
   sops.secrets."config.dae" = {
     owner = config.users.users.ring.name;
   };

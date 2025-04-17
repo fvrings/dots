@@ -428,7 +428,7 @@ in
       # qq
       #TODO: setup https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
       firefox
-      google-chrome
+      # google-chrome
       # nix related
       #
     ]

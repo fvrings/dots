@@ -23,6 +23,8 @@
       ../network.nix
       ../virtual.nix
       ../boot.nix
+      ../impermanence.nix
+      ../disko/main.nix
     ];
 
   # disable ATM
