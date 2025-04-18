@@ -280,6 +280,7 @@ in
     lazygit = {
       enable = true;
       settings = {
+        disableStartupPopups = true;
         keybinding.commits = {
           moveDownCommit = "<c-n>";
           moveUpCommit = "<c-p>";

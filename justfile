@@ -36,4 +36,4 @@ nixos-install-art:
 install-vm:
   sudo nix --extra-experimental-features "nix-command flakes" run --option substituters https://mirrors.ustc.edu.cn/nix-channels/store 'github:nix-community/disko/latest#disko-install' --  --flake '.#vm' --disk main /dev/vda
 enable-tpm:
-  sudo systemd-cryptenroll --tpm2-device=auto /dev/vda2
+  sudo systemd-cryptenroll --tpm2-device=auto /dev/nvme0n1p2
