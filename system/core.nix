@@ -83,6 +83,7 @@
   system.stateVersion = "24.11"; # Did you read the comment?
 
   environment = {
+    shells = [ pkgs.nushell ];
     variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";

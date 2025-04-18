@@ -10,8 +10,8 @@
     inputs.sops-nix.nixosModules.sops
     inputs.catppuccin.nixosModules.catppuccin
     inputs.home-manager.nixosModules.home-manager
-    inputs.niri.nixosModules.niri
     inputs.lanzaboote.nixosModules.lanzaboote
     inputs.impermanence.nixosModules.impermanence
+    # inputs.niri.nixosModules.niri
   ];
 }

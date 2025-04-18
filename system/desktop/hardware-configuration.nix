@@ -12,14 +12,13 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
   boot = {
-    # initrd.availableKernelModules = [
-    #   "nvme"
-    #   "xhci_pci"
-    #   "usb_storage"
-    #   "usbhid"
-    #   "sd_mod"
-    # ];
-    initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+    initrd.availableKernelModules = [
+      "nvme"
+      "xhci_pci"
+      "usb_storage"
+      "usbhid"
+      "sd_mod"
+    ];
     initrd.kernelModules = [ "dm-snapshot" ];
     kernelModules = [ "kvm-intel" ];
     # initrd.kernelModules = [
@@ -44,7 +43,7 @@
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  # hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   hardware.graphics = {
     enable = true;

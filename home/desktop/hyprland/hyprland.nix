@@ -7,8 +7,8 @@
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = [
-      inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
-      inputs.hypr-darkwindow.packages.${pkgs.system}.Hypr-DarkWindow
+      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+      # inputs.hypr-darkwindow.packages.${pkgs.system}.Hypr-DarkWindow
       inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
     ];
     # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
@@ -75,8 +75,8 @@
       ];
       bind = [
         "$mod,W,exec,kitty"
-        "$mod,grave,hyprexpo:expo,toggle"
-        "$mod,B,invertactivewindow"
+        # "$mod,grave,hyprexpo:expo,toggle"
+        # "$mod,B,invertactivewindow"
         "$mod,Return,exec,alacritty --class termfloat"
         "$mod,F,exec,firefox"
         "$mod,S,exec,ags -t panel"
@@ -218,25 +218,25 @@
         focus_on_activate = true;
       };
       windowrule = [
-        "float,termfloat"
-        "size 960 540,termfloat"
-        "rounding 20,termfloat"
-        "float,polkit-kde-authentication-agent-1"
-        "dimaround,xdg-desktop-portal-gtk"
-        "dimaround,polkit-gnome-authentication-agent-1"
-        "opacity 1.0 override 1.0 override,firefox"
-        "opacity 1.0 override 1.0 override,virt-manager"
-        "opacity 1.0 override 1.0 override,google-chrome"
-        "opacity 1.0 override 1.0 override,bilibili"
-        "opacity 0.9 override 0.9 override,Qcm"
-        "tile,Qcm"
-        "group,firefox"
-        "group,bilibili"
-        "nodim,mpv"
-        "nodim,firefox"
-        "nodim,google-chrome"
-        "workspace special,Qcm"
-        "fullscreen,mpv"
+        "float,class:termfloat"
+        "size 960 540,class:termfloat"
+        "rounding 20,class:termfloat"
+        "float,title:polkit-kde-authentication-agent-1"
+        "dimaround,title:xdg-desktop-portal-gtk"
+        "dimaround,title:polkit-gnome-authentication-agent-1"
+        "opacity 1.0 override 1.0 override,class:firefox"
+        "opacity 1.0 override 1.0 override,class:virt-manager"
+        "opacity 1.0 override 1.0 override,class:google-chrome"
+        "opacity 1.0 override 1.0 override,class:bilibili"
+        "opacity 0.9 override 0.9 override,class:Qcm"
+        "tile,class:Qcm"
+        "group,class:firefox"
+        "group,class:bilibili"
+        "nodim,class:mpv"
+        "nodim,class:firefox"
+        "nodim,class:google-chrome"
+        "workspace special,class:Qcm"
+        "fullscreen,class:mpv"
       ];
       general = {
         gaps_in = 5;

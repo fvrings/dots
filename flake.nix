@@ -31,6 +31,7 @@
             modules = [
               ./system/desktop
               ./home
+              ./home/desktop
               ./module
               ./overlay
             ];
