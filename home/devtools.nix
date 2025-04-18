@@ -83,6 +83,7 @@ let
     lolcat
     toilet
     p7zip
+    ouch
     fd
     ripgrep
     # it provides the command `nom` works just like `nix`

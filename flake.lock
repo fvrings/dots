@@ -1443,6 +1443,22 @@
         "type": "github"
       }
     },
+    "ouch": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1744466116,
+        "narHash": "sha256-OsNfR7rtnq+ceBTiFjbz+NFMSV/6cQ1THxEFzI4oPJk=",
+        "owner": "ndtoan96",
+        "repo": "ouch.yazi",
+        "rev": "2496cd9ac2d1fb52597b22ae84f3af06c826a86d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ndtoan96",
+        "repo": "ouch.yazi",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -1604,6 +1620,7 @@
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_9",
         "nur": "nur",
+        "ouch": "ouch",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "pwndbg": "pwndbg",
         "rose-pine-hyprcursor": "rose-pine-hyprcursor",
@@ -1613,6 +1630,7 @@
         "ucodenix": "ucodenix",
         "yatline": "yatline",
         "yazi": "yazi",
+        "yazi-fast-enter": "yazi-fast-enter",
         "yazi-plugins": "yazi-plugins",
         "yazi-starship": "yazi-starship",
         "zjstatus": "zjstatus"
@@ -2044,6 +2062,22 @@
       "original": {
         "owner": "sxyazi",
         "repo": "yazi",
+        "type": "github"
+      }
+    },
+    "yazi-fast-enter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1744532527,
+        "narHash": "sha256-FRgD/jxTQMzguQRsR4XF6oGmOIDZjKhh7SnMq8qFFI8=",
+        "owner": "ourongxing",
+        "repo": "fast-enter.yazi",
+        "rev": "738356fdb82c07787b5a7d78e5487d2852dd2a8a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ourongxing",
+        "repo": "fast-enter.yazi",
         "type": "github"
       }
     },
