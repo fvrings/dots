@@ -9,6 +9,8 @@ let
     yazi-plugins
     yazi-starship
     yatline
+    ouch
+    yazi-fast-enter
     ;
 in
 {
@@ -17,8 +19,9 @@ in
     enable = true;
     enableNushellIntegration = true;
     plugins = {
-      smart_enter = "${yazi-plugins}/smart-enter.yazi";
       chmod = "${yazi-plugins}/chmod.yazi";
+      fast_enter = "${yazi-fast-enter}";
+      ouch = "${ouch}";
       mount = "${yazi-plugins}/mount.yazi";
       git = "${yazi-plugins}/git.yazi";
       jump_to_char = "${yazi-plugins}/jump-to-char.yazi";
@@ -29,9 +32,14 @@ in
     keymap = {
       manager.prepend_keymap = [
         {
+          on = "C";
+          run = "plugin ouch";
+          desc = "Compress with ouch";
+        }
+        {
           on = "l";
-          run = "plugin smart_enter";
-          desc = "Enter the child directory, or open the file";
+          run = "plugin fast_enter";
+          desc = "Enter the subfolder faster, or open the file directly";
         }
         {
           on = [

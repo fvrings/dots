@@ -139,8 +139,16 @@
       url = "github:Rolv-Apneseth/starship.yazi";
       flake = false;
     };
+    yazi-fast-enter = {
+      url = "github:ourongxing/fast-enter.yazi";
+      flake = false;
+    };
     yatline = {
       url = "github:imsi32/yatline.yazi";
+      flake = false;
+    };
+    ouch = {
+      url = "github:ndtoan96/ouch.yazi";
       flake = false;
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
