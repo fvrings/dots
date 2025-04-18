@@ -9,6 +9,7 @@
       ./ring.nix
       ./devtools.nix
       ./yazi
+      inputs.self.nixosModules.theme
       inputs.nix-index-database.hmModules.nix-index
       inputs.ags.homeManagerModules.default
       inputs.catppuccin.homeModules.catppuccin

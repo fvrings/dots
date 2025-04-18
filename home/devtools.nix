@@ -401,9 +401,6 @@ in
       "nushell" = {
         source = mkOutOfStoreSymlink "/etc/nixos/dots/config/nushell";
       };
-      "waybar" = {
-        source = mkOutOfStoreSymlink "/etc/nixos/dots/config/waybar";
-      };
       "emacs/init.el" = {
         source = ../config/emacs/init.el;
       };

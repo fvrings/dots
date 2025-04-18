@@ -1,17 +1,14 @@
-_: {
+{ config, ... }:
+{
   programs.hyprlock = {
     enable = true;
     settings = {
-      background =
-        let
-          wallpaperPath = "/home/ring/Pictures/wallpapers/672f973cecf341eba21b874362384bc6.jpg";
-        in
-        [
-          {
-            # monitor = "eDP-1";
-            path = wallpaperPath;
-          }
-        ];
+      background = [
+        {
+          # monitor = "eDP-1";
+          path = config.theme.wallpaper;
+        }
+      ];
       general = {
         no_fade_in = false;
         grace = 0;

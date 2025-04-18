@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  config,
   ...
 }:
 {
@@ -249,9 +250,9 @@
       };
       exec-once = [
         "swww-daemon"
-        "~/.config/hypr/scripts/swww.sh"
+        "swww img ${config.theme.wallpaper}"
         "fcitx5"
-        "ags"
+        # "ags"
         "wl-paste --watch cliphist store"
         # "wlsunset -l 39.9 -L 116.3"
         # enable this all the time

@@ -3,7 +3,7 @@
 
   outputs =
     {
-      # self,
+      self,
       nixpkgs,
       home-manager,
       disko,
@@ -12,7 +12,10 @@
       ...
     }@inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ ./treefmt.nix ];
+      imports = [
+        ./treefmt.nix
+        ./module/theme
+      ];
       systems = [ "x86_64-linux" ];
       flake = rec {
         nixosConfigurations = {

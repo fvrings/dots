@@ -501,7 +501,7 @@ local DefaultStatusline = {
   Space,
   -- Arrow,
   -- Ruler,
-  SearchCount,
+  -- SearchCount,
   Space,
   FileFormat,
   -- FileSize,
