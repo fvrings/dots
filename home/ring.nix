@@ -65,6 +65,7 @@
       font.name = "monospace";
       settings = {
         "clipboard_control" = "write-clipboard write-primary read-clipboard read-primary no-append";
+        "hide_window_decorations" = true;
       };
     };
     foot = {
@@ -88,6 +89,9 @@
       settings = {
         font = {
           size = 13;
+        };
+        window = {
+          decorations = "none";
         };
       };
     };

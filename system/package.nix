@@ -12,6 +12,7 @@
       w3m-nox
       ffmpeg
       sbctl
+      fuzzel
       qbittorrent-enhanced
       playerctl
       bc
