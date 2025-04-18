@@ -12,48 +12,28 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
   boot = {
-    initrd.availableKernelModules = [
-      "nvme"
-      "xhci_pci"
-      "usb_storage"
-      "usbhid"
-      "sd_mod"
-    ];
-    initrd.kernelModules = [
-      "amdgpu"
-      "i2c-dev"
-      "ddcci_backlight"
-    ];
-    kernelModules = [ "kvm-amd" ];
-    kernelParams = [
-      "acpi_backlight=video"
-    ];
-    extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
+    # initrd.availableKernelModules = [
+    #   "nvme"
+    #   "xhci_pci"
+    #   "usb_storage"
+    #   "usbhid"
+    #   "sd_mod"
+    # ];
+    initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+    initrd.kernelModules = [ "dm-snapshot" ];
+    kernelModules = [ "kvm-intel" ];
+    # initrd.kernelModules = [
+    #   "amdgpu"
+    #   "i2c-dev"
+    #   "ddcci_backlight"
+    # ];
+    # kernelModules = [ "kvm-amd" ];
+    # kernelParams = [
+    #   "acpi_backlight=video"
+    # ];
+    # extraModulePackages = [ config.boot.kernelPackages.ddcci-driver ];
   };
-  services.xserver.videoDrivers = [ "amdgpu" ];
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/3a236a53-5763-4b5a-b670-9f1ef5fe292a";
-    fsType = "ext4";
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/F0CC-A30F";
-    fsType = "vfat";
-    options = [
-      "fmask=0077"
-      "dmask=0077"
-    ];
-  };
-  #TODO: replace all harddrive with ENCRYPTED bcachefs
-  fileSystems."/home/ring/storage" = {
-    device = "/dev/disk/by-uuid/9f608033-20c4-4960-91dc-5f12e8e5e288";
-    fsType = "bcachefs";
-  };
-
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/1b5af6ee-426e-48db-b1f4-9ec57c9f51f3"; }
-  ];
+  # services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -64,7 +44,7 @@
   # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  # hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   hardware.graphics = {
     enable = true;
