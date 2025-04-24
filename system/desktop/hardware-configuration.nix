@@ -15,12 +15,14 @@
     initrd.availableKernelModules = [
       "nvme"
       "xhci_pci"
-      "usb_storage"
+      "thunderbolt"
       "usbhid"
+      "usb_storage"
       "sd_mod"
+      "sdhci_pci"
     ];
     initrd.kernelModules = [ "dm-snapshot" ];
-    kernelModules = [ "kvm-intel" ];
+    kernelModules = [ "kvm-amd" ];
     # initrd.kernelModules = [
     #   "amdgpu"
     #   "i2c-dev"

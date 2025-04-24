@@ -3,7 +3,6 @@
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-    # systemd.target = "niri-flake-polkit.target";
     style = builtins.readFile ./waybar-style.css;
     settings = {
       mainBar = {
@@ -13,10 +12,10 @@
         height = 30;
         margin = "8px 8px 0";
         modules-left = [
-          "niri/workspaces"
+          "hyprland/workspaces"
         ];
         modules-center = [
-          "niri/window"
+          "hyprland/window"
         ];
         modules-right = [
           "network"
@@ -27,7 +26,7 @@
           "battery"
           "clock"
         ];
-        "niri/workspaces" = {
+        "hyprland/workspaces" = {
           "disable-scroll" = true;
           "all-outputs" = true;
           "warp-on-scroll" = false;
@@ -39,7 +38,7 @@
             "4" = "四";
           };
         };
-        "niri/window" = {
+        "hyprland/window" = {
           "format" = "{}";
           "rewrite" = {
             "(.*) - Mozilla Firefox" = "󰈹  $1";

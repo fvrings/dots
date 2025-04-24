@@ -25,5 +25,6 @@
 
   environment.systemPackages = with pkgs; [
     gnomeExtensions.kimpanel
+    gnomeExtensions.ideapad
   ];
 }

@@ -115,6 +115,7 @@
           window-list.extensionUuid
           workspace-indicator.extensionUuid
           expandable-notifications.extensionUuid
+          ideapad.extensionUuid
         ];
       };
       "org/virt-manager/virt-manager/connections" = {

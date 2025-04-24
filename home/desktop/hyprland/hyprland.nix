@@ -5,6 +5,7 @@
   ...
 }:
 {
+  programs.fuzzel.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = [
@@ -66,8 +67,7 @@
     settings = {
       "$mod" = "SUPER";
       monitor = [
-        ",1920x1080@120,0x0,1"
-        # ",preferred,0x0,1"
+        ",preferred,0x0,1.5"
       ];
       bindle = [
         # volume
@@ -85,7 +85,8 @@
         "$mod SHIFT,P,exec,hyprpicker -a"
         "$mod,X,exec,playerctl -p Qcm play-pause"
         "$mod,N,exec,playerctl -p Qcm next"
-        "$mod,R,exec,ags -t launcher"
+        # "$mod,R,exec,ags -t launcher"
+        "$mod,R,exec,fuzzel"
         "$mod SHIFT,R,exec,rofi -show run"
         "$mod,A,fullscreen"
         "$mod,Q,killactive"
@@ -254,9 +255,9 @@
         "fcitx5"
         # "ags"
         "wl-paste --watch cliphist store"
-        # "wlsunset -l 39.9 -L 116.3"
+        "wlsunset -l 39.9 -L 116.3"
         # enable this all the time
-        "wlsunset -S 6:00 6:01"
+        # "wlsunset -S 6:00 6:01"
       ];
       env = [
         "XDG_SESSION_TYPE,wayland"
