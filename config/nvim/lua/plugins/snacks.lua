@@ -232,7 +232,7 @@ return {
           title = 'Todo in this week',
           enabled = vim.fn.exists '~/notes',
           section = 'terminal',
-          cmd = 'nvim -u NONE --noplugin --headless -l ~/.config/nvim/lua/todos.lua e>| lolcat',
+          cmd = 'nvim -u NONE --noplugin --headless -l ~/.config/nvim/lua/todos.lua e>| lolcat e> /dev/null',
           height = 10,
           ttl = 60,
         },
