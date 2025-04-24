@@ -23,13 +23,10 @@
       ../network.nix
       ../virtual.nix
       ../boot.nix
-      ../impermanence.nix
-      ../disko/main.nix
+      # ../impermanence.nix
     ];
 
-  # disable ATM
-  # services.ucodenix = {
-  #   enable = false;
-  #   cpuModelId = "00A50F00"; # Replace with your processor's model ID
-  # };
+  services.ucodenix = {
+    enable = true;
+  };
 }

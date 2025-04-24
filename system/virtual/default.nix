@@ -12,7 +12,7 @@
     ../virtual.nix
     ../boot.nix
     ./hardware-configuration.nix
-    ../disko/main.nix
+    ../disko/simple.nix
     ../impermanence.nix
   ];
 }

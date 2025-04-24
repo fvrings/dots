@@ -3,7 +3,6 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/vdb";
         content = {
           type = "gpt";
           partitions = {
@@ -27,12 +26,13 @@
                   # if you want to use the key for interactive login be sure there is no trailing newline
                   # for example use `echo -n "password" > /tmp/secret.key`
                   # keyFile = "/tmp/secret.key";
-                  # allowDiscards = true;
+                  allowDiscards = true;
+                  bypassWorkqueues = true;
                 };
                 # additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
                 content = {
                   type = "lvm_pv";
-                  vg = "root_vg";
+                  vg = "pool";
                 };
               };
             };
@@ -41,45 +41,28 @@
       };
     };
     lvm_vg = {
-      root_vg = {
+      pool = {
         type = "lvm_vg";
         lvs = {
           root = {
             size = "100%";
             content = {
-              type = "btrfs";
-              extraArgs = [ "-f" ];
-              subvolumes = {
-                "/root" = {
-                  mountpoint = "/";
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-                "/persistent" = {
-                  mountpoint = "/persistent";
-                  neededForBoot = true;
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-                "/nix" = {
-                  mountpoint = "/nix";
-                  mountOptions = [
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
-              };
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/";
+              mountOptions = [
+                "defaults"
+              ];
+            };
+          };
+          swap = {
+            size = "40G";
+            content = {
+              type = "swap";
             };
           };
         };
       };
     };
-  };
-  fileSystems."/persistent" = {
-    neededForBoot = true;
   };
 }
