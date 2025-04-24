@@ -24,7 +24,7 @@
       programs.stylua.enable = true;
       programs.shfmt = {
         enable = true;
-        indent_size = 0;
+        indent_size = 2;
       };
     };
   };
