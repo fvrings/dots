@@ -13,6 +13,5 @@
     ../boot.nix
     ./hardware-configuration.nix
     ../disko/simple.nix
-    ../impermanence.nix
   ];
 }
