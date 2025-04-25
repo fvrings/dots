@@ -1,7 +1,7 @@
 {
   pkgs,
   config,
-  inputs,
+  # inputs,
   ...
 }:
 with pkgs;
@@ -232,6 +232,7 @@ in
     };
     direnv = {
       enable = true;
+      enableNushellIntegration = true;
       nix-direnv.enable = true;
     };
 
@@ -402,6 +403,23 @@ in
         source = mkOutOfStoreSymlink "/etc/nixos/dots/config/nvim";
       };
       "nix-extra/sqlite3.path".text = "${pkgs.sqlite.out}/lib/libsqlite3.so";
+      "direnv/direnvrc".text = ''
+        layout_uv() {
+            if [[ -d ".venv" ]]; then
+                VIRTUAL_ENV="$(pwd)/.venv"
+            fi
+
+            if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
+                log_status "No virtual environment exists. Executing \`uv venv\` to create one."
+                uv venv
+                VIRTUAL_ENV="$(pwd)/.venv"
+            fi
+
+            PATH_add "$VIRTUAL_ENV/bin"
+            export UV_ACTIVE=1  # or VENV_ACTIVE=1
+            export VIRTUAL_ENV
+        }
+      '';
       "nushell" = {
         source = mkOutOfStoreSymlink "/etc/nixos/dots/config/nushell";
       };

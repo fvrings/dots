@@ -4,8 +4,29 @@
   config,
   ...
 }:
+let
+  swww = "swww.service";
+in
 {
   programs.fuzzel.enable = true;
+  services.swww.enable = true;
+  systemd.user.services.swww-img = {
+    Install = {
+      WantedBy = [ swww ];
+    };
+
+    Unit = {
+      Description = "swww-img";
+      After = [ swww ];
+      PartOf = [ swww ];
+    };
+
+    Service = {
+      ExecStart = "swww img ${config.theme.wallpaper}";
+      Restart = "always";
+      RestartSec = 10;
+    };
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = [
@@ -250,8 +271,6 @@
         layout = "master";
       };
       exec-once = [
-        "swww-daemon"
-        "swww img ${config.theme.wallpaper}"
         "fcitx5"
         # "ags"
         "wl-paste --watch cliphist store"

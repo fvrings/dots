@@ -8,6 +8,7 @@
       efi.canTouchEfiVariables = true;
       systemd-boot = {
         enable = lib.mkForce false;
+        consoleMode = "2";
         # enable = true;
         configurationLimit = 5;
       };

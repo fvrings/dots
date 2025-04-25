@@ -61,7 +61,6 @@
       uiua
       devenv
       clang-tools
-      swww
       bun
       dart-sass
       brightnessctl
