@@ -36,6 +36,8 @@
       qcm
       # vscode
       fzf
+      #TODO: extensions?
+      ghidra-bin
       cachix
       aircrack-ng
       chafa
@@ -49,7 +51,7 @@
       # this is super useful
       ngrok
       # cargo
-      # rustup
+      rustup
       # rust-bin.stable.latest.default
       linux-manual
       ast-grep

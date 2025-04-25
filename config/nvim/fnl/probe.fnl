@@ -9,7 +9,7 @@
   (if (number? iswsl)
       (set vim.g.iswsl true)))
 
-(let [f (vim.fn.filereadable :/etc/nixos/configuration.nix)]
+(let [f (vim.fn.filereadable :/etc/nixos/keys.txt)]
   (if (= f 1)
       (set vim.g.isnixos true)))
 
@@ -21,7 +21,7 @@
           :neovide_cursor_animation_length 0.1
           :neovide_cursor_vfx_mode :ripple})
   (if vim.g.iswin
-      (set! {:guifont "MartianMono_Nerd_Font"})
+      (set! {:guifont :MartianMono_Nerd_Font})
       (set! {:guifont "monospace,emoji"}))
   (set! {:scrolloff 0}))
 

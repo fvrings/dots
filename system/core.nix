@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  users.groups.libvirtd.members = [ "ring" ];
   users.users.ring = {
     isNormalUser = true;
     extraGroups = [

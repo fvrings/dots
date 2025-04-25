@@ -90,7 +90,7 @@
         "$mod SHIFT,R,exec,rofi -show run"
         "$mod,A,fullscreen"
         "$mod,Q,killactive"
-        "$mod,V,exec,cliphist list | rofi -dmenu| cliphist decode | wl-copy"
+        "$mod,V,exec,cliphist list | fuzzel --dmenu| cliphist decode | wl-copy"
         #TODO: work with ags
         "$mod,C, movetoworkspace, special"
         "$mod,TAB, togglespecialworkspace"
@@ -143,7 +143,7 @@
       input = {
         kb_options = "caps:swapescape";
         follow_mouse = 1;
-        sensitivity = 1;
+        # sensitivity = 1;
         touchpad = {
           natural_scroll = 1;
           scroll_factor = 0.18;

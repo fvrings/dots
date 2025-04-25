@@ -466,6 +466,15 @@ return {
     dependencies = 'kkharji/sqlite.lua',
   },
   {
+    'kkharji/sqlite.lua',
+    init = function()
+      if vim.g.isnixos then
+        local path = vim.fn.expand '~' .. '/.config/nix-extra/sqlite3.path'
+        vim.g.sqlite_clib_path = vim.fn.system('cat ' .. path)
+      end
+    end,
+  },
+  {
     'williamboman/mason.nvim',
     config = true,
     lazy = false,

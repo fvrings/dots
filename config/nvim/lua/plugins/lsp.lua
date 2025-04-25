@@ -122,15 +122,10 @@ return {
   {
     'mrcjkb/rustaceanvim',
     ft = 'rust',
-    version = '^5',
-    config = function()
+    version = '^6',
+    init = function()
       vim.g.rustaceanvim = {
         server = {
-          on_attach = function(client)
-            if client.server_capabilities.inlayHintProvider then
-              vim.lsp.inlay_hint.enable()
-            end
-          end,
           default_settings = {
             ['rust-analyzer'] = {
               rustfmt = {

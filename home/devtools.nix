@@ -247,6 +247,10 @@ in
         };
       };
     };
+    carapace = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
 
     tmux = {
       enable = true;
