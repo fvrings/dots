@@ -212,7 +212,7 @@ in
       };
 
       animations = {
-        enabled = false;
+        enabled = true;
         # bezier=idk,0.14,0.33,0.14,0.83
         bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
         animation = [
@@ -280,6 +280,8 @@ in
       ];
       env = [
         "XDG_SESSION_TYPE,wayland"
+        "GDK_SCALE,2"
+        "XCURSOR_SIZE,32"
         "GDK_BACKEND,wayland,x11,*"
         "QT_QPA_PLATFORM,wayland;xcb"
         "SDL_VIDEODRIVER,wayland"

@@ -10,6 +10,7 @@ local function config()
       'asm',
       'nasm',
       'scheme',
+      'blueprint',
       'c',
       'lua',
       'vim',

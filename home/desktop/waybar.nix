@@ -51,11 +51,11 @@
           "format-alt" = "{:%Y-%m-%d}";
         };
         "cpu" = {
-          "format" = "{usage}% ";
+          "format" = "{usage}% 󰻠";
           "tooltip" = false;
         };
         "memory" = {
-          "format" = "{}% ";
+          "format" = "{}% 󰍛";
         };
         "backlight" = {
           "format" = "{percent}% {icon}";
@@ -90,9 +90,9 @@
           ];
         };
         "network" = {
-          "format-wifi" = "{bandwidthUpBytes}  {bandwidthDownBytes} ";
+          "format-wifi" = "{bandwidthUpBytes} 󰕒 {bandwidthDownBytes} 󰇚";
           "interval" = 1;
-          "format-ethernet" = "{ipaddr}/{cidr} ";
+          "format-ethernet" = "{bandwidthUpBytes} 󰕒 {bandwidthDownBytes} 󰇚";
           "format-disconnected" = "Disconnected 󱘖";
           "format-alt" = "{ifname}: {ipaddr}/{cidr}";
         };

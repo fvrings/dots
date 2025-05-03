@@ -23,4 +23,3 @@ else
   notify-send -u low -t 1000 "🕹️ animating"
   exit
 fi
-hyprctl reload

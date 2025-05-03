@@ -36,9 +36,9 @@
         "pipe-operators"
       ];
       # Opinionated: disable global registry
-      flake-registry = "";
+      # flake-registry = "";
       # Workaround for https://github.com/NixOS/nix/issues/9574
-      nix-path = config.nix.nixPath;
+      nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
       substituters = [
         # "https://mirror.sjtu.edu.cn/nix-channels/store"
         "https://mirrors.ustc.edu.cn/nix-channels/store"

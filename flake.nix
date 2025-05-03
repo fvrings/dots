@@ -163,7 +163,14 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     niri.url = "github:sodiboo/niri-flake";
-    ucodenix.url = "github:e-tho/ucodenix";
+    cpu-microcodes = {
+      url = "github:platomav/CPUMicrocodes/ec5200961ecdf78cf00e55d73902683e835edefd";
+      flake = false;
+    };
+    ucodenix = {
+      url = "github:e-tho/ucodenix";
+      inputs.cpu-microcodes.follows = "cpu-microcodes";
+    };
     pwndbg.url = "github:pwndbg/pwndbg";
   };
   nixConfig = {

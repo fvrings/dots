@@ -46,6 +46,7 @@
       typst
       tinymist
       telegram-desktop
+      code-cursor
       yq
       gnumake
       # this is super useful
