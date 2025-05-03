@@ -268,16 +268,6 @@ in
         resurrect
         tmux-fzf
         fzf-tmux-url
-        {
-          plugin = tokyo-night-tmux;
-          extraConfig = ''
-            set -g @tokyo-night-tmux_show_datetime 0
-            set -g @tokyo-night-tmux_show_netspeed 1
-            set -g @tokyo-night-tmux_netspeed_showip 1      # Display IPv4 address (default 0)
-            set -g @tokyo-night-tmux_netspeed_refresh 1     # Update interval in seconds (default 1)
-            set -g @tokyo-night-tmux_show_music 1
-          '';
-        }
       ];
       #BUG:https://github.com/nix-community/home-manager/issues/3555
       extraConfig = builtins.readFile ../config/tmux/tmux.conf.common;
