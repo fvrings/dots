@@ -17,6 +17,11 @@ in
       };
       listener = [
         {
+          timeout = timeout / 3;
+          on-timeout = "${pkgs.brightnessctl}/bin/brightnessctl -s set 10";
+          on-resume = "${pkgs.brightnessctl}/bin/brightnessctl -r";
+        }
+        {
           timeout = timeout - 5;
           on-timeout = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
         }
@@ -32,10 +37,6 @@ in
         {
           timeout = timeout * 6;
           on-timeout = "systemctl suspend";
-        }
-        {
-          timeout = timeout * 12;
-          on-timeout = "systemctl hibernate";
         }
       ];
     };
