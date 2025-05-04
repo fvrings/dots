@@ -12,26 +12,31 @@ window#waybar {
   font-size: 12px;
 }
 
-button {
-  /* Use box-shadow instead of border so the text isn't offset */
+#workspaces button {
   box-shadow: inset 0 -3px transparent;
-  /* Avoid rounded borders under each button name */
   border: none;
   border-radius: 6px;
-}
-
-#workspaces button {
   background-color: transparent;
+  margin-right: 3px;
   color: #ffffff;
 }
 
-#workspaces button.focused {
-  background-color: #ecd1f9;
+#workspaces button.active {
+  background-color: #d86cc2;
   color: #000;
 }
 
 #workspaces button.urgent {
   background-color: #eb4d4b;
+}
+
+#custom-heart {
+  color: #eb4d4b;
+  margin-right: 10px;
+}
+
+#submap {
+  color: #eba100;
 }
 
 #clock,
@@ -86,7 +91,7 @@ button {
 }
 
 #backlight {
-  color: #e68cd4;
+  color: #e3b7a3;
 }
 
 #network {
@@ -98,7 +103,7 @@ button {
 }
 
 #pulseaudio {
-  color: #e3b7a3;
+  color: #ff7f7f;
 }
 
 #pulseaudio.muted {

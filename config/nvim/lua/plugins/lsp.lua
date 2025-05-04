@@ -126,6 +126,9 @@ return {
     init = function()
       vim.g.rustaceanvim = {
         server = {
+          on_attach = function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+          end,
           default_settings = {
             ['rust-analyzer'] = {
               rustfmt = {

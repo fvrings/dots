@@ -37,7 +37,7 @@ in
     # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     #TODO:add a music mode?
     extraConfig = ''
-      bind=$mod,y,submap,resize
+      bind=$mod SHIFT,r,submap,resize
 
       # will start a submap called "resize"
       submap=resize
@@ -55,7 +55,7 @@ in
       submap=reset
 
       # will switch to a submap called move
-      bind=$mod,M,submap,move
+      bind=$mod shift,m,submap,move
 
       # will start a submap called "move"
       submap=move
@@ -71,7 +71,7 @@ in
       submap=reset
 
       # will switch to a submap called opacity
-      bind=$mod,U,submap,opacity
+      bind=$mod shift,o,submap,opacity
 
       # will start a submap called "move"
       submap=opacity
@@ -138,7 +138,7 @@ in
         "$mod SHIFT,s,workspace,2"
         "$mod SHIFT,d,workspace,3"
         "$mod SHIFT,c,workspace,4"
-        "$mod SHIFT,m,workspace,5"
+        "$mod SHIFT,x,workspace,5"
         "$mod,1,workspace,1"
         "$mod,2,workspace,2"
         "$mod,3,workspace,3"

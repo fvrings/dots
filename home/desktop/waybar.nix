@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -12,10 +11,11 @@
         height = 30;
         margin = "8px 8px 0";
         modules-left = [
+          "custom/heart"
           "hyprland/workspaces"
         ];
         modules-center = [
-          "hyprland/window"
+          "hyprland/submap"
         ];
         modules-right = [
           "network"
@@ -25,26 +25,33 @@
           "backlight"
           "battery"
           "clock"
+          "tray"
         ];
+        "tray" = {
+          "icon-size" = 21;
+          "spacing" = 10;
+        };
         "hyprland/workspaces" = {
           "disable-scroll" = true;
           "all-outputs" = true;
           "warp-on-scroll" = false;
           "format" = "{icon}";
           "format-icons" = {
-            "1" = "一";
-            "2" = "二";
-            "3" = "三";
-            "4" = "四";
+            "1" = "壹";
+            "2" = "贰";
+            "3" = "叁";
+            "4" = "肆";
+            "5" = "伍";
           };
         };
-        "hyprland/window" = {
-          "format" = "{}";
-          "rewrite" = {
-            "(.*) - Mozilla Firefox" = "󰈹  $1";
-            "(.*) - NVIM" = "  $1";
-            "(.*) - Google Chrome" = "  $1";
-          };
+
+        "custom/heart" = {
+          "format" = "";
+          "on-click" = "systemctl hibernate";
+        };
+        "hyprland/submap" = {
+          "format" = "🍭: {}";
+          "tooltip" = false;
         };
         "clock" = {
           "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
