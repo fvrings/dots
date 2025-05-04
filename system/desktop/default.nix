@@ -6,6 +6,7 @@
     [
       ./hyprland.nix
       ./gnome.nix
+      ./steam.nix
       ./hardware.nix
       ./service
       ./hardware-configuration.nix
