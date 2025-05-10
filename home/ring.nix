@@ -33,6 +33,8 @@
     rustflags = ["-C", "link-arg=-fuse-ld=${pkgs.mold-wrapped}/bin/mold"]
   '';
   catppuccin = {
+    #NOTE:https://github.com/catppuccin/nix/issues/552
+    mako.enable = false;
     flavor = "mocha";
     enable = true;
     accent = "rosewater";
@@ -84,6 +86,10 @@
     };
     zathura = {
       enable = true;
+      mappings = {
+        "Right" = "PgDn";
+        "Left" = "PgUp";
+      };
       options = {
         window-title-basename = "true";
         selection-clipboard = "clipboard";

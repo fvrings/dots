@@ -31,8 +31,9 @@ in
     enable = true;
     plugins = [
       # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprscrolling
       # inputs.hypr-darkwindow.packages.${pkgs.system}.Hypr-DarkWindow
-      inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
+      # inputs.hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
     ];
     # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     #TODO:add a music mode?
@@ -101,17 +102,18 @@ in
         # "$mod,B,invertactivewindow"
         "$mod,Return,exec,alacritty --class termfloat"
         "$mod,F,exec,firefox"
-        "$mod,S,exec,ags -t panel"
-        "$mod,P,exec,grim -g $(slurp)"
+        # "$mod,S,exec,ags -t panel"
+        "$mod,S,exec,grim -g $(slurp)"
         "$mod SHIFT,P,exec,hyprpicker -a"
         "$mod,X,exec,playerctl -p Qcm play-pause"
         "$mod,N,exec,playerctl -p Qcm next"
         # "$mod,R,exec,ags -t launcher"
         "$mod,R,exec,fuzzel"
+        "$mod,Y,exec,kitty -e yazi"
         "$mod SHIFT,R,exec,rofi -show run"
         "$mod,A,fullscreen"
         "$mod,Q,killactive"
-        "$mod,V,exec,cliphist list | fuzzel --dmenu| cliphist decode | wl-copy"
+        "$mod,P,exec,cliphist list | fuzzel --dmenu| cliphist decode | wl-copy"
         #TODO: work with ags
         "$mod,C, movetoworkspace, special"
         "$mod,TAB, togglespecialworkspace"
@@ -121,7 +123,7 @@ in
         "$mod, l, movefocus, r"
         "$mod, k, movefocus, u"
         "$mod, j, movefocus, d"
-        "$mod SHIFT,ESCAPE,exit"
+        "$mod SHIFT,BACKSPACE,exit"
         "$mod SHIFT,F,togglefloating"
         "$mod SHIFT,P,exec,hyprlock"
         "$mod SHIFT,H,workspace,-1"

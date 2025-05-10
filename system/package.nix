@@ -5,6 +5,8 @@
     with pkgs;
     [
       vim
+      google-chrome
+      wechat-uos
       #TODO: https://github.com/nvbn/thefuck/pull/1442
       libnotify
       tpm2-tss
@@ -36,6 +38,7 @@
       qcm
       # vscode
       fzf
+      virt-viewer
       #TODO: extensions?
       ghidra-bin
       cachix

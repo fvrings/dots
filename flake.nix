@@ -3,12 +3,8 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       home-manager,
-      disko,
-      impermanence,
-      lanzaboote,
       ...
     }@inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
