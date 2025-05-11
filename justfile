@@ -29,6 +29,8 @@ hypr:
   nix run nixpkgs#home-manager -- switch --flake .#hypr
 setup-disk:
   sudo nix --experimental-features "nix-command flakes" --option substituters https://mirrors.ustc.edu.cn/nix-channels/store run github:nix-community/disko/latest -- --mode destroy,format,mount ./system/disko/main.nix
+setup-vm:
+  sudo nix --experimental-features "nix-command flakes" --option substituters https://mirrors.ustc.edu.cn/nix-channels/store run github:nix-community/disko/latest -- --mode destroy,format,mount ./system/disko/simple.nix
 nixos-install-vm:
   sudo nixos-install --option substituters https://mirrors.ustc.edu.cn/nix-channels/store --flake .#vm
 nixos-install-art:

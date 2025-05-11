@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   boot = {
     initrd.systemd.enable = true;
@@ -7,19 +7,13 @@
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot = {
-        enable = lib.mkForce false;
+        enable = true;
         consoleMode = "2";
-        # enable = true;
         configurationLimit = 5;
       };
     };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "tcp_bbr" ];
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/var/lib/sbctl";
-    };
-
   };
   systemd.extraConfig = ''
     DefaultTimeoutStopSec=5s

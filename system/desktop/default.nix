@@ -24,6 +24,7 @@
       ../network.nix
       ../virtual.nix
       ../boot.nix
+      ./boot.nix
       # ../impermanence.nix
     ];
 
