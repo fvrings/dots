@@ -1,5 +1,10 @@
-let carapace_completer = {|spans|
-    carapace $spans.0 nushell ...$spans | from json
+let fish_completer = {|spans|
+    fish --command $"complete '--do-complete=($spans | str join ' ')'"
+    | from tsv --flexible --noheaders --no-infer
+    | rename value description
+    | update value {
+        if ($in | path exists) {$'"($in | str replace "\"" "\\\"" )"'} else {$in}
+    }
 }
 
 let zoxide_completer = {|spans|
@@ -10,7 +15,7 @@ let multiple_completers = {|spans|
   match $spans.0 {
     z => $zoxide_completer
     zi => $zoxide_completer
-      _ => $carapace_completer
+      _ => $fish_completer
   } | do $in $spans
 }
 $env.config.history.isolation = false
