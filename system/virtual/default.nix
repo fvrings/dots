@@ -13,5 +13,6 @@
     ../boot.nix
     ./hardware-configuration.nix
     ../disko/simple.nix
+    ./dots.nix
   ];
 }
