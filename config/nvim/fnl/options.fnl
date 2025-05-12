@@ -19,7 +19,7 @@
        :splitright true
        :termguicolors true
        :showmode false
-       :signcolumn "yes:4"
+       ; :signcolumn "yes:4"
        :completeopt "menuone,noselect"
        :numberwidth 4
        :scrolloff 99
@@ -36,6 +36,7 @@
        :foldlevelstart 99
        :splitkeep :screen
        :foldcolumn :1
+       :jumpoptions :stack
        :foldmethod :expr
        :foldexpr "nvim_treesitter#foldexpr"
        :showbreak "  󰘍"

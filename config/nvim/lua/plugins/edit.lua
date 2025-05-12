@@ -53,17 +53,20 @@ return {
       }):map '<leader>um'
     end,
   },
-  {
-    'lukas-reineke/headlines.nvim',
-    dependencies = 'nvim-treesitter/nvim-treesitter',
-    ft = { 'org', 'norg' },
-    enabled = not vim.g.iswin,
-    opts = {
-      markdown = {
-        headline_highlights = false,
-      },
-    },
-  },
+  -- {
+  --   'lukas-reineke/headlines.nvim',
+  --   dependencies = 'nvim-treesitter/nvim-treesitter',
+  --   ft = {
+  --     'org',
+  --     'norg',
+  --   },
+  --   enabled = not vim.g.iswin,
+  --   opts = {
+  --     markdown = {
+  --       headline_highlights = false,
+  --     },
+  --   },
+  -- },
   {
     'Olical/conjure',
     ft = { 'scheme', 'fennel' },
@@ -324,45 +327,31 @@ return {
       -- { '<leader>nn', ':Neorg workspace learn<CR>', desc = 'open workspace' },
       -- { '<leader>nj', ':Neorg journal ', desc = 'journal' },
       -- { '<leader>nt', ':Neorg journal today<CR>', desc = "today's journal" },
-      { '<localleader>ct', ':Neorg toc split<CR>', ft = 'norg' },
+      { '<localleader>it', ':Neorg toc<CR>', ft = 'norg' },
+      { '<localleader>is', '<cmd>Neorg generate-workspace-summary<CR>', ft = 'norg' },
       { '<localleader>p', ':Neorg presenter start<CR>', ft = 'norg' },
-      { '<localleader>mt', ':Neorg inject-metadata<CR>', ft = 'norg' },
-      { '<localleader>cc', ':Neorg toggle-concealer<CR>', ft = 'norg' },
+      { '<localleader>im', ':Neorg inject-metadata<CR>', ft = 'norg' },
+      { '<localleader>c', ':Neorg toggle-concealer<CR>', ft = 'norg' },
+      { '<localleader>e', '<Plug>(neorg.looking-glass.magnify-code-block)', ft = 'norg' },
+      { '<localleader>g', ':Neorg tangle current-file<CR>', ft = 'norg' },
     },
     ft = 'norg',
     -- version = "v7.0.0",
     version = '*',
-    -- build = ":Neorg sync-parsers",
+    build = ':Neorg sync-parsers',
     opts = {
       load = {
         ['core.defaults'] = {},
         ['core.dirman'] = { config = { workspaces = { learn = '~/notes' } } },
         ['core.summary'] = {},
         ['core.ui.calendar'] = {},
-        ['core.concealer'] = { config = { icon_preset = 'diamond' } },
-        ['core.keybinds'] = {
+        ['core.concealer'] = {
           config = {
-            hook = function(keybinds)
-              keybinds.remap_event('norg', 'n', ',e', 'core.looking-glass.magnify-code-block')
-              -- keybinds.map("norg", "n", "q", vim.cmd.q)
-              keybinds.map('norg', 'n', ',ms', '<cmd>Neorg generate-workspace-summary<CR>')
-              keybinds.map('norg', 'n', '<localleader>tg', ':Neorg tangle current-file<CR>')
-              -- keybinds.map_to_mode("ui", {
-              -- 	n = {
-              -- 		{
-              -- 			"q",
-              -- 			vim.cmd.q,
-              -- 			opts = { desc = "[neorg] quit" },
-              -- 		},
-              -- 	},
-              -- }, {
-              -- 	silent = true,
-              -- 	noremap = true,
-              -- })
-            end,
+            -- icon_preset = 'diamond',
           },
         },
-        ['core.completion'] = { config = { engine = 'nvim-cmp' } },
+        ['core.keybinds'] = {},
+        -- ['core.completion'] = {},
         ['core.journal'] = { config = { workspace = 'learn' } },
         ['core.presenter'] = { config = { zen_mode = 'zen-mode' } },
         ['core.export.markdown'] = {},

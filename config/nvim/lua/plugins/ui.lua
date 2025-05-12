@@ -108,31 +108,31 @@ return {
     },
   },
   { 'echasnovski/mini.cursorword', config = true, event = 'VeryLazy' },
-  {
-    'akinsho/bufferline.nvim',
-    event = 'VeryLazy',
-    keys = {
-      { '<leader>bo', vim.cmd.BufferLineCloseOthers, desc = 'delete other buffers' },
-      {
-        '<leader>ba',
-        function()
-          vim.cmd '%bd'
-        end,
-        desc = 'delete all buffers',
-      },
-      { '<s-l>', vim.cmd.BufferLineCycleNext },
-      { '<s-h>', vim.cmd.BufferLineCyclePrev },
-    },
-    opts = {
-      options = {
-        diagnostics = 'nvim_lsp',
-        diagnostics_indicator = function(count, level, _, _)
-          local icon = ((level:match 'error' and ' ') or ' ')
-          return (' ' .. icon .. count)
-        end,
-      },
-    },
-  },
+  -- {
+  --   'akinsho/bufferline.nvim',
+  --   event = 'VeryLazy',
+  --   keys = {
+  --     { '<leader>bo', vim.cmd.BufferLineCloseOthers, desc = 'delete other buffers' },
+  --     {
+  --       '<leader>ba',
+  --       function()
+  --         vim.cmd '%bd'
+  --       end,
+  --       desc = 'delete all buffers',
+  --     },
+  --     { '<s-l>', vim.cmd.BufferLineCycleNext },
+  --     { '<s-h>', vim.cmd.BufferLineCyclePrev },
+  --   },
+  --   opts = {
+  --     options = {
+  --       diagnostics = 'nvim_lsp',
+  --       diagnostics_indicator = function(count, level, _, _)
+  --         local icon = ((level:match 'error' and ' ') or ' ')
+  --         return (' ' .. icon .. count)
+  --       end,
+  --     },
+  --   },
+  -- },
   {
     'folke/which-key.nvim',
     event = 'VeryLazy',

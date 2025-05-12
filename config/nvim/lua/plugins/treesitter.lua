@@ -70,6 +70,7 @@ local function config()
     -- tree_setter = { enable = true },
     incremental_selection = {
       enable = true,
+      disable = { 'norg' },
       keymaps = {
         init_selection = '<CR>',
         node_incremental = '<CR>',
