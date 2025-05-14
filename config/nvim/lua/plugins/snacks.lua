@@ -124,6 +124,7 @@ return {
     scope = { enabled = true },
     dashboard = {
       enabled = true,
+      pane_gap = 10,
       preset = {
         keys = {
           {
@@ -162,10 +163,10 @@ return {
             action = function()
               require('orgmode').agenda:agenda()
             end,
-            key = 'a',
+            key = 'o',
           },
           {
-            icon = '🧪',
+            icon = '🚀',
             desc = 'Capture',
             action = function()
               require('orgmode').capture:prompt()
@@ -181,8 +182,8 @@ return {
             key = 'r',
           },
           {
-            icon = '🔯',
-            desc = 'Sessoin',
+            icon = '🔗',
+            desc = 'Session',
             action = ':SessionManager load_current_dir_session',
             key = 'e',
           },
@@ -207,7 +208,7 @@ return {
         {
           section = 'keys',
           gap = 1,
-          padding = 1,
+          padding = 2,
           title = 'Maps',
           icon = '',
         },
@@ -217,7 +218,7 @@ return {
           title = 'Recent Files',
           section = 'recent_files',
           indent = 2,
-          padding = 1,
+          padding = 3,
         },
         {
           pane = 2,
@@ -225,22 +226,24 @@ return {
           title = 'Projects',
           section = 'projects',
           indent = 2,
-          padding = 1,
+          padding = 3,
         },
         {
-          icon = '🎶',
+          icon = '🌕',
           title = 'Todo in this week',
           enabled = vim.fn.exists '~/notes',
           section = 'terminal',
           cmd = 'nvim -u NONE --noplugin --headless -l ~/.config/nvim/lua/todos.lua e>| lolcat e> /dev/null',
-          height = 10,
+          height = 8,
           ttl = 60,
+          indent = 2,
+          pane = 2,
         },
         {
-          pane = 2,
+          pane = 1,
           icon = ' ',
           desc = 'Browse Repo',
-          padding = 1,
+          padding = 3,
           key = 'b',
           action = function()
             Snacks.gitbrowse()
@@ -249,37 +252,37 @@ return {
         function()
           local in_git = Snacks.git.get_root() ~= nil
           local cmds = {
-            {
-              title = 'Notifications',
-              cmd = 'gh notify -s -a -n5 e>| str capitalize',
-              action = function()
-                vim.ui.open 'https://github.com/notifications'
-              end,
-              key = 'n',
-              icon = ' ',
-              height = 5,
-              enabled = true,
-            },
-            {
-              title = 'Open Issues',
-              cmd = 'gh issue list -L 3 e>| str capitalize',
-              key = 'i',
-              action = function()
-                vim.fn.jobstart('gh issue list --web', { detach = true })
-              end,
-              icon = ' ',
-              height = 7,
-            },
-            {
-              icon = ' ',
-              title = 'Open PRs',
-              cmd = 'gh pr list -L 3 e>| str capitalize',
-              key = 'p',
-              action = function()
-                vim.fn.jobstart('gh pr list --web', { detach = true })
-              end,
-              height = 7,
-            },
+            -- {
+            --   title = 'Notifications',
+            --   cmd = 'gh notify -s -a -n5 e>| str capitalize',
+            --   action = function()
+            --     vim.ui.open 'https://github.com/notifications'
+            --   end,
+            --   key = 'n',
+            --   icon = ' ',
+            --   height = 5,
+            --   enabled = true,
+            -- },
+            -- {
+            --   title = 'Open Issues',
+            --   cmd = 'gh issue list -L 3 e>| str capitalize',
+            --   key = 'i',
+            --   action = function()
+            --     vim.fn.jobstart('gh issue list --web', { detach = true })
+            --   end,
+            --   icon = ' ',
+            --   height = 7,
+            -- },
+            -- {
+            --   icon = ' ',
+            --   title = 'Open PRs',
+            --   cmd = 'gh pr list -L 3 e>| str capitalize',
+            --   key = 'p',
+            --   action = function()
+            --     vim.fn.jobstart('gh pr list --web', { detach = true })
+            --   end,
+            --   height = 7,
+            -- },
             {
               icon = ' ',
               title = 'Git Status',
@@ -289,7 +292,7 @@ return {
           }
           return vim.tbl_map(function(cmd)
             return vim.tbl_extend('force', {
-              pane = 2,
+              -- pane = 2,
               section = 'terminal',
               enabled = in_git,
               padding = 1,
