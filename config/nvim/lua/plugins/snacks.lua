@@ -2,97 +2,97 @@ return {
   'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
-  config = function(_, opts)
-    if vim.g.iswin then
-      opts.dashboard = {
-        preset = {
-          keys = {
-            {
-              icon = '🎓',
-              desc = 'Update',
-              action = ':Lazy update',
-              key = 'u',
-            },
-            {
-              icon = '📁',
-              desc = 'File',
-              action = function()
-                Snacks.picker.smart()
-              end,
-              key = 's',
-            },
-            {
-              icon = '🔫',
-              desc = 'Grep',
-              action = function()
-                Snacks.picker.grep()
-              end,
-              key = 'f',
-            },
-            {
-              icon = '🔆',
-              desc = 'Git',
-              action = function()
-                Snacks.lazygit()
-              end,
-              key = 'g',
-            },
-            {
-              icon = '🔯',
-              desc = 'Sessoin',
-              action = ':SessionManager load_current_dir_session',
-              key = 'e',
-            },
-            {
-              icon = '📔',
-              desc = 'List',
-              action = function()
-                vim.cmd ':SessionManager load_session'
-              end,
-              key = 'l',
-            },
-            {
-              icon = '❗',
-              desc = 'Exit',
-              action = ':quit',
-              key = 'q',
-            },
-          },
-        },
-
-        sections = {
-          {
-            section = 'keys',
-            gap = 1,
-            padding = 1,
-            title = 'Maps',
-            icon = '',
-          },
-          {
-            pane = 2,
-            icon = ' ',
-            title = 'Recent Files',
-            section = 'recent_files',
-            indent = 2,
-            padding = 1,
-          },
-          {
-            pane = 2,
-            icon = ' ',
-            title = 'Projects',
-            section = 'projects',
-            indent = 2,
-            padding = 1,
-          },
-          {
-            section = 'startup',
-            pane = 1,
-          },
-        },
-      }
-    end
-    require('snacks').setup(opts)
-  end,
+  -- config = function(_, opts)
+  --   if vim.g.iswin then
+  --     opts.dashboard = {
+  --       preset = {
+  --         keys = {
+  --           {
+  --             icon = '🎓',
+  --             desc = 'Update',
+  --             action = ':Lazy update',
+  --             key = 'u',
+  --           },
+  --           {
+  --             icon = '📁',
+  --             desc = 'File',
+  --             action = function()
+  --               Snacks.picker.smart()
+  --             end,
+  --             key = 's',
+  --           },
+  --           {
+  --             icon = '🔫',
+  --             desc = 'Grep',
+  --             action = function()
+  --               Snacks.picker.grep()
+  --             end,
+  --             key = 'f',
+  --           },
+  --           {
+  --             icon = '🔆',
+  --             desc = 'Git',
+  --             action = function()
+  --               Snacks.lazygit()
+  --             end,
+  --             key = 'g',
+  --           },
+  --           {
+  --             icon = '🔯',
+  --             desc = 'Sessoin',
+  --             action = ':SessionManager load_current_dir_session',
+  --             key = 'e',
+  --           },
+  --           {
+  --             icon = '📔',
+  --             desc = 'List',
+  --             action = function()
+  --               vim.cmd ':SessionManager load_session'
+  --             end,
+  --             key = 'l',
+  --           },
+  --           {
+  --             icon = '❗',
+  --             desc = 'Exit',
+  --             action = ':quit',
+  --             key = 'q',
+  --           },
+  --         },
+  --       },
+  --
+  --       sections = {
+  --         {
+  --           section = 'keys',
+  --           gap = 1,
+  --           padding = 1,
+  --           title = 'Maps',
+  --           icon = '',
+  --         },
+  --         {
+  --           pane = 2,
+  --           icon = ' ',
+  --           title = 'Recent Files',
+  --           section = 'recent_files',
+  --           indent = 2,
+  --           padding = 1,
+  --         },
+  --         {
+  --           pane = 2,
+  --           icon = ' ',
+  --           title = 'Projects',
+  --           section = 'projects',
+  --           indent = 2,
+  --           padding = 1,
+  --         },
+  --         {
+  --           section = 'startup',
+  --           pane = 1,
+  --         },
+  --       },
+  --     }
+  --   end
+  --   require('snacks').setup(opts)
+  -- end,
   opts = {
     bigfile = { enabled = true },
     image = { enabled = true },
@@ -101,7 +101,7 @@ return {
     indent = { enabled = false },
     picker = {
       enabled = true,
-
+      ui_select = true,
       win = {
         -- input window
         input = {
@@ -763,6 +763,8 @@ return {
             vim.wo.signcolumn = 'no'
           end,
         })
+        -- BUG: why I have to do this?
+        vim.ui.select = Snacks.picker.select
       end,
     })
   end,

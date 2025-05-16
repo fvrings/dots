@@ -127,7 +127,7 @@ return {
       vim.g.rustaceanvim = {
         server = {
           on_attach = function()
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+            vim.lsp.inlay_hint.enable(true)
           end,
           default_settings = {
             ['rust-analyzer'] = {
@@ -140,6 +140,38 @@ return {
       }
     end,
     keys = {
+      {
+        'K',
+        function()
+          vim.cmd 'RustLsp hover actions'
+        end,
+        ft = 'rust',
+        desc = 'hover actions',
+      },
+      {
+        '<localleader>o',
+        function()
+          vim.cmd.RustLsp 'openDocs'
+        end,
+        ft = 'rust',
+        desc = 'openDocs',
+      },
+      {
+        '<localleader>x',
+        function()
+          vim.cmd.RustLsp 'explainError'
+        end,
+        ft = 'rust',
+        desc = 'explainError',
+      },
+      {
+        '<localleader>t',
+        function()
+          vim.cmd.RustLsp 'testables'
+        end,
+        ft = 'rust',
+        desc = 'testables',
+      },
       {
         '<localleader>r',
         function()
