@@ -22,7 +22,7 @@
           :neovide_cursor_vfx_mode :ripple})
   (if vim.g.iswin
       (set! {:guifont :MartianMono_Nerd_Font})
-      (set! {:guifont "monospace,emoji"}))
+      (set! {:guifont "monospace:b"}))
   (set! {:scrolloff 0}))
 
 (when vim.g.iswsl

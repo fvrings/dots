@@ -765,6 +765,8 @@ return {
         })
         -- BUG: why I have to do this?
         vim.ui.select = Snacks.picker.select
+        vim.o.wildignore =
+          'blue.vim,darkblue.vim,default.vim,delek.vim,desert.vim,elflord.vim,evening.vim,habamax.vim,industry.vim,koehler.vim,lunaperche.vim,morning.vim,murphy.vim,pablo.vim,peachpuff.vim,quiet.vim,retrobox.vim,ron.vim,shine.vim,slate.vim,sorbet.vim,torte.vim,unokai.vim,vim.lua,wildcharm.vim,zaibatsu.vim,zellner.vim'
       end,
     })
   end,
