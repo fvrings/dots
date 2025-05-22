@@ -10,6 +10,7 @@ local function config()
     kulala_ls = {},
     -- ruff_lsp = {},
     basedpyright = {},
+    gdscript = {},
     html = {},
     taplo = {},
     prismals = {},

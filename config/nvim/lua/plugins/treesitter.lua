@@ -43,6 +43,7 @@ local function config()
       'scss',
       'diff',
       'dockerfile',
+      'gdscript',
       'go',
       'solidity',
       'gomod',

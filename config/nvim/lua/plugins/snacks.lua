@@ -134,6 +134,12 @@ return {
             key = 'u',
           },
           {
+            icon = '☀️',
+            desc = "Today's notes",
+            action = ':Neorg journal today',
+            key = 't',
+          },
+          {
             icon = '📁',
             desc = 'File',
             action = function()

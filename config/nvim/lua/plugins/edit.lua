@@ -325,8 +325,8 @@ return {
     cmd = 'Neorg',
     keys = {
       -- { '<leader>nn', ':Neorg workspace learn<CR>', desc = 'open workspace' },
-      -- { '<leader>nj', ':Neorg journal ', desc = 'journal' },
-      -- { '<leader>nt', ':Neorg journal today<CR>', desc = "today's journal" },
+      { '<leader>nj', ':Neorg journal ', desc = 'journal' },
+      { '<leader>nt', ':Neorg journal today<CR>', desc = "today's journal" },
       { '<localleader>it', ':Neorg toc<CR>', ft = 'norg' },
       { '<localleader>is', '<cmd>Neorg generate-workspace-summary<CR>', ft = 'norg' },
       { '<localleader>p', ':Neorg presenter start<CR>', ft = 'norg' },
