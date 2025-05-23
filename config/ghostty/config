@@ -23,8 +23,11 @@ fullscreen = true
 font-family = monospace
 font-style = Bold
 theme = Oxocarbon
-keybind = ctrl+enter=new_split:right
 keybind = f10=toggle_fullscreen
+keybind = unconsumed:alt+k=goto_split:up
+keybind = unconsumed:alt+j=goto_split:down
+keybind = unconsumed:alt+l=goto_split:right
+keybind = unconsumed:alt+h=goto_split:left
 # window-padding-x = 2
 #
 # # Spacing around the equals sign does not matter.

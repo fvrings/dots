@@ -58,11 +58,11 @@
                    :foldclose ""}
        :undofile true})
 
-(if vim.env.SSH_TTY
-    (do
-      (nmap! :<leader>y "\"+y" :copy-by-OSC52)
-      (nmap! :<leader>P "\"+p" :paste-by-OSC52))
-    (set! {:clipboard :unnamedplus}))
+; (if vim.env.SSH_TTY
+;     (do
+;       (nmap! :<leader>y "\"+y" :copy-by-OSC52)
+;       (nmap! :<leader>P "\"+p" :paste-by-OSC52))
+;     (set! {:clipboard :unnamedplus}))
 
 (append! {:formatoptions :r
           :shortmess {:I true :r true}
