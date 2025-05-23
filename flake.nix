@@ -15,10 +15,24 @@
       systems = [ "x86_64-linux" ];
       flake = rec {
         nixosConfigurations = {
+          wsl = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+              ./system/virtual
+              ./system/virtual/wsl.nix
+              ./home
+              ./module
+              ./overlay
+            ];
+            specialArgs = { inherit inputs; };
+          };
           vm = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [
               ./system/virtual
+              ./system/virtual/hardware-configuration.nix
+              ./system/virtual/dots.nix
+              ./system/disko/simple.nix
               ./home
               ./module
               ./overlay
@@ -35,34 +49,6 @@
               ./overlay
             ];
             specialArgs = { inherit inputs; };
-          };
-        };
-        homeConfigurations = {
-          ring = nixosConfigurations.art.config.home-manager.users.ring.home;
-          hypr = home-manager.lib.homeManagerConfiguration {
-            pkgs = nixpkgs.legacyPackages."x86_64-linux";
-            extraSpecialArgs = { inherit inputs; };
-            modules = [
-              ./home/desktop/hypridle.nix
-              ./home/desktop/hyprland.nix
-              ./home/desktop/hyprlock.nix
-              {
-                home = {
-                  username = "ring";
-                  homeDirectory = "/home/ring";
-                  stateVersion = "24.11";
-                };
-                nixpkgs.config.allowUnfree = true;
-                xdg = {
-                  enable = true;
-                  configFile = {
-                    "hypr/scripts" = {
-                      source = ./home/desktop/scripts;
-                    };
-                  };
-                };
-              }
-            ];
           };
         };
       };
@@ -82,6 +68,7 @@
   inputs = {
     #TODO: add disko until https://github.com/nix-community/disko/issues/511
     impermanence.url = "github:nix-community/impermanence";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";

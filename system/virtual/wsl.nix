@@ -1,0 +1,3 @@
+_:{
+  wsl.enable =true;
+}
