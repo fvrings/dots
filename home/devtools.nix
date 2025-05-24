@@ -440,7 +440,7 @@ in
       #TODO: setup https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
       firefox
       # nix related
-      #
+      dconf
     ]
     ++ shtools
     ++ tools

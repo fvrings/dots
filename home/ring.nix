@@ -15,6 +15,9 @@
       "wezterm" = {
         source = ../config/wezterm;
       };
+      "ghostty" = {
+        source = ../config/ghostty;
+      };
     };
   };
   home.file.".cargo/config.toml".text = ''
@@ -126,7 +129,6 @@
           system-monitor.extensionUuid
           window-list.extensionUuid
           workspace-indicator.extensionUuid
-          expandable-notifications.extensionUuid
           ideapad.extensionUuid
         ];
       };

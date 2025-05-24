@@ -1,5 +1,6 @@
 alias o:=update-os
 alias v:=update-vm
+alias w:=update-wsl
 alias f:=update-flake
 alias n:=update-neovim
 alias m:=edit-mini
@@ -11,6 +12,8 @@ update-os *args:
   nh os switch -H art . {{args}}
 update-vm *args:
   nh os switch -H vm . {{args}}
+update-wsl *args:
+  nh os switch -H wsl . {{args}}
 update-flake:
   nix flake update
 update-neovim:

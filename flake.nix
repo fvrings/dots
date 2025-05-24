@@ -4,7 +4,6 @@
   outputs =
     {
       nixpkgs,
-      home-manager,
       ...
     }@inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
@@ -13,7 +12,7 @@
         ./module/theme
       ];
       systems = [ "x86_64-linux" ];
-      flake = rec {
+      flake = {
         nixosConfigurations = {
           wsl = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
@@ -30,6 +29,7 @@
             system = "x86_64-linux";
             modules = [
               ./system/virtual
+              ./system/kernel.nix
               ./system/virtual/hardware-configuration.nix
               ./system/virtual/dots.nix
               ./system/disko/simple.nix
@@ -43,6 +43,7 @@
             system = "x86_64-linux";
             modules = [
               ./system/desktop
+              ./system/kernel.nix
               ./home
               ./home/desktop
               ./module

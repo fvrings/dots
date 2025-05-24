@@ -13,6 +13,7 @@
       # emacs
       pnpm
       nodePackages.ts-node
+      tree-sitter
       # nodePackages_latest.prisma
       python312
       gdb
@@ -29,6 +30,7 @@
       cachix
       chafa
       just
+      ghostty
       typst
       tinymist
       yq

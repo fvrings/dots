@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+_: {
   boot = {
     initrd.systemd.enable = true;
     tmp.useTmpfs = true;
@@ -11,10 +10,5 @@
         configurationLimit = 5;
       };
     };
-    kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "tcp_bbr" ];
   };
-  systemd.extraConfig = ''
-    DefaultTimeoutStopSec=5s
-  '';
 }

@@ -8,6 +8,7 @@
       defaultFonts = {
         emoji = [
           "Noto Color Emoji"
+          "Uiua386"
         ];
 
         monospace = [
@@ -16,11 +17,11 @@
           # "JetBrainsMonoNL Nerd Font"
           # "Maple Mono NF"
           # "LXGW WenKai Mono"
-          "IosevkaTerm Nerd Font"
-          "IntoneMono Nerd Font"
-          "Martian Mono"
-          "Noto Color Emoji"
-          "Uiua386"
+          # "IosevkaTerm Nerd Font"
+          # "IntoneMono Nerd Font"
+          # "Martian Mono"
+          "Go Mono Nerd Font"
+          # "Noto Color Emoji"
         ];
         sansSerif = [
           # "Noto Sans CJK HK"
@@ -40,21 +41,22 @@
     };
 
     packages = with pkgs; [
-      nerd-fonts.intone-mono
-      nerd-fonts.iosevka-term
-      nerd-fonts.comic-shanns-mono
-      martian-mono
+      nerd-fonts.go-mono
+      # nerd-fonts.intone-mono
+      # nerd-fonts.iosevka-term
+      # nerd-fonts.comic-shanns-mono
+      # martian-mono
       noto-fonts-emoji
       # ibm-plex
       # intel-one-mono
       # source-serif-pro
       # source-han-sans
-      fira-code
+      # fira-code
       # noto-fonts-cjk
       # maple-mono-SC-NF
       lxgw-wenkai
       uiua386
-      noto-fonts
+      # noto-fonts
     ];
   };
 }
