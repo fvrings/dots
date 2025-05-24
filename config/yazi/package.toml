@@ -39,6 +39,6 @@ rev = "55bf699"
 hash = "a670c03eb3760812e044a24f94cedc55"
 
 [[flavor.deps]]
-use = "yazi-rs/flavors:dracula"
-rev = "02f3fc6"
-hash = "53e1f10ae0f6abd406e463fceca8622a"
+use = "BennyOe/tokyo-night"
+rev = "b3950bf"
+hash = "319ce574cdb2865baf4323db90456504"

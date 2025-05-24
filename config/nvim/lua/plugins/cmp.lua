@@ -299,9 +299,9 @@ return {
             --NOTE:https://github.com/Saghen/blink.cmp/issues/291
             --builtin snippets does not support framework
             enabled = true,
-            -- should_show_items = function(ctx)
-            --   return ctx.trigger.initial_character ~= '.'
-            -- end,
+            should_show_items = function(ctx)
+              return ctx.trigger.initial_character ~= '.'
+            end,
             score_offset = 2,
             -- min_keyword_length = 2,
           },

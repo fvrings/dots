@@ -10,7 +10,7 @@ return {
     fmt(
       [[
          fn {}({}) -> {}{{
-            {}
+            {0}
          }}
          ]],
       ins_generate()

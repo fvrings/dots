@@ -1,18 +1,18 @@
 return {
   {
     'folke/tokyonight.nvim',
+    config = function()
+      vim.cmd.colorscheme 'tokyonight'
+    end,
+    lazy = false,
+    priority = 1000,
   },
 
   'oxfist/night-owl.nvim',
   { '0xstepit/flow.nvim', config = true },
 
   {
-    'rogtino/oxocarbon.nvim',
-    config = function()
-      vim.cmd.colorscheme 'oxocarbon'
-    end,
-    lazy = false,
-    priority = 1000,
+    'nyoom-engineering/oxocarbon.nvim',
   },
 
   'olimorris/onedarkpro.nvim',
