@@ -38,5 +38,7 @@ use = "yazi-rs/plugins:jump-to-char"
 rev = "55bf699"
 hash = "a670c03eb3760812e044a24f94cedc55"
 
-[flavor]
-deps = []
+[[flavor.deps]]
+use = "yazi-rs/flavors:dracula"
+rev = "02f3fc6"
+hash = "53e1f10ae0f6abd406e463fceca8622a"

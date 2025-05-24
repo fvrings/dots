@@ -85,6 +85,8 @@ def --env yy [...args] {
 	rm -fp $tmp
 }
 
+alias aa = yy
+
 if $nu.os-info.name == "windows" {
     # $env.PATH ++= ['~/go/bin/' '~/.cargo/bin' '~/.local/bin']
 } else {
