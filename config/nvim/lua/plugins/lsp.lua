@@ -273,4 +273,25 @@ return {
     },
   },
   { 'LelouchHe/xmake-luals-addon', event = 'BufRead xmake.lua' },
+  {
+    'rachartier/tiny-code-action.nvim',
+    dependencies = 'folke/snacks.nvim',
+    event = 'LspAttach',
+    keys = {
+      {
+        'gra',
+        function()
+          ---@diagnostic disable-next-line: missing-parameter
+          require('tiny-code-action').code_action()
+        end,
+      },
+    },
+    opts = {
+      backend = 'vim',
+      picker = {
+        'snacks',
+        opts = {},
+      },
+    },
+  },
 }
