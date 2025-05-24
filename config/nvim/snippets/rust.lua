@@ -6,6 +6,17 @@ local t = utils.t
 local i = utils.i
 return {
   s(
+    'fn',
+    fmt(
+      [[
+         fn {}({}) -> {}{{
+            {}
+         }}
+         ]],
+      ins_generate()
+    )
+  ),
+  s(
     'afn',
     fmt(
       [[
