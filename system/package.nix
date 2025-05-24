@@ -5,17 +5,9 @@
     with pkgs;
     [
       vim
-      google-chrome
-      wechat-uos
       #TODO: https://github.com/nvbn/thefuck/pull/1442
-      libnotify
-      tpm2-tss
       nix-output-monitor
-      w3m-nox
       ffmpeg
-      sbctl
-      qbittorrent-enhanced
-      playerctl
       bc
       jq
       # emacs
@@ -26,30 +18,19 @@
       gdb
       python312Packages.debugpy
       nodejs
-      filebrowser
       go
-      grim
       # ida-free
       lldb
-      ddcutil
-      gparted
       # wikiman
       mitscheme
-      qcm
       # vscode
       fzf
-      virt-viewer
       #TODO: extensions?
-      ghidra-bin
       cachix
-      aircrack-ng
       chafa
-      cliphist
       just
       typst
       tinymist
-      telegram-desktop
-      code-cursor
       yq
       gnumake
       # this is super useful
@@ -67,23 +48,15 @@
       clang-tools
       bun
       dart-sass
-      brightnessctl
       yt-dlp
       gcc
       sqlite
-      wl-clipboard
       deno
-      neovide
       rizin
-      obs-studio
       cutter
       onefetch
       # mate.atril
-      slurp
-      wlsunset
-      # nodePackages.vscode-html-languageserver-bin
       wget
-      flameshot
       imagemagick
       luajitPackages.magick
     ]
@@ -92,13 +65,11 @@
       # inputs.pwndbg.packages.${pkgs.system}.default
     ];
   programs = {
-    virt-manager.enable = true;
     neovim = {
       enable = true;
       # package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
       # package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim-debug;
     };
-    wireshark.enable = true;
     nh = {
       enable = true;
       clean.enable = true;

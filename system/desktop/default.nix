@@ -18,6 +18,7 @@
       ../service
       ../dae.nix
       ../package.nix
+      ./desktop-package.nix
       ../fonts.nix
       ../nixconfig.nix
       ../sops.nix
