@@ -1,7 +1,7 @@
-vim.loader.enable()
 local plugins_path = vim.fn.stdpath 'data' .. '/lazy'
 
-local function boot(name, url)
+local function boot(url)
+  local name = url:gsub('^.*/', '')
   local package_path = plugins_path .. '/' .. name
   if not vim.uv.fs_stat(package_path) then
     local out = vim.fn.system {
@@ -25,18 +25,56 @@ local function boot(name, url)
   vim.opt.runtimepath:prepend(package_path)
 end
 
-boot('lazy.nvim', 'https://github.com/folke/lazy.nvim')
-boot('hotpot.nvim', 'https://github.com/rktjmp/hotpot.nvim')
-require 'hotpot'
+boot 'https://git.sr.ht/~technomancy/fennel'
+boot 'https://github.com/aileot/nvim-thyme'
+boot 'https://github.com/folke/lazy.nvim'
+boot 'https://github.com/aileot/nvim-laurel'
+
+-- Wrapping the `require` in `function-end` is important for lazy-load.
+table.insert(package.loaders, function(...)
+  return require('thyme').loader(...) -- Make sure to `return` the result!
+end)
+
+-- Note: Add a cache path to &rtp. The path MUST include the literal substring "/thyme/compile".
+local thyme_cache_prefix = vim.fn.stdpath 'cache' .. '/thyme/compiled'
+vim.opt.rtp:prepend(thyme_cache_prefix)
+-- Note: `vim.loader` internally cache &rtp, and recache it if modified.
+-- Please test the best place to `vim.loader.enable()` by yourself.
+vim.loader.enable() -- (optional) before the `bootstrap`s above, it could increase startuptime.
+
 require 'core'
 require('lazy').setup {
   spec = {
     { import = 'plugins' },
-    { 'rktjmp/hotpot.nvim' },
+    'https://git.sr.ht/~technomancy/fennel',
     {
-      'Olical/nfnl',
-      ft = 'fennel',
-      enabled = not vim.g.iswin,
+      'aileot/nvim-thyme',
+      version = '~v1.0.0',
+      build = ":lua require('thyme').setup(); vim.cmd('ThymeCacheClear')",
+      -- For config, see the "Setup Optional Interfaces" section
+      -- and "Options in .nvim-thyme.fnl" below!
+      -- config = function()
+      -- end,
+      init = function()
+        vim.api.nvim_create_autocmd('VimEnter', {
+          once = true,
+          pattern = 'VeryLazy',
+          callback = function()
+            require('thyme').setup()
+          end,
+        })
+      end,
+    },
+    -- If you also manage macro plugin versions, please clear the Lua cache on the updates!
+    {
+      'aileot/nvim-laurel',
+      build = ":lua require('thyme').setup(); vim.cmd('ThymeCacheClear')",
+      -- and other settings
+    },
+    -- Optional dependency plugin.
+    {
+      'eraserhd/parinfer-rust',
+      build = 'cargo build --release',
     },
   },
   defaults = { lazy = true },

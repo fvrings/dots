@@ -70,7 +70,6 @@ return {
   {
     'Olical/conjure',
     ft = { 'scheme', 'fennel' },
-    dependencies = { 'gpanders/nvim-parinfer', ft = { 'scheme', 'fennel' } },
     init = function()
       vim.g['conjure#client#fennel#aniseed#deprecation_warning'] = false
     end,
