@@ -72,18 +72,19 @@
     # };
     kitty = {
       enable = true;
-      font.size = 13;
+      font.size = 12;
       font.name = "monospace";
       settings = {
         "clipboard_control" = "write-clipboard write-primary read-clipboard read-primary no-append";
         "hide_window_decorations" = true;
+        "remember_window_size" = true;
       };
     };
     foot = {
       enable = true;
       settings = {
         main = {
-          font = "monospace:size=13";
+          font = "monospace:size=12";
         };
       };
     };

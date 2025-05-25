@@ -1,7 +1,11 @@
 { lib, ... }:
 {
-  wsl.enable = true;
-  wsl.defaultUser = "ring";
+  wsl = {
+    enable = true;
+    defaultUser = "ring";
+    interop.includePath = false;
+    startMenuLaunchers = true;
+  };
 
   networking = {
     nftables.enable = lib.mkForce false;
