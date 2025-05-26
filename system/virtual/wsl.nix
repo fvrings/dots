@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   wsl = {
     enable = true;
@@ -13,4 +13,6 @@
 
   boot.initrd.systemd.enable = lib.mkForce false;
   boot.loader.systemd-boot.enable = lib.mkForce false;
+
+  environment.systemPackages = with pkgs; [ wl-clipboard ];
 }

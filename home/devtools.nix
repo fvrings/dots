@@ -288,7 +288,7 @@ in
             description = "commit with commitizen";
             context = "files";
             loadingText = "opening commitizen commit tool";
-            subprocess = true;
+            output = "terminal";
           }
           {
             key = "E";
