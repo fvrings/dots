@@ -13,7 +13,7 @@ local function config()
     gdscript = {},
     html = {},
     taplo = {},
-    fennel_ls = {},
+    -- fennel_ls = {},
     prismals = {},
     -- it always pollute my completion in jsx_attribute
     --  disable ATM or find a way to dynamically disable it.
