@@ -308,23 +308,23 @@ return {
         },
       },
 
-      fuzzy = {
-        sorts = {
-          function(a, b)
-            local a_priority = source_priority[a.source_id]
-            local b_priority = source_priority[b.source_id]
-            if not a_priority or not b_priority then
-              return
-            end
-            if a_priority ~= b_priority then
-              return a_priority > b_priority
-            end
-          end,
-          -- defaults
-          'score',
-          'sort_text',
-        },
-      },
+      -- fuzzy = {
+      --   sorts = {
+      --     function(a, b)
+      --       local a_priority = source_priority[a.source_id]
+      --       local b_priority = source_priority[b.source_id]
+      --       if not a_priority or not b_priority then
+      --         return
+      --       end
+      --       if a_priority ~= b_priority then
+      --         return a_priority > b_priority
+      --       end
+      --     end,
+      --     -- defaults
+      --     'score',
+      --     'sort_text',
+      --   },
+      -- },
       completion = {
         accept = {
           auto_brackets = { enabled = true },

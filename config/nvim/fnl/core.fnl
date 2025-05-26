@@ -1,6 +1,8 @@
-(import-macros {: setg!} :macros)
+(import-macros {: set!} :macros)
 
-(setg! {:mapleader " " :maplocalleader ","})
+(set! g mapleader " ")
+
+(set! g maplocalleader ",")
 
 (require :probe)
 (require :cmd)

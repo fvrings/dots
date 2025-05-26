@@ -1,47 +1,59 @@
+(fn nil? [n]
+  (= nil n))
+
+(fn ->str [x]
+  :tostring
+  (tostring x))
+
 (fn tbl? [t]
-  `(= :table (type ,t)))
+  (= :table (type t)))
 
 (fn str? [s]
-  `(= :string (type ,s)))
-
-(fn tbl? [t]
-  `(= :table (type ,t)))
-
-(fn nil? [n]
-  `(= :nil ,n))
+  (= :string (type s)))
 
 (fn number? [n]
-  `(= :number (type ,n)))
+  (= :number (type n)))
 
-(lambda append! [vals]
-  `(each [key# value# (pairs ,vals)]
-     (let [tbl# (. vim.opt key#)]
-       (tbl#:append value#))))
+(fn tbl/contains? [tbl value]
+  `(vim.tbl_contains ,tbl ,value))
 
-(lambda buf-nmap! [l r ?d]
-  "set keymap in normal mode in buffer"
-  (and ?d (assert (str? ?d) "desc should be string"))
-  `(vim.keymap.set :n ,l ,r {:desc ,?d :buffer true}))
+(fn tbl/remove [tbl key]
+  `(vim.tbl_filter #(not= $1 ,key) ,tbl))
 
-(lambda nmap! [l r ?d]
-  "set keymap in normal mode"
-  ;(assert-compile (or (nil? ?d) (str? ?d)) "expected string for desc" ?d)
-  `(vim.keymap.set :n ,l ,r {:desc ,?d}))
+(fn tbl/extend [tbl tbl2]
+  `(vim.tbl_extend :keep ,tbl ,tbl2))
 
-(lambda vmap! [l r ?d]
-  "set keymap in visual mode"
-  ;(assert-compile (or (nil? ?d) (str? ?d)) "expected string for desc" ?d)
-  `(vim.keymap.set :v ,l ,r {:desc ,?d}))
+(fn str/begin-with? [str value]
+  (not (nil? (string.match str (.. "^" value)))))
 
-(lambda set! [vals]
-  "set options"
-  `(each [key# value# (pairs ,vals)]
-     (tset vim.opt key# value#)))
+(lambda map! [mode left right ?opts]
+  "set keymap in any mode"
+  (assert-compile (sym? mode) "expected sym for mode")
+  (let [mode-str (->str mode)
+        mode-list (icollect [v (string.gmatch mode-str ".")]
+                    v)
+        buffer? (tbl/contains? mode-list :b)
+        mode-list (tbl/remove mode-list :b)
+        opts (or ?opts {})
+        opts (tbl/extend opts {:buffer buffer?})]
+    `(vim.keymap.set ,mode-list ,left ,right ,opts)))
 
-(lambda setg! [vals]
-  "set global variables"
-  `(each [key# value# (pairs ,vals)]
-     (tset vim.g key# value#)))
+(lambda set! [scope key ?value]
+  "set variables"
+  (assert-compile (sym? scope) "expected sym for scope")
+  (assert-compile (sym? key) "expected sym for key")
+  (let [scope (->str scope)
+        key (->str key)]
+    (match scope
+      :g `(tset vim.g ,key ,?value)
+      :o (if (str/begin-with? key "%+")
+             `(: (. vim.opt (string.sub ,key 2)) :append ,?value)
+             (str/begin-with? key "%-")
+             `(: (. vim.opt (string.sub ,key 2)) :remove ,?value)
+             (let [begin-with-no (str/begin-with? key :no)]
+               (if begin-with-no `(tset vim.opt (string.sub ,key 3) false)
+                   (nil? ?value) `(tset vim.opt ,key true)
+                   `(tset vim.opt ,key ,?value)))))))
 
 (lambda ftadd! [vals]
   "add some file extensions"
@@ -54,19 +66,5 @@
                                  :callback ,callback
                                  :group ,?group}))
 
-(lambda test! [l r ?d]
-  "set keymap in normal mode"
-  (assert-compile (nil? ?d) "expected nil for desc" ?d)
-  `(vim.keymap.set :n ,l ,r {:desc ,?d}))
-
-{: set!
- : nmap!
- : append!
- : setg!
- : number?
- : vmap!
- : buf-nmap!
- : ftadd!
- : autocmd!
- : test!}
+{: set! : number? : map! : ftadd! : autocmd!}
 

@@ -1,4 +1,4 @@
-(import-macros {: ftadd! : autocmd! : buf-nmap!} :macros)
+(import-macros {: ftadd! : autocmd! : map!} :macros)
 
 (ftadd! {:lock :json :mdx :mdx :mpp :cpp :http :http})
 
@@ -28,8 +28,8 @@
                      :octo
                      :text]
           #(do
-             (buf-nmap! :q vim.cmd.q)
-             (buf-nmap! :gq :q)))
+             (map! nb :q vim.cmd.q)
+             (map! nb :gq :q)))
 
 (let [change-on-disk (vim.api.nvim_create_augroup :ChangeOnDisk [])]
   (autocmd! [:FocusGained :BufEnter :CursorHold :CursorHoldI] "*"

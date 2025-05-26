@@ -1,82 +1,78 @@
-(import-macros {: nmap! : vmap!} :macros)
+(import-macros {: map!} :macros)
 
 ;; move
-(nmap! :j :gj)
-(nmap! :k :gk)
-(nmap! :<rightmouse> vim.lsp.buf.hover)
+(map! n :j :gj)
+(map! n :k :gk)
+(map! n :<rightmouse> vim.lsp.buf.hover)
+(map! n :gw :*N {:desc :Search-word-under-cursor})
+(map! n :<c-s> vim.cmd.w {:desc :write})
+(map! n :<esc> :<esc><cmd>noh<cr>)
+(map! v "<" :<gv)
+(map! v ">" :>gv)
+(map! v :J :5j)
+(map! v :K :5k)
+
+;; window management
+(map! n :<leader>ws :<c-w>s {:desc :split-window})
+(map! n :<leader>wo :<c-w>o {:desc :only-this-window})
+(map! n :<leader>wv :<c-w>v {:desc :vertical-split-window})
+(map! n "=" :<c-w>>)
+(map! n "-" :<c-w><)
+(map! n "+" :<c-w>+)
+(map! n "_" :<c-w>-)
+
+;; utils
+;(nmap! :<leader>si :<cmd>InspectTree<CR> :open-treesitter-tree)
+(map! n :<leader>q vim.cmd.q {:desc :quit})
+(map! n :<leader>L vim.cmd.Lazy {:desc :open-lazy})
+
+(map! n :<c-n>
+      (fn []
+        (let [bufs (vim.api.nvim_list_bufs)
+              has-trouble (: (vim.iter bufs) :any
+                             (fn [buf]
+                               (= :trouble
+                                  (vim.api.nvim_get_option_value :filetype
+                                                                 {: buf}))))
+              has-qf (: (vim.iter bufs) :any
+                        (fn [buf]
+                          (= :qf
+                             (vim.api.nvim_get_option_value :filetype {: buf}))))]
+          (if has-trouble
+              (vim.cmd "Trouble diagnostics next focus=true")
+              has-qf
+              (vim.cmd.cnext)
+              (vim.notify "no qf or trouble found" vim.log.levels.WARN)))))
+
+(map! n :<c-p>
+      (fn []
+        (let [bufs (vim.api.nvim_list_bufs)
+              has-trouble (: (vim.iter bufs) :any
+                             (fn [buf]
+                               (= :trouble
+                                  (vim.api.nvim_get_option_value :filetype
+                                                                 {: buf}))))
+              has-qf (: (vim.iter bufs) :any
+                        (fn [buf]
+                          (= :qf
+                             (vim.api.nvim_get_option_value :filetype {: buf}))))]
+          (if has-trouble
+              (vim.cmd "Trouble diagnostics prev focus=true")
+              has-qf
+              (vim.cmd.cprevious)
+              (vim.notify "no qf or trouble found" vim.log.levels.WARN)))))
+
+(map! n :K (fn []
+             (let [winid ((. (require :ufo) :peekFoldedLinesUnderCursor))]
+               (when (not winid)
+                 (if (next (vim.lsp.get_clients {:bufnr 0}))
+                     (vim.lsp.buf.hover)
+                     (let [word (vim.fn.expand :<cword>)]
+                       (vim.cmd (.. "Man " word)))))))
+      {:desc "magic K"})
+
 ;BUG: forget about it
 ;check https://github.com/neovim/neovim/issues/28022
 ; (nmap! :<c-i> :<c-i>)
 ; (nmap! :<tab> "%")
-(nmap! :gw :*N :Search-word-under-cursor)
-(nmap! :<c-s> vim.cmd.w :write)
-(nmap! :<esc> :<esc><cmd>noh<cr>)
-(vmap! "<" :<gv)
-(vmap! ">" :>gv)
-(vmap! :J :5j)
-(vmap! :K :5k)
-
-;; window management
-(nmap! :<leader>ws :<c-w>s :split-window)
-(nmap! :<leader>wo :<c-w>o :only-this-window)
-(nmap! :<leader>wv :<c-w>v :vertical-split-window)
-(nmap! "=" :<c-w>>)
-(nmap! "-" :<c-w><)
-(nmap! "+" :<c-w>+)
-(nmap! "_" :<c-w>-)
-
-;; utils
-;(nmap! :<leader>si :<cmd>InspectTree<CR> :open-treesitter-tree)
-(nmap! :<leader>q vim.cmd.q :quit)
-(nmap! :<leader>L vim.cmd.Lazy :open-lazy)
-
-(vim.keymap.set :n :<c-n>
-                (fn []
-                  (let [bufs (vim.api.nvim_list_bufs)
-                        has-trouble (: (vim.iter bufs) :any
-                                       (fn [buf]
-                                         (= :trouble
-                                            (vim.api.nvim_get_option_value :filetype
-                                                                           {: buf}))))
-                        has-qf (: (vim.iter bufs) :any
-                                  (fn [buf]
-                                    (= :qf
-                                       (vim.api.nvim_get_option_value :filetype
-                                                                      {: buf}))))]
-                    (if has-trouble
-                        (vim.cmd "Trouble diagnostics next focus=true")
-                        has-qf
-                        (vim.cmd.cnext)
-                        (vim.notify "no qf or trouble found"
-                                    vim.log.levels.WARN)))))
-
-(vim.keymap.set :n :<c-p>
-                (fn []
-                  (let [bufs (vim.api.nvim_list_bufs)
-                        has-trouble (: (vim.iter bufs) :any
-                                       (fn [buf]
-                                         (= :trouble
-                                            (vim.api.nvim_get_option_value :filetype
-                                                                           {: buf}))))
-                        has-qf (: (vim.iter bufs) :any
-                                  (fn [buf]
-                                    (= :qf
-                                       (vim.api.nvim_get_option_value :filetype
-                                                                      {: buf}))))]
-                    (if has-trouble
-                        (vim.cmd "Trouble diagnostics prev focus=true")
-                        has-qf
-                        (vim.cmd.cprevious)
-                        (vim.notify "no qf or trouble found"
-                                    vim.log.levels.WARN)))))
-
-(vim.keymap.set :n :K
-                (fn []
-                  (let [winid ((. (require :ufo) :peekFoldedLinesUnderCursor))]
-                    (when (not winid)
-                      (if (next (vim.lsp.get_clients {:bufnr 0}))
-                          (vim.lsp.buf.hover)
-                          (let [word (vim.fn.expand :<cword>)]
-                            (vim.cmd (.. "Man " word)))))))
-                {:desc "magic K"})
 
