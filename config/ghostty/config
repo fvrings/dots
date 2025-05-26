@@ -21,7 +21,7 @@
 # # separated by equals signs.
 fullscreen = true
 font-family = monospace
-font-style = Bold
+# font-style = Bold
 font-size = 11
 theme = Oxocarbon
 keybind = f10=toggle_fullscreen
