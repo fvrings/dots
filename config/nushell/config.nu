@@ -6,6 +6,24 @@ let fish_completer = {|spans|
         if ($in | path exists) {$'($in | str replace "\"" "\\\"" )'} else {$in}
     }
 }
+let carapace_completer = {|spans|
+# if the current command is an alias, get it's expansion
+    let expanded_alias = (scope aliases | where name == $spans.0 | get -i 0 | get -i expansion)
+
+# overwrite
+    let spans = (if $expanded_alias != null  {
+        # put the first word of the expanded alias first in the span
+        $spans | skip 1 | prepend ($expanded_alias | split row " " | take 1)
+    } else { $spans })
+    carapace $spans.0 nushell ...$spans | from json 
+        # sort by color
+        | sort-by {
+            let fg = $in | get -i style.fg
+            let attr = $in | get -i style.attr
+            # the ~ there to make "empty" results appear at the end
+            $"($fg)~($attr)"
+        }
+}
 
 let zoxide_completer = {|spans|
   $spans | skip 1 | zoxide query -l ...$in | lines | where {|x| $x != $env.PWD}
@@ -15,7 +33,8 @@ let multiple_completers = {|spans|
   match $spans.0 {
     z => $zoxide_completer
     zi => $zoxide_completer
-      _ => $fish_completer
+    # _ => $fish_completer
+    _ => $carapace_completer
   } | do $in $spans
 }
 $env.config.history.isolation = false
@@ -91,7 +110,7 @@ if $nu.os-info.name == "windows" {
     # $env.PATH ++= ['~/go/bin/' '~/.cargo/bin' '~/.local/bin']
 } else {
     $env.PATH =  ['~/.nix-profile/bin/' '~/.local/share/bob/nvim-bin'] ++ $env.PATH
-    $env.PATH ++= ['~/go/bin/' ('~/.cargo/bin' |path expand) '~/.local/bin']
+    $env.PATH ++= ['~/go/bin/' ('~/.cargo/bin' |path expand) '~/.local/bin' ('~/zig-x86_64-linux-0.14.1/' | path expand)]
     $env.PATH ++= [ '/usr/share/bcc/tools/' ('~/Android/Sdk/platform-tools' |path expand)]
     $env.ANDROID_HOME = [$env.HOME "Android/Sdk/"] | path join
 }
