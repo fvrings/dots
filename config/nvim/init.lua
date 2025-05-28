@@ -46,11 +46,11 @@ require 'core'
 require('lazy').setup {
   spec = {
     { import = 'plugins' },
-    'https://git.sr.ht/~technomancy/fennel',
     {
       'aileot/nvim-thyme',
       version = '~v1.0.0',
       build = ":lua require('thyme').setup(); vim.cmd('ThymeCacheClear')",
+      dependencies = 'https://git.sr.ht/~technomancy/fennel',
       -- For config, see the "Setup Optional Interfaces" section
       -- and "Options in .nvim-thyme.fnl" below!
       -- config = function()
@@ -75,6 +75,7 @@ require('lazy').setup {
     {
       'eraserhd/parinfer-rust',
       build = 'cargo build --release',
+      ft = 'fennel',
     },
   },
   defaults = { lazy = true },
