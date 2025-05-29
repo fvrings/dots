@@ -97,7 +97,7 @@ in
         ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
       ];
       bind = [
-        "$mod,W,exec,ghostty"
+        "$mod,W,exec,ghostty --fullscreen=false"
         # "$mod,grave,hyprexpo:expo,toggle"
         # "$mod,B,invertactivewindow"
         "$mod,Return,exec,alacritty --class termfloat"

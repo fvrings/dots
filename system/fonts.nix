@@ -20,7 +20,7 @@
           # "IosevkaTerm Nerd Font"
           # "IntoneMono Nerd Font"
           # "Martian Mono"
-          "Go Mono Nerd Font"
+          "GoMono Nerd Font"
           # "Noto Color Emoji"
         ];
         sansSerif = [
