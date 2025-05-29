@@ -4,11 +4,6 @@
   ...
 }:
 {
-  programs.niri = {
-    enable = true;
-    package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri-stable;
-  };
-
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
