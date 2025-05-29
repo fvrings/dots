@@ -30,7 +30,7 @@ in
     };
     initLua = builtins.readFile ./yazi.lua;
     keymap = {
-      manager.prepend_keymap = [
+      mgr.prepend_keymap = [
         {
           on = "C";
           run = "plugin ouch";
@@ -62,7 +62,7 @@ in
       ];
     };
     settings = {
-      manager = {
+      mgr = {
         ratio = [
           1
           3
