@@ -97,7 +97,7 @@ in
         ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
       ];
       bind = [
-        "$mod,W,exec,kitty"
+        "$mod,W,exec,ghostty"
         # "$mod,grave,hyprexpo:expo,toggle"
         # "$mod,B,invertactivewindow"
         "$mod,Return,exec,alacritty --class termfloat"
@@ -109,7 +109,7 @@ in
         "$mod,N,exec,playerctl -p Qcm next"
         # "$mod,R,exec,ags -t launcher"
         "$mod,R,exec,fuzzel"
-        "$mod,Y,exec,kitty -e yazi"
+        "$mod,Y,exec,ghostty -e yazi"
         "$mod SHIFT,R,exec,rofi -show run"
         "$mod,A,fullscreen"
         "$mod,Q,killactive"
