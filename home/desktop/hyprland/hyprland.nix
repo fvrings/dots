@@ -89,7 +89,7 @@ in
     settings = {
       "$mod" = "SUPER";
       monitor = [
-        ",preferred,0x0,1.5"
+        ",preferred,0x0,1"
       ];
       bindle = [
         # volume
