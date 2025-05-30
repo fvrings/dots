@@ -30,6 +30,6 @@
     ];
 
   services.ucodenix = {
-    enable = true;
+    enable = false;
   };
 }

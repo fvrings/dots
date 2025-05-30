@@ -6,6 +6,8 @@ _: {
     firewall.allowedTCPPorts = [
       3000
       8000
+      80
+      443
     ];
     nftables.enable = true;
     firewall.trustedInterfaces = [
