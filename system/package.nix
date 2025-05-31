@@ -5,7 +5,6 @@
     with pkgs;
     [
       vim
-      #TODO: https://github.com/nvbn/thefuck/pull/1442
       nix-output-monitor
       ffmpeg
       bc

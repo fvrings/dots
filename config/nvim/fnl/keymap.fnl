@@ -20,6 +20,10 @@
 (map! n "-" :<c-w><)
 (map! n "+" :<c-w>+)
 (map! n "_" :<c-w>-)
+(map! n :<a-j> :<c-w>j)
+(map! n :<a-k> :<c-w>k)
+(map! n :<a-h> :<c-w>h)
+(map! n :<a-l> :<c-w>l)
 
 ;; utils
 ;(nmap! :<leader>si :<cmd>InspectTree<CR> :open-treesitter-tree)
@@ -70,9 +74,4 @@
                      (let [word (vim.fn.expand :<cword>)]
                        (vim.cmd (.. "Man " word)))))))
       {:desc "magic K"})
-
-;BUG: forget about it
-;check https://github.com/neovim/neovim/issues/28022
-; (nmap! :<c-i> :<c-i>)
-; (nmap! :<tab> "%")
 

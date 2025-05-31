@@ -344,7 +344,6 @@ in
       defaultApplications = associations;
     };
     configFile = {
-      # FIX: I don't want this plugin  slow down my valuable build time
       # "zellij/layouts/default.kdl".text = ''
       #   layout {
       #       default_tab_template {

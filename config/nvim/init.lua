@@ -43,8 +43,6 @@ vim.opt.rtp:prepend(thyme_cache_prefix)
 vim.loader.enable() -- (optional) before the `bootstrap`s above, it could increase startuptime.
 
 require 'core'
---BUG: why this cannot be set in fnl?
-vim.o.clipboard = 'unnamedplus'
 require('lazy').setup {
   spec = {
     { import = 'plugins' },
