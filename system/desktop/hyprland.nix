@@ -11,7 +11,7 @@
 
   services = {
     gvfs.enable = true;
-    xserver.displayManager.gdm.enable = true;
+    displayManager.gdm.enable = true;
     displayManager = {
       defaultSession = "hyprland";
     };
