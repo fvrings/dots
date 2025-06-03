@@ -110,7 +110,7 @@ if $nu.os-info.name == "windows" {
     # $env.PATH ++= ['~/go/bin/' '~/.cargo/bin' '~/.local/bin']
 } else {
     $env.PATH =  ['~/.nix-profile/bin/' '~/.local/share/bob/nvim-bin'] ++ $env.PATH
-    $env.PATH ++= ['~/go/bin/' ('~/.cargo/bin' |path expand) '~/.local/bin' ('~/zig-x86_64-linux-0.14.1/' | path expand)]
+    $env.PATH ++= ['~/go/bin/' ('~/.cargo/bin' |path expand) '~/.local/bin']
     $env.PATH ++= [ '/usr/share/bcc/tools/' ('~/Android/Sdk/platform-tools' |path expand)]
     $env.ANDROID_HOME = [$env.HOME "Android/Sdk/"] | path join
 }

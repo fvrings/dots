@@ -345,13 +345,13 @@ return {
     },
     keys = {
       {
-        '<leader>rp',
+        '<leader>ro',
         vim.cmd.OverseerOpen,
         mode = 'n',
         desc = 'run Open',
       },
       {
-        '<leader>ra',
+        '<leader>rq',
         vim.cmd.OverseerQuickAction,
         mode = 'n',
         desc = 'run QuickAction',
@@ -387,7 +387,7 @@ return {
         desc = 'run Cmd',
       },
       {
-        '<leader>ro',
+        '<leader>rr',
         '<CMD>OverseerRun<CR>',
         mode = 'n',
         desc = 'run Overseer',
@@ -501,36 +501,40 @@ return {
     },
   },
   {
-    'smoka7/multicursors.nvim',
-    dependencies = {
-      'smoka7/hydra.nvim',
-    },
-    opts = {
-      hint_config = {
-        float_opts = {
-          border = 'rounded',
-        },
-        position = 'bottom-right',
-      },
-      generate_hints = {
-        normal = true,
-        insert = true,
-        extend = true,
-        config = {
-          column_count = 1,
-        },
-      },
-    },
-    cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
-    keys = {
-      {
-        mode = { 'v', 'n' },
-        '<Leader>m',
-        '<cmd>MCstart<cr>',
-        desc = 'Create a selection for selected text or word under the cursor',
-      },
-    },
+    'mg979/vim-visual-multi',
+    keys = { '<c-n>' },
   },
+  -- {
+  --   'smoka7/multicursors.nvim',
+  --   dependencies = {
+  --     'smoka7/hydra.nvim',
+  --   },
+  --   opts = {
+  --     hint_config = {
+  --       float_opts = {
+  --         border = 'rounded',
+  --       },
+  --       position = 'bottom-right',
+  --     },
+  --     generate_hints = {
+  --       normal = true,
+  --       insert = true,
+  --       extend = true,
+  --       config = {
+  --         column_count = 1,
+  --       },
+  --     },
+  --   },
+  --   cmd = { 'MCstart', 'MCvisual', 'MCclear', 'MCpattern', 'MCvisualPattern', 'MCunderCursor' },
+  --   keys = {
+  --     {
+  --       mode = { 'v', 'n' },
+  --       '<Leader>m',
+  --       '<cmd>MCstart<cr>',
+  --       desc = 'Create a selection for selected text or word under the cursor',
+  --     },
+  --   },
+  -- },
   {
     'monaqa/dial.nvim',
     config = function()
@@ -750,27 +754,27 @@ return {
       },
     },
   },
-  -- {
-  --   'christoomey/vim-tmux-navigator',
-  --   enabled = not vim.g.iswin,
-  --   cmd = {
-  --     'TmuxNavigateLeft',
-  --     'TmuxNavigateDown',
-  --     'TmuxNavigateUp',
-  --     'TmuxNavigateRight',
-  --     'TmuxNavigatePrevious',
-  --   },
-  --   keys = {
-  --     { '<a-h>', vim.cmd.TmuxNavigateLeft, mode = { 'n', 't', 'i' } },
-  --     { '<a-j>', vim.cmd.TmuxNavigateDown, mode = { 'n', 't', 'i' } },
-  --     { '<a-k>', vim.cmd.TmuxNavigateUp, mode = { 'n', 't', 'i' } },
-  --     { '<a-l>', vim.cmd.TmuxNavigateRight, mode = { 'n', 't', 'i' } },
-  --     -- { '<a-\\>', vim.cmd.TmuxNavigatePrevious, mode = { 'n', 't', 'i' } },
-  --   },
-  --   init = function()
-  --     vim.g.tmux_navigator_no_mappings = 1
-  --   end,
-  -- },
+  {
+    'christoomey/vim-tmux-navigator',
+    enabled = not vim.g.iswin,
+    cmd = {
+      'TmuxNavigateLeft',
+      'TmuxNavigateDown',
+      'TmuxNavigateUp',
+      'TmuxNavigateRight',
+      'TmuxNavigatePrevious',
+    },
+    keys = {
+      { '<a-h>', vim.cmd.TmuxNavigateLeft, mode = { 'n', 't', 'i' } },
+      { '<a-j>', vim.cmd.TmuxNavigateDown, mode = { 'n', 't', 'i' } },
+      { '<a-k>', vim.cmd.TmuxNavigateUp, mode = { 'n', 't', 'i' } },
+      { '<a-l>', vim.cmd.TmuxNavigateRight, mode = { 'n', 't', 'i' } },
+      -- { '<a-\\>', vim.cmd.TmuxNavigatePrevious, mode = { 'n', 't', 'i' } },
+    },
+    init = function()
+      vim.g.tmux_navigator_no_mappings = 1
+    end,
+  },
   {
     'Goose97/timber.nvim',
     event = 'VeryLazy',

@@ -1,19 +1,19 @@
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["l"]
 run = "plugin fast-enter"
 desc = "Enter the subfolder faster, or open the file directly"
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["C"]
 run = "plugin ouch"
 desc = "Compress with ouch"
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["c", "m"]
 run = "plugin chmod"
 desc = "Chmod on selected files"
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "M"
 run = "plugin mount"
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "f"
 run = "plugin jump-to-char"
 desc = "Jump to char"
