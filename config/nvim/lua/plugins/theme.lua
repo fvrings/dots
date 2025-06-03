@@ -1,11 +1,6 @@
 return {
   {
     'folke/tokyonight.nvim',
-    config = function()
-      vim.cmd.colorscheme 'tokyonight-night'
-    end,
-    lazy = false,
-    priority = 1000,
   },
 
   'oxfist/night-owl.nvim',
@@ -19,7 +14,27 @@ return {
 
   'EdenEast/nightfox.nvim',
 
-  'rebelot/kanagawa.nvim',
+  {
+    'rebelot/kanagawa.nvim',
+    opts = {
+      transparent = true,
+      colors = {
+        theme = {
+          all = {
+            ui = {
+              bg_gutter = 'none',
+            },
+          },
+        },
+      },
+    },
+    config = function(_, opts)
+      require('kanagawa').setup(opts)
+      vim.cmd.colorscheme 'kanagawa'
+    end,
+    lazy = false,
+    priority = 1000,
+  },
 
   'scottmckendry/cyberdream.nvim',
 
