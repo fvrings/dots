@@ -25,7 +25,6 @@
       mitscheme
       # vscode
       fzf
-      #TODO: extensions?
       cachix
       chafa
       just

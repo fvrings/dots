@@ -23,7 +23,8 @@ fullscreen = true
 font-family = monospace
 # font-style = Bold
 font-size = 11
-theme = Oxocarbon
+theme = catppuccin-mocha
+# theme = Oxocarbon
 keybind = ctrl+enter=unbind
 keybind = f10=toggle_fullscreen
 keybind = unconsumed:alt+k=goto_split:up

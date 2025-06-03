@@ -45,7 +45,7 @@ let
     black
     biome
     fnlfmt
-    typstfmt
+    typstyle
   ];
   tools = [
     cowsay
@@ -436,7 +436,6 @@ in
     [
       #bilibili
       # qq
-      #TODO: setup https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265
       firefox
       # nix related
       dconf

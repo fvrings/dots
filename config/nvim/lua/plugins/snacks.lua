@@ -355,7 +355,7 @@ return {
       desc = 'Registers',
     },
     {
-      '<leader>sa',
+      '<leader>sA',
       function()
         Snacks.picker.autocmds()
       end,

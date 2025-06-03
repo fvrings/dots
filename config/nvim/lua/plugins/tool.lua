@@ -120,9 +120,6 @@ return {
         --   org_babel_tangle = '<prefix>b',
         --   org_toggle_timestamp_type = '<prefix>d',
         -- },
-
-        -- BUG: does not work as expected
-        -- org_return_uses_meta_return = false,
       },
       org_startup_folded = 'inherit',
       win_split_mode = 'float',
@@ -326,22 +323,21 @@ return {
           ['<C-\\>'] = 'OpenQuickFix',
         },
       },
-      actions = {
-        --TODO: see this https://github.com/stevearc/overseer.nvim/discussions/391
-        ['70vsplit'] = {
-          desc = 'open terminal in a 70 vsplit',
-          condition = function(task)
-            local bufnr = task:get_bufnr()
-            return bufnr and vim.api.nvim_buf_is_valid(bufnr)
-          end,
-          run = function(task)
-            local util = require 'overseer.util'
-            vim.cmd [[70vsplit]]
-            util.set_term_window_opts()
-            vim.api.nvim_win_set_buf(0, task:get_bufnr())
-          end,
-        },
-      },
+      -- actions = {
+      --   ['70vsplit'] = {
+      --     desc = 'open terminal in a 70 vsplit',
+      --     condition = function(task)
+      --       local bufnr = task:get_bufnr()
+      --       return bufnr and vim.api.nvim_buf_is_valid(bufnr)
+      --     end,
+      --     run = function(task)
+      --       local util = require 'overseer.util'
+      --       vim.cmd [[70vsplit]]
+      --       util.set_term_window_opts()
+      --       vim.api.nvim_win_set_buf(0, task:get_bufnr())
+      --     end,
+      --   },
+      -- },
     },
     keys = {
       {
@@ -414,7 +410,7 @@ return {
         go = { 'gofmt' },
         rust = { 'rustfmt' },
         toml = { 'taplo' },
-        typst = { 'typstfmt' },
+        typst = { 'typstyle' },
         javascriptreact = { 'biome', 'rustywind' },
         typescriptreact = { 'biome', 'rustywind' },
         python = { 'black' },

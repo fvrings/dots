@@ -7,7 +7,6 @@ local source_priority = {
 }
 
 return {
-  --TODO: add temporary snippet ,notice iabbrev
   {
     'chrisgrieser/nvim-scissors',
     dependencies = {

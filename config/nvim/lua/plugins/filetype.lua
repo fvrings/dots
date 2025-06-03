@@ -1,14 +1,14 @@
 return {
-  {
-    'chomosuke/typst-preview.nvim',
-    ft = 'typst',
-    opts = {
-      dependencies_bin = {
-        ['typst-preview'] = 'typst-preview',
-        ['websocat'] = nil,
-      },
-    },
-  },
+  -- {
+  --   'chomosuke/typst-preview.nvim',
+  --   ft = 'typst',
+  --   opts = {
+  --     dependencies_bin = {
+  --       ['typst-preview'] = 'typst-preview',
+  --       ['websocat'] = nil,
+  --     },
+  --   },
+  -- },
   { 'kevinhwang91/nvim-bqf', ft = 'qf' },
   {
     'yump/bpftrace.vim',

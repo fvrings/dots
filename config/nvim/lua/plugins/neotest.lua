@@ -7,7 +7,7 @@ return {
     'nvim-neotest/neotest-python',
     'marilari88/neotest-vitest',
     'mrcjkb/rustaceanvim',
-    -- 'alfaix/neotest-gtest',
+    'alfaix/neotest-gtest',
   },
   config = function()
     ---@diagnostic disable-next-line: missing-fields
@@ -16,8 +16,7 @@ return {
         require 'neotest-python',
         require 'rustaceanvim.neotest',
         require 'neotest-vitest',
-        -- NOTE:https://github.com/alfaix/neotest-gtest/issues/12
-        -- require('neotest-gtest').setup {},
+        require('neotest-gtest').setup {},
       },
     }
   end,

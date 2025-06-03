@@ -16,9 +16,10 @@ return {
     f(function()
       return vim.split(vim.bo.commentstring, ' ')[1]
     end),
-    t ' TODO: ',
+    t ' TODO',
+    t ': ',
     i(1),
-    t(' Entering <' .. os.date '%y-%m-%d' .. '>'),
+    t(' Entered on <' .. os.date '%y-%m-%d' .. '>'),
     t { '', '' },
     i(0),
   }),
