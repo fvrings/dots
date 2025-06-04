@@ -2,11 +2,21 @@ return {
   {
     'mfussenegger/nvim-dap',
     config = function()
-      local lldb_path = vim.fn.exepath 'lldb-dap'
       local dap = require 'dap'
+
+      dap.defaults.fallback.external_terminal = {
+        command = vim.fn.exepath 'ghostty',
+        args = { '-e' },
+      }
+
+      dap.adapters.cppdbg = {
+        id = 'cppdbg',
+        type = 'executable',
+        command = '/usr/share/cpptools-debug/bin/OpenDebugAD7',
+      }
       dap.adapters.lldb = {
         type = 'executable',
-        command = lldb_path,
+        command = vim.fn.exepath 'lldb-dap',
         name = 'lldb',
       }
       dap.set_log_level 'TRACE'
@@ -14,11 +24,6 @@ return {
         type = 'executable',
         command = 'gdb',
         args = { '-i', 'dap', '-n' },
-      }
-      dap.adapters.lldb = {
-        type = 'executable',
-        command = '/usr/bin/lldb-dap', -- adjust as needed, must be absolute path
-        name = 'lldb',
       }
       dap.configurations.cpp = {
         {
@@ -34,6 +39,20 @@ return {
       }
       dap.configurations.c = dap.configurations.cpp
       dap.configurations.rust = {
+        -- {
+        --   name = 'Launch file',
+        --   type = 'cppdbg',
+        --   request = 'launch',
+        --   program = function()
+        --     return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+        --   end,
+        --
+        --   -- args = function()
+        --   --   return { vim.split(vim.fn.input 'Args to executable: ', ' ') }
+        --   -- end,
+        --   cwd = '${workspaceFolder}',
+        --   stopAtEntry = true,
+        -- },
         {
           name = 'Launch',
           type = 'lldb',
@@ -43,7 +62,10 @@ return {
           end,
           cwd = '${workspaceFolder}',
           stopOnEntry = false,
-          args = {},
+          args = function()
+            return vim.split(vim.fn.input 'Args to executable: ', ' ')
+          end,
+          externalConsole = true,
         },
       }
     end,

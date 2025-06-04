@@ -27,6 +27,7 @@ theme = catppuccin-mocha
 # theme = Oxocarbon
 keybind = ctrl+enter=unbind
 keybind = f10=toggle_fullscreen
+keybind = unconsumed:ctrl+i=text:yy\n
 keybind = unconsumed:alt+k=goto_split:up
 keybind = unconsumed:alt+j=goto_split:down
 keybind = unconsumed:alt+l=goto_split:right

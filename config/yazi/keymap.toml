@@ -17,3 +17,7 @@ run = "plugin mount"
 on = "f"
 run = "plugin jump-to-char"
 desc = "Jump to char"
+[[mgr.prepend_keymap]]
+on = "e"
+run = "shell --block -- nvim"
+desc = "open cwd with neovim"

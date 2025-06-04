@@ -180,6 +180,7 @@ return {
       {
         '<leader>st',
         function()
+          ---@diagnostic disable-next-line: undefined-field
           Snacks.picker.todo_comments()
         end,
         desc = 'Todo',
@@ -279,7 +280,7 @@ return {
     enabled = not vim.g.iswin,
     keys = {
       {
-        '<c-e>',
+        '<c-i>',
         vim.cmd.Yazi,
         desc = 'Open yazi at the current file',
       },
