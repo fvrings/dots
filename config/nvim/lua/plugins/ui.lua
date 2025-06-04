@@ -267,6 +267,7 @@ return {
     'lewis6991/satellite.nvim',
     event = 'VeryLazy',
     opts = {
+      winblend = 0,
       handlers = {
         marks = {
           enable = false,
@@ -280,7 +281,7 @@ return {
     enabled = not vim.g.iswin,
     keys = {
       {
-        '<c-i>',
+        '<a-q>',
         vim.cmd.Yazi,
         desc = 'Open yazi at the current file',
       },

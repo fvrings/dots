@@ -160,7 +160,7 @@ return {
   },
   {
     'Bekaboo/dropbar.nvim',
-    event = 'VeryLazy',
+    lazy = false,
     keys = {
       {
         '<leader>pb',
@@ -651,7 +651,12 @@ return {
         desc = 'load session',
       },
     },
-    config = true,
+    config = function()
+      local config = require 'session_manager.config'
+      require('session_manager').setup {
+        autoload_mode = config.AutoloadMode.CurrentDir,
+      }
+    end,
   },
   {
     'echasnovski/mini.align',

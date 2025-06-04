@@ -71,17 +71,17 @@ return {
     end,
     keys = {
       {
-        '<F5>',
+        '<c-1>',
         ":lua require'dap'.continue()<CR>",
         silent = true,
       },
       {
-        '<F8>',
+        '<c-2>',
         ":lua require'dap'.step_over()<CR>",
         silent = true,
       },
       {
-        '<F7>',
+        '<c-3>',
         ":lua require'dap'.step_into()<CR>",
         silent = true,
       },
@@ -91,7 +91,7 @@ return {
       --   silent = true,
       -- },
       {
-        '<F2>',
+        '<c-9>',
         ":lua require'dap'.toggle_breakpoint()<CR>",
         silent = true,
       },

@@ -12,7 +12,7 @@
   (= :string (type s)))
 
 (fn number? [n]
-  (= :number (type n)))
+  `(= :number (type ,n)))
 
 (fn tbl/contains? [tbl value]
   `(vim.tbl_contains ,tbl ,value))
