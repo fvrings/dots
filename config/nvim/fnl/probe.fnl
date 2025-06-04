@@ -4,9 +4,9 @@
       release (. (vim.uv.os_uname) :release)
       iswin (string.find version :Windows)
       iswsl (string.find release :WSL)]
-  (if (number? iswin)
+  (if iswin
       (set! g iswin true))
-  (if (number? iswsl)
+  (if iswsl
       (set! g iswsl true)))
 
 (let [f (vim.fn.filereadable :/etc/nixos/keys.txt)]

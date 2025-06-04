@@ -15,13 +15,29 @@
   `(= :number (type ,n)))
 
 (fn tbl/contains? [tbl value]
-  `(vim.tbl_contains ,tbl ,value))
+  (assert-compile (table? tbl) "expected table for tbl")
+  (var x false)
+  (each [_ v (pairs tbl)]
+    (if (= v value)
+        (set x true)))
+  x)
 
 (fn tbl/remove [tbl key]
-  `(vim.tbl_filter #(not= $1 ,key) ,tbl))
+  (assert-compile (table? tbl) "expected table for tbl")
+  (var x [])
+  (each [_ v (pairs tbl)]
+    (if (not= v key)
+        (table.insert x v)))
+  x)
 
-(fn tbl/extend [tbl tbl2]
-  `(vim.tbl_extend :keep ,tbl ,tbl2))
+(fn tbl/extend [...]
+  (let [tbl [...]]
+    (var final {})
+    (each [_ t (pairs tbl)]
+      (each [k v (pairs t)]
+        (if (not (. final k))
+            (tset final k v))))
+    final))
 
 (fn str/begin-with? [str value]
   (not (nil? (string.match str (.. "^" value)))))
@@ -47,11 +63,11 @@
     (match scope
       :g `(tset vim.g ,key ,?value)
       :o (if (str/begin-with? key "%+")
-             `(: (. vim.opt (string.sub ,key 2)) :append ,?value)
+             `(: (. vim.opt ,(string.sub key 2)) :append ,?value)
              (str/begin-with? key "%-")
-             `(: (. vim.opt (string.sub ,key 2)) :remove ,?value)
+             `(: (. vim.opt ,(string.sub key 2)) :remove ,?value)
              (let [begin-with-no (str/begin-with? key :no)]
-               (if begin-with-no `(tset vim.opt (string.sub ,key 3) false)
+               (if begin-with-no `(tset vim.opt ,(string.sub key 3) false)
                    (nil? ?value) `(tset vim.opt ,key true)
                    `(tset vim.opt ,key ,?value)))))))
 
