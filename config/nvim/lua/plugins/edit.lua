@@ -13,6 +13,7 @@ return {
       'norg',
       'markdown',
       'Avante',
+      'codecompanion',
     },
     opts = {
       render_modes = true,
@@ -460,8 +461,10 @@ return {
         deepseek = {
           __inherited_from = 'openai',
           api_key_name = 'DEEPSEEK_API_KEY',
-          endpoint = 'https://api.deepseek.com',
-          model = 'deepseek-coder',
+          endpoint = 'https://dashscope.aliyuncs.com/compatible-mode/v1',
+          model = 'deepseek-r1-0528',
+          -- model = 'qwen-coder-plus-latest',
+          -- disable_tools = true, -- disable tools!
         },
       },
     },
@@ -495,75 +498,77 @@ return {
       vim.env.DEEPSEEK_API_KEY = vim.fn.system 'cat ~/keys/deepseek'
     end,
   },
-  -- {
-  --   'olimorris/codecompanion.nvim',
-  --   dependencies = {
-  --     'nvim-lua/plenary.nvim',
-  --     'nvim-treesitter/nvim-treesitter',
-  --     {
-  --       'echasnovski/mini.diff',
-  --       opts = {
-  --         -- use gitsigns' keymaps
-  --         mappings = {
-  --           apply = '',
-  --           reset = '',
-  --           textobject = '',
-  --           goto_first = '',
-  --           goto_prev = '',
-  --           goto_next = '',
-  --           goto_last = '',
-  --         },
-  --       },
-  --     },
-  --   },
-  --   opts = {
-  --     display = {
-  --       diff = {
-  --         provider = 'mini_diff',
-  --       },
-  --     },
-  --     strategies = {
-  --       chat = {
-  --         adapter = 'deepseek',
-  --       },
-  --       inline = {
-  --         adapter = 'deepseek',
-  --       },
-  --     },
-  --     adapters = {
-  --       openai = function()
-  --         return require('codecompanion.adapters').extend('openai', {
-  --           env = {
-  --             api_key = 'cmd:cat ~/keys/openai',
-  --           },
-  --         })
-  --       end,
-  --       deepseek = function()
-  --         return require('codecompanion.adapters').extend('deepseek', {
-  --           env = {
-  --             api_key = 'cmd:cat ~/keys/deepseek', -- optional: if your endpoint is authenticated
-  --           },
-  --           schema = {
-  --             model = {
-  --               -- default = 'deepseek-reasoner',
-  --               default = 'deepseek-chat',
-  --             },
-  --           },
-  --         })
-  --       end,
-  --     },
-  --   },
-  --   cmd = {
-  --     'CodeCompanionChat',
-  --     'CodeCompanion',
-  --     'CodeCompanionActions',
-  --   },
-  --   keys = {
-  --     { '<leader>dc', vim.cmd.CodeCompanionChat, desc = 'CodeCompanionChat' },
-  --     { '<leader>da', vim.cmd.CodeCompanionActions, desc = 'CodeCompanionActions' },
-  --     { '<leader>do', vim.cmd.CodeCompanion, mode = { 'n', 'v' }, desc = 'CodeCompanion' },
-  --   },
-  -- },
+  {
+    'olimorris/codecompanion.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      {
+        'echasnovski/mini.diff',
+        opts = {
+          -- use gitsigns' keymaps
+          mappings = {
+            apply = '',
+            reset = '',
+            textobject = '',
+            goto_first = '',
+            goto_prev = '',
+            goto_next = '',
+            goto_last = '',
+          },
+        },
+      },
+    },
+    opts = {
+      log_level = 'DEBUG',
+      display = {
+        diff = {
+          provider = 'mini_diff',
+        },
+      },
+      strategies = {
+        chat = {
+          adapter = 'deepseek',
+        },
+        inline = {
+          adapter = 'deepseek',
+        },
+      },
+      adapters = {
+        openai = function()
+          return require('codecompanion.adapters').extend('openai', {
+            env = {
+              api_key = 'cmd:cat ~/notes/keys/openai',
+            },
+          })
+        end,
+        deepseek = function()
+          return require('codecompanion.adapters').extend('openai_compatible', {
+            env = {
+              api_key = 'cmd:cat ~/notes/keys/deepseek', -- optional: if your endpoint is authenticated
+              url = 'https://dashscope.aliyuncs.com/compatible-mode/v1',
+            },
+            schema = {
+              model = {
+                -- default = 'deepseek-reasoner',
+                default = 'deepseek-r1-0528',
+              },
+            },
+          })
+        end,
+      },
+    },
+    cmd = {
+      'CodeCompanionChat',
+      'CodeCompanion',
+      'CodeCompanionActions',
+    },
+    keys = {
+      { '<leader>dc', vim.cmd.CodeCompanionChat, desc = 'CodeCompanionChat' },
+      { '<leader>da', vim.cmd.CodeCompanionActions, desc = 'CodeCompanionActions' },
+      { '<leader>do', vim.cmd.CodeCompanion, mode = { 'n', 'v' }, desc = 'CodeCompanion' },
+    },
+  },
   {
     'milanglacier/minuet-ai.nvim',
     opts = {

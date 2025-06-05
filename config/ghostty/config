@@ -34,15 +34,15 @@ keybind = unconsumed:alt+l=goto_split:right
 keybind = unconsumed:alt+h=goto_split:left
 
 
-keybind = ctrl+q>ctrl+c=new_tab
-keybind = ctrl+q>ctrl+h=new_split:left
-keybind = ctrl+q>ctrl+j=new_split:down
-keybind = ctrl+q>ctrl+k=new_split:up
-keybind = ctrl+q>ctrl+l=new_split:right
-keybind = ctrl+q>ctrl+f=toggle_split_zoom
+keybind = alt+w=new_tab
+keybind = alt+shift+h=new_split:left
+keybind = alt+shift+j=new_split:down
+keybind = alt+shift+k=new_split:up
+keybind = alt+shift+l=new_split:right
+keybind = alt+shift+f=toggle_split_zoom
 
-keybind = ctrl+q>ctrl+n=next_tab
-keybind = ctrl+q>ctrl+p=previous_tab
+keybind = alt+n=next_tab
+keybind = alt+p=previous_tab
 
 window-decoration = false
 # window-padding-x = 2
