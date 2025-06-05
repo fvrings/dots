@@ -281,7 +281,7 @@ return {
     enabled = not vim.g.iswin,
     keys = {
       {
-        '<a-q>',
+        '<a-e>',
         vim.cmd.Yazi,
         desc = 'Open yazi at the current file',
       },

@@ -253,7 +253,7 @@ return {
             module = 'blink.compat.source',
 
             -- all blink.cmp source config options work as normal:
-            score_offset = -3,
+            score_offset = 3,
           },
           emoji = {
             module = 'blink-emoji',
