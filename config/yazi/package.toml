@@ -38,6 +38,11 @@ use = "yazi-rs/plugins:jump-to-char"
 rev = "63f9650"
 hash = "30fc0b37f03a597b92d387268319450f"
 
+[[plugin.deps]]
+use = "imsi32/yatline-catppuccin"
+rev = "8cc4773"
+hash = "fd03fb015a28040bca0c0f9a8fe6fd8d"
+
 [[flavor.deps]]
 use = "BennyOe/tokyo-night"
 rev = "b3950bf"
