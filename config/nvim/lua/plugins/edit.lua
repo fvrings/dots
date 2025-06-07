@@ -499,8 +499,10 @@ return {
       -- },
     },
     init = function()
-      vim.env.DEEPSEEK_API_KEY = vim.fn.system 'cat ~/notes/keys/deepseek'
-      vim.env.GEMINI_API_KEY = vim.fn.system 'cat ~/notes/keys/gemini'
+      vim.schedule(function()
+        vim.env.DEEPSEEK_API_KEY = vim.fn.system 'cat ~/notes/keys/deepseek'
+        vim.env.GEMINI_API_KEY = vim.fn.system 'cat ~/notes/keys/gemini'
+      end)
     end,
   },
   {
@@ -592,9 +594,6 @@ return {
     dependencies = {
       { 'nvim-lua/plenary.nvim' },
     },
-    init = function()
-      vim.env.DEEPSEEK_API_KEY = vim.fn.system 'cat ~/notes/keys/deepseek'
-    end,
   },
   -- {
   --   'github/copilot.vim',
