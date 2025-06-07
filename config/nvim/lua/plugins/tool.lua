@@ -306,7 +306,7 @@ return {
   {
     'stevearc/overseer.nvim',
     opts = {
-      templates = { 'builtin', 'cmake', 'run_script', 'xmake' },
+      templates = { 'builtin', 'cmake', 'run_script', 'xmake', 'zig' },
       component_aliases = {
         default = {
           { 'display_duration', detail_level = 2 },
@@ -642,21 +642,15 @@ return {
     },
   },
   {
-    'Shatur/neovim-session-manager',
-    cmd = 'SessionManager',
-    keys = {
-      {
-        '<leader>ll',
-        '<cmd>SessionManager load_session<CR>',
-        desc = 'load session',
-      },
+    'niba/continue.nvim',
+    -- remember to set lazy as false
+    lazy = false,
+    -- call setup method or set config = true
+    config = true,
+
+    opts = {
+      auto_restore = false,
     },
-    config = function()
-      local config = require 'session_manager.config'
-      require('session_manager').setup {
-        autoload_mode = config.AutoloadMode.CurrentDir,
-      }
-    end,
   },
   {
     'echasnovski/mini.align',

@@ -3,6 +3,7 @@
 (set! o clipboard :unnamedplus)
 (set! o completeopt "menuone,noselect")
 (set! o numberwidth 4)
+(set! o laststatus 3)
 (set! o scrolloff 99)
 (set! o softtabstop 2)
 (set! o tabstop 4)

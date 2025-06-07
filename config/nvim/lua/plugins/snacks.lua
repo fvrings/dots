@@ -99,17 +99,17 @@ return {
           {
             icon = '🔗',
             desc = 'Session',
-            action = ':SessionManager load_current_dir_session',
+            action = ':ContinueLoad',
             key = 'e',
           },
-          {
-            icon = '📔',
-            desc = 'List',
-            action = function()
-              vim.cmd ':SessionManager load_session'
-            end,
-            key = 'l',
-          },
+          -- {
+          --   icon = '📔',
+          --   desc = 'List',
+          --   action = function()
+          --     vim.cmd ':SessionManager load_session'
+          --   end,
+          --   key = 'l',
+          -- },
           {
             icon = '❗',
             desc = 'Exit',

@@ -17,5 +17,8 @@ return {
   end,
   condition = {
     filetype = { 'cpp' },
+    callback = function(search)
+      return vim.fn.exists(vim.fs.joinpath(search.dir, 'xmake.lua'))
+    end,
   },
 }

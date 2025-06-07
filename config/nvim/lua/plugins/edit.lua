@@ -456,15 +456,19 @@ return {
     event = 'VeryLazy',
     version = false, -- Never set this value to "*"! Never!
     opts = {
-      provider = 'deepseek',
+      provider = 'gemini',
       providers = {
+        gemini = {
+          model = 'gemini-2.5-flash-preview-04-17',
+        },
         deepseek = {
           __inherited_from = 'openai',
           api_key_name = 'DEEPSEEK_API_KEY',
           endpoint = 'https://dashscope.aliyuncs.com/compatible-mode/v1',
           model = 'deepseek-r1-0528',
           -- model = 'qwen-coder-plus-latest',
-          -- disable_tools = true, -- disable tools!
+          -- model = 'qwen-max-0125',
+          disable_tools = true, -- disable tools!
         },
       },
     },
@@ -495,7 +499,8 @@ return {
       -- },
     },
     init = function()
-      vim.env.DEEPSEEK_API_KEY = vim.fn.system 'cat ~/keys/deepseek'
+      vim.env.DEEPSEEK_API_KEY = vim.fn.system 'cat ~/notes/keys/deepseek'
+      vim.env.GEMINI_API_KEY = vim.fn.system 'cat ~/notes/keys/gemini'
     end,
   },
   {
@@ -528,7 +533,7 @@ return {
       },
       strategies = {
         chat = {
-          adapter = 'deepseek',
+          adapter = 'gemini',
         },
         inline = {
           adapter = 'deepseek',
@@ -588,7 +593,7 @@ return {
       { 'nvim-lua/plenary.nvim' },
     },
     init = function()
-      vim.env.DEEPSEEK_API_KEY = vim.fn.system 'cat ~/keys/deepseek'
+      vim.env.DEEPSEEK_API_KEY = vim.fn.system 'cat ~/notes/keys/deepseek'
     end,
   },
   -- {

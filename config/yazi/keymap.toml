@@ -19,5 +19,5 @@ run = "plugin jump-to-char"
 desc = "Jump to char"
 [[mgr.prepend_keymap]]
 on = "e"
-run = "shell --block -- nvim -c 'SessionManager load_current_dir_session'"
+run = "shell --block -- nvim -c 'ContinueLoad'"
 desc = "open cwd with neovim"
