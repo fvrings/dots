@@ -68,13 +68,13 @@ return {
   --     },
   --   },
   -- },
-  {
-    'Olical/conjure',
-    ft = { 'scheme', 'fennel' },
-    init = function()
-      vim.g['conjure#client#fennel#aniseed#deprecation_warning'] = false
-    end,
-  },
+  -- {
+  --   'Olical/conjure',
+  --   ft = { 'scheme', 'fennel' },
+  --   init = function()
+  --     vim.g['conjure#client#fennel#aniseed#deprecation_warning'] = false
+  --   end,
+  -- },
   {
     'h-hg/fcitx.nvim',
     enabled = not vim.g.iswin,
