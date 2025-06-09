@@ -260,13 +260,13 @@ return {
       end,
       desc = 'pick a buffer',
     },
-    {
-      '<leader>e',
-      function()
-        Snacks.picker.explorer()
-      end,
-      desc = 'Exp',
-    },
+    -- {
+    --   '<leader>e',
+    --   function()
+    --     Snacks.picker.explorer()
+    --   end,
+    --   desc = 'Exp',
+    -- },
     {
       '<leader>f',
       function()

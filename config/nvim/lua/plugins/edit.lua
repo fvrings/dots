@@ -405,7 +405,7 @@ return {
         function()
           vim.cmd.Treewalker 'Down'
         end,
-        mode = { 'i', 'n', 'v' },
+        mode = { 'n', 'v' },
       },
       -- {
       --   '<A-S-k>',
@@ -419,7 +419,7 @@ return {
         function()
           vim.cmd.Treewalker 'Up'
         end,
-        mode = { 'i', 'n', 'v' },
+        mode = { 'n', 'v' },
       },
       -- {
       --   '<A-S-h>',
@@ -433,7 +433,7 @@ return {
         function()
           vim.cmd.Treewalker 'Left'
         end,
-        mode = { 'i', 'n', 'v' },
+        mode = { 'n', 'v' },
       },
       -- {
       --   '<A-S-l>',
@@ -447,7 +447,7 @@ return {
         function()
           vim.cmd.Treewalker 'Right'
         end,
-        mode = { 'i', 'n', 'v' },
+        mode = { 'n', 'v' },
       },
     },
   },

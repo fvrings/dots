@@ -28,7 +28,7 @@ end
 boot 'https://git.sr.ht/~technomancy/fennel'
 boot 'https://github.com/aileot/nvim-thyme'
 boot 'https://github.com/folke/lazy.nvim'
-boot 'https://github.com/aileot/nvim-laurel'
+-- boot 'https://github.com/aileot/nvim-laurel'
 
 -- Wrapping the `require` in `function-end` is important for lazy-load.
 table.insert(package.loaders, function(...)
@@ -48,7 +48,7 @@ require('lazy').setup {
     { import = 'plugins' },
     {
       'aileot/nvim-thyme',
-      version = '~v1.0.0',
+      version = '^v1.0.0',
       build = ":lua require('thyme').setup(); vim.cmd('ThymeCacheClear')",
       dependencies = 'https://git.sr.ht/~technomancy/fennel',
       -- For config, see the "Setup Optional Interfaces" section
@@ -56,26 +56,29 @@ require('lazy').setup {
       -- config = function()
       -- end,
       init = function()
-        vim.api.nvim_create_autocmd('VimEnter', {
+        vim.api.nvim_create_autocmd('User', {
           once = true,
           pattern = 'VeryLazy',
           callback = function()
-            require('thyme').setup()
+            vim.schedule(function()
+              require('thyme').setup()
+            end)
           end,
         })
       end,
     },
     -- If you also manage macro plugin versions, please clear the Lua cache on the updates!
-    {
-      'aileot/nvim-laurel',
-      build = ":lua require('thyme').setup(); vim.cmd('ThymeCacheClear')",
-      -- and other settings
-    },
+    -- {
+    --   'aileot/nvim-laurel',
+    --   build = ":lua require('thyme').setup(); vim.cmd('ThymeCacheClear')",
+    --   -- and other settings
+    -- },
     -- Optional dependency plugin.
     {
       'eraserhd/parinfer-rust',
       build = 'cargo build --release',
-      ft = 'fennel',
+      -- ft = 'fennel',
+      event = 'VeryLazy',
     },
   },
   defaults = { lazy = true },
@@ -95,7 +98,7 @@ require('lazy').setup {
   lockfile = vim.fn.stdpath 'data' .. '/lazy-lock.json',
   performance = {
     rtp = {
-      reset = true, -- reset the runtime path to $VIMRUNTIME and your config directory
+      reset = false, -- reset the runtime path to $VIMRUNTIME and your config directory
       disabled_plugins = {
         '2html_plugin',
         'tohtml',

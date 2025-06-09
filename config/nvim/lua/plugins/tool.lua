@@ -172,6 +172,30 @@ return {
     },
   },
   {
+    'A7Lavinraj/fyler.nvim',
+    dependencies = { 'echasnovski/mini.icons' },
+    event = 'VeryLazy',
+    opts = {
+      default_explorer = true,
+      window_config = {
+        width = 0.3,
+        split = 'left',
+      },
+      window_options = {
+        number = false,
+        relativenumbers = false,
+      },
+    },
+    keys = {
+      {
+        '<leader>e',
+        vim.cmd.Fyler,
+        desc = 'Fyler',
+      },
+    },
+  },
+
+  {
     'stevearc/oil.nvim',
     opts = {
       keymaps = {
