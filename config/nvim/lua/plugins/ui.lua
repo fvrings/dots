@@ -334,4 +334,9 @@ return {
       { 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]] },
     },
   },
+  {
+    'aileot/emission.nvim',
+    event = 'VeryLazy',
+    opts = {},
+  },
 }
