@@ -433,7 +433,7 @@ return {
         typescript = { 'biome' },
         go = { 'gofmt' },
         rust = { 'rustfmt' },
-        toml = { 'taplo' },
+        toml = { 'tombi' },
         typst = { 'typstyle' },
         javascriptreact = { 'biome', 'rustywind' },
         typescriptreact = { 'biome', 'rustywind' },

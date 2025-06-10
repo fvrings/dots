@@ -1,9 +1,5 @@
 local function config()
-  -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
-  local capabilities = require('blink.cmp').get_lsp_capabilities()
-  local util = require 'lspconfig.util'
-  -- capabilities.offsetEncoding = { "utf-16" }
-  local servers = {
+  local clients = {
     astro = {},
     lua_ls = {},
     djlsp = {},
@@ -12,7 +8,7 @@ local function config()
     basedpyright = {},
     gdscript = {},
     html = {},
-    taplo = {},
+    tombi = {},
     -- fennel_ls = {},
     prismals = {},
     -- it always pollute my completion in jsx_attribute
@@ -21,11 +17,11 @@ local function config()
     nushell = {},
     gopls = {},
     vtsls = {
-      root_dir = util.root_pattern 'package.json',
+      -- root_dir = util.root_pattern 'package.json',
       -- single_file_support = false,
     },
     denols = {
-      root_dir = util.root_pattern 'deno.json',
+      root_markers = { 'deno.json' },
     },
     zls = {},
     cssls = {
@@ -65,25 +61,26 @@ local function config()
     },
   }
   if vim.g.isnixos then
-    servers = vim.tbl_extend('force', servers, { nixd = {} })
+    clients = vim.tbl_extend('force', clients, { nixd = {} })
   end
-  for client, setup in pairs(servers) do
-    local cfg = {
-      capabilities = capabilities,
-      on_attach = function(cli)
-        if cli.server_capabilities.inlayHintProvider then
-          vim.lsp.inlay_hint.enable()
-        end
-      end,
-    }
-    cfg = vim.tbl_deep_extend('force', cfg, setup)
-    require('lspconfig')[client].setup(cfg)
+  for client, _ in pairs(clients) do
+    vim.lsp.enable(client)
   end
 end
 return {
   {
     'neovim/nvim-lspconfig',
     config = config,
+    init = function()
+      vim.api.nvim_create_autocmd('LspAttach', {
+        callback = function(ev)
+          local client = vim.lsp.get_client_by_id(ev.data.client_id)
+          if client and client.server_capabilities.inlayHintProvider then
+            vim.lsp.inlay_hint.enable()
+          end
+        end,
+      })
+    end,
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       {

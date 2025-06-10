@@ -35,7 +35,7 @@ let
     # solc
   ];
   formatter = [
-    taplo
+    tombi
     rustfmt
     google-java-format
     nixfmt-rfc-style
