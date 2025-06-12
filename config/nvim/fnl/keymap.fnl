@@ -7,6 +7,7 @@
 (map! n :gw :*N {:desc :Search-word-under-cursor})
 (map! n :<c-s> vim.cmd.w {:desc :write})
 (map! n :<c-p> :<cmd>t.<CR> {:desc :paste-current-line})
+(map! v :<c-p> ":'<,'>t'><CR>" {:desc :paste-current-line})
 (map! n :<esc> :<esc><cmd>noh<cr>)
 (map! v "<" :<gv)
 (map! v ">" :>gv)

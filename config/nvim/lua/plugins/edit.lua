@@ -456,17 +456,17 @@ return {
     event = 'VeryLazy',
     version = false, -- Never set this value to "*"! Never!
     opts = {
-      provider = 'gemini',
+      provider = 'qwen',
       providers = {
         gemini = {
           model = 'gemini-2.5-flash-preview-04-17',
         },
-        deepseek = {
+        qwen = {
           __inherited_from = 'openai',
-          api_key_name = 'DEEPSEEK_API_KEY',
+          api_key_name = 'QWEN_API_KEY',
           endpoint = 'https://dashscope.aliyuncs.com/compatible-mode/v1',
-          model = 'deepseek-r1-0528',
-          -- model = 'qwen-coder-plus-latest',
+          -- model = 'deepseek-r1-0528',
+          model = 'qwen-coder-plus-latest',
           -- model = 'qwen-max-0125',
           disable_tools = true, -- disable tools!
         },
@@ -500,8 +500,8 @@ return {
     },
     init = function()
       vim.schedule(function()
-        vim.env.DEEPSEEK_API_KEY = vim.fn.system 'cat ~/notes/keys/deepseek'
-        vim.env.GEMINI_API_KEY = vim.fn.system 'cat ~/notes/keys/gemini'
+        vim.env.QWEN_API_KEY = vim.trim(vim.fn.system 'cat ~/notes/keys/qwen')
+        vim.env.GEMINI_API_KEY = vim.trim(vim.fn.system 'cat ~/notes/keys/gemini')
       end)
     end,
   },

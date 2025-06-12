@@ -203,8 +203,17 @@ return {
   },
   {
     'tzachar/highlight-undo.nvim',
-    config = true,
-    keys = { 'u', '<c-r>' },
+    opts = {
+      hlgroup = 'HighlightUndo',
+      duration = 300,
+      pattern = { '*' },
+      ignored_filetypes = {
+        'mason',
+        'lazy',
+        'fyler',
+      },
+    },
+    event = 'VeryLazy',
   },
   -- {
   -- 	"RaafatTurki/hex.nvim",
@@ -334,9 +343,14 @@ return {
       { 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]] },
     },
   },
-  {
-    'aileot/emission.nvim',
-    event = 'VeryLazy',
-    opts = {},
-  },
+  -- {
+  --   'aileot/emission.nvim',
+  --   event = 'VeryLazy',
+  --   opts = {
+  --     excluded_filetypes = {
+  --       -- 'oil',
+  --       'fyler',
+  --     },
+  --   },
+  -- },
 }

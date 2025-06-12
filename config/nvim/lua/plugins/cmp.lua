@@ -152,18 +152,18 @@ return {
       -- your own keymap.
       keymap = {
         preset = 'super-tab',
-        ['<Tab>'] = {
-          function(cmp)
-            if cmp.snippet_active() then
-              return cmp.accept()
-            else
-              return cmp.select_and_accept()
-            end
-          end,
-          'fallback',
-        },
-        ['<c-l>'] = { 'snippet_forward', 'fallback' },
-        ['<c-h>'] = { 'snippet_backward', 'fallback' },
+        -- ['<Tab>'] = {
+        --   function(cmp)
+        --     if cmp.snippet_active() then
+        --       return cmp.accept()
+        --     else
+        --       return cmp.select_and_accept()
+        --     end
+        --   end,
+        --   'fallback',
+        -- },
+        -- ['<c-l>'] = { 'snippet_forward', 'fallback' },
+        -- ['<c-h>'] = { 'snippet_backward', 'fallback' },
         ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
         ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
         ['<C-y>'] = {
