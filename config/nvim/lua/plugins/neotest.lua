@@ -8,6 +8,7 @@ return {
     'marilari88/neotest-vitest',
     'mrcjkb/rustaceanvim',
     'alfaix/neotest-gtest',
+    'moonbit-community/moonbit.nvim',
   },
   config = function()
     ---@diagnostic disable-next-line: missing-fields
@@ -17,6 +18,7 @@ return {
         require 'rustaceanvim.neotest',
         require 'neotest-vitest',
         require('neotest-gtest').setup {},
+        require 'neotest-moonbit',
       },
     }
   end,

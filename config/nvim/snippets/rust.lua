@@ -66,7 +66,7 @@ return {
     fmt(
       [[
             fn main(){}{{
-                {}
+                {0}
             }}
          ]],
       ins_generate()

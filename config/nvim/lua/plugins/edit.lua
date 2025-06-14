@@ -457,6 +457,14 @@ return {
     version = false, -- Never set this value to "*"! Never!
     opts = {
       provider = 'qwen',
+      mappings = {
+        suggestion = {
+          accept = '<c-l>',
+          next = '<M-]>',
+          prev = '<M-[>',
+          dismiss = '<C-]>',
+        },
+      },
       providers = {
         gemini = {
           model = 'gemini-2.5-flash-preview-04-17',
