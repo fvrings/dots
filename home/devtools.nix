@@ -35,7 +35,9 @@ let
     # solc
   ];
   formatter = [
-    tombi
+    # TODO: not available
+    # tombi
+    taplo
     rustfmt
     google-java-format
     nixfmt-rfc-style
