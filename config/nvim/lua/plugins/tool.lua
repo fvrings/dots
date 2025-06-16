@@ -201,7 +201,7 @@ return {
       keymaps = {
         ['H'] = { 'actions.parent', mode = 'n' },
         ['L'] = 'actions.select',
-        ['<leader>q'] = { 'actions.close', mode = 'n' },
+        ['<m-q>'] = { 'actions.close', mode = 'n' },
         ['gd'] = {
           desc = 'Toggle file detail view',
           callback = function()
@@ -344,7 +344,7 @@ return {
         bindings = {
           ['K'] = 'ScrollOutputUp',
           ['J'] = 'ScrollOutputDown',
-          ['<C-\\>'] = 'OpenQuickFix',
+          -- ['<C-\\>'] = 'OpenQuickFix',
         },
       },
       -- actions = {
@@ -853,6 +853,28 @@ return {
         run = '<CR>', -- run calculations
         reset = 'R', -- reset buffer
       },
+    },
+  },
+  {
+    'nvzone/floaterm',
+    dependencies = 'nvzone/volt',
+    opts = {
+      border = false,
+      size_h = 70,
+      size_w = 90,
+
+      -- Default sets of terminals you'd like to open
+      terminals = {
+        { name = 'Terminal' },
+        -- cmd can be function too
+        { name = 'Terminal' },
+        -- More terminals
+        { name = 'Terminal' },
+      },
+    },
+    cmd = 'FloatermToggle',
+    keys = {
+      { '<c-\\>', vim.cmd.FloatermToggle, mode = { 'n', 't', 'i' } },
     },
   },
 }

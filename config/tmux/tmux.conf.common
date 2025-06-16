@@ -39,9 +39,15 @@ set -g visual-activity off
 set -ga update-environment TERM
 set -ga update-environment TERM_PROGRAM
 set -sg escape-time 50
-bind c new-window -c "#{pane_current_path}"
-bind s split-window -c "#{pane_current_path}"
-bind v split-window -h -c "#{pane_current_path}"
+bind-key -n 'M-w' new-window -c "#{pane_current_path}"
+bind-key -n 'M-n' next-window
+bind-key -n 'M-p' previous-window
+bind-key -n 'M-K' split-window -c -b
+bind-key -n 'M-J' split-window -c "#{pane_current_path}"
+bind-key -n 'M-L' split-window -h -c "#{pane_current_path}"
+bind-key -n 'M-H' split-window -h -c -b
+bind-key -n M-q run-shell "./tmux-or-nvim-kill.sh"
+
 bind a last-window
 bind j resize-pane -D 10
 bind k resize-pane -U 10

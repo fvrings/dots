@@ -33,7 +33,7 @@
 
 ;; utils
 ;(nmap! :<leader>si :<cmd>InspectTree<CR> :open-treesitter-tree)
-(map! n :<leader>q vim.cmd.q {:desc :quit})
+(map! n :<M-q> vim.cmd.q {:desc :quit})
 (map! n :<leader>L vim.cmd.Lazy {:desc :open-lazy})
 
 ; (map! n :<c-n>

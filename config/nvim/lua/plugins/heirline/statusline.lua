@@ -483,7 +483,7 @@ local DefaultStatusline = {
   { flexible = 3, { FileEncoding } },
   Space,
   -- Arrow,
-  -- Ruler,
+  Ruler,
   Space,
   FileFormat,
   -- FileSize,
@@ -519,7 +519,7 @@ local SpecialStatusline = {
 local GitStatusline = {
   condition = function()
     return conditions.buffer_matches {
-      filetype = { '^git.*', 'gitcommit' },
+      filetype = { '^Neogit.*', 'gitcommit' },
     }
   end,
   FileType,
