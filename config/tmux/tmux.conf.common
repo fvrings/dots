@@ -42,18 +42,18 @@ set -sg escape-time 50
 bind-key -n 'M-w' new-window -c "#{pane_current_path}"
 bind-key -n 'M-n' next-window
 bind-key -n 'M-p' previous-window
-bind-key -n 'M-K' split-window -c -b
+bind-key -n 'M-K' split-window -c "#{pane_current_path}" -b
 bind-key -n 'M-J' split-window -c "#{pane_current_path}"
-bind-key -n 'M-L' split-window -h -c "#{pane_current_path}"
-bind-key -n 'M-H' split-window -h -c -b
-bind-key -n M-q run-shell "./tmux-or-nvim-kill.sh"
+bind-key -n 'M-L' split-window -c "#{pane_current_path}" -h
+bind-key -n 'M-H' split-window -c "#{pane_current_path}" -h -b
+bind-key -n M-q run-shell "~/.config/tmux/tmux-or-nvim-kill.sh"
+bind-key -n M-c copy-mode
 
 bind a last-window
 bind j resize-pane -D 10
 bind k resize-pane -U 10
 bind l resize-pane -R 10
 bind h resize-pane -L 10
-bind m copy-mode
 
 
 # Smart pane switching with awareness of Vim splits.

@@ -6,6 +6,22 @@ let fish_completer = {|spans|
         if ($in | path exists) {$'($in | str replace "\"" "\\\"" )'} else {$in}
     }
 }
+# source ~/github/nu_scripts/themes/nu-themes/ayu.nu
+# source ~/github/nu_scripts/themes/nu-themes/github-dark-default.nu
+# source ~/github/nu_scripts/themes/nu-themes/sea-shells.nu
+# source ~/github/nu_scripts/themes/nu-themes/tempus-future.nu
+source horizon-dark.nu
+
+def --env yy [...args] {
+	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
+	yazi ...$args --cwd-file $tmp
+	let cwd = (open $tmp)
+	if $cwd != "" and $cwd != $env.PWD {
+		cd $cwd
+	}
+	rm -fp $tmp
+}
+
 let carapace_completer = {|spans|
 # if the current command is an alias, get it's expansion
     let expanded_alias = (scope aliases | where name == $spans.0 | get -i 0 | get -i expansion)
@@ -57,6 +73,18 @@ $env.config.hooks.pre_prompt = [{ ||
 $env.config = {
   keybindings: [
   {
+    name: open_yazi
+    modifier: ALT
+    keycode: Char_e
+    mode: emacs
+    event:[
+        { edit: Clear }
+        { edit: InsertString,
+          value: "yy" }
+        { send: Enter }
+      ]
+  }
+  {
     name: enter_path_with_fzf
     modifier: CONTROL
     keycode: Char_f
@@ -93,18 +121,6 @@ alias s = kitten ssh
 alias t = tmux
 # alias mpv = prime-run mpv
 alias activate-python-venv = overlay use .venv/bin/activate.nu
-
-def --env yy [...args] {
-	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
-	yazi ...$args --cwd-file $tmp
-	let cwd = (open $tmp)
-	if $cwd != "" and $cwd != $env.PWD {
-		cd $cwd
-	}
-	rm -fp $tmp
-}
-
-alias aa = yy
 
 if $nu.os-info.name == "windows" {
     # $env.PATH ++= ['~/go/bin/' '~/.cargo/bin' '~/.local/bin']

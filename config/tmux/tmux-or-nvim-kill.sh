@@ -9,5 +9,5 @@ if pstree -p "$pane_pid" | grep -qE 'nvim|vim'; then
   tmux send-keys -t "$TMUX_PANE" M-q
 else
   # No Neovim, kill the window
-  tmux kill-window
+  tmux kill-pane
 fi
