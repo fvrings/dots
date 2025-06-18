@@ -10,7 +10,7 @@ in
   services.swww.enable = true;
   systemd.user.services.swww-img = {
     Install = {
-      WantedBy = [ "graphical-session.target" ];
+      WantedBy = [ swww ];
     };
 
     Unit = {
@@ -102,13 +102,11 @@ in
         "$mod,F,exec,firefox"
         # "$mod,S,exec,ags -t panel"
         "$mod,S,exec,grim -g $(slurp)"
-        "$mod SHIFT,P,exec,hyprpicker -a"
         "$mod,X,exec,playerctl -p Qcm play-pause"
         "$mod,N,exec,playerctl -p Qcm next"
         # "$mod,R,exec,ags -t launcher"
         "$mod,R,exec,fuzzel"
         "$mod,Y,exec,ghostty -e yazi"
-        "$mod SHIFT,R,exec,rofi -show run"
         "$mod,A,fullscreen"
         "$mod,Q,killactive"
         "$mod,P,exec,cliphist list | fuzzel --dmenu| cliphist decode | wl-copy"
@@ -126,7 +124,7 @@ in
         "$mod SHIFT,P,exec,hyprlock"
         "$mod SHIFT,H,workspace,-1"
         "$mod SHIFT,L,workspace,+1"
-        "$mod,T,togglegroup"
+        "$mod,G,togglegroup"
         "$mod SHIFT,K,changegroupactive,f"
         "$mod SHIFT,J,changegroupactive,b"
         "ALT,TAB,changegroupactive,b"
@@ -265,8 +263,8 @@ in
         gaps_in = 5;
         gaps_out = 15;
         border_size = 2;
-        "col.inactive_border" = "rgb(313244)";
-        "col.active_border" = "rgb(6666cc)";
+        "col.inactive_border" = "rgb(61202d)";
+        "col.active_border" = "rgb(d2788a)";
         resize_on_border = true;
         layout = "master";
       };

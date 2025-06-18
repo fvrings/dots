@@ -11,6 +11,7 @@ local function config()
       'nasm',
       'scheme',
       'blueprint',
+      'qmljs',
       'latex',
       'svelte',
       'vue',

@@ -9,9 +9,26 @@ let
     yazi-plugins
     yazi-starship
     yatline
+    bunny
+    yatline-catppuccin
     ouch
+    rich-preview
     yazi-fast-enter
     ;
+  # yatline' = pkgs.stdenv.mkDerivation {
+  #   pname = "yatline";
+  #   version = "patched";
+  #
+  #   src = yatline;
+  #
+  #   patches = [ ./yatline.patch ];
+  #   patchFlags = [ "-p0" ];
+  #   installPhase = ''
+  #     mkdir -p $out
+  #     cp main.lua $out/
+  #   '';
+  #
+  # };
 in
 {
   programs.yazi = {
@@ -26,6 +43,9 @@ in
       git = "${yazi-plugins}/git.yazi";
       jump_to_char = "${yazi-plugins}/jump-to-char.yazi";
       yatline = "${yatline}";
+      bunny = "${bunny}";
+      yatline-catppuccin = "${yatline-catppuccin}";
+      rich-preview = "${rich-preview}";
       starship = "${yazi-starship}";
     };
     initLua = builtins.readFile ./yazi.lua;
@@ -35,6 +55,16 @@ in
           on = "C";
           run = "plugin ouch";
           desc = "Compress with ouch";
+        }
+        {
+          on = ";";
+          run = "plugin bunny";
+          desc = "Start bunny";
+        }
+        {
+          on = "'";
+          run = "plugin bunny fuzzy";
+          desc = "Start fuzzy bunny";
         }
         {
           on = "l";
@@ -91,6 +121,29 @@ in
           name = "*/";
           run = "git";
         }
+      ];
+      plugin.prepend_previewers = [
+        {
+          name = "*.csv";
+          run = "rich-preview";
+        }
+        {
+          name = "*.md";
+          run = "rich-preview";
+        }
+        {
+          name = "*.rst";
+          run = "rich-preview";
+        }
+        {
+          name = "*.ipynb";
+          run = "rich-preview";
+        }
+        {
+          name = "*.json";
+          run = "rich-preview";
+        }
+
       ];
     };
   };

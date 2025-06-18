@@ -26,6 +26,7 @@
       mitscheme
       # vscode
       fzf
+      rich-cli
       cachix
       chafa
       just
@@ -61,11 +62,14 @@
       wget
       imagemagick
       luajitPackages.magick
+      inputs.quickshell.packages."x86_64-linux".default
+      kdePackages.qtdeclarative
     ]
     ++ [
       inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
       # inputs.pwndbg.packages.${pkgs.system}.default
     ];
+  qt.enable = true;
   programs = {
     neovim = {
       enable = true;

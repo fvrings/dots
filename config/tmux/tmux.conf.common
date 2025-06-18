@@ -25,8 +25,8 @@ set -ag status-right "#{E:@catppuccin_status_session}"
 set -ag status-right "#{E:@catppuccin_status_uptime}"
 
 TMUX_FZF_LAUNCH_KEY="C-f"
-unbind C-b
-set -g prefix C-q
+# unbind C-b
+# set -g prefix C-q
 
 set-window-option -g mode-keys vi
 bind-key -T copy-mode-vi v send-keys -X begin-selection

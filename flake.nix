@@ -134,6 +134,18 @@
       url = "github:imsi32/yatline.yazi";
       flake = false;
     };
+    bunny = {
+      url = "github:stelcodes/bunny.yazi";
+      flake = false;
+    };
+    yatline-catppuccin = {
+      url = "github:imsi32/yatline-catppuccin.yazi";
+      flake = false;
+    };
+    rich-preview = {
+      url = "github:AnirudhG07/rich-preview.yazi";
+      flake = false;
+    };
     ouch = {
       url = "github:ndtoan96/ouch.yazi";
       flake = false;
@@ -156,6 +168,14 @@
       inputs.cpu-microcodes.follows = "cpu-microcodes";
     };
     pwndbg.url = "github:pwndbg/pwndbg";
+    quickshell = {
+      # remove ?ref=v0.1.0 to track the master branch
+      url = "github:outfoxxed/quickshell?ref=v0.1.0";
+
+      # THIS IS IMPORTANT
+      # Mismatched system dependencies will lead to crashes and other issues.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   nixConfig = {
     extra-substituters = [

@@ -875,7 +875,7 @@ return {
     },
     cmd = 'FloatermToggle',
     keys = {
-      { '<c-\\>', vim.cmd.FloatermToggle, mode = { 'n', 't', 'i' } },
+      { '<a-a>', vim.cmd.FloatermToggle, mode = { 'n', 't', 'i' } },
     },
   },
 }

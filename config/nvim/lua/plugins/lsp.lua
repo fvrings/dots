@@ -50,7 +50,7 @@ local function config()
     solidity_ls = {},
     phpactor = {},
     qmlls = {
-      cmd = { 'qmlls6' },
+      cmd = { 'qmlls', '-E' },
     },
     -- typst_lsp = { settings = { exportPdf = 'onSave' } },
     tinymist = {
@@ -63,7 +63,8 @@ local function config()
   if vim.g.isnixos then
     clients = vim.tbl_extend('force', clients, { nixd = {} })
   end
-  for client, _ in pairs(clients) do
+  for client, opts in pairs(clients) do
+    vim.lsp.config(client, opts)
     vim.lsp.enable(client)
   end
 end
