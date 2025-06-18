@@ -5,6 +5,7 @@
     with pkgs;
     [
       vim
+      pstree
       nix-output-monitor
       ffmpeg
       bc

@@ -18,6 +18,9 @@
       "ghostty" = {
         source = ../config/ghostty;
       };
+      "tmux/tmux-or-nvim-kill.sh" = {
+        source = ../config/tmux/tmux-or-nvim-kill.sh;
+      };
     };
   };
   home.file.".cargo/config.toml".text = ''

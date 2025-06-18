@@ -1,6 +1,4 @@
 {
-  inputs,
-  pkgs,
   config,
   ...
 }:
@@ -12,18 +10,18 @@ in
   services.swww.enable = true;
   systemd.user.services.swww-img = {
     Install = {
-      WantedBy = [ swww ];
+      WantedBy = [ "graphical-session.target" ];
     };
 
     Unit = {
-      Description = "swww-img";
+      Description = "swww image setter";
       After = [ swww ];
-      PartOf = [ swww ];
+      Requires = [ swww ];
     };
 
     Service = {
       ExecStart = "swww img ${config.theme.wallpaper}";
-      Restart = "always";
+      Restart = "on-failure";
       RestartSec = 10;
     };
   };
@@ -89,7 +87,7 @@ in
     settings = {
       "$mod" = "SUPER";
       monitor = [
-        ",preferred,0x0,1"
+        ",preferred,0x0,1.5"
       ];
       bindle = [
         # volume

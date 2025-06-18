@@ -45,7 +45,6 @@
   };
 
   programs = {
-    ssh.startAgent = true;
     npm = {
       enable = true;
       # npmrc = ''
