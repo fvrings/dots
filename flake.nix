@@ -84,7 +84,7 @@
     };
     #NOTE:https://flake.parts/best-practices-for-module-writing
     flake-parts.url = "github:hercules-ci/flake-parts";
-    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
+    # rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
@@ -158,14 +158,8 @@
     #   url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-1.tar.gz";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    niri.url = "github:sodiboo/niri-flake";
-    cpu-microcodes = {
-      url = "github:platomav/CPUMicrocodes/ec5200961ecdf78cf00e55d73902683e835edefd";
-      flake = false;
-    };
     ucodenix = {
       url = "github:e-tho/ucodenix";
-      inputs.cpu-microcodes.follows = "cpu-microcodes";
     };
     pwndbg.url = "github:pwndbg/pwndbg";
     quickshell = {

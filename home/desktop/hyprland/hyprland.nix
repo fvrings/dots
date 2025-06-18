@@ -1,4 +1,6 @@
 {
+  inputs,
+  pkgs,
   config,
   ...
 }:
@@ -6,6 +8,7 @@ let
   swww = "swww.service";
 in
 {
+  catppuccin.hyprland.enable = true;
   programs.fuzzel.enable = true;
   services.swww.enable = true;
   systemd.user.services.swww-img = {
@@ -291,7 +294,7 @@ in
         "WLR_NO_HARDWARE_CURSORS,1"
         "NVD_BACKEND,direct"
         "ELECTRON_OZONE_PLATFORM_HINT,auto"
-        "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+        # "HYPRCURSOR_THEME,rose-pine-hyprcursor"
         "HYPRCURSOR_SIZE,38"
         "XMODIFIERS,fcitx"
         "QT_IM_MODULE=fcitx,fcitx"

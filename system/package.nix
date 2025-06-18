@@ -24,6 +24,7 @@
       lldb
       # wikiman
       mitscheme
+      # alacritty-graphics
       # vscode
       fzf
       rich-cli
@@ -66,7 +67,7 @@
       kdePackages.qtdeclarative
     ]
     ++ [
-      inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+      # inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
       # inputs.pwndbg.packages.${pkgs.system}.default
     ];
   qt.enable = true;

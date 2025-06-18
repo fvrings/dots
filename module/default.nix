@@ -13,6 +13,5 @@
     inputs.home-manager.nixosModules.home-manager
     inputs.lanzaboote.nixosModules.lanzaboote
     inputs.impermanence.nixosModules.impermanence
-    # inputs.niri.nixosModules.niri
   ];
 }

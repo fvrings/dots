@@ -222,7 +222,7 @@ in
         };
       };
     };
-    zellij.enable = true;
+    # zellij.enable = true;
     btop = {
       enable = true;
       settings = {
@@ -315,14 +315,11 @@ in
     bash = {
       enable = true;
       enableCompletion = true;
-      # TODO 在这里添加你的自定义 bashrc 内容
       bashrcExtra = ''
         export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
       '';
 
-      # TODO 设置一些别名方便使用，你可以根据自己的需要进行增删
       shellAliases = {
-        #k = "kubectl";
         asd = "lazygit";
         e = "nvim";
         q = "exit";
@@ -392,6 +389,10 @@ in
       # '';
       "nvim" = {
         source = mkOutOfStoreSymlink "/etc/nixos/dots/config/nvim";
+      };
+
+      "niri" = {
+        source = mkOutOfStoreSymlink "/etc/nixos/dots/system/desktop/niri";
       };
       "nix-extra/sqlite3.path".text = "${pkgs.sqlite.out}/lib/libsqlite3.so";
       "direnv/direnvrc".text = ''

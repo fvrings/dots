@@ -1,10 +1,6 @@
 _: {
   programs.waybar = {
     enable = true;
-    systemd = {
-      enable = true;
-      target = "hyprland-session.target";
-    };
     style = builtins.readFile ./waybar-style.css;
     settings = {
       mainBar = {
@@ -15,10 +11,7 @@ _: {
         margin = "8px 8px 0";
         modules-left = [
           "custom/heart"
-          "hyprland/workspaces"
-        ];
-        modules-center = [
-          "hyprland/submap"
+          "niri/workspaces"
         ];
         modules-right = [
           "network"
@@ -34,10 +27,8 @@ _: {
           "icon-size" = 21;
           "spacing" = 10;
         };
-        "hyprland/workspaces" = {
-          "disable-scroll" = true;
+        "niri/workspaces" = {
           "all-outputs" = true;
-          "warp-on-scroll" = false;
           "format" = "{icon}";
           "format-icons" = {
             "1" = "壹";
@@ -51,10 +42,6 @@ _: {
         "custom/heart" = {
           "format" = "";
           "on-click" = "systemctl hibernate";
-        };
-        "hyprland/submap" = {
-          "format" = "🍭: {}";
-          "tooltip" = false;
         };
         "clock" = {
           "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";

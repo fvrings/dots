@@ -20,6 +20,7 @@
       "usb_storage"
       "sd_mod"
       "sdhci_pci"
+      "uas"
     ];
     initrd.kernelModules = [ "dm-snapshot" ];
     kernelModules = [ "kvm-amd" ];

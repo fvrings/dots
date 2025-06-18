@@ -5,6 +5,7 @@
     # if osConfig.networking.hostName == "art" then
     [
       ./hyprland.nix
+      ./niri
       ./gnome.nix
       ./steam.nix
       ./hardware.nix
@@ -14,7 +15,7 @@
       ./fcitx.nix
 
       ../core.nix
-      ../theme.nix
+      # ../theme.nix
       ../service
       ../dae.nix
       ../package.nix
@@ -25,12 +26,13 @@
       ../network.nix
       ../virtual.nix
       ../boot.nix
-      ./boot.nix
+      ./lanzaboote.nix
+
       ./luks-disk.nix
       # ../impermanence.nix
     ];
 
   services.ucodenix = {
-    enable = false;
+    enable = true;
   };
 }

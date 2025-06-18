@@ -861,8 +861,8 @@ return {
     dependencies = 'nvzone/volt',
     opts = {
       border = false,
-      size_h = 70,
-      size_w = 90,
+
+      size = { h = 80, w = 90 },
 
       -- Default sets of terminals you'd like to open
       terminals = {

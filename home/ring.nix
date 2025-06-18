@@ -112,9 +112,6 @@
         };
       };
     };
-    wezterm = {
-      enable = false;
-    };
   };
 
   # Let Home Manager install and manage itself.
