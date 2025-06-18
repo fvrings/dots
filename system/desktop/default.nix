@@ -26,6 +26,7 @@
       ../virtual.nix
       ../boot.nix
       ./boot.nix
+      ./luks-disk.nix
       # ../impermanence.nix
     ];
 
