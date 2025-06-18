@@ -87,7 +87,7 @@ in
     settings = {
       "$mod" = "SUPER";
       monitor = [
-        ",preferred,0x0,1.5"
+        ",preferred,0x0,1.8"
       ];
       bindle = [
         # volume
@@ -171,7 +171,7 @@ in
         };
       };
       xwayland = {
-        force_zero_scaling = true;
+        force_zero_scaling = false;
       };
 
       master = {

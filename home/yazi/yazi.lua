@@ -1,5 +1,6 @@
 require('git'):setup()
 require('starship'):setup()
+--TODO:https://github.com/imsi32/yatline.yazi/issues/59
 require('yatline'):setup {
   show_background = false,
   header_line = {

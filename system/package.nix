@@ -43,6 +43,7 @@
       ast-grep
       man-pages
       clang
+      xunlei-uos
       luajit
       uiua
       devenv
