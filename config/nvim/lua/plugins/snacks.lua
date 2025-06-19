@@ -43,7 +43,7 @@ return {
             key = 'u',
           },
           {
-            icon = '☀️',
+            icon = '📖',
             desc = "Today's notes",
             action = ':Neorg journal today',
             key = 't',
@@ -97,7 +97,7 @@ return {
             key = 'r',
           },
           {
-            icon = '🔗',
+            icon = '🧬',
             desc = 'Session',
             action = ':ContinueLoad',
             key = 'e',
@@ -111,7 +111,7 @@ return {
           --   key = 'l',
           -- },
           {
-            icon = '❗',
+            icon = '🍺',
             desc = 'Exit',
             action = ':quit',
             key = 'q',
