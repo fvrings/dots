@@ -31,8 +31,7 @@ in
         }
         {
           timeout = timeout * 2;
-          on-timeout = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
-          on-resume = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
+          on-timeout = "${pkgs.niri}/bin/niri msg action power-off-monitors";
         }
         {
           timeout = timeout * 6;

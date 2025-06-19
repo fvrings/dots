@@ -4,7 +4,7 @@
     # TODO: have to find a way to optionally enable windowManager
     # if osConfig.networking.hostName == "art" then
     [
-      ./hyprland.nix
+      ./display-manager.nix
       ./niri
       ./gnome.nix
       ./steam.nix

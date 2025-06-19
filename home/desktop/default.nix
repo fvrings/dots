@@ -1,13 +1,7 @@
-{
-  pkgs,
-  lib,
-  inputs,
-  ...
-}:
-{
+_: {
   home-manager = {
     users.ring.imports = [
-      ./hyprland
+      ./bg-utils
       ./theme.nix
       ./wallpaper.nix
       ./waybar.nix

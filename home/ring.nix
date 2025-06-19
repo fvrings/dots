@@ -58,19 +58,6 @@
         pip.index-url = "http://mirrors.aliyun.com/pypi/simple/";
       };
     };
-    # ags = {
-    #   enable = true;
-    #
-    #   # null or path, leave as null if you don't want hm to manage the config
-    #   # configDir = ../ags;
-    #
-    #   # package = inputs.ags.packages.${pkgs.system}.agsFull;
-    #   # extraPackages = [
-    #   #   inputs.ags.packages.${pkgs.system}.battery
-    #   #   inputs.ags.packages.${pkgs.system}.network
-    #   #   inputs.ags.packages.${pkgs.system}.hyprland
-    #   # ];
-    # };
     kitty = {
       enable = true;
       font.size = 12;

@@ -84,7 +84,6 @@
     };
     #NOTE:https://flake.parts/best-practices-for-module-writing
     flake-parts.url = "github:hercules-ci/flake-parts";
-    # rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     pre-commit-hooks.url = "github:cachix/git-hooks.nix";
@@ -95,20 +94,6 @@
     };
     nur.url = "github:nix-community/NUR";
     daeuniverse.url = "github:daeuniverse/flake.nix";
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hypr-darkwindow = {
-      url = "github:micha4w/Hypr-DarkWindow";
-      inputs.hyprland.follows = "hyprland";
-    };
-    hypr-dynamic-cursors = {
-      url = "github:VirtCode/hypr-dynamic-cursors";
-      inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
-    };
-    # pyprland.url = "github:hyprland-community/pyprland";
     # flake-root.url = "github:srid/flake-root";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -178,7 +163,6 @@
       "https://cache.garnix.io"
       "https://nix-community.cachix.org"
       "https://numtide.cachix.org"
-      "https://hyprland.cachix.org"
       "https://yazi.cachix.org"
       # "https://ags.cachix.org"
       "https://pwndbg.cachix.org"
@@ -186,7 +170,6 @@
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "pwndbg.cachix.org-1:HhtIpP7j73SnuzLgobqqa8LVTng5Qi36sQtNt79cD3k="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       # "ags.cachix.org-1:naAvMrz0CuYqeyGNyLgE010iUiuf/qx6kYrUv3NwAJ8="
       "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
       "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
