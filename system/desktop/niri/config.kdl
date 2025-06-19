@@ -142,9 +142,10 @@ layout {
 // spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "fcitx5"
-spawn-at-startup "waybar"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "wlsunset" "-l" "39.9" "-L" "116.3"
+// spawn-at-startup "quickshell"
+spawn-at-startup "waybar"
 // Or, if you built it by hand:
 // spawn-at-startup "~/path/to/code/target/release/xwayland-satellite"
 

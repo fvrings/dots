@@ -178,13 +178,22 @@ return {
     -- lazy = false,
     opts = {
       default_explorer = true,
-      window_config = {
-        width = 0.3,
-        split = 'left',
+      close_on_select = true,
+      views = {
+        file_tree = {
+          width = 0.8,
+          height = 0.8,
+          kind = 'float',
+          border = 'rounded',
+        },
       },
-      window_options = {
-        number = false,
-        relativenumber = false,
+      mappings = {
+        file_tree = {
+          n = {
+            ['q'] = 'CloseView',
+            ['<CR>'] = 'Select',
+          },
+        },
       },
     },
     keys = {
@@ -860,7 +869,7 @@ return {
     'nvzone/floaterm',
     dependencies = 'nvzone/volt',
     opts = {
-      border = false,
+      border = true,
 
       size = { h = 80, w = 90 },
 

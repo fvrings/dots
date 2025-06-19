@@ -4,6 +4,7 @@
     libvirtd = {
       enable = true;
       qemu = {
+        vhostUserPackages = with pkgs; [ virtiofsd ];
         swtpm.enable = true;
         ovmf = {
           enable = true;

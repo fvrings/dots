@@ -343,14 +343,13 @@ return {
       { 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]] },
     },
   },
-  -- {
-  --   'aileot/emission.nvim',
-  --   event = 'VeryLazy',
-  --   opts = {
-  --     excluded_filetypes = {
-  --       -- 'oil',
-  --       'fyler',
-  --     },
-  --   },
-  -- },
+  {
+    'aileot/emission.nvim',
+    event = 'VeryLazy',
+    opts = {
+      excluded_filetypes = {
+        'fyler',
+      },
+    },
+  },
 }

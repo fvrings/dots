@@ -12,9 +12,6 @@
       "hypr/scripts" = {
         source = ./desktop/scripts;
       };
-      "wezterm" = {
-        source = ../config/wezterm;
-      };
       "ghostty" = {
         source = ../config/ghostty;
       };
