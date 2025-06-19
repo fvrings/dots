@@ -345,7 +345,7 @@ return {
         bindings = {
           ['K'] = 'ScrollOutputUp',
           ['J'] = 'ScrollOutputDown',
-          -- ['<C-\\>'] = 'OpenQuickFix',
+          ['<C-\\>'] = 'OpenQuickFix',
         },
       },
       -- actions = {

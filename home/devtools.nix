@@ -268,7 +268,6 @@ in
         }
         vim-tmux-navigator
         resurrect
-        tmux-fzf
         fzf-tmux-url
       ];
       #BUG:https://github.com/nix-community/home-manager/issues/3555

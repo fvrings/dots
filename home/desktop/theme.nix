@@ -8,9 +8,9 @@
     };
   };
 
-  xdg = {
-    dataFile = {
-      "fcitx5/themes".source = "${pkgs.fcitx5-rose-pine}/share/fcitx5/themes";
-    };
-  };
+  # xdg = {
+  #   dataFile = {
+  #     "fcitx5/themes".source = "${pkgs.fcitx5-rose-pine}/share/fcitx5/themes";
+  #   };
+  # };
 }

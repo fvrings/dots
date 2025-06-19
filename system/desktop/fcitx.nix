@@ -8,19 +8,14 @@ let
   fcitx5-rime-with-addons =
     (pkgs.fcitx5-rime.override {
       librime = pkgs.nur.repos.xddxdd.lantianCustomized.librime-with-plugins;
-      rimeDataPkgs =
-        with pkgs.nur.repos.xddxdd;
-        with pkgs;
-        [
-          rime-aurora-pinyin
-          rime-custom-pinyin-dictionary
-          rime-data
-          rime-dict
-          rime-ice
-          rime-rings-custom
-          rime-moegirl
-          rime-zhwiki
-        ];
+      rimeDataPkgs = with pkgs; [
+        nur.repos.xddxdd.rime-dict
+        nur.repos.xddxdd.rime-ice
+        nur.repos.xddxdd.rime-moegirl
+        nur.repos.xddxdd.rime-zhwiki
+        rime-data
+        rime-rings-custom
+      ];
     }).overrideAttrs
       (old: {
         # Prebuild schema data
@@ -44,7 +39,7 @@ in
         waylandFrontend = true;
         addons = with pkgs; [
           fcitx5-gtk
-          libsForQt5.fcitx5-qt
+          kdePackages.fcitx5-qt
           fcitx5-rime-with-addons
           fcitx5-rose-pine
         ];

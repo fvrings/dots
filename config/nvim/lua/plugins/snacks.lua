@@ -15,7 +15,7 @@ return {
         -- input window
         input = {
           keys = {
-            -- ['<c-\\>'] = { 'qflist', mode = { 'i' } },
+            ['<c-\\>'] = { 'qflist', mode = { 'i' } },
             ['<c-u>'] = { 'preview_scroll_up', mode = { 'i', 'n' } },
             ['<c-f>'] = { 'list_scroll_down', mode = { 'i', 'n' } },
             ['<c-d>'] = { 'preview_scroll_down', mode = { 'i', 'n' } },

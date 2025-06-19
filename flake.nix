@@ -100,7 +100,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # ags.url = "github:Aylur/ags";
-    astal.url = "github:Aylur/astal";
+    # astal.url = "github:Aylur/astal";
     catppuccin.url = "github:catppuccin/nix";
     yazi.url = "github:sxyazi/yazi";
     yazi-plugins = {
