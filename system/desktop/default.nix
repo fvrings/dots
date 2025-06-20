@@ -15,7 +15,6 @@
       ./fcitx.nix
 
       ../core.nix
-      # ../theme.nix
       ../service
       ../dae.nix
       ../package.nix

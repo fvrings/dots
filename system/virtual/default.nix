@@ -2,7 +2,6 @@
 {
   imports = [
     ../core.nix
-    ../theme.nix
     ../service
     ../package.nix
     ../fonts.nix
