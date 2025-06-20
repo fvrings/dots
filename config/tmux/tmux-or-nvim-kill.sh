@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
-# Get pane PID
-pane_pid=$(tmux display-message -p "#{pane_pid}")
+tty=$(tmux display-message -p '#{pane_tty}')
 
-# Check for Neovim process in pane's tree
-if pgrep -P "$pane_pid" -af | grep -qE 'yazi|nvim|vim'; then
-  # tmux display-message -d 100 'Neovim detected, M-q passed'
+pgrep_tty="${tty#/dev/}"
+
+is_vim() {
+  pgrep -t "$pgrep_tty" -x nvim >/dev/null 2>&1
+}
+if is_vim; then
   tmux send-keys -t "$TMUX_PANE" M-q
 else
-  # No Neovim, kill the window
+  echo 2
   tmux kill-pane
 fi
