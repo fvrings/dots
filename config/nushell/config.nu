@@ -103,32 +103,30 @@ $env.config = {
 
 
 alias e = nvim
-alias em = emacsclient -c
+# alias em = emacsclient -c
 alias asd = lazygit
 alias pa = paru --bottomup
-alias se = sudoedit nvim
+# alias se = sudoedit nvim
 alias q = exit
 alias la = ls -al
 alias ll = ls -l
 alias l = eza -T
 alias ff = fastfetch
 alias cdtmp = cd (mktemp -d)
-alias zj = zellij
-alias pc = proxychains -q
+# alias zj = zellij
+# alias pc = proxychains -q
 alias ca = cargo
-alias n = prime-run neovide
 alias s = kitten ssh
 alias t = tmux
 # alias mpv = prime-run mpv
-alias activate-python-venv = overlay use .venv/bin/activate.nu
+alias pyv = overlay use .venv/bin/activate.nu
 
 if $nu.os-info.name == "windows" {
     # $env.PATH ++= ['~/go/bin/' '~/.cargo/bin' '~/.local/bin']
 } else {
     $env.PATH =  ['~/.nix-profile/bin/' '~/.moon/bin/'] ++ $env.PATH
     $env.PATH ++= ['~/go/bin/' ('~/.cargo/bin' |path expand) '~/.local/bin']
-    $env.PATH ++= [ '/usr/share/bcc/tools/' ('~/Android/Sdk/platform-tools' |path expand)]
-    $env.ANDROID_HOME = [$env.HOME "Android/Sdk/"] | path join
+    $env.PATH ++= [  ('~/Android/Sdk/platform-tools' |path expand)]
 }
 
 $env.ANDROID_HOME = [$env.HOME "Android/Sdk/"] | path join

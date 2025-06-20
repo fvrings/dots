@@ -1,3 +1,4 @@
+---@diagnostic disable: need-check-nil
 local org_path = function(path)
   local org_directory = '~/notes/orgfiles'
   return ('%s/%s'):format(org_directory, path)
@@ -872,6 +873,21 @@ return {
       border = true,
 
       size = { h = 80, w = 90 },
+
+      mappings = {
+        term = function(buf)
+          local esc_timer = vim.uv.new_timer()
+          vim.keymap.set('t', '<Esc>', function()
+            if esc_timer:is_active() then
+              esc_timer:stop()
+              vim.cmd 'stopinsert' -- same as <C-\><C-n>
+            else
+              esc_timer:start(200, 0, function() end)
+              return '<Esc>'
+            end
+          end, { expr = true, noremap = true, desc = 'Double <Esc> to Normal mode in terminal', buffer = buf })
+        end,
+      },
 
       -- Default sets of terminals you'd like to open
       terminals = {
