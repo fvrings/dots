@@ -349,6 +349,7 @@ return {
     opts = {
       excluded_filetypes = {
         'fyler',
+        'oil',
       },
     },
   },

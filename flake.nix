@@ -136,9 +136,9 @@
       flake = false;
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    zjstatus = {
-      url = "github:dj95/zjstatus";
-    };
+    # zjstatus = {
+    #   url = "github:dj95/zjstatus";
+    # };
     # lix-module = {
     #   url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-1.tar.gz";
     #   inputs.nixpkgs.follows = "nixpkgs";

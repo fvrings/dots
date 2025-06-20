@@ -89,6 +89,11 @@ in
           run = "plugin mount";
           desc = "Mount";
         }
+        {
+          on = "e";
+          run = "shell --block -- nvim -c 'ContinueLoad'";
+          desc = "open cwd with neovim";
+        }
       ];
     };
     settings = {

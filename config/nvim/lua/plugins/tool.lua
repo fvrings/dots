@@ -205,62 +205,62 @@ return {
     },
   },
 
-  -- {
-  --   'stevearc/oil.nvim',
-  --   opts = {
-  --     keymaps = {
-  --       ['H'] = { 'actions.parent', mode = 'n' },
-  --       ['L'] = 'actions.select',
-  --       ['<m-q>'] = { 'actions.close', mode = 'n' },
-  --       ['gd'] = {
-  --         desc = 'Toggle file detail view',
-  --         callback = function()
-  --           vim.g.oil_detail = not vim.g.oil_detail
-  --           if vim.g.oil_detail then
-  --             require('oil').set_columns { 'icon', 'permissions', 'size', 'mtime' }
-  --           else
-  --             require('oil').set_columns { 'icon' }
-  --           end
-  --         end,
-  --       },
-  --     },
-  --     -- float = {
-  --     --   padding = 10,
-  --     --   win_options = {
-  --     --     winblend = 10,
-  --     --   },
-  --     --   get_win_title = function()
-  --     --     return nil
-  --     --   end,
-  --     -- },
-  --   },
-  --   init = function()
-  --     vim.g.oil_detail = false
-  --     vim.api.nvim_create_autocmd('User', {
-  --       pattern = 'OilEnter',
-  --       callback = vim.schedule_wrap(function(args)
-  --         local oil = require 'oil'
-  --         if vim.api.nvim_get_current_buf() == args.data.buf and oil.get_cursor_entry() then
-  --           oil.open_preview()
-  --         end
-  --       end),
-  --     })
-  --   end,
-  --   event = 'VeryLazy',
-  --   keys = {
-  --     {
-  --       '<leader>oo',
-  --       vim.cmd.Oil,
-  --       desc = 'Oil',
-  --     },
-  --     -- {
-  --     --   '<c-e>',
-  --     --   function()
-  --     --     require('oil').toggle_float()
-  --     --   end,
-  --     -- },
-  --   },
-  -- },
+  {
+    'stevearc/oil.nvim',
+    opts = {
+      keymaps = {
+        ['H'] = { 'actions.parent', mode = 'n' },
+        ['L'] = 'actions.select',
+        ['<m-q>'] = { 'actions.close', mode = 'n' },
+        ['gd'] = {
+          desc = 'Toggle file detail view',
+          callback = function()
+            vim.g.oil_detail = not vim.g.oil_detail
+            if vim.g.oil_detail then
+              require('oil').set_columns { 'icon', 'permissions', 'size', 'mtime' }
+            else
+              require('oil').set_columns { 'icon' }
+            end
+          end,
+        },
+      },
+      -- float = {
+      --   padding = 10,
+      --   win_options = {
+      --     winblend = 10,
+      --   },
+      --   get_win_title = function()
+      --     return nil
+      --   end,
+      -- },
+    },
+    init = function()
+      vim.g.oil_detail = false
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'OilEnter',
+        callback = vim.schedule_wrap(function(args)
+          local oil = require 'oil'
+          if vim.api.nvim_get_current_buf() == args.data.buf and oil.get_cursor_entry() then
+            oil.open_preview()
+          end
+        end),
+      })
+    end,
+    event = 'VeryLazy',
+    keys = {
+      {
+        '<leader>oo',
+        vim.cmd.Oil,
+        desc = 'Oil',
+      },
+      -- {
+      --   '<c-e>',
+      --   function()
+      --     require('oil').toggle_float()
+      --   end,
+      -- },
+    },
+  },
   {
     'pwntester/octo.nvim',
     dependencies = {

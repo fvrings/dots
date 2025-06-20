@@ -149,8 +149,8 @@ return {
           enabled = vim.fn.exists '~/notes',
           section = 'terminal',
           -- TODO: https://github.com/folke/snacks.nvim/issues/1706
-          cmd = 'nvim -u NONE --noplugin --headless -l ~/.config/nvim/lua/todos.lua',
-          -- cmd = 'nvim -u NONE --noplugin --headless -l ~/.config/nvim/lua/todos.lua e>| lolcat e> /dev/null',
+          -- cmd = 'nvim -u NONE --noplugin --headless -l ~/.config/nvim/lua/todos.lua',
+          cmd = 'nvim -u NONE --noplugin --headless -l ~/.config/nvim/lua/todos.lua e>| lolcat e> /dev/null',
           height = 8,
           ttl = 60,
           indent = 2,
