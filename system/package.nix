@@ -5,6 +5,7 @@
     with pkgs;
     [
       vim
+      godot
       pstree
       quickemu
       nix-output-monitor

@@ -201,20 +201,20 @@ return {
       },
     },
   },
-  {
-    'tzachar/highlight-undo.nvim',
-    opts = {
-      hlgroup = 'HighlightUndo',
-      duration = 300,
-      pattern = { '*' },
-      ignored_filetypes = {
-        'mason',
-        'lazy',
-        'fyler',
-      },
-    },
-    event = 'VeryLazy',
-  },
+  -- {
+  --   'tzachar/highlight-undo.nvim',
+  --   opts = {
+  --     hlgroup = 'HighlightUndo',
+  --     duration = 300,
+  --     pattern = { '*' },
+  --     ignored_filetypes = {
+  --       'mason',
+  --       'lazy',
+  --       'fyler',
+  --     },
+  --   },
+  --   event = 'VeryLazy',
+  -- },
   -- {
   -- 	"RaafatTurki/hex.nvim",
   -- 	config = true,
@@ -347,9 +347,12 @@ return {
     'aileot/emission.nvim',
     event = 'VeryLazy',
     opts = {
-      excluded_filetypes = {
-        'fyler',
-        'oil',
+      attach = {
+        excluded_filetypes = {
+          'fyler',
+          'orgagenda',
+          'oil',
+        },
       },
     },
   },

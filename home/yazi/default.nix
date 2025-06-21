@@ -37,6 +37,7 @@ in
     enableNushellIntegration = true;
     plugins = {
       chmod = "${yazi-plugins}/chmod.yazi";
+      mime-ext = "${yazi-plugins}/mime-ext.yazi";
       fast_enter = "${yazi-fast-enter}";
       ouch = "${ouch}";
       mount = "${yazi-plugins}/mount.yazi";
@@ -120,6 +121,12 @@ in
           id = "git";
           name = "*";
           run = "git";
+        }
+        {
+          id = "mime";
+          name = "*";
+          run = "mime-ext";
+          prio = "high";
         }
         {
           id = "git";

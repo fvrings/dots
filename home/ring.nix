@@ -87,6 +87,7 @@
     };
     alacritty = {
       enable = true;
+      package = pkgs.alacritty-graphics;
       settings = {
         font = {
           size = 13;

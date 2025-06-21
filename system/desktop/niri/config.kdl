@@ -144,6 +144,8 @@ spawn-at-startup "xwayland-satellite"
 spawn-at-startup "fcitx5"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "wlsunset" "-l" "39.9" "-L" "116.3"
+// BUG: seems to be related https://github.com/YaLTeR/niri/issues/1863
+spawn-at-startup "systemctl" "--user" "restart" "xdg-desktop-portal-gtk.service"
 // spawn-at-startup "quickshell"
 spawn-at-startup "waybar"
 // Or, if you built it by hand:

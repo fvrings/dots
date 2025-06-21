@@ -10,6 +10,5 @@ is_vim() {
 if is_vim; then
   tmux send-keys -t "$TMUX_PANE" M-q
 else
-  echo 2
   tmux kill-pane
 fi
