@@ -1,9 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}:
-{
+_: {
 
   services = {
     gvfs.enable = true;
@@ -15,6 +10,7 @@
         animation = "colormix";
         bigclock = "en";
         blank_box = false;
+        clock = "%Y %a %b %d %X";
       };
     };
   };

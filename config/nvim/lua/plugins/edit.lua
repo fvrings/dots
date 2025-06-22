@@ -89,8 +89,14 @@ return {
         },
       },
     },
-    cmd = 'GrugFar',
+    cmd = { 'GrugFar', 'GrugFarWithin' },
     keys = {
+      {
+        '<leader>sf',
+        vim.cmd.GrugFarWithin,
+        desc = 'grugfar',
+        mode = 'v',
+      },
       {
         '<leader>sf',
         vim.cmd.GrugFar,

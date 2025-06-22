@@ -1,6 +1,10 @@
 _: {
   boot = {
     initrd.systemd.enable = true;
+    supportedFilesystems = [
+      "ntfs"
+      "bcachefs"
+    ];
     tmp.useTmpfs = true;
     loader = {
       efi.canTouchEfiVariables = true;

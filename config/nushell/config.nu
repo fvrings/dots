@@ -49,8 +49,8 @@ let multiple_completers = {|spans|
   match $spans.0 {
     z => $zoxide_completer
     zi => $zoxide_completer
-    # _ => $fish_completer
-    _ => $carapace_completer
+    _ => $fish_completer
+    # _ => $carapace_completer
   } | do $in $spans
 }
 $env.config.history.isolation = false
