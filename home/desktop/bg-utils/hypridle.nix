@@ -33,10 +33,10 @@ in
           timeout = timeout * 2;
           on-timeout = "${pkgs.niri}/bin/niri msg action power-off-monitors";
         }
-        {
-          timeout = timeout * 6;
-          on-timeout = "systemctl suspend";
-        }
+        # {
+        #   timeout = timeout * 6;
+        #   on-timeout = "systemctl suspend";
+        # }
       ];
     };
   };

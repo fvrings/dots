@@ -18,7 +18,7 @@ for _, file in ipairs(files) do
     then
       if headline.todo_type == 'TODO' then
         print(
-          headline.todo_value
+          string.sub(headline.todo_value, 1, 4)
             .. ' '
             .. 'S '
             .. headline.scheduled.month
@@ -37,7 +37,7 @@ for _, file in ipairs(files) do
     then
       if headline.todo_type == 'TODO' then
         print(
-          headline.todo_value
+          string.sub(headline.todo_value, 1, 4)
             .. ' '
             .. 'D '
             .. headline.deadline.month

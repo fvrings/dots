@@ -1,4 +1,3 @@
--- local catppuccin_theme = require('yatline-catppuccin'):setup 'mocha' -- or "latte" | "frappe" | "macchiato"
 require('git'):setup()
 require('starship'):setup()
 require('bunny'):setup {
@@ -22,36 +21,3 @@ require('bunny'):setup {
   notify = false, -- Notify after hopping, default is false
   fuzzy_cmd = 'fzf', -- Fuzzy searching command, default is "fzf"
 }
---TODO:https://github.com/imsi32/yatline.yazi/issues/59
--- require('yatline'):setup {
---   show_background = false,
---
---   theme = catppuccin_theme,
---
---   status_line = {
---     left = {
---       section_a = {
---         { type = 'string', custom = false, name = 'tab_mode' },
---       },
---       section_b = {
---         { type = 'string', custom = false, name = 'hovered_size' },
---       },
---       section_c = {
---         { type = 'string', custom = false, name = 'hovered_path' },
---         { type = 'coloreds', custom = false, name = 'count' },
---       },
---     },
---     right = {
---       section_a = {
---         { type = 'string', custom = false, name = 'cursor_position' },
---       },
---       section_b = {
---         { type = 'string', custom = false, name = 'cursor_percentage' },
---       },
---       section_c = {
---         { type = 'string', custom = false, name = 'hovered_file_extension', params = { true } },
---         { type = 'coloreds', custom = false, name = 'permissions' },
---       },
---     },
---   },
--- }

@@ -43,6 +43,7 @@
       # cargo
       rustup
       # rust-bin.stable.latest.default
+      libreoffice
       linux-manual
       ast-grep
       man-pages

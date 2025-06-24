@@ -115,16 +115,8 @@
       url = "github:ourongxing/fast-enter.yazi";
       flake = false;
     };
-    yatline = {
-      url = "github:imsi32/yatline.yazi";
-      flake = false;
-    };
     bunny = {
       url = "github:stelcodes/bunny.yazi";
-      flake = false;
-    };
-    yatline-catppuccin = {
-      url = "github:imsi32/yatline-catppuccin.yazi";
       flake = false;
     };
     rich-preview = {

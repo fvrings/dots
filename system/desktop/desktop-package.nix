@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     google-chrome
@@ -10,7 +10,6 @@
     qbittorrent-enhanced
     playerctl
     filebrowser
-    grim
     ddcutil
     gparted
     qcm
@@ -24,7 +23,6 @@
     wl-clipboard
     neovide
     obs-studio
-    slurp
     wlsunset
     flameshot
   ];
