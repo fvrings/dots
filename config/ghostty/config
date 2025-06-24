@@ -22,9 +22,9 @@
 # fullscreen = true
 font-family = monospace
 # font-style = Bold
-font-size = 11
-theme = catppuccin-mocha
-# theme = Oxocarbon
+font-size = 13
+# theme = catppuccin-mocha
+theme = Oxocarbon
 keybind = ctrl+enter=unbind
 keybind = f10=toggle_fullscreen
 # NOTE:for tmux

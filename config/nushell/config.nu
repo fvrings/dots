@@ -10,7 +10,7 @@ let fish_completer = {|spans|
 # source ~/github/nu_scripts/themes/nu-themes/github-dark-default.nu
 # source ~/github/nu_scripts/themes/nu-themes/sea-shells.nu
 # source ~/github/nu_scripts/themes/nu-themes/tempus-future.nu
-source horizon-dark.nu
+# source horizon-dark.nu
 
 def --env yy [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXXX")

@@ -8,6 +8,11 @@ return {
 
   {
     'nyoom-engineering/oxocarbon.nvim',
+    config = function()
+      vim.cmd.colorscheme 'oxocarbon'
+    end,
+    lazy = false,
+    priority = 1000,
   },
 
   'olimorris/onedarkpro.nvim',
@@ -28,12 +33,6 @@ return {
         },
       },
     },
-    config = function(_, opts)
-      require('kanagawa').setup(opts)
-      vim.cmd.colorscheme 'kanagawa'
-    end,
-    lazy = false,
-    priority = 1000,
   },
 
   'scottmckendry/cyberdream.nvim',
