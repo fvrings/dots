@@ -1,6 +1,8 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
-  font-family: ComicShannsMono Nerd Font, sans-serif;
+  font-family:
+    ComicShannsMono Nerd Font,
+    sans-serif;
   font-size: 18px;
   font-weight: bolder;
 }
