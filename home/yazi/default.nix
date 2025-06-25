@@ -116,29 +116,29 @@ in
           run = "git";
         }
       ];
-      plugin.prepend_previewers = [
-        {
-          name = "*.csv";
-          run = "rich-preview";
-        }
-        {
-          name = "*.md";
-          run = "rich-preview";
-        }
-        {
-          name = "*.rst";
-          run = "rich-preview";
-        }
-        {
-          name = "*.ipynb";
-          run = "rich-preview";
-        }
-        {
-          name = "*.json";
-          run = "rich-preview";
-        }
-
-      ];
+      # plugin.prepend_previewers = [
+      #   {
+      #     name = "*.csv";
+      #     run = "rich-preview";
+      #   }
+      #   {
+      #     name = "*.md";
+      #     run = "rich-preview";
+      #   }
+      #   {
+      #     name = "*.rst";
+      #     run = "rich-preview";
+      #   }
+      #   {
+      #     name = "*.ipynb";
+      #     run = "rich-preview";
+      #   }
+      #   {
+      #     name = "*.json";
+      #     run = "rich-preview";
+      #   }
+      #
+      # ];
     };
   };
 }

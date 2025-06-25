@@ -56,6 +56,6 @@
     };
     channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
     registry.nixpkgs.flake = inputs.nixpkgs;
-    # registry.nixpkgs-stable.flake = inputs.nixpkgs-stable;
+    registry.nixstb.flake = inputs.nixpkgs-stable;
   };
 }

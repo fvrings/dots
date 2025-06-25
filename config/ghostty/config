@@ -21,6 +21,7 @@
 # # separated by equals signs.
 # fullscreen = true
 font-family = monospace
+gtk-single-instance = true
 # font-style = Bold
 font-size = 13
 # theme = catppuccin-mocha

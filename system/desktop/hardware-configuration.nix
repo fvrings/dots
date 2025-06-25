@@ -22,14 +22,12 @@
       "sdhci_pci"
       "uas"
     ];
-    initrd.kernelModules = [ "dm-snapshot" ];
+    initrd.kernelModules = [
+      "dm-snapshot"
+      "amdgpu"
+    ];
     kernelModules = [ "kvm-amd" ];
-    # initrd.kernelModules = [
-    #   "amdgpu"
-    #   "i2c-dev"
-    #   "ddcci_backlight"
-    # ];
-    # kernelModules = [ "kvm-amd" ];
+
     # kernelParams = [
     #   "acpi_backlight=video"
     # ];
