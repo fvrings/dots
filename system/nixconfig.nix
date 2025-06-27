@@ -18,7 +18,7 @@
       !include ${config.sops.secrets."gh".path}
     '';
     gc = {
-      # automatic = true;
+      automatic = true;
       dates = "weekly";
       options = "--delete-older-than 1w";
     };
@@ -52,7 +52,7 @@
         "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
         # "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       ];
-      trusted-users = [ "ring" ];
+      trusted-users = [ "@wheel" ];
     };
     channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
     registry.nixpkgs.flake = inputs.nixpkgs;

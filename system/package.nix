@@ -1,4 +1,9 @@
 { pkgs, inputs, ... }:
+let
+  pkgs-release = import inputs.nixpkgs-release {
+    system = "x86_64-linux";
+  };
+in
 {
   # TODO: only left must-have packages in systemPackages as it'll slow down man.generateCaches
   environment.systemPackages =
@@ -9,7 +14,7 @@
       pstree
       quickemu
       nix-output-monitor
-      ffmpeg
+      ffmpeg-full
       bc
       jq
       # emacs
@@ -41,8 +46,8 @@
       # this is super useful
       ngrok
       # cargo
-      rustup
-      # rust-bin.stable.latest.default
+      # rustup
+      rust-bin.stable.latest.default
       libreoffice
       linux-manual
       ast-grep
@@ -50,7 +55,7 @@
       clang
       luajit
       uiua
-      devenv
+      # devenv
       clang-tools
       bun
       dart-sass
@@ -65,12 +70,13 @@
       wget
       imagemagick
       luajitPackages.magick
-      inputs.quickshell.packages."x86_64-linux".default
       kdePackages.qtdeclarative
     ]
     ++ [
       # inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
       inputs.pwndbg.packages.${pkgs.system}.default
+      inputs.quickshell.packages."x86_64-linux".default
+      pkgs-release.gemini-cli
     ];
   qt.enable = true;
   programs = {

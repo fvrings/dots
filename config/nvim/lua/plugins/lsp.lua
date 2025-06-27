@@ -273,6 +273,19 @@ return {
   },
   { 'LelouchHe/xmake-luals-addon', event = 'BufRead xmake.lua' },
   {
+    'rachartier/tiny-inline-diagnostic.nvim',
+    event = 'VeryLazy', -- Or `LspAttach`
+    opts = {
+      options = {
+        -- overwrite_events = { 'BufEnter', 'LspAttach' },
+      },
+    },
+    -- config = function(_, opts)
+    --   require('tiny-inline-diagnostic').setup(opts)
+    --   vim.diagnostic.config { virtual_text = false } -- Only if needed in your configuration, if you already have native LSP diagnostics
+    -- end,
+  },
+  {
     'rachartier/tiny-code-action.nvim',
     dependencies = 'folke/snacks.nvim',
     event = 'LspAttach',
@@ -283,13 +296,18 @@ return {
           ---@diagnostic disable-next-line: missing-parameter
           require('tiny-code-action').code_action()
         end,
+        mode = { 'n', 'v' },
       },
     },
     opts = {
       backend = 'vim',
       picker = {
-        'snacks',
-        opts = {},
+        'buffer',
+        opts = {
+          hotkeys = true,
+          hotkeys_mode = 'text_based',
+          auto_preview = true,
+        },
       },
     },
   },

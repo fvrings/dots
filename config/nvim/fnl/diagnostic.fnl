@@ -8,13 +8,13 @@
                                        vim.diagnostic.severity.INFO ""
                                        vim.diagnostic.severity.WARN ""}}
                         :underline {:severity {:min vim.diagnostic.severity.INFO}}
-                        :update_in_insert true
-                        :virtual_lines {:highlight_whole_line true
-                                        :current_line true}
-                        :virtual_text true})
+                        :update_in_insert true})
+
+; :virtual_lines {:highlight_whole_line true
+;                 :current_line true}
+; :virtual_text true})
 
 (vim.fn.sign_define :DapBreakpoint {:text "🐞"})
 
 ;;NOTE: https://github.com/neovim/neovim/issues/18282
 (map! n :<leader>k vim.diagnostic.open_float)
-
