@@ -332,7 +332,7 @@ return {
     -- },
     -- Grep
     {
-      '<leader>sb',
+      '<leader>sl',
       function()
         Snacks.picker.lines()
       end,

@@ -30,7 +30,7 @@ return {
         mode = { 'n', 'x' },
       },
       {
-        '<leader>sl',
+        '<leader>sL',
         function()
           require('luasnip.loaders').edit_snippet_files()
         end,

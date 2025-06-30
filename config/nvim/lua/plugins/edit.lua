@@ -609,6 +609,19 @@ return {
       { 'nvim-lua/plenary.nvim' },
     },
   },
+  {
+    'hasansujon786/super-kanban.nvim',
+    dependencies = {
+      'folke/snacks.nvim', -- [required]
+      'nvim-orgmode/orgmode', -- [optional] Org format support
+    },
+    opts = {
+      org = {
+        notes_dir = '/home/ring/notes/',
+      },
+    },
+    cmd = 'SuperKanban',
+  },
   -- {
   --   'github/copilot.vim',
   --   cmd = 'Copilot',

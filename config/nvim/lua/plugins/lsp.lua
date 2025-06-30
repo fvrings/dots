@@ -296,7 +296,8 @@ return {
           ---@diagnostic disable-next-line: missing-parameter
           require('tiny-code-action').code_action()
         end,
-        mode = { 'n', 'v' },
+        mode = { 'n', 'x' },
+        desc = 'tiny code action',
       },
     },
     opts = {
