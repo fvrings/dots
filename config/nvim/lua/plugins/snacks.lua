@@ -144,7 +144,6 @@ return {
           padding = 3,
         },
         {
-          icon = '🌕',
           section = 'terminal',
           cmd = 'nix run nixpkgs#nitch',
           height = 20,
@@ -160,9 +159,17 @@ return {
           -- TODO: https://github.com/folke/snacks.nvim/issues/1706
           -- cmd = 'nvim -u NONE --noplugin --headless -l ~/.config/nvim/lua/todos.lua',
           cmd = 'nvim -u NONE --noplugin --headless -l ~/.config/nvim/lua/todos.lua e>| lolcat e> /dev/null',
-          height = 8,
+          height = 18,
           ttl = 60,
           indent = 2,
+          pane = 2,
+        },
+        {
+          section = 'terminal',
+          cmd = 'nvim -u NONE --noplugin --headless -l ~/.config/nvim/lua/sum.lua e>| lolcat e> /dev/null',
+          height = 2,
+          ttl = 60,
+          indent = 1,
           pane = 2,
         },
         {
