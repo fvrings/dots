@@ -72,12 +72,11 @@
 ;               (vim.cmd.cprevious)
 ;               (vim.notify "no qf or trouble found" vim.log.levels.WARN)))))
 
-(map! n :K (fn []
-             (let [winid ((. (require :ufo) :peekFoldedLinesUnderCursor))]
-               (when (not winid)
-                 (if (next (vim.lsp.get_clients {:bufnr 0}))
-                     (vim.lsp.buf.hover)
-                     (let [word (vim.fn.expand :<cword>)]
-                       (vim.cmd (.. "Man " word)))))))
-      {:desc "magic K"})
-
+; (map! n :K (fn []
+;              (let [winid ((. (require :ufo) :peekFoldedLinesUnderCursor))]
+;                (when (not winid)
+;                  (if (next (vim.lsp.get_clients {:bufnr 0}))
+;                      (vim.lsp.buf.hover)
+;                      (let [word (vim.fn.expand :<cword>)]
+;                        (vim.cmd (.. "Man " word)))))))
+;       {:desc "magic K"})

@@ -315,17 +315,17 @@ return {
       },
     },
   },
-  {
-    'axelvc/template-string.nvim',
-    config = true,
-    ft = {
-      -- 'python',
-      'typescript',
-      'javascript',
-      'javascriptreact',
-      'typescriptreact',
-    },
-  },
+  -- {
+  --   'axelvc/template-string.nvim',
+  --   config = true,
+  --   ft = {
+  --     -- 'python',
+  --     'typescript',
+  --     'javascript',
+  --     'javascriptreact',
+  --     'typescriptreact',
+  --   },
+  -- },
   {
     'nvim-neorg/neorg',
     cmd = 'Neorg',

@@ -148,6 +148,13 @@ local FileType = {
   hl = 'Type',
 }
 
+local ChainSaw = {
+  provider = function()
+    return require('chainsaw.visuals.statusline').countInBuffer()
+  end,
+  hl = 'DiagnosticWarn',
+}
+
 local FileEncoding = {
   provider = function()
     local enc = (vim.bo.fenc ~= '' and vim.bo.fenc) or vim.o.enc -- :h 'enc'
@@ -478,6 +485,8 @@ local DefaultStatusline = {
   -- WorkDir,
   -- FileNameBlock,
   -- VirtualEnv,
+  Space,
+  ChainSaw,
   Space,
   FileType,
   { flexible = 3, { FileEncoding } },

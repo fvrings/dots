@@ -1,30 +1,3 @@
-local handler = function(virtText, lnum, endLnum, width, truncate)
-  local newVirtText = {}
-  local suffix = (' 󰁂 %d '):format(endLnum - lnum)
-  local sufWidth = vim.fn.strdisplaywidth(suffix)
-  local targetWidth = width - sufWidth
-  local curWidth = 0
-  for _, chunk in ipairs(virtText) do
-    local chunkText = chunk[1]
-    local chunkWidth = vim.fn.strdisplaywidth(chunkText)
-    if targetWidth > curWidth + chunkWidth then
-      table.insert(newVirtText, chunk)
-    else
-      chunkText = truncate(chunkText, targetWidth - curWidth)
-      local hlGroup = chunk[2]
-      table.insert(newVirtText, { chunkText, hlGroup })
-      chunkWidth = vim.fn.strdisplaywidth(chunkText)
-      -- str width returned from truncate() may less than 2nd argument, need padding
-      if curWidth + chunkWidth < targetWidth then
-        suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
-      end
-      break
-    end
-    curWidth = curWidth + chunkWidth
-  end
-  table.insert(newVirtText, { suffix, 'MoreMsg' })
-  return newVirtText
-end
 return {
   {
     'nvzone/volt',
@@ -67,45 +40,13 @@ return {
   --   -- dependencies = { 'luarocks.nvim' },
   -- },
   {
-    'kevinhwang91/nvim-ufo',
-    dependencies = {
-      'kevinhwang91/promise-async',
-    },
+    'chrisgrieser/nvim-origami',
     event = 'VeryLazy',
-    opts = {
-      provider_selector = function()
-        return { 'treesitter', 'indent' }
-      end,
-      fold_virt_text_handler = handler,
-      preview = {
-        win_config = {
-          border = { '', '─', '', '', '', '─', '', '' },
-          winhighlight = 'Normal:Folded',
-          winblend = 0,
-        },
-        mappings = {
-          scrollU = '<C-u>',
-          scrollD = '<C-d>',
-          jumpTop = '[',
-          jumpBot = ']',
-          switch = 'K',
-        },
-      },
-    },
-    keys = {
-      {
-        'zR',
-        function()
-          require('ufo').openAllFolds()
-        end,
-      },
-      {
-        'zM',
-        function()
-          require('ufo').closeAllFolds()
-        end,
-      },
-    },
+    opts = {}, -- needed even when using default config
+    init = function()
+      vim.opt.foldlevel = 99
+      vim.opt.foldlevelstart = 99
+    end,
   },
   { 'echasnovski/mini.cursorword', config = true, event = 'VeryLazy' },
   -- {
@@ -150,7 +91,7 @@ return {
         { '<leader>u', group = 't[U]ggle', icon = '' },
         { '<leader>x', group = 'diagno[X]tic', icon = '' },
         { '<leader>b', group = '[B]uffer', icon = '󰆠' },
-        { '<leader>l', group = '[L]sp', icon = '󱁤' },
+        -- { '<leader>l', group = '[L]sp', icon = '󱁤' },
         { '<leader>s', group = '[S]earch', icon = '' },
         { '<leader>g', group = '[G]it', icon = '󰊢' },
         -- { '<leader>c', group = '[C]olor', icon = '' },
@@ -302,13 +243,13 @@ return {
       },
     },
   },
-  {
-    'xiyaowong/transparent.nvim',
-    cmd = 'TransparentToggle',
-    init = function()
-      vim.g.transparent_enabled = false
-    end,
-  },
+  -- {
+  --   'xiyaowong/transparent.nvim',
+  --   cmd = 'TransparentToggle',
+  --   init = function()
+  --     vim.g.transparent_enabled = false
+  --   end,
+  -- },
   {
     'OXY2DEV/helpview.nvim',
     ft = 'help',

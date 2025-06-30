@@ -805,10 +805,191 @@ return {
       vim.g.tmux_navigator_no_mappings = 1
     end,
   },
+  -- {
+  --   'Goose97/timber.nvim',
+  --   event = 'VeryLazy',
+  --   config = true,
+  -- },
   {
-    'Goose97/timber.nvim',
-    event = 'VeryLazy',
-    config = true,
+    'chrisgrieser/nvim-chainsaw',
+    opts = {
+      visuals = { icon = '󰹈' },
+      preCommitHook = {
+        enabled = true,
+        dontInstallInDirs = { '**/nvim-chainsaw' }, -- plugin dir itself, when developing it
+      },
+      logStatements = {
+        variableLog = {
+          nvim_lua = 'Chainsaw({{var}}) -- {{marker}}', -- nvim lua debug
+          lua = 'print("{{marker}} {{var}}: " .. hs.inspect({{var}}))', -- Hammerspoon
+          swift = 'fputs("{{marker}} {{var}}: \\({{var}})", stderr)', -- to STDERR, requires `import Foundation`
+        },
+        assertLog = {
+          lua = 'assert({{var}}, "{{insert}}")', -- no marker, since intended to be permanent
+        },
+        objectLog = { -- re-purposing `objectLog` for alternative log statements for these
+          typescript = 'new Notice(`{{marker}} {{var}}: ${{{var}}}`, 0)', -- Obsidian Notice
+          zsh = 'osascript -e "display notification \\"{{marker}} ${{var}}\\" with title \\"{{var}}\\""',
+          nvim_lua = 'print({{var}}) -- {{marker}}', -- print statement for snacks scratch buffer
+          lua = 'hs.alert.show("{{marker}} {{var}}: " .. hs.inspect({{var}}))', -- Hammerspoon alert
+        },
+        clearLog = { -- Hammerspoon
+          lua = 'hs.console.clearConsole() -- {{marker}}',
+        },
+        sound = { -- Hammerspoon
+          lua = 'hs.sound.getByName("Sosumi"):play() ---@diagnostic disable-line: undefined-field -- {{marker}}',
+        },
+      },
+    },
+    init = function(spec)
+      -- lazyload `nvim-chainsaw` only when `Chainsaw` function is called
+      _G.Chainsaw = function(name) ---@diagnostic disable-line: duplicate-set-field
+        require 'chainsaw' -- loading nvim-chainsaw will override `_G.Chainsaw`
+        Chainsaw(name) -- call original function
+      end
+
+      local icon = spec.opts.visuals.icon
+      require('which-key').add { '<leader>l', group = icon .. ' Log' }
+    end,
+    keys = {
+      {
+        '<leader>lr',
+        function()
+          require('chainsaw').removeLogs()
+        end,
+        mode = { 'n', 'x' },
+        desc = '󰅗 remove logs',
+      },
+
+      {
+        '<leader>ll',
+        function()
+          require('chainsaw').variableLog()
+        end,
+        mode = { 'n', 'x' },
+        desc = '󰀫 variable',
+      },
+      {
+        '<leader>lo',
+        function()
+          require('chainsaw').objectLog()
+        end,
+        mode = { 'n', 'x' },
+        desc = '⬟ object',
+      },
+      {
+        '<leader>la',
+        function()
+          require('chainsaw').assertLog()
+        end,
+        mode = { 'n', 'x' },
+        desc = '󱈸 assert',
+      },
+      {
+        '<leader>lt',
+        function()
+          require('chainsaw').typeLog()
+        end,
+        mode = { 'n', 'x' },
+        desc = '󰜀 type',
+      },
+      {
+        '<leader>lm',
+        function()
+          require('chainsaw').messageLog()
+        end,
+        desc = '󰍩 message',
+      },
+      {
+        '<leader>le',
+        function()
+          require('chainsaw').emojiLog()
+        end,
+        desc = ' emoji',
+      },
+      {
+        '<leader>ls',
+        function()
+          require('chainsaw').sound()
+        end,
+        desc = '󱄠 sound',
+      },
+      {
+        '<leader>lp',
+        function()
+          require('chainsaw').timeLog()
+        end,
+        desc = '󱎫 performance',
+      },
+      {
+        '<leader>ld',
+        function()
+          require('chainsaw').debugLog()
+        end,
+        desc = '󰃤 debugger',
+      },
+      {
+        '<leader>lS',
+        function()
+          require('chainsaw').stacktraceLog()
+        end,
+        desc = ' stacktrace',
+      },
+      {
+        '<leader>lc',
+        function()
+          require('chainsaw').clearLog()
+        end,
+        desc = '󰃢 clear console',
+      },
+
+      {
+        '<leader>lg',
+        function()
+          local marker = require('chainsaw.config.config').config.marker
+          require('snacks').picker.grep_word {
+            title = marker .. ' log statements',
+            cmd = 'rg',
+            args = { '--trim' },
+            search = marker,
+            regex = false,
+            live = false,
+            format = function(item, _picker) -- only display the grepped line
+              local out = {}
+              Snacks.picker.highlight.format(item, item.line, out)
+              return out
+            end,
+          }
+        end,
+        desc = '󰉹 grep log statements',
+      },
+    },
+  },
+
+  {
+    'chrisgrieser/nvim-puppeteer',
+    -- event = 'VeryLazy',
+    lazy = false,
+    keys = {
+      {
+        '<leader>up',
+        '<cmd>PuppeteerToggle<CR>',
+      },
+    },
+  },
+  {
+    'chrisgrieser/nvim-rulebook',
+    cmd = 'Rulebook',
+    keys = {
+      {
+        'grb',
+        function()
+          require('rulebook').suppressFormatter()
+        end,
+        mode = { 'n', 'x' },
+        desc = 'Rulebook',
+      },
+    },
   },
   {
     'lambdalisue/vim-suda',

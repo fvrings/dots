@@ -503,6 +503,14 @@ return {
       end,
       desc = 'Dismiss All Notifications',
     },
+
+    {
+      '<leader>sn',
+      function()
+        Snacks.picker.notifications()
+      end,
+      desc = '󰎟 Notification history',
+    },
     {
       '<leader>bd',
       function()
@@ -545,13 +553,13 @@ return {
       end,
       desc = 'Lazygit Log (cwd)',
     },
-    {
-      '<leader>lR',
-      function()
-        Snacks.rename.rename_file()
-      end,
-      desc = 'Rename File',
-    },
+    -- {
+    --   '<leader>lR',
+    --   function()
+    --     Snacks.rename.rename_file()
+    --   end,
+    --   desc = 'Rename File',
+    -- },
     -- {
     --   '<c-\\>',
     --   function()
@@ -653,16 +661,16 @@ return {
         Snacks.toggle.inlay_hints():map '<leader>uh'
         Snacks.toggle.indent():map '<leader>ui'
         Snacks.toggle.dim():map '<leader>uD'
-        Snacks.toggle({
-          id = 'transparent',
-          name = 'toggle transparent',
-          get = function()
-            return vim.g.transparent_enabled
-          end,
-          set = function()
-            vim.cmd.TransparentToggle()
-          end,
-        }):map '<leader>up'
+        -- Snacks.toggle({
+        --   id = 'transparent',
+        --   name = 'toggle transparent',
+        --   get = function()
+        --     return vim.g.transparent_enabled
+        --   end,
+        --   set = function()
+        --     vim.cmd.TransparentToggle()
+        --   end,
+        -- }):map '<leader>up'
         Snacks.toggle({
           id = 'format',
           name = 'format by conform',

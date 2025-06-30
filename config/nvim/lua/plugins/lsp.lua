@@ -234,12 +234,12 @@ return {
         desc = 'Symbols (Trouble)',
       },
       {
-        '<leader>lf',
+        '<leader>xf',
         '<cmd>Trouble lsp toggle focus=true win.position=left<cr>',
         desc = 'LSP finder (Trouble)',
       },
       {
-        '<leader>lp',
+        '<leader>xp',
         '<cmd>Trouble lsp toggle_preview focus=true win.position=left<cr>',
         desc = 'LSP Definitions / references / ... (Trouble)',
       },
