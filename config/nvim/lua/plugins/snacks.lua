@@ -145,6 +145,15 @@ return {
         },
         {
           icon = '🌕',
+          section = 'terminal',
+          cmd = 'nix run nixpkgs#nitch',
+          height = 20,
+          ttl = 60,
+          indent = 2,
+          pane = 2,
+        },
+        {
+          icon = '🌕',
           title = 'Todo in this week',
           enabled = vim.fn.exists '~/notes',
           section = 'terminal',
