@@ -235,8 +235,8 @@ binds {
     Mod+Return      { spawn "kitty"; }
     Mod+R           { spawn "fuzzel"; }
     Mod+F           { spawn "firefox"; }
-    Mod+Alt+L       { spawn "hyprlock"; }
-    Mod+P           { spawn "nu" "-c" "cliphist list | fuzzel --dmenu| cliphist decode | wl-copy"; }
+    Mod+Ctrl+L       { spawn "hyprlock"; }
+    Mod+Backslash           { spawn "nu" "-c" "cliphist list | fuzzel --dmenu| cliphist decode | wl-copy"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.

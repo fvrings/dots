@@ -29,4 +29,11 @@ return {
     cmd = 'CccPick',
     config = true,
   },
+  {
+    'catgoose/nvim-colorizer.lua',
+    event = 'VeryLazy',
+    opts = {
+      lazy_load = true,
+    },
+  },
 }

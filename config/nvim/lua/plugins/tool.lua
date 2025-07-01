@@ -451,9 +451,11 @@ return {
         python = { 'black' },
         fennel = { 'fnlfmt' },
         nix = { 'nixfmt' },
+        qml = { 'qmlformat' },
       },
       formatters = {
         fnlfmt = { command = 'fnlfmt', args = { '$FILENAME' }, stdin = true },
+        qmlformat = { command = 'qmlformat', args = { '$FILENAME' }, stdin = true },
         biome = {
           inherit = false,
           command = 'biome',

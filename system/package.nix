@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }:
 let
-  pkgs-release = import inputs.nixpkgs-release {
+  pkgs-stable = import inputs.nixpkgs-stable {
     system = "x86_64-linux";
   };
 in
@@ -70,13 +70,13 @@ in
       wget
       imagemagick
       luajitPackages.magick
-      kdePackages.qtdeclarative
+      gemini-cli
     ]
     ++ [
       # inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
       inputs.pwndbg.packages.${pkgs.system}.default
       inputs.quickshell.packages."x86_64-linux".default
-      pkgs-release.gemini-cli
+      pkgs-stable.kdePackages.qtdeclarative
     ];
   qt.enable = true;
   programs = {
