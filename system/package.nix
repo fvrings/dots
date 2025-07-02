@@ -71,6 +71,8 @@ in
       imagemagick
       luajitPackages.magick
       gemini-cli
+      tela-circle-icon-theme
+      beauty-line-icon-theme
     ]
     ++ [
       # inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
@@ -79,6 +81,7 @@ in
       pkgs-stable.kdePackages.qtdeclarative
     ];
   qt.enable = true;
+  qt.platformTheme = "qt5ct";
   programs = {
     neovim = {
       enable = true;
