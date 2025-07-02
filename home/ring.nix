@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   home = {
     username = "ring";
@@ -11,9 +11,6 @@
     configFile = {
       "hypr/scripts" = {
         source = ./desktop/scripts;
-      };
-      "ghostty" = {
-        source = ../config/ghostty;
       };
       "tmux/tmux-or-nvim-kill.sh" = {
         source = ../config/tmux/tmux-or-nvim-kill.sh;
@@ -38,6 +35,7 @@
   catppuccin = {
     flavor = "mocha";
     enable = true;
+    kitty.enable = false;
     accent = "rosewater";
   };
   programs = {
@@ -59,6 +57,10 @@
       enable = true;
       font.size = 12;
       font.name = "monospace";
+      # themeFile = lib.mkForce "Carbonfox";
+      extraConfig = ''
+        include ${inputs.kitty-themes}/share/kitty-themes/themes/Carbonfox.conf
+      '';
       settings = {
         "clipboard_control" = "write-clipboard write-primary read-clipboard read-primary no-append";
         "hide_window_decorations" = true;

@@ -389,6 +389,9 @@ in
       "nvim" = {
         source = mkOutOfStoreSymlink "/etc/nixos/dots/config/nvim";
       };
+      "ghostty" = {
+        source = mkOutOfStoreSymlink "/etc/nixos/dots/config/ghostty";
+      };
 
       "niri" = {
         source = mkOutOfStoreSymlink "/etc/nixos/dots/system/desktop/niri";

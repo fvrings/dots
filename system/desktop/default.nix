@@ -35,4 +35,5 @@
     enable = true;
   };
   # boot.kernelParams = [ "microcode.amd_sha_check=off" ];
+  catppuccin.enable = true;
 }

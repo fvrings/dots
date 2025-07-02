@@ -232,7 +232,7 @@ binds {
     Mod+Shift+Slash         { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+W                   { spawn "ghostty"; }
+    Mod+W                   { spawn "kitty"; }
     Mod+T                   { toggle-column-tabbed-display; }
     Mod+Return              { spawn "kitty"; }
     Mod+R                   { spawn "fuzzel"; }
