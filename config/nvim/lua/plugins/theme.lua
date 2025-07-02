@@ -8,12 +8,6 @@ return {
 
   {
     'nyoom-engineering/oxocarbon.nvim',
-    config = function()
-      vim.cmd.colorscheme 'oxocarbon'
-      vim.api.nvim_set_hl(0, 'Error', { bg = 'none' })
-    end,
-    lazy = false,
-    priority = 1000,
   },
 
   'olimorris/onedarkpro.nvim',
@@ -22,6 +16,14 @@ return {
 
   {
     'rebelot/kanagawa.nvim',
+    config = function(_, opts)
+      require('kanagawa').setup(opts)
+      vim.cmd.colorscheme 'kanagawa'
+      -- FOR oxocarbon
+      -- vim.api.nvim_set_hl(0, 'Error', { bg = 'none' })
+    end,
+    lazy = false,
+    priority = 1000,
     opts = {
       transparent = true,
       colors = {

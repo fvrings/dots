@@ -146,10 +146,6 @@
     };
     niri.url = "github:sodiboo/niri-flake";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    kitty-themes = {
-      url = "github:kovidgoyal/kitty-themes";
-      flake = false;
-    };
   };
   nixConfig = {
     extra-substituters = [

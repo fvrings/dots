@@ -548,22 +548,6 @@
         "type": "github"
       }
     },
-    "kitty-themes": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1750383661,
-        "narHash": "sha256-VqrG5yXjX/y7gjzBZqX9Ih6NPVGqQX0Pk3gxqkXbV0s=",
-        "owner": "kovidgoyal",
-        "repo": "kitty-themes",
-        "rev": "7d5d9e374060a240b048eba5a754da4b9e60ce8d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "kovidgoyal",
-        "repo": "kitty-themes",
-        "type": "github"
-      }
-    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -1232,7 +1216,6 @@
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager_2",
         "impermanence": "impermanence",
-        "kitty-themes": "kitty-themes",
         "lanzaboote": "lanzaboote",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "niri": "niri",

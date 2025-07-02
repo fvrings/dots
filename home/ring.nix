@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, lib, ... }:
 {
   home = {
     username = "ring";
@@ -35,7 +35,6 @@
   catppuccin = {
     flavor = "mocha";
     enable = true;
-    kitty.enable = false;
     accent = "rosewater";
   };
   programs = {
@@ -57,10 +56,7 @@
       enable = true;
       font.size = 12;
       font.name = "monospace";
-      # themeFile = lib.mkForce "Carbonfox";
-      extraConfig = ''
-        include ${inputs.kitty-themes}/share/kitty-themes/themes/Carbonfox.conf
-      '';
+      themeFile = lib.mkForce "kanagawa";
       settings = {
         "clipboard_control" = "write-clipboard write-primary read-clipboard read-primary no-append";
         "hide_window_decorations" = true;
