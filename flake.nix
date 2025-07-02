@@ -141,11 +141,7 @@
     };
     pwndbg.url = "github:pwndbg/pwndbg";
     quickshell = {
-      # remove ?ref=v0.1.0 to track the master branch
-      url = "github:outfoxxed/quickshell?ref=v0.1.0";
-
-      # THIS IS IMPORTANT
-      # Mismatched system dependencies will lead to crashes and other issues.
+      url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

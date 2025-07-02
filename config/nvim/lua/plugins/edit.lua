@@ -479,10 +479,10 @@ return {
           __inherited_from = 'openai',
           api_key_name = 'QWEN_API_KEY',
           endpoint = 'https://dashscope.aliyuncs.com/compatible-mode/v1',
-          -- model = 'deepseek-r1-0528',
-          model = 'qwen-coder-plus-latest',
+          model = 'deepseek-r1',
+          -- model = 'qwen-coder-plus-latest',
           -- model = 'qwen-max-0125',
-          disable_tools = true, -- disable tools!
+          -- disable_tools = true, -- disable tools!
         },
       },
     },

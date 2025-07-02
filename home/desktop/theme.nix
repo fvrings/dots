@@ -1,10 +1,10 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   gtk = {
     enable = true;
     theme = {
-      name = lib.mkForce "rose-pine";
-      package = lib.mkForce pkgs.rose-pine-gtk-theme;
+      name = "rose-pine";
+      package = pkgs.rose-pine-gtk-theme;
     };
   };
 

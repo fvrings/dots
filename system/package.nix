@@ -58,6 +58,7 @@ in
       # devenv
       clang-tools
       bun
+      eza
       dart-sass
       yt-dlp
       gcc

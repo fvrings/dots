@@ -229,16 +229,17 @@ window-rule {
 }
 
 binds {
-    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+Shift+Slash         { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+W           { spawn "ghostty"; }
-    Mod+T           { toggle-column-tabbed-display; }
-    Mod+Return      { spawn "kitty"; }
-    Mod+R           { spawn "fuzzel"; }
-    Mod+F           { spawn "firefox"; }
-    Mod+Ctrl+L       { spawn "hyprlock"; }
+    Mod+W                   { spawn "ghostty"; }
+    Mod+T                   { toggle-column-tabbed-display; }
+    Mod+Return              { spawn "kitty"; }
+    Mod+R                   { spawn "fuzzel"; }
+    Mod+F                   { spawn "firefox"; }
+    Mod+Ctrl+L              { spawn "hyprlock"; }
     Mod+Backslash           { spawn "nu" "-c" "cliphist list | fuzzel --dmenu| cliphist decode | wl-copy"; }
+    Mod+P                   { spawn "qs" "-c" "/home/ring/.config/quickshell/Panel"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
