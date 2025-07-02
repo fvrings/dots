@@ -1,7 +1,7 @@
-{ pkgs, config, ... }:
-let
-  swww = "swww.service";
-in
+{ pkgs, inputs, ... }:
+# let
+#   swww = "swww.service";
+# in
 {
   environment.systemPackages = with pkgs; [ xwayland-satellite ];
   # programs.fuzzel.enable = true;
@@ -25,6 +25,12 @@ in
   # };
   programs.niri = {
     enable = true;
+    package = pkgs.niri-unstable;
+    #TODO: configure options here
     # config = builtins.readFile ./config.kdl;
   };
+  nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+  imports = [
+    inputs.niri.nixosModules.niri
+  ];
 }

@@ -144,6 +144,7 @@
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    niri.url = "github:sodiboo/niri-flake";
   };
   nixConfig = {
     extra-substituters = [
