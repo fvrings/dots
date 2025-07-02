@@ -1,6 +1,6 @@
 _: {
   programs.waybar = {
-    enable = true;
+    enable = false;
     style = builtins.readFile ./waybar-style.css;
     settings = {
       mainBar = {

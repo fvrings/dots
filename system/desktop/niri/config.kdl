@@ -145,9 +145,9 @@ spawn-at-startup "fcitx5"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "wlsunset" "-l" "39.9" "-L" "116.3"
 // BUG: seems to be related https://github.com/YaLTeR/niri/issues/1863
-spawn-at-startup "systemctl" "--user" "restart" "xdg-desktop-portal-gtk.service"
-// spawn-at-startup "quickshell"
-spawn-at-startup "waybar"
+// spawn-at-startup "systemctl" "--user" "restart" "xdg-desktop-portal-gtk.service"
+spawn-at-startup "quickshell"
+// spawn-at-startup "waybar"
 // Or, if you built it by hand:
 // spawn-at-startup "~/path/to/code/target/release/xwayland-satellite"
 
@@ -239,7 +239,7 @@ binds {
     Mod+F                   { spawn "firefox"; }
     Mod+Ctrl+L              { spawn "hyprlock"; }
     Mod+Backslash           { spawn "nu" "-c" "cliphist list | fuzzel --dmenu| cliphist decode | wl-copy"; }
-    Mod+P                   { spawn "qs" "-c" "/home/ring/.config/quickshell/Panel"; }
+    Mod+P                   { spawn "qs" "ipc" "call" "panel" "fire"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
