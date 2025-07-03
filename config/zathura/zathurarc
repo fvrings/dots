@@ -1,0 +1,5 @@
+set adjust-open	"width"
+set selection-clipboard	"clipboard"
+set window-title-basename	"true"
+map Left   PgUp
+map Right   PgDn

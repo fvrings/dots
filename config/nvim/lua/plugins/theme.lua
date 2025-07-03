@@ -26,6 +26,9 @@ return {
     priority = 1000,
     opts = {
       transparent = true,
+      background = {
+        dark = 'dragon',
+      },
       colors = {
         theme = {
           all = {

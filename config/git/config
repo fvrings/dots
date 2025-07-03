@@ -1,0 +1,18 @@
+[credential]
+	helper = "store"
+
+;[credential "https://gist.github.com"]
+;	helper = "/nix/store/4gmr6h0aly4pngrlrvy12z98kyag1bpx-gh-2.74.2/bin/gh auth git-credential"
+;
+;[credential "https://github.com"]
+;	helper = "/nix/store/4gmr6h0aly4pngrlrvy12z98kyag1bpx-gh-2.74.2/bin/gh auth git-credential"
+;
+;[gpg]
+;	format = "openpgp"
+;
+;[gpg "openpgp"]
+;	program = "/nix/store/llxp5n33a0l8fbhvhmgq5l8kvz8c887j-gnupg-2.4.7/bin/gpg"
+
+[user]
+	email = "fvrings@proton.me"
+	name = "fvrings"

@@ -14,7 +14,6 @@
     gparted
     qcm
     virt-viewer
-    ghidra-bin
     aircrack-ng
     cliphist
     telegram-desktop

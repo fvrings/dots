@@ -13,16 +13,7 @@ set -g @vim_navigator_mapping_up "M-k"
 set -g @vim_navigator_mapping_down "M-j"
 set -g @vim_navigator_mapping_prev ""  # removes the C-\ binding
 
-set -g @catppuccin_flavor 'mocha' # latte, frappe, macchiato or mocha
-set -g @catppuccin_window_status_style "rounded"
 
-# Make the status line pretty and add some modules
-set -g status-right-length 100
-set -g status-left-length 100
-set -g status-left ""
-set -g status-right "#{E:@catppuccin_status_application}"
-set -ag status-right "#{E:@catppuccin_status_session}"
-set -ag status-right "#{E:@catppuccin_status_uptime}"
 
 TMUX_FZF_LAUNCH_KEY="C-f"
 unbind C-b

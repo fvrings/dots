@@ -45,7 +45,6 @@
               ./system/desktop
               ./system/kernel.nix
               ./home
-              ./home/desktop
               ./module
               ./overlay
             ];
@@ -96,12 +95,6 @@
     nur.url = "github:nix-community/NUR";
     daeuniverse.url = "github:daeuniverse/flake.nix";
     # flake-root.url = "github:srid/flake-root";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # ags.url = "github:Aylur/ags";
-    # astal.url = "github:Aylur/astal";
     catppuccin.url = "github:catppuccin/nix";
     yazi.url = "github:sxyazi/yazi";
     yazi-plugins = {
@@ -128,6 +121,10 @@
       url = "github:ndtoan96/ouch.yazi";
       flake = false;
     };
+    yazi-kanagawa = {
+      url = "github:marcosvnmelo/kanagawa-dragon.yazi";
+      flake = false;
+    };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     # zjstatus = {
     #   url = "github:dj95/zjstatus";
@@ -145,7 +142,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    # NOTE: HM :(
+    # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    hjem = {
+      url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   nixConfig = {
     extra-substituters = [
@@ -156,7 +158,7 @@
       "https://yazi.cachix.org"
       # "https://ags.cachix.org"
       "https://pwndbg.cachix.org"
-      "https://chaotic-nyx.cachix.org"
+      # "https://chaotic-nyx.cachix.org"
       # "https://cache.garnix.io"
     ];
     extra-trusted-public-keys = [
@@ -166,7 +168,7 @@
       "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
       # "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
-      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
+      # "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
     ];
   };
 
