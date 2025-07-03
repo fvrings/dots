@@ -101,7 +101,7 @@ in
   };
   documentation = {
     man = {
-      # generateCaches = true;
+      generateCaches = false;
     };
     dev.enable = true;
   };

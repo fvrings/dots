@@ -99,6 +99,7 @@ let
 in
 {
   programs = {
+    fish.enable = true;
     tmux = {
       enable = true;
       plugins = with pkgs.tmuxPlugins; [

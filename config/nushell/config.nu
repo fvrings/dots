@@ -1,16 +1,16 @@
 let fish_completer = {|spans|
-    fish --command $"complete '--do-complete=($spans | str join ' ')'"
+    fish --command $"complete '--do-complete=($spans | str replace --all "'" "\\'" | str join ' ')'"
     | from tsv --flexible --noheaders --no-infer
     | rename value description
-    | update value {
-        if ($in | path exists) {$'($in | str replace "\"" "\\\"" )'} else {$in}
+    | update value {|row|
+      let value = $row.value
+      let need_quote = ['\' ',' '[' ']' '(' ')' ' ' '\t' "'" '"' "`"] | any {$in in $value}
+      if ($need_quote and ($value | path exists)) {
+        let expanded_path = if ($value starts-with ~) {$value | path expand --no-symlink} else {$value}
+        $'"($expanded_path | str replace --all "\"" "\\\"")"'
+      } else {$value}
     }
 }
-# source ~/github/nu_scripts/themes/nu-themes/ayu.nu
-# source ~/github/nu_scripts/themes/nu-themes/github-dark-default.nu
-# source ~/github/nu_scripts/themes/nu-themes/sea-shells.nu
-# source ~/github/nu_scripts/themes/nu-themes/tempus-future.nu
-# source horizon-dark.nu
 
 def --env yy [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
@@ -22,41 +22,43 @@ def --env yy [...args] {
 	rm -fp $tmp
 }
 
-let carapace_completer = {|spans|
-# if the current command is an alias, get it's expansion
-    let expanded_alias = (scope aliases | where name == $spans.0 | get -i 0 | get -i expansion)
-
-# overwrite
-    let spans = (if $expanded_alias != null  {
-        # put the first word of the expanded alias first in the span
-        $spans | skip 1 | prepend ($expanded_alias | split row " " | take 1)
-    } else { $spans })
-    carapace $spans.0 nushell ...$spans | from json 
-        # sort by color
-        | sort-by {
-            let fg = $in | get -i style.fg
-            let attr = $in | get -i style.attr
-            # the ~ there to make "empty" results appear at the end
-            $"($fg)~($attr)"
-        }
+let carapace_completer = {|spans: list<string>|
+    carapace $spans.0 nushell ...$spans
+    | from json
+    | if ($in | default [] | where value =~ '^-.*ERR$' | is-empty) { $in } else { null }
 }
 
 let zoxide_completer = {|spans|
   $spans | skip 1 | zoxide query -l ...$in | lines | where {|x| $x != $env.PWD}
 }
 
-let multiple_completers = {|spans|
-  match $spans.0 {
-    z => $zoxide_completer
-    zi => $zoxide_completer
-    _ => $fish_completer
-    # _ => $carapace_completer
-  } | do $in $spans
+# This completer will use carapace by default
+let external_completer = {|spans|
+    let expanded_alias = scope aliases
+    | where name == $spans.0
+    | get -i 0.expansion
+
+    let spans = if $expanded_alias != null {
+        $spans
+        | skip 1
+        | prepend ($expanded_alias | split row ' ' | take 1)
+    } else {
+        $spans
+    }
+
+    match $spans.0 {
+      z => $zoxide_completer
+      zi => $zoxide_completer
+      _ => $fish_completer
+      # _ => $carapace_completer
+    } | do $in $spans
 }
+
+
 $env.config.history.isolation = false
 $env.config.show_banner = false
 $env.config.completions.external.enable = true
-$env.config.completions.external.completer = $multiple_completers
+$env.config.completions.external.completer = $external_completer
 $env.config.footer_mode = "auto"
 $env.config.table.mode = "light"
 $env.config.filesize.unit = "metric"
@@ -132,6 +134,8 @@ if $nu.os-info.name == "windows" {
 $env.ANDROID_HOME = [$env.HOME "Android/Sdk/"] | path join
 $env.PATH = ($env.PATH | uniq)
 
+$env.FZF_DEFAULT_COMMAND = "fd --type f --strip-cwd-prefix"
+$env.FZF_DEFAULT_OPTS = "--color=bg+:#2A2A37,bg:#1F1F28,spinner:#938AA9,hl:#76946A  --color=fg:#DCD7BA,header:#7E9CD8,info:#957FB8,pointer:#E46876  --color=marker:#C0A36E,fg+:#C8C093,prompt:#76946A,hl+:#85A88B  --color=selected-bg:#2D4F67  --color=border:#363646,label:#DCD7BA"
 $env.EDITOR = "nvim"
 $env.GOPROXY = "https://goproxy.cn,direct"
 $env.GO111MODULE = "on"
