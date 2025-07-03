@@ -51,6 +51,7 @@ in
 {
   systemd.user = {
     services.swww-img = {
+      enable = true;
       wantedBy = [ swww ];
 
       description = "swww image setter";
@@ -58,19 +59,20 @@ in
       requires = [ swww ];
 
       serviceConfig = {
-        ExecStart = "swww img ${config.theme.wallpaper}";
+        ExecStart = "${pkgs.swww}/bin/swww img ${config.theme.wallpaper}";
         Restart = "on-failure";
         RestartSec = 10;
       };
     };
     services.swww = {
+      enable = true;
       wantedBy = [ graphical ];
       description = "swww-daemon";
       after = [ graphical ];
       partOf = [ graphical ];
 
       serviceConfig = {
-        ExecStart = "swww-daemon";
+        ExecStart = "${pkgs.swww}/bin/swww-daemon";
         Restart = "always";
         RestartSec = 10;
       };

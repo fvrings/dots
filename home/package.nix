@@ -59,6 +59,7 @@ let
     ueberzugpp
     mpv
     fuzzel
+    lazyjj
   ];
   shtools = [
     zip
