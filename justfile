@@ -6,6 +6,7 @@ alias n:=update-neovim
 alias m:=edit-mini
 alias c:=clear
 alias b:=clear-boot
+alias t:=test
 
 update-os *args:
   nh os switch -H art . {{args}}
@@ -37,3 +38,5 @@ install-vm:
   sudo nix --extra-experimental-features "nix-command flakes" run --option substituters https://mirrors.ustc.edu.cn/nix-channels/store 'github:nix-community/disko/latest#disko-install' --  --flake '.#vm' --disk main /dev/vda
 enable-tpm:
   sudo systemd-cryptenroll --tpm2-device=auto /dev/nvme0n1p2
+test:
+  nixos-rebuild dry-build --option eval-cache false --flake .#art

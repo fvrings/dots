@@ -129,10 +129,6 @@
     # zjstatus = {
     #   url = "github:dj95/zjstatus";
     # };
-    # lix-module = {
-    #   url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-1.tar.gz";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     ucodenix = {
       url = "github:e-tho/ucodenix";
     };
@@ -143,7 +139,7 @@
     };
     niri.url = "github:sodiboo/niri-flake";
     # NOTE: HM :(
-    # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     hjem = {
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -158,7 +154,7 @@
       "https://yazi.cachix.org"
       # "https://ags.cachix.org"
       "https://pwndbg.cachix.org"
-      # "https://chaotic-nyx.cachix.org"
+      "https://chaotic-nyx.cachix.org"
       # "https://cache.garnix.io"
     ];
     extra-trusted-public-keys = [
@@ -168,7 +164,7 @@
       "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
       # "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
-      # "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
+      "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
     ];
   };
 

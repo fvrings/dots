@@ -2,6 +2,7 @@
   lib,
   config,
   inputs,
+  pkgs,
   ...
 }:
 {
@@ -13,7 +14,7 @@
   #   # "electron-11.5.0"
   # ];
   nix = {
-    # package = pkgs.lix;
+    package = pkgs.lix;
     extraOptions = ''
       !include ${config.sops.secrets."gh".path}
     '';
@@ -33,7 +34,7 @@
       experimental-features = [
         "nix-command"
         "flakes"
-        "pipe-operators"
+        # "pipe-operators"
       ];
       # Opinionated: disable global registry
       # flake-registry = "";
