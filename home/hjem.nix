@@ -8,7 +8,7 @@
 let
   user = "ring";
   swww = "swww.service";
-  graphical = "graphical-session.service";
+  graphical = "niri.service";
   anime4K_Input = ''
     # Optimized shaders for lower-end GPU:
     CTRL+1 no-osd change-list glsl-shaders set "${pkgs.anime4k}/Anime4K_Clamp_Highlights.glsl:${pkgs.anime4k}/Anime4K_Restore_CNN_M.glsl:${pkgs.anime4k}/Anime4K_Upscale_CNN_x2_M.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x2.glsl:${pkgs.anime4k}/Anime4K_AutoDownscalePre_x4.glsl:${pkgs.anime4k}/Anime4K_Upscale_CNN_x2_S.glsl"; show-text "Anime4K: Mode A (Fast)"
@@ -72,7 +72,7 @@ in
       serviceConfig = {
         ExecStart = "${pkgs.swww}/bin/swww img ${config.theme.wallpaper}";
         Restart = "on-failure";
-        RestartSec = 10;
+        RestartSec = 1;
       };
     };
     services.swww = {
@@ -86,7 +86,7 @@ in
       serviceConfig = {
         ExecStart = "${pkgs.swww}/bin/swww-daemon";
         Restart = "always";
-        RestartSec = 10;
+        RestartSec = 1;
       };
     };
     tmpfiles.users.ring.rules = [
