@@ -78,6 +78,7 @@ in
     services.swww = {
       enable = true;
       wantedBy = [ graphical ];
+
       description = "swww-daemon";
       after = [ graphical ];
       partOf = [ graphical ];

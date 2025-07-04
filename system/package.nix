@@ -51,7 +51,7 @@ in
       libreoffice
       #TODO: configure it with nix
       kanagawa-gtk-theme
-      oreo-cursors-plus
+      lyra-cursors
       linux-manual
       ast-grep
       man-pages
