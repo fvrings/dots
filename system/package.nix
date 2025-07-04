@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 let
   pkgs-stable = import inputs.nixpkgs-stable {
     system = "x86_64-linux";
@@ -22,9 +27,8 @@ in
       nodePackages.ts-node
       tree-sitter
       # nodePackages_latest.prisma
-      python312
       gdb
-      python312Packages.debugpy
+      python313Packages.debugpy
       nodejs
       go
       # ida-free
@@ -82,8 +86,23 @@ in
       # inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
       inputs.pwndbg.packages.${pkgs.system}.default
       inputs.quickshell.packages."x86_64-linux".default
+      inputs.ignis.packages."x86_64-linux".default
       pkgs-stable.kdePackages.qtdeclarative
-    ];
+    ]
+    ++ (
+      if config.theme.shell == "ignis" then
+        [
+          (python3.withPackages (_: [
+            (inputs.ignis.packages."x86_64-linux".default.override {
+              extraPackages = [
+                # Add extra packages if needed
+              ];
+            })
+          ]))
+        ]
+      else
+        [ python3 ]
+    );
   qt.enable = true;
   qt.platformTheme = "qt5ct";
   programs = {

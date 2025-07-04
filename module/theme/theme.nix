@@ -8,5 +8,13 @@
       type = lib.types.path;
       example = lib.literalExample "./wallpaper.png";
     };
+
+    shell = lib.mkOption {
+      description = ''
+        shell of your choice
+      '';
+      type = lib.types.str;
+      example = lib.literalExample "ignis";
+    };
   };
 }

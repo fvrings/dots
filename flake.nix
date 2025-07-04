@@ -9,7 +9,7 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         ./treefmt.nix
-        ./module/theme
+        ./module
       ];
       systems = [ "x86_64-linux" ];
       flake = {
@@ -20,7 +20,7 @@
               ./system/virtual
               ./system/virtual/wsl.nix
               ./home
-              ./module
+              ./module/nixos.nix
               ./overlay
             ];
             specialArgs = { inherit inputs; };
@@ -34,7 +34,7 @@
               ./system/virtual/dots.nix
               ./system/disko/simple.nix
               ./home
-              ./module
+              ./module/nixos.nix
               ./overlay
             ];
             specialArgs = { inherit inputs; };
@@ -45,7 +45,7 @@
               ./system/desktop
               ./system/kernel.nix
               ./home
-              ./module
+              ./module/nixos.nix
               ./overlay
             ];
             specialArgs = { inherit inputs; };
@@ -139,6 +139,13 @@
     pwndbg.url = "github:pwndbg/pwndbg";
     quickshell = {
       url = "github:outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ignis = {
+      url = "github:ignis-sh/ignis";
+      # ! Important to override
+      # Nix will not allow overriding dependencies if the input
+      # doesn't follow your system pkgs
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";
