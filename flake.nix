@@ -94,6 +94,10 @@
     };
     nur.url = "github:nix-community/NUR";
     daeuniverse.url = "github:daeuniverse/flake.nix";
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.2-1.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # flake-root.url = "github:srid/flake-root";
     catppuccin.url = "github:catppuccin/nix";
     yazi.url = "github:sxyazi/yazi";

@@ -5,6 +5,7 @@
     ./hjem.nix
     ./package.nix
     ./wallpaper.nix
+    ./hypridle.nix
     ./yazi
   ];
 }
