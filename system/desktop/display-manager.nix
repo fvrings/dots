@@ -1,4 +1,5 @@
-_: {
+{ pkgs, ... }:
+{
 
   services = {
     gvfs.enable = true;
@@ -16,13 +17,16 @@ _: {
   };
 
   xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-    config = {
-      common.default = [ "gtk" ];
-    };
+    # enable = true;
+    # xdgOpenUsePortal = true;
+    # extraPortals = with pkgs; [
+    #   xdg-desktop-portal-gtk
+    #   xdg-desktop-portal-gnome
+    # ];
+    # config = {
+    #   common.default = [ "gtk" ];
+    # };
 
   };
 
-  security.pam.services.hyprlock = { };
 }

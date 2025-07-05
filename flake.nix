@@ -148,7 +148,7 @@
     #   # doesn't follow your system pkgs
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    niri.url = "github:sodiboo/niri-flake";
+    # niri.url = "github:sodiboo/niri-flake";
     # NOTE: HM :(
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     hjem = {

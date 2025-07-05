@@ -122,6 +122,7 @@ in
       generateFileMappingsFromAttrset {
         ".config/hypr/scripts" = ./desktop/scripts;
         ".config/git" = ../config/git;
+        ".config/alacritty" = ../config/alacritty;
         ".config/uv" = ../config/uv;
         ".config/foot" = ../config/foot;
         ".config/direnv" = ../config/direnv;

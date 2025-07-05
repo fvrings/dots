@@ -8,7 +8,7 @@ let
   timeout = 300;
   settings = ''
     general  {
-      lock_cmd = lib.getExe config.programs.hyprlock.package;
+      lock_cmd = "${lib.getExe config.programs.hyprlock.package}";
       before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
     }
     listener {
@@ -26,7 +26,7 @@ let
     }
     listener {
         timeout = ${builtins.toString (timeout * 2)};
-        on-timeout = "${pkgs.niri}/bin/niri msg action power-off-monitors";
+        on-timeout = "${pkgs.niri_git}/bin/niri msg action power-off-monitors";
     }
     # listener {
     #   timeout = ${builtins.toString (timeout * 6)};
