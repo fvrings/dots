@@ -178,7 +178,6 @@ in
       [
         #bilibili
         # qq
-        firefox
         uv
         # nix related
         dconf

@@ -2,28 +2,28 @@
 
 [Default Applications]
 application/epub+zip=org.pwmt.zathura.desktop
-application/json=firefox.desktop
+application/json=firefox_nightly.desktop
 application/pdf=org.pwmt.zathura.desktop
-application/x-extension-htm=firefox.desktop
-application/x-extension-html=firefox.desktop
-application/x-extension-shtml=firefox.desktop
-application/x-extension-xht=firefox.desktop
-application/x-extension-xhtml=firefox.desktop
+application/x-extension-htm=firefox_nightly.desktop
+application/x-extension-html=firefox_nightly.desktop
+application/x-extension-shtml=firefox_nightly.desktop
+application/x-extension-xht=firefox_nightly.desktop
+application/x-extension-xhtml=firefox_nightly.desktop
 image/gif=mpv.desktop
 image/jpeg=imv.desktop
 image/png=imv.desktop
 image/svg=imv.desktop
 inode/directory=yazi.desktop
-text/html=firefox.desktop
+text/html=firefox_nightly.desktop
 text/plain=nvim.desktop
 video/avi=mpv.desktop
 video/mkv=mpv.desktop
 video/mp4=mpv.desktop
-x-scheme-handler/about=firefox.desktop
+x-scheme-handler/about=firefox_nightly.desktop
 x-scheme-handler/chrome=chromium-browser.desktop
-x-scheme-handler/ftp=firefox.desktop
-x-scheme-handler/http=firefox.desktop
-x-scheme-handler/https=firefox.desktop
-x-scheme-handler/unknown=firefox.desktop
+x-scheme-handler/ftp=firefox_nightly.desktop
+x-scheme-handler/http=firefox_nightly.desktop
+x-scheme-handler/https=firefox_nightly.desktop
+x-scheme-handler/unknown=firefox_nightly.desktop
 
 [Removed Associations]

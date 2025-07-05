@@ -16,6 +16,7 @@ in
     [
       vim
       godot
+      firefox_nightly
       pstree
       quickemu
       nix-output-monitor
@@ -42,7 +43,6 @@ in
       cachix
       chafa
       just
-      ghostty
       typst
       tinymist
       yq
@@ -89,25 +89,11 @@ in
       kdePackages.krdc
     ]
     ++ [
-      # inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
       inputs.pwndbg.packages.${pkgs.system}.default
-      inputs.quickshell.packages."x86_64-linux".default
-      # inputs.ignis.packages."x86_64-linux".default
+      inputs.quickshell.packages.${pkgs.system}.default
+      #TODO: https://github.com/ghostty-org/ghostty/discussions/7356
+      inputs.ghostty.packages.${pkgs.system}.default
     ];
-  # ++ (
-  #   if config.theme.shell == "ignis" then
-  #     [
-  #       (python3.withPackages (_: [
-  #         (inputs.ignis.packages."x86_64-linux".default.override {
-  #           extraPackages = [
-  #             # Add extra packages if needed
-  #           ];
-  #         })
-  #       ]))
-  #     ]
-  #   else
-  #     [ python3 ]
-  # );
   qt.enable = true;
   qt.platformTheme = "qt5ct";
   programs = {

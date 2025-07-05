@@ -24,8 +24,8 @@ font-family = monospace
 gtk-single-instance = true
 # font-style = Bold
 font-size = 13
-# theme = catppuccin-mocha
-theme = Oxocarbon
+theme = Kanagawa Dragon
+# theme = Oxocarbon
 keybind = ctrl+enter=unbind
 keybind = f10=toggle_fullscreen
 # NOTE:for tmux

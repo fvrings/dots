@@ -272,7 +272,7 @@ return {
     {
       '<leader>bp',
       function()
-        Snacks.picker.buffers()
+        Snacks.picker.buffers { layout = 'ivy_split' }
       end,
       desc = 'pick a buffer',
     },
@@ -286,7 +286,7 @@ return {
     {
       '<leader>f',
       function()
-        Snacks.picker.grep()
+        Snacks.picker.grep { layout = 'dropdown' }
       end,
       desc = 'grep',
     },
@@ -321,7 +321,7 @@ return {
     {
       '<leader>su',
       function()
-        Snacks.picker.undo()
+        Snacks.picker.undo { layout = 'left' }
       end,
       desc = 'Undo',
     },
@@ -387,14 +387,14 @@ return {
     {
       '<leader>sd',
       function()
-        Snacks.picker.diagnostics()
+        Snacks.picker.diagnostics { layout = 'sidebar' }
       end,
       desc = 'Diagnostics',
     },
     {
       '<leader>sh',
       function()
-        Snacks.picker.help()
+        Snacks.picker.help { layout = 'left' }
       end,
       desc = 'Help Pages',
     },
@@ -457,7 +457,7 @@ return {
     {
       '<leader>uC',
       function()
-        Snacks.picker.colorschemes()
+        Snacks.picker.colorschemes { layout = 'vscode' }
       end,
       desc = 'Colorschemes',
     },
