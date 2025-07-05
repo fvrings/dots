@@ -10,6 +10,6 @@
         name = "wallpaper-${sha256}.${ext}";
         inherit url sha256;
       };
-    shell = "ignis";
+    shell = "qs";
   };
 }

@@ -141,13 +141,13 @@
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ignis = {
-      url = "github:ignis-sh/ignis";
-      # ! Important to override
-      # Nix will not allow overriding dependencies if the input
-      # doesn't follow your system pkgs
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # ignis = {
+    #   url = "github:ignis-sh/ignis";
+    #   # ! Important to override
+    #   # Nix will not allow overriding dependencies if the input
+    #   # doesn't follow your system pkgs
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     niri.url = "github:sodiboo/niri-flake";
     # NOTE: HM :(
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";

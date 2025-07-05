@@ -14,7 +14,7 @@
         shell of your choice
       '';
       type = lib.types.str;
-      example = lib.literalExample "ignis";
+      example = lib.literalExample "qs";
     };
   };
 }
