@@ -143,6 +143,18 @@ $env.RUSTUP_DIST_SERVER = "https://rsproxy.cn"
 $env.RUSTUP_UPDATE_ROOT = "https://rsproxy.cn/rustup"
 $env.MANPAGER = "sh -c 'col -bx | bat -l man -p'"
 $env.MANROFFOPT = "-c"
+let starship_config_cache_file = ($nu.temp-path | path join "starship_config_path.tmp")
+
+if ((sys host | get name) == "NixOS") {
+  if ($starship_config_cache_file | path exists) {
+    $env.STARSHIP_CONFIG = (open $starship_config_cache_file | str trim)
+  } else {
+    let config_path = (cat /etc/bashrc | grep STARSHIP_CONFIG | awk -F'=' '{print $2}' | lines | get 1 | str trim)
+
+    $env.STARSHIP_CONFIG = $config_path
+    $config_path | save $starship_config_cache_file
+  }
+}
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 zoxide init nushell | save -f ($nu.data-dir | path join "vendor/autoload/zoxide.nu")

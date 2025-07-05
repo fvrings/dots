@@ -134,7 +134,6 @@ in
         ".config/lazygit" = ../config/lazygit;
       }
       // {
-        ".config/starship.toml".source = ../config/starship/starship.toml;
         ".config/mpv".source = mpvConf;
         ".config/tmux/tmux-or-nvim-kill.sh".source = ../config/tmux/tmux-or-nvim-kill.sh;
         ".config/hypr/hyprlock.conf".text = ''
@@ -144,7 +143,7 @@ in
         '';
         ".config/mimeapps.list".source = ../config/mimeapps.list;
         ".npmrc".source = ../config/.npmrc;
-        "nix-extra/sqlite3.path".text = "${pkgs.sqlite.out}/lib/libsqlite3.so";
+        ".config/nix-extra/sqlite3.path".text = "${pkgs.sqlite.out}/lib/libsqlite3.so";
         ".cargo/config.toml".text =
           (builtins.readFile ../config/.cargo/config.toml)
           + ''
@@ -157,11 +156,7 @@ in
           + ''
             include ${pkgs.kitty-themes}/share/kitty-themes/themes/kanagawa_dragon.conf
           '';
-        ".config/zathura/zathurarc".text =
-          (builtins.readFile ../config/zathura/zathurarc)
-          + ''
-            include /nix/store/48q9z3bdlz4g0gv12i5yzf6xs5fvfnr0-catppuccin-zathura-0/catppuccin-mocha
-          '';
+        ".config/zathura/zathurarc".source = ../config/zathura/zathurarc;
       };
   };
 }

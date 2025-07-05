@@ -20,7 +20,10 @@ config = ["nvim"]
 def get_des_path(name: str) -> str | None:
     match sys.platform:
         case "linux":
-            return os.path.join(os.path.expanduser("~/.config"), name)
+            if name.startswith("."):
+                return os.path.join(os.path.expanduser("~"), name)
+            else:
+                return os.path.join(os.path.expanduser("~/.config"), name)
         case "win32":
             local_dir = os.path.join(os.environ["USERPROFILE"], "AppData", "Local")
             roaming_dir = os.path.join(os.environ["USERPROFILE"], "AppData", "Roaming")

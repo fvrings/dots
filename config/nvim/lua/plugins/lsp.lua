@@ -49,9 +49,9 @@ local function config()
     cmake = {},
     solidity_ls = {},
     phpactor = {},
-    -- qmlls = {
-    --   cmd = { 'qmlls', '-E' },
-    -- },
+    qmlls = {
+      cmd = { 'qmlls', '-E' },
+    },
     typst_lsp = { settings = { exportPdf = 'onSave' } },
     tinymist = {
       settings = {

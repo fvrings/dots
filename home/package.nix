@@ -148,14 +148,18 @@ in
     ghidra.enable = true;
     zoxide.enable = true;
     lazygit.enable = true;
-    #BUG: https://github.com/NixOS/nixpkgs/issues/380540
-    # starship = {
-    #   enable = true;
-    #   settings = {
-    #     hostname.ssh_symbol = "🏄 ";
-    #   };
-    #   presets = [ "jetpack" ];
-    # };
+    starship = {
+      enable = true;
+      settings = {
+        hostname.ssh_symbol = "🏄 ";
+        character.error_symbol = "💔";
+        character.success_symbol = "👾";
+      };
+      presets = [
+        "jetpack"
+        "nerd-font-symbols"
+      ];
+    };
     bash = {
       completion.enable = true;
       shellAliases = {

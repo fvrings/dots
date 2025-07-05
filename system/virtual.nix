@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   virtualisation = {
-    vmware.host.enable = true;
+    # vmware.host.enable = true;
     libvirtd = {
       enable = true;
       qemu = {

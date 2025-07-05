@@ -46,6 +46,8 @@ in
       typst
       tinymist
       yq
+      zathura
+      xdg-utils
       gnumake
       # this is super useful
       ngrok
@@ -81,14 +83,16 @@ in
       gemini-cli
       tela-circle-icon-theme
       beauty-line-icon-theme
+      alacritty_git
       python3
+      kdePackages.qtdeclarative
+      kdePackages.krdc
     ]
     ++ [
       # inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
       inputs.pwndbg.packages.${pkgs.system}.default
       inputs.quickshell.packages."x86_64-linux".default
       # inputs.ignis.packages."x86_64-linux".default
-      pkgs-stable.kdePackages.qtdeclarative
     ];
   # ++ (
   #   if config.theme.shell == "ignis" then
