@@ -4,7 +4,7 @@
     inputs.self.nixosModules.theme
     ./hjem.nix
     ./package.nix
-    ./wallpaper.nix
+    ./theme.nix
     ./hypridle.nix
     ./yazi
     ./mpv
