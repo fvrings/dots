@@ -1,5 +1,5 @@
 {
-  description = "dark art";
+  description = "art";
 
   outputs =
     {
@@ -39,9 +39,37 @@
       };
       perSystem =
         { pkgs, ... }:
+        let
+          configuredProgramsSystem = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+              ./home/yazi
+              ./home/tmux
+              {
+                system.stateVersion = "25.11";
+              }
+            ];
+            specialArgs = { inherit inputs; };
+          };
+
+          # Extract the configured tmux package
+          # programs.tmux sets config.programs.tmux.package to the configured binary.
+          tmuxWithConfig = configuredProgramsSystem.config.programs.tmux.package;
+
+          # Extract the configured yazi package
+          # programs.yazi places the configured binary in environment.systemPackages.
+          yaziWithConfig = builtins.head (
+            builtins.filter (
+              p: builtins.hasAttr "pname" p && p.pname == "yazi"
+            ) configuredProgramsSystem.config.environment.systemPackages
+          );
+
+        in
         {
           packages = {
             mpv = import ./home/mpv/pkg.nix { inherit pkgs; };
+            yazi = yaziWithConfig;
+            tmux = tmuxWithConfig;
           };
           devShells.default = pkgs.mkShell {
             name = "ring";

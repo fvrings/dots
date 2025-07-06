@@ -103,7 +103,6 @@ in
         ".config/lazygit" = ../config/lazygit;
       }
       // {
-        ".config/tmux/tmux-or-nvim-kill.sh".source = ../config/tmux/tmux-or-nvim-kill.sh;
         ".config/hypr/hyprlock.conf".text = ''
           background {
             path=${config.theme.wallpaper}

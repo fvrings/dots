@@ -8,5 +8,6 @@
     ./hypridle.nix
     ./yazi
     ./mpv
+    ./tmux
   ];
 }
