@@ -7,5 +7,6 @@
     ./wallpaper.nix
     ./hypridle.nix
     ./yazi
+    ./mpv
   ];
 }

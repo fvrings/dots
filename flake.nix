@@ -17,36 +17,21 @@
           wsl = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [
-              ./system/virtual
-              ./system/virtual/wsl.nix
-              ./home
-              ./module/nixos.nix
-              ./overlay
+              ./host/wsl
             ];
             specialArgs = { inherit inputs; };
           };
           vm = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [
-              ./system/virtual
-              ./system/kernel.nix
-              ./system/virtual/hardware-configuration.nix
-              ./system/virtual/dots.nix
-              ./system/disko/simple.nix
-              ./home
-              ./module/nixos.nix
-              ./overlay
+              ./host/vm
             ];
             specialArgs = { inherit inputs; };
           };
           art = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [
-              ./system/desktop
-              ./system/kernel.nix
-              ./home
-              ./module/nixos.nix
-              ./overlay
+              ./host/art
             ];
             specialArgs = { inherit inputs; };
           };
@@ -55,8 +40,11 @@
       perSystem =
         { pkgs, ... }:
         {
+          packages = {
+            mpv = import ./home/mpv/pkg.nix { inherit pkgs; };
+          };
           devShells.default = pkgs.mkShell {
-            name = "rings";
+            name = "ring";
             packages = with pkgs; [
               git
               vim
