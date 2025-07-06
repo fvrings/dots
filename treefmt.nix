@@ -5,26 +5,29 @@
   perSystem = {
     treefmt.config = {
       projectRootFile = "flake.nix";
-      programs.black.enable = true;
-      programs.nixfmt.enable = true;
-      programs.biome = {
-        enable = true;
-        excludes = [
-          "*.yaml"
-          "*.lock"
-          "config/**/lazy-lock.json"
-          "*.yml"
-          "config/**/vs-snippets/*"
-        ];
-        settings.formatter = {
-          indentStyle = "space";
-          indentWidth = 2;
+      programs = {
+        black.enable = true;
+        nixfmt.enable = true;
+        qmlformat.enable = true;
+        biome = {
+          enable = true;
+          excludes = [
+            "*.yaml"
+            "*.lock"
+            "config/**/lazy-lock.json"
+            "*.yml"
+            "config/**/vs-snippets/*"
+          ];
+          settings.formatter = {
+            indentStyle = "space";
+            indentWidth = 2;
+          };
         };
-      };
-      programs.stylua.enable = true;
-      programs.shfmt = {
-        enable = true;
-        indent_size = 2;
+        stylua.enable = true;
+        shfmt = {
+          enable = true;
+          indent_size = 2;
+        };
       };
     };
   };

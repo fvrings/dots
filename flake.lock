@@ -1547,15 +1547,16 @@
         "nixpkgs": "nixpkgs_11"
       },
       "locked": {
-        "lastModified": 1750931469,
-        "narHash": "sha256-0IEdQB1nS+uViQw4k3VGUXntjkDp7aAlqcxdewb/hAc=",
-        "owner": "numtide",
+        "lastModified": 1751779480,
+        "narHash": "sha256-4bTdKVP2ymYkfgF9Brrz9aU8dSf9KYrpuRm0SMhHmms=",
+        "owner": "fvrings",
         "repo": "treefmt-nix",
-        "rev": "ac8e6f32e11e9c7f153823abc3ab007f2a65d3e1",
+        "rev": "a23b8515cf3c694a00caf7e48a4a89f999637ca0",
         "type": "github"
       },
       "original": {
-        "owner": "numtide",
+        "owner": "fvrings",
+        "ref": "feat/qmlformat",
         "repo": "treefmt-nix",
         "type": "github"
       }

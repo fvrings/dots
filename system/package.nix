@@ -83,7 +83,6 @@ in
       gemini-cli
       tela-circle-icon-theme
       beauty-line-icon-theme
-      alacritty_git
       python3
       kdePackages.qtdeclarative
       kdePackages.krdc
@@ -91,11 +90,7 @@ in
     ++ [
       inputs.pwndbg.packages.${pkgs.system}.default
       inputs.quickshell.packages.${pkgs.system}.default
-      #TODO: https://github.com/ghostty-org/ghostty/discussions/7356
-      inputs.ghostty.packages.${pkgs.system}.default
     ];
-  qt.enable = true;
-  qt.platformTheme = "qt5ct";
   programs = {
     neovim = {
       enable = true;

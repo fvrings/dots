@@ -58,7 +58,6 @@ let
     delta
     ueberzugpp
     mpv
-    fuzzel
     lazyjj
   ];
   shtools = [

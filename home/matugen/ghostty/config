@@ -1,30 +1,10 @@
-# This is the configuration file for Ghostty.
-#
-# This template file has been automatically created at the following
-# path since Ghostty couldn't find any existing config files on your system:
-#
-#   /home/ring/.config/ghostty/config
-#
-# The template does not set any default options, since Ghostty ships
-# with sensible defaults for all options. Users should only need to set
-# options that they want to change from the default.
-#
-# Run `ghostty +show-config --default --docs` to view a list of
-# all available config options and their default values.
-#
-# Additionally, each config option is also explained in detail
-# on Ghostty's website, at https://ghostty.org/docs/config.
-
-# Config syntax crash course
-# ==========================
-# # The config file consists of simple key-value pairs,
-# # separated by equals signs.
 # fullscreen = true
 font-family = monospace
 gtk-single-instance = true
 # font-style = Bold
 font-size = 13
-theme = Kanagawa Dragon
+# theme = Kanagawa Dragon
+theme = matugen
 # theme = Oxocarbon
 keybind = ctrl+enter=unbind
 keybind = f10=toggle_fullscreen
@@ -48,6 +28,8 @@ keybind = f10=toggle_fullscreen
 # keybind = alt+p=previous_tab
 
 window-decoration = false
+gtk-titlebar = false
+quit-after-last-window-closed = false
 # window-padding-x = 2
 #
 # # Spacing around the equals sign does not matter.

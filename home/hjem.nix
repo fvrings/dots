@@ -79,7 +79,6 @@ in
       };
     };
     tmpfiles.users.ring.rules = [
-      (symLink "ghostty")
       (symLink "nushell")
       (symLink "niri")
       (symLink "nvim")
@@ -90,7 +89,6 @@ in
       generateFileMappingsFromAttrset {
         ".config/hypr/scripts" = ./desktop/scripts;
         ".config/git" = ../config/git;
-        ".config/alacritty" = ../config/alacritty;
         ".config/uv" = ../config/uv;
         ".config/foot" = ../config/foot;
         ".config/direnv" = ../config/direnv;
@@ -100,7 +98,6 @@ in
         ".config/bat" = ../config/bat;
         ".config/imv" = ../config/imv;
         ".config/btop" = ../config/btop;
-        ".config/lazygit" = ../config/lazygit;
       }
       // {
         ".config/hypr/hyprlock.conf".text = ''
@@ -122,8 +119,10 @@ in
           (builtins.readFile ../config/kitty/kitty.conf)
           + ''
             include ${pkgs.kitty-themes}/share/kitty-themes/themes/kanagawa_dragon.conf
+            include kitty-colors.conf
           '';
         ".config/zathura/zathurarc".source = ../config/zathura/zathurarc;
+        ".config/lazygit/config.yml".source = ../config/lazygit/config.yml;
       };
   };
 }

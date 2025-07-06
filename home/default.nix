@@ -9,5 +9,6 @@
     ./yazi
     ./mpv
     ./tmux
+    ./matugen
   ];
 }
