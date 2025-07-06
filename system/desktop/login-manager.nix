@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+_: {
 
   services = {
     gvfs.enable = true;
@@ -14,19 +13,6 @@
         clock = "%Y %a %b %d %X";
       };
     };
-  };
-
-  xdg.portal = {
-    # enable = true;
-    # xdgOpenUsePortal = true;
-    # extraPortals = with pkgs; [
-    #   xdg-desktop-portal-gtk
-    #   xdg-desktop-portal-gnome
-    # ];
-    # config = {
-    #   common.default = [ "gtk" ];
-    # };
-
   };
 
 }

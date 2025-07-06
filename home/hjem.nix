@@ -90,7 +90,6 @@ in
         ".config/hypr/scripts" = ./desktop/scripts;
         ".config/git" = ../config/git;
         ".config/uv" = ../config/uv;
-        ".config/foot" = ../config/foot;
         ".config/direnv" = ../config/direnv;
         ".config/emacs" = ../config/emacs;
         ".config/zellij" = ../config/zellij;

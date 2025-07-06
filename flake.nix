@@ -115,7 +115,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # flake-root.url = "github:srid/flake-root";
-    catppuccin.url = "github:catppuccin/nix";
+    # catppuccin.url = "github:catppuccin/nix";
     yazi.url = "github:sxyazi/yazi";
     yazi-plugins = {
       url = "github:yazi-rs/plugins";

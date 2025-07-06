@@ -18,4 +18,8 @@
       };
     };
   };
+
+  services.ucodenix = {
+    enable = true;
+  };
 }
