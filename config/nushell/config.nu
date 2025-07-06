@@ -87,16 +87,25 @@ $env.config = {
       ]
   }
   {
+    name: fuzzy_history
+    modifier: control
+    keycode: char_r
+    mode: emacs
+    event: {
+      send: executehostcommand
+      cmd: "commandline edit (history | get command | reverse | uniq | to text | fzf --scheme history --layout=reverse --height=40% -q (commandline) | decode utf-8 | str trim)"
+    }
+  }
+  {
     name: enter_path_with_fzf
     modifier: CONTROL
     keycode: Char_f
     mode: emacs
     event:[
-        { 
-          edit: InsertString,
-          value: "(fzf | decode utf-8 | str trim)"
+        {
+          send: executehostcommand,
+          cmd: "commandline edit --insert (fzf -m --layout=reverse)"
         }
-        { send: Enter }
       ]
   }
   ]
@@ -135,7 +144,8 @@ $env.ANDROID_HOME = [$env.HOME "Android/Sdk/"] | path join
 $env.PATH = ($env.PATH | uniq)
 
 $env.FZF_DEFAULT_COMMAND = "fd --type f --strip-cwd-prefix"
-$env.FZF_DEFAULT_OPTS = "--color=bg+:#2A2A37,bg:#1F1F28,spinner:#938AA9,hl:#76946A  --color=fg:#DCD7BA,header:#7E9CD8,info:#957FB8,pointer:#E46876  --color=marker:#C0A36E,fg+:#C8C093,prompt:#76946A,hl+:#85A88B  --color=selected-bg:#2D4F67  --color=border:#363646,label:#DCD7BA"
+# $env.FZF_DEFAULT_OPTS = "--color=bg+:#2A2A37,bg:#1F1F28,spinner:#938AA9,hl:#76946A  --color=fg:#DCD7BA,header:#7E9CD8,info:#957FB8,pointer:#E46876  --color=marker:#C0A36E,fg+:#C8C093,prompt:#76946A,hl+:#85A88B  --color=selected-bg:#2D4F67  --color=border:#363646,label:#DCD7BA"
+$env.FZF_DEFAULT_OPTS = "--color=fg:#ffffff,bg:#161616,hl:#ee5396 --color=fg+:#f2f4f8,bg+:#262626,hl+:#ff7eb6 --color=info:#78a9ff,prompt:#33b1ff,pointer:#be95ff --color=marker:#08bdba,spinner:#3ddbd9,header:#42be65"
 $env.EDITOR = "nvim"
 $env.GOPROXY = "https://goproxy.cn,direct"
 $env.GO111MODULE = "on"
