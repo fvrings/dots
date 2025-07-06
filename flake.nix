@@ -82,7 +82,7 @@
         };
     };
   inputs = {
-    #TODO: add disko until https://github.com/nix-community/disko/issues/511
+    #TODO: https://github.com/nix-community/disko/issues/511
     impermanence.url = "github:nix-community/impermanence";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -114,8 +114,6 @@
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.2-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # flake-root.url = "github:srid/flake-root";
-    # catppuccin.url = "github:catppuccin/nix";
     yazi.url = "github:sxyazi/yazi";
     yazi-plugins = {
       url = "github:yazi-rs/plugins";
@@ -157,13 +155,6 @@
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # ignis = {
-    #   url = "github:ignis-sh/ignis";
-    #   # ! Important to override
-    #   # Nix will not allow overriding dependencies if the input
-    #   # doesn't follow your system pkgs
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     # niri.url = "github:sodiboo/niri-flake";
     # NOTE: HM :(
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";

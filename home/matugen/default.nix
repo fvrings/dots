@@ -30,11 +30,11 @@ in
       rm ~/.config/qt5ct/colors/matugen.conf
       rm ~/.config/qt6ct/colors/matugen.conf
 
-      rm ~/.config/fuzzel/colors.ini
+      rm ~/.config/fuzzel/matugen.ini
 
       rm ~/.config/alacritty/matugen.toml
 
-      rm -r ~/.config/kitty
+      rm ~/.config/kitty/matugen.conf
     '')
   ];
   hjem.users.ring = {
