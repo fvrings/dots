@@ -12,6 +12,7 @@
       ./service
       ./hardware-configuration.nix
       ../disko
+      ./power.nix
       ./fcitx.nix
 
       ../core.nix
