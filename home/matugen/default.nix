@@ -25,7 +25,7 @@ in
       rm ~/.config/gtk-3.0/colors.css
       rm ~/.config/gtk-4.0/colors.css
 
-      rm ~/.config/ghostty/themes/matugen
+      rm ~/.config/ghostty/matugen
 
       rm ~/.config/qt5ct/colors/matugen.conf
       rm ~/.config/qt6ct/colors/matugen.conf
@@ -43,6 +43,8 @@ in
       swww
     ];
     files = {
+      #TODO: remove this
+      ".config/matugen/config.toml".clobber = true;
       ".config/matugen/config.toml".source = pkgs.writers.writeTOML "config.toml" {
         config = {
           wallpaper = {
@@ -67,6 +69,7 @@ in
           ghostty = {
             input_path = ./templates/ghostty;
             output_path = "~/.config/ghostty/themes/matugen";
+            post_hook = "echo 'theme = matugen' |save -f ~/.config/ghostty/matugen";
           };
           fuzzel = {
             input_path = ./templates/fuzzel.ini;

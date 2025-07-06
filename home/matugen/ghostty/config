@@ -4,7 +4,7 @@ gtk-single-instance = true
 # font-style = Bold
 font-size = 13
 theme = Kanagawa Dragon
-theme = matugen
+config-file = ?matugen
 # theme = Oxocarbon
 keybind = ctrl+enter=unbind
 keybind = f10=toggle_fullscreen
