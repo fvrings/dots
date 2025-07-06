@@ -115,12 +115,6 @@ in
             linker = "clang"
               rustflags = ["-C", "link-arg=-fuse-ld=${pkgs.mold-wrapped}/bin/mold"]
           '';
-        ".config/kitty/kitty.conf".text =
-          (builtins.readFile ../config/kitty/kitty.conf)
-          + ''
-            include ${pkgs.kitty-themes}/share/kitty-themes/themes/kanagawa_dragon.conf
-            include kitty-colors.conf
-          '';
         ".config/zathura/zathurarc".source = ../config/zathura/zathurarc;
         ".config/lazygit/config.yml".source = ../config/lazygit/config.yml;
       };

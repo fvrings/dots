@@ -1,12 +1,23 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
+let
+  getSubdirs =
+    folder:
+    let
+      flakeRootContents = builtins.readDir folder;
+      directoriesOnly = lib.filterAttrs (
+        name: type: type == "directory" && name != "templates"
+      ) flakeRootContents;
+      directoryNames = builtins.attrNames directoriesOnly;
+
+      # Map the names to their full absolute paths
+      directoryPaths = builtins.map (name: folder + "/${name}") directoryNames;
+    in
+    directoryPaths;
+  subdirectories = getSubdirs ./.;
+
+in
 {
-  imports = [
-    ./gtk.nix
-    ./ghostty
-    ./qt.nix
-    ./fuzzel.nix
-    ./alacritty.nix
-  ];
+  imports = subdirectories;
 
   environment.systemPackages = [
     (pkgs.writeShellScriptBin "use-kanagawa" ''
@@ -21,7 +32,7 @@
 
       rm ~/.config/fuzzel/colors.ini
 
-      rm ~/.config/alacritty/colors.ini
+      rm ~/.config/alacritty/matugen.toml
 
       rm -r ~/.config/kitty
     '')
@@ -59,7 +70,7 @@
           };
           fuzzel = {
             input_path = ./templates/fuzzel.ini;
-            output_path = "~/.config/fuzzel/colors.ini";
+            output_path = "~/.config/fuzzel/matugen.ini";
           };
           qt5ct = {
             input_path = ./templates/qtct-colors.conf;
@@ -71,11 +82,11 @@
           };
           kitty = {
             input_path = ./templates/kitty-colors.conf;
-            output_path = "~/.config/kitty/kitty-colors.conf";
+            output_path = "~/.config/kitty/matugen.conf";
           };
           alacritty = {
             input_path = ./templates/alacritty.toml;
-            output_path = "~/.config/alacritty/colors.toml";
+            output_path = "~/.config/alacritty/matugen.toml";
           };
           # niri = {
           #   input_path = ./templates/niri.kdl;

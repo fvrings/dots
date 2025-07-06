@@ -4,7 +4,7 @@
     packages = [ pkgs.fuzzel ];
     files = {
       ".config/fuzzel/fuzzel.ini".text = ''
-        include=~/.config/fuzzel/colors.ini
+        include=~/.config/fuzzel/matugen.ini
         terminal=ghostty
         prompt=">>  "
         layer=overlay

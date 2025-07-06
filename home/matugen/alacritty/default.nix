@@ -11,9 +11,14 @@
           decorations = "none";
         };
         general = {
-          import = [ "colors.toml" ];
+          import = [
+            "kanagawa.toml"
+            "matugen.toml"
+          ];
         };
       };
+      ".config/alacritty/kanagawa.toml".source =
+        "${pkgs.alacritty-theme}/share/alacritty-theme/kanagawa_dragon.toml";
     };
   };
 }

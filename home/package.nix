@@ -94,7 +94,6 @@ let
     gh
     carapace
     starship
-    kitty
   ];
 in
 {

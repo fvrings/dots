@@ -3,7 +3,7 @@ font-family = monospace
 gtk-single-instance = true
 # font-style = Bold
 font-size = 13
-# theme = Kanagawa Dragon
+theme = Kanagawa Dragon
 theme = matugen
 # theme = Oxocarbon
 keybind = ctrl+enter=unbind
