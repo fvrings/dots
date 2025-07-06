@@ -314,7 +314,7 @@ return {
     {
       '<leader><leader>',
       function()
-        Snacks.picker.smart()
+        Snacks.picker.smart { layout = 'dropdown' }
       end,
       desc = 'Find Files',
     },
