@@ -12,12 +12,14 @@ _: {
       [Appearance]
       color_scheme_path=~/.config/qt5ct/colors/matugen.conf
       custom_palette=true
+      icon_theme=BeautyLine
       style=Fusion
     '';
     ".config/qt6ct/qt6ct.conf".text = ''
       [Appearance]
       color_scheme_path=~/.config/qt6ct/colors/matugen.conf
       custom_palette=true
+      icon_theme=BeautyLine
       standard_dialogs=default
       style=Fusion
 

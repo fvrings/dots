@@ -67,7 +67,7 @@
         in
         {
           packages = {
-            mpv = import ./home/mpv/pkg.nix { inherit pkgs; };
+            mpv = pkgs.callPackage ./home/mpv/pkg.nix { };
             yazi = yaziWithConfig;
             tmux = tmuxWithConfig;
           };
@@ -162,9 +162,9 @@
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
+    # ghostty = {
+    #   url = "github:ghostty-org/ghostty";
+    # };
   };
   nixConfig = {
     extra-substituters = [

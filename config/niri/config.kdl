@@ -141,11 +141,10 @@ layout {
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "fcitx5"
+// spawn-at-startup "systemctl restart --user app-org.fcitx.Fcitx5@autostart.service"
+spawn-at-startup "fcitx5 -d"
 spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
 spawn-at-startup "wlsunset" "-l" "39.9" "-L" "116.3"
-// BUG: seems to be related https://github.com/YaLTeR/niri/issues/1863
-// spawn-at-startup "systemctl" "--user" "restart" "xdg-desktop-portal-gtk.service"
 spawn-at-startup "quickshell"
 // spawn-at-startup "waybar"
 // Or, if you built it by hand:
@@ -153,10 +152,7 @@ spawn-at-startup "quickshell"
 
 environment {
     DISPLAY ":0"
-    XMODIFIERS "fcitx"
-    QT_IM_MODULES "wayland;fcitx"
-    QT_IM_MODULE "fcitx"
-    GTK_IM_MODULE "fcitx"
+    // QT_IM_MODULES "wayland;fcitx"
     QT_QPA_PLATFORMTHEME "qt6ct"
     QT_QPA_PLATFORM "wayland"
 }
@@ -232,7 +228,7 @@ binds {
     Mod+Shift+Slash         { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+W                   { spawn "kitty"; }
+    Mod+W                   { spawn "alacritty"; }
     Mod+T                   { toggle-column-tabbed-display; }
     Mod+Return              { spawn "kitty"; }
     Mod+R                   { spawn "fuzzel"; }

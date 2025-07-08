@@ -6,7 +6,7 @@ _: {
       "bcachefs"
     ];
     tmp.useTmpfs = true;
-    plymouth.enable = true;
+    # plymouth.enable = true;
     loader = {
       efi.canTouchEfiVariables = true;
       systemd-boot = {

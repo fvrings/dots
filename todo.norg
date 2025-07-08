@@ -1,7 +1,8 @@
 * TODO
 - (x) gtk
-- (-) matugen
+- (x) matugen
 - (_) ignis
-- ( ) swww fallback to previous image
+- (_) swww fallback to previous image
 - (x) add yazi tmux mpv package
 - (-) quickshell
+- ( ) flake templates

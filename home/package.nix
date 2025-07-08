@@ -33,8 +33,7 @@ let
     # solc
   ];
   formatter = [
-    # TODO: not available
-    # tombi
+    tombi
     taplo
     rustfmt
     google-java-format
@@ -58,6 +57,7 @@ let
     delta
     ueberzugpp
     mpv
+    imv
     lazyjj
   ];
   shtools = [
