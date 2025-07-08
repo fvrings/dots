@@ -3,6 +3,7 @@
 
   outputs =
     {
+      self,
       nixpkgs,
       ...
     }@inputs:
@@ -38,30 +39,16 @@
         };
       };
       perSystem =
-        { pkgs, ... }:
+        {
+          pkgs,
+          ...
+        }:
         let
-          configuredProgramsSystem = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            modules = [
-              ./home/yazi
-              ./home/tmux
-              {
-                system.stateVersion = "25.11";
-              }
-            ];
-            specialArgs = { inherit inputs; };
-          };
 
-          # Extract the configured tmux package
-          # programs.tmux sets config.programs.tmux.package to the configured binary.
-          tmuxWithConfig = configuredProgramsSystem.config.programs.tmux.package;
-
-          # Extract the configured yazi package
-          # programs.yazi places the configured binary in environment.systemPackages.
           yaziWithConfig = builtins.head (
             builtins.filter (
               p: builtins.hasAttr "pname" p && p.pname == "yazi"
-            ) configuredProgramsSystem.config.environment.systemPackages
+            ) self.nixosConfigurations.art.config.environment.systemPackages
           );
 
         in
@@ -69,8 +56,9 @@
           packages = {
             mpv = pkgs.callPackage ./home/mpv/pkg.nix { };
             yazi = yaziWithConfig;
-            tmux = tmuxWithConfig;
+            tmux = self.nixosConfigurations.art.config.programs.tmux.package;
           };
+
           devShells.default = pkgs.mkShell {
             name = "ring";
             packages = with pkgs; [
