@@ -83,8 +83,11 @@ in
       tela-circle-icon-theme
       beauty-line-icon-theme
       python3
+
       kdePackages.qtdeclarative
       kdePackages.krdc
+      qt6Packages.qt5compat
+      libsForQt5.qt5.qtgraphicaleffects
     ]
     ++ [
       inputs.pwndbg.packages.${pkgs.system}.default
