@@ -138,7 +138,7 @@
     ucodenix = {
       url = "github:e-tho/ucodenix";
     };
-    pwndbg.url = "github:pwndbg/pwndbg";
+    # pwndbg.url = "github:pwndbg/pwndbg";
     quickshell = {
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -159,18 +159,16 @@
       # "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
-      "https://numtide.cachix.org"
       "https://yazi.cachix.org"
       # "https://ags.cachix.org"
-      "https://pwndbg.cachix.org"
+      # "https://pwndbg.cachix.org"
       "https://chaotic-nyx.cachix.org"
       # "https://cache.garnix.io"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "pwndbg.cachix.org-1:HhtIpP7j73SnuzLgobqqa8LVTng5Qi36sQtNt79cD3k="
+      # "pwndbg.cachix.org-1:HhtIpP7j73SnuzLgobqqa8LVTng5Qi36sQtNt79cD3k="
       # "ags.cachix.org-1:naAvMrz0CuYqeyGNyLgE010iUiuf/qx6kYrUv3NwAJ8="
-      "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
       # "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
       "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="

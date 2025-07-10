@@ -202,7 +202,10 @@ return {
           if ft == 'lua' then
             return patch { 'lazydev' }
           elseif vim.list_contains({ 'norg', 'gitcommit', 'markdown' }, ft) then
-            return patch { 'nerdfont', 'emoji' }
+            return patch {
+              -- 'nerdfont',
+              'emoji',
+            }
           elseif vim.list_contains({ 'css', 'html' }, ft) then
             return patch { 'tw2css' }
           elseif ft == 'sql' then
@@ -214,7 +217,11 @@ return {
           elseif ft == 'codecompanion' then
             return patch { 'codecompanion' }
           elseif ft == 'org' then
-            return patch { 'orgmode', 'nerdfont', 'emoji' }
+            return patch {
+              'orgmode',
+              -- 'nerdfont',
+              'emoji',
+            }
           elseif ft == 'typr' then
             return {}
           else
@@ -228,13 +235,13 @@ return {
             name = 'Avante',
             opts = {},
           },
-          nerdfont = {
-            name = 'nerdfont', -- IMPORTANT: use the same name as you would for nvim-cmp
-            module = 'blink.compat.source',
-
-            -- all blink.cmp source config options work as normal:
-            score_offset = -3,
-          },
+          -- nerdfont = {
+          --   name = 'nerdfont', -- IMPORTANT: use the same name as you would for nvim-cmp
+          --   module = 'blink.compat.source',
+          --
+          --   -- all blink.cmp source config options work as normal:
+          --   score_offset = -3,
+          -- },
           minuet = {
             name = 'minuet',
             module = 'minuet.blink',
@@ -258,7 +265,7 @@ return {
           emoji = {
             module = 'blink-emoji',
             name = 'Emoji',
-            -- score_offset = 9, -- Tune by preference
+            score_offset = 8,
           },
           ripgrep = {
             module = 'blink-ripgrep',
@@ -387,10 +394,10 @@ return {
     'moyiz/blink-emoji.nvim',
     ft = { 'gitcommit', 'org', 'markdown', 'norg' },
   },
-  {
-    'chrisgrieser/cmp-nerdfont',
-    ft = { 'gitcommit', 'org', 'markdown', 'norg' },
-  },
+  -- {
+  --   'chrisgrieser/cmp-nerdfont',
+  --   ft = { 'gitcommit', 'org', 'markdown', 'norg' },
+  -- },
   {
     'jcha0713/cmp-tw2css',
     ft = { 'css', 'html' },

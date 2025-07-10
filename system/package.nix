@@ -90,7 +90,7 @@ in
       libsForQt5.qt5.qtgraphicaleffects
     ]
     ++ [
-      inputs.pwndbg.packages.${pkgs.system}.default
+      # inputs.pwndbg.packages.${pkgs.system}.default
       (inputs.quickshell.packages.${pkgs.system}.default.override {
         withJemalloc = true;
         withQtSvg = true;
