@@ -14,15 +14,6 @@ let
     yazi-kanagawa
     ;
 
-  yazi-starship' = pkgs.stdenv.mkDerivation {
-    name = "starship-yazi-patch";
-    # Use the input itself as the source to operate on
-    src = yazi-starship;
-
-    patches = [ ./starship.diff ];
-
-    installPhase = "cp -r . $out"; # Copy the patched source to $out
-  };
 in
 {
   programs.yazi = {
@@ -41,7 +32,7 @@ in
       "jump_to_char.yazi" = "${yazi-plugins}/jump-to-char.yazi";
       "bunny.yazi" = "${bunny}";
       "rich-preview.yazi" = "${rich-preview}";
-      "starship.yazi" = "${yazi-starship'}";
+      "starship.yazi" = "${yazi-starship}";
     };
     initLua = ./yazi.lua;
     settings = {
