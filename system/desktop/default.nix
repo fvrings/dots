@@ -12,6 +12,7 @@
     ./fcitx.nix
 
     ../core.nix
+    ../dwl
     ../dae.nix
     ../package.nix
     ./desktop-package.nix

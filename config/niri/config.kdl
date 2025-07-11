@@ -231,11 +231,11 @@ binds {
     Mod+W                   { spawn "alacritty"; }
     Mod+T                   { toggle-column-tabbed-display; }
     Mod+Return              { spawn "kitty"; }
-    Mod+R                   { spawn "fuzzel"; }
-    Mod+F                   { spawn "firefox-nightly"; }
+    Mod+P                   { spawn "fuzzel"; }
+    // Mod+F                   { spawn "firefox-nightly"; }
     Mod+Ctrl+L              { spawn "hyprlock"; }
     Mod+Backslash           { spawn "nu" "-c" "cliphist list | fuzzel --dmenu| cliphist decode | wl-copy"; }
-    Mod+P                   { spawn "qs" "ipc" "call" "panel" "fire"; }
+    Mod+Shift+P                   { spawn "qs" "ipc" "call" "panel" "fire"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
@@ -325,6 +325,6 @@ binds {
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
-    Mod+Shift+P         { power-off-monitors; }
+    // Mod+Shift+P         { power-off-monitors; }
 }
 

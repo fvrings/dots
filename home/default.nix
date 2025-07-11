@@ -11,4 +11,10 @@
     ./tmux
     ./matugen
   ];
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.ring = ./hm.nix;
+  };
 }

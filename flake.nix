@@ -144,10 +144,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # niri.url = "github:sodiboo/niri-flake";
-    # NOTE: HM :(
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     hjem = {
       url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # ghostty = {

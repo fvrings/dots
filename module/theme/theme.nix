@@ -8,6 +8,13 @@
       type = lib.types.path;
       example = lib.literalExample "./wallpaper.png";
     };
+    wallpaper-light = lib.mkOption {
+      description = ''
+        Location of the wallpaper to use throughout the system.
+      '';
+      type = lib.types.path;
+      example = lib.literalExample "./wallpaper.png";
+    };
 
     shell = lib.mkOption {
       description = ''

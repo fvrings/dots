@@ -14,5 +14,6 @@
     inputs.chaotic.nixosModules.default
     inputs.hjem.nixosModules.default
     inputs.lix-module.nixosModules.default
+    inputs.home-manager.nixosModules.home-manager
   ];
 }
