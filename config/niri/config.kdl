@@ -275,7 +275,7 @@ binds {
     Mod+T                   { toggle-column-tabbed-display; }
     Mod+Return              { spawn "kitty"; }
     Mod+P                   { spawn "fuzzel"; }
-    // Mod+F                   { spawn "firefox-nightly"; }
+    // Mod+F                   { spawn "firefox"; }
     Mod+Ctrl+L              { spawn "hyprlock"; }
     Mod+Backslash           { spawn "nu" "-c" "cliphist list | fuzzel --dmenu| cliphist decode | wl-copy"; }
     Mod+Shift+P                   { spawn "qs" "ipc" "call" "panel" "fire"; }

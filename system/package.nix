@@ -15,7 +15,7 @@ in
     [
       vim
       godot
-      firefox_nightly
+      firefox
       pstree
       quickemu
       nix-output-monitor

@@ -4,26 +4,26 @@
 application/epub+zip=org.pwmt.zathura.desktop
 application/json=neovide.desktop
 application/pdf=org.pwmt.zathura.desktop
-application/x-extension-htm=firefox-nightly.desktop
-application/x-extension-html=firefox-nightly.desktop
-application/x-extension-shtml=firefox-nightly.desktop
-application/x-extension-xht=firefox-nightly.desktop
-application/x-extension-xhtml=firefox-nightly.desktop
+application/x-extension-htm=firefox.desktop
+application/x-extension-html=firefox.desktop
+application/x-extension-shtml=firefox.desktop
+application/x-extension-xht=firefox.desktop
+application/x-extension-xhtml=firefox.desktop
 image/gif=mpv.desktop
 image/jpeg=imv.desktop
 image/png=imv.desktop
 image/svg=imv.desktop
 inode/directory=yazi.desktop
-text/html=firefox-nightly.desktop
+text/html=firefox.desktop
 text/plain=neovide.desktop
 video/avi=mpv.desktop
 video/mkv=mpv.desktop
 video/mp4=mpv.desktop
-x-scheme-handler/about=firefox-nightly.desktop
+x-scheme-handler/about=firefox.desktop
 x-scheme-handler/chrome=google-chrome.desktop
-x-scheme-handler/ftp=firefox-nightly.desktop
-x-scheme-handler/http=firefox-nightly.desktop
-x-scheme-handler/https=firefox-nightly.desktop
-x-scheme-handler/unknown=firefox-nightly.desktop
+x-scheme-handler/ftp=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/unknown=firefox.desktop
 
 [Removed Associations]
