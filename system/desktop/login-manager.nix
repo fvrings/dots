@@ -27,6 +27,7 @@
           blank_box = false;
           clock = "%Y %a %b %d %X";
           xinitrc = "null";
+          session_log = ".cache/ly-session.log";
         };
       };
     };
