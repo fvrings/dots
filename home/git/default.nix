@@ -5,4 +5,5 @@
     userName = "fvrings";
     delta.enable = true;
   };
+  programs.gh.enable = true;
 }
