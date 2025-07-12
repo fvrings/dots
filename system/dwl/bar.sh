@@ -23,15 +23,15 @@ get_battery() {
 
     # Consider changing '充电' to a lightning bolt if your font renders it better
     # '' (U+F1E6, Lightning bolt)
-    if [[ "$STATUS" == "Charging" ]]; then
+    if [[ $STATUS == "Charging" ]]; then
       BAT_ICON="" # Charging icon (Lightning bolt)
-    elif [[ "$CAPACITY" -ge 90 ]]; then
+    elif [[ $CAPACITY -ge 90 ]]; then
       BAT_ICON="" # Full battery
-    elif [[ "$CAPACITY" -ge 70 ]]; then
+    elif [[ $CAPACITY -ge 70 ]]; then
       BAT_ICON="" # 3/4 battery
-    elif [[ "$CAPACITY" -ge 50 ]]; then
+    elif [[ $CAPACITY -ge 50 ]]; then
       BAT_ICON="" # 1/2 battery
-    elif [[ "$CAPACITY" -ge 20 ]]; then
+    elif [[ $CAPACITY -ge 20 ]]; then
       BAT_ICON="" # 1/4 battery
     else
       BAT_ICON="" # Low battery
