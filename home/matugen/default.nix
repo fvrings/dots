@@ -19,32 +19,29 @@ in
 {
   imports = subdirectories;
 
-  environment.systemPackages = [
-    (pkgs.writeShellScriptBin "use-kanagawa" ''
-
-      rm ~/.config/gtk-3.0/colors.css
-      rm ~/.config/gtk-4.0/colors.css
-
-      rm ~/.config/ghostty/matugen
-
-      rm ~/.config/qt5ct/colors/matugen.conf
-      rm ~/.config/qt6ct/colors/matugen.conf
-
-      rm ~/.config/fuzzel/matugen.ini
-
-      rm ~/.config/alacritty/matugen.toml
-
-      rm ~/.config/kitty/matugen.conf
-    '')
-  ];
-  hjem.users.ring = {
+  home = {
     packages = with pkgs; [
       matugen
       swww
+      (pkgs.writeShellScriptBin "use-kanagawa" ''
+
+        rm ~/.config/gtk-3.0/colors.css
+        rm ~/.config/gtk-4.0/colors.css
+
+        rm ~/.config/ghostty/matugen
+
+        rm ~/.config/qt5ct/colors/matugen.conf
+        rm ~/.config/qt6ct/colors/matugen.conf
+
+        rm ~/.config/fuzzel/matugen.ini
+
+        rm ~/.config/alacritty/matugen.toml
+
+        rm ~/.config/kitty/matugen.conf
+      '')
     ];
-    files = {
+    file = {
       #TODO: remove this
-      ".config/matugen/config.toml".clobber = true;
       ".config/matugen/config.toml".source = pkgs.writers.writeTOML "config.toml" {
         config = {
           wallpaper = {

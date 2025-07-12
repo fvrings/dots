@@ -45,7 +45,6 @@ in
       typst
       tinymist
       yq
-      zathura
       xdg-utils
       gnumake
       # this is super useful
@@ -114,7 +113,43 @@ in
       clean.extraArgs = "--keep-since 4d --keep 3";
       flake = "/etc/nixos/dots/";
     };
+    fish.enable = true;
+    git = {
+      enable = true;
+      # config = {
+      #   init = {
+      #     defaultBranch = "main";
+      #   };
+      # };
+
+    };
+    direnv.enable = true;
+    ghidra.enable = true;
+    zoxide.enable = true;
+    starship = {
+      enable = true;
+      settings = {
+        hostname.ssh_symbol = "🏄 ";
+        character.error_symbol = "💔";
+        character.success_symbol = "👾";
+      };
+      presets = [
+        "jetpack"
+        "nerd-font-symbols"
+      ];
+    };
+    bash = {
+      completion.enable = true;
+      shellAliases = {
+        asd = "lazygit";
+        e = "nvim";
+        q = "exit";
+        t = "tmux";
+        cdtmp = "cd $(mktemp -d)";
+      };
+    };
   };
+
   documentation = {
     man = {
       generateCaches = false;

@@ -1,24 +1,28 @@
 { pkgs, ... }:
 {
-  hjem.users.ring = {
-    packages = [ pkgs.alacritty_git ];
-    files = {
-      ".config/alacritty/alacritty.toml".source = pkgs.writers.writeTOML "alacritty.toml" {
-        font = {
-          size = 13;
-        };
-        window = {
-          decorations = "none";
-        };
-        general = {
-          import = [
-            "kanagawa.toml"
-            "matugen.toml"
-          ];
-        };
-      };
+  home = {
+    file = {
       ".config/alacritty/kanagawa.toml".source =
         "${pkgs.alacritty-theme}/share/alacritty-theme/kanagawa_dragon.toml";
     };
+  };
+  programs.alacritty = {
+    enable = true;
+    package = pkgs.alacritty_git;
+    settings = {
+      font = {
+        size = 13;
+      };
+      window = {
+        decorations = "none";
+      };
+      general = {
+        import = [
+          "kanagawa.toml"
+          "matugen.toml"
+        ];
+      };
+    };
+
   };
 }

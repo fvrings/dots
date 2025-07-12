@@ -15,14 +15,12 @@ let
 
     CTRL+0 no-osd change-list glsl-shaders clr ""; show-text "GLSL shaders cleared"
   '';
-  combinedInputConf = pkgs.writeText "input.conf" (
-    (builtins.readFile ../../config/mpv/input.conf) + anime4K_Input
-  );
+  combinedInputConf = pkgs.writeText "input.conf" ((builtins.readFile ./input.conf) + anime4K_Input);
 in
 pkgs.linkFarm "mpv" [
   {
     name = "mpv.conf";
-    path = ../../config/mpv/mpv.conf;
+    path = ./mpv.conf;
   }
   {
     name = "scripts/uosc";

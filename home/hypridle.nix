@@ -1,3 +1,4 @@
+#TODO: remove this
 {
   lib,
   config,
@@ -37,7 +38,7 @@ in
   services.hypridle = {
     enable = true;
   };
-  hjem.users.ring.files = {
+  home.file = {
     ".config/hypr/hypridle.conf".text = settings;
   };
 }

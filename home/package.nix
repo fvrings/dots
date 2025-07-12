@@ -90,60 +90,19 @@ let
     # it provides the command `nom` works just like `nix`
     # with more details log output
     nix-output-monitor
-    btop
     gh
     carapace
     starship
   ];
 in
 {
-  programs = {
-    fish.enable = true;
-    git = {
-      enable = true;
-      # config = {
-      #   init = {
-      #     defaultBranch = "main";
-      #   };
-      # };
 
-    };
-    direnv.enable = true;
-    hyprlock.enable = true;
-    ghidra.enable = true;
-    zoxide.enable = true;
-    lazygit.enable = true;
-    starship = {
-      enable = true;
-      settings = {
-        hostname.ssh_symbol = "🏄 ";
-        character.error_symbol = "💔";
-        character.success_symbol = "👾";
-      };
-      presets = [
-        "jetpack"
-        "nerd-font-symbols"
-      ];
-    };
-    bash = {
-      completion.enable = true;
-      shellAliases = {
-        asd = "lazygit";
-        e = "nvim";
-        q = "exit";
-        t = "tmux";
-        cdtmp = "cd $(mktemp -d)";
-      };
-    };
-  };
-
-  hjem.users.ring = {
+  home = {
     packages =
       with pkgs;
       [
         #bilibili
         # qq
-        uv
         # nix related
         dconf
       ]

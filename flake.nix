@@ -43,20 +43,12 @@
           pkgs,
           ...
         }:
-        let
-
-          yaziWithConfig = builtins.head (
-            builtins.filter (
-              p: builtins.hasAttr "pname" p && p.pname == "yazi"
-            ) self.nixosConfigurations.art.config.environment.systemPackages
-          );
-
-        in
         {
           packages = {
             mpv = pkgs.callPackage ./home/mpv/pkg.nix { };
-            yazi = yaziWithConfig;
+            dwl = pkgs.callPackage ./system/dwl/pkg.nix { };
             tmux = self.nixosConfigurations.art.config.programs.tmux.package;
+            yazi = self.nixosConfigurations.art.config.programs.yazi.package;
           };
 
           devShells.default = pkgs.mkShell {
@@ -145,10 +137,6 @@
     };
     # niri.url = "github:sodiboo/niri-flake";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    hjem = {
-      url = "github:feel-co/hjem";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

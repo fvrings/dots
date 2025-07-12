@@ -47,9 +47,6 @@
   programs = {
     npm = {
       enable = true;
-      # npmrc = ''
-      #   registry = https://registry.npmmirror.com/
-      # '';
     };
     gnupg.agent = {
       enable = true;

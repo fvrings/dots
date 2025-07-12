@@ -1,6 +1,28 @@
-{ config, pkgs, ... }:
+{ lib, ... }:
+let
+  # Function to get all subdirectories in a given path
+  # path: The directory path to scan (e.g., ./. for the current directory)
+  getDirsInPath =
+    path:
+    let
+      # Read the contents of the directory
+      dirContents = builtins.readDir path;
+      # Filter out only the directories
+      directories = lib.filterAttrs (_name: type: type == "directory") dirContents;
+      # Get the names of these directories
+      dirNames = lib.attrNames directories;
+    in
+    # Map each directory name to its full path relative to the current file
+    lib.map (name: path + "/${name}") dirNames;
 
+  # Call the function for the current directory
+  # The '.' refers to the directory where this Nix file is located
+  currentFolderDirs = getDirsInPath ./.;
+in
 {
+  imports = [
+    ./package.nix
+  ] ++ currentFolderDirs;
   home = {
     username = "ring";
     homeDirectory = "/home/ring";

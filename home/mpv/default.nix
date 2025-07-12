@@ -4,9 +4,7 @@ let
 in
 
 {
-  hjem.users.ring = {
-    files = {
-      ".config/mpv".source = mpvConf;
-    };
+  xdg.configFile = {
+    "mpv".source = mpvConf;
   };
 }

@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
-  hjem.users.ring = {
+  home = {
     packages = [ pkgs.fuzzel ];
-    files = {
+    file = {
       ".config/fuzzel/fuzzel.ini".text = ''
         include=~/.config/fuzzel/matugen.ini
         terminal=ghostty

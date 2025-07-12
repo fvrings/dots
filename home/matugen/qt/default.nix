@@ -1,13 +1,9 @@
 _: {
-  qt.enable = true;
-  environment = {
-    localBinInPath = true;
-    variables = {
-      QT_QPA_PLATFORMTHEME = "qt6ct"; # Have QT use gtk2 theme.
-      QT_QPA_PLATFORM = "wayland";
-    };
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk";
   };
-  hjem.users.ring.files = {
+  home.file = {
     ".config/qt5ct/qt5ct.conf".text = ''
       [Appearance]
       color_scheme_path=~/.config/qt5ct/colors/matugen.conf
