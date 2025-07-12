@@ -24,7 +24,7 @@ layout {
     // Set gaps around windows in logical pixels.
     gaps 10
     tab-indicator {
-        width 4
+        width 2
         gap 8
         length total-proportion=0.96
         position "top"
@@ -40,6 +40,7 @@ layout {
     // - "on-overflow", focusing a column will center it if it doesn't fit
     //   together with the previously focused column.
     center-focused-column "never"
+    // always-center-single-column
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
@@ -79,7 +80,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 3
+        width 1
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -177,10 +178,52 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
 animations {
     // Uncomment to turn off all animations.
-    // off
+    // You can also put "off" into each individual animation to disable it.
+    off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+    slowdown 1.5
+
+    // Individual animations.
+
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+
+    window-open {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-resize {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+    }
+
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+
+    overview-open-close {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -263,13 +306,16 @@ binds {
     Mod+Shift+L         { move-column-right; }
 
 
-    Mod+Shift+A         { focus-workspace 1; }
-    Mod+Shift+S         { focus-workspace 2; }
-    Mod+Shift+D         { focus-workspace 3; }
+    // Mod+Shift+A         { focus-workspace 1; }
+    // Mod+Shift+S         { focus-workspace 2; }
+    // Mod+Shift+D         { focus-workspace 3; }
+    Mod+1         { focus-workspace 1; }
+    Mod+2         { focus-workspace 2; }
+    Mod+3         { focus-workspace 3; }
 
-    Mod+Ctrl+A          { move-column-to-workspace 1; }
-    Mod+Ctrl+S          { move-column-to-workspace 2; }
-    Mod+Ctrl+D          { move-column-to-workspace 3; }
+    Mod+Ctrl+1          { move-column-to-workspace 1; }
+    Mod+Ctrl+2          { move-column-to-workspace 2; }
+    Mod+Ctrl+3          { move-column-to-workspace 3; }
 
     // The following binds move the focused window in and out of a column.
     // If the window is alone, they will consume it into the nearby column to the side.
@@ -328,3 +374,9 @@ binds {
     // Mod+Shift+P         { power-off-monitors; }
 }
 
+output "eDP-1" {
+    // off
+    scale 1.5
+    variable-refresh-rate // on-demand=true
+    focus-at-startup
+}

@@ -13,6 +13,7 @@
 
     ../core.nix
     ../dwl
+    ../mutt.nix
     ../dae.nix
     ../package.nix
     ./desktop-package.nix

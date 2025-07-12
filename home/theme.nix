@@ -18,8 +18,8 @@ in
       sha256 = "06gjhq5gl4f7f8yyarbnmg9klsm4n92ba0fvx2djphfydbinkyl0";
     };
     wallpaper-light = genWallpaper {
-      url = "https://unsplash.com/photos/4dpAqfTbvKA/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8M3x8dW5pdmVyc2V8ZW58MHx8fHwxNzUyMjQyNjUyfDA&force=true";
-      sha256 = "6fb5c06c935831e19df259dd86154c42497fc2634e4bf3ccee8438a91dd245b7";
+      url = "https://unsplash.com/photos/NPGj5EVCy3o/download?ixid=M3wxMjA3fDB8MXx0b3BpY3x8Ym84alFLVGFFMFl8fHx8fDJ8fDE3NTIyODUwMjB8&force=true";
+      sha256 = "216cb5565f98b206a55681c3c75164e2b7f760b928d1fbb105ba12166754b547";
     };
     shell = "qs";
   };

@@ -4,7 +4,7 @@
 - (_) ignis
 - (_) swww fallback to previous image
 - (x) add yazi tmux mpv package
-- (-) quickshell
+- (-) quickshell (also for dwl)
 - ( ) flake templates
 
 * CHANGELOG
