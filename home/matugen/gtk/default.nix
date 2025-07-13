@@ -7,8 +7,8 @@ _: {
     cursorTheme.name = "LyraF-cursors";
     theme.name = "Kanagawa-B";
     cursorTheme.size = 22;
-    gtk4.extraCss = "@import 'colors.css'";
-    gtk3.extraCss = "@import 'colors.css'";
+    gtk4.extraCss = "@import 'colors.css';";
+    gtk3.extraCss = "@import 'colors.css';";
 
   };
 }

@@ -17,10 +17,10 @@
           # "JetBrainsMonoNL Nerd Font"
           # "Maple Mono NF"
           # "LXGW WenKai Mono"
-          # "IosevkaTerm Nerd Font"
+          "IosevkaTerm Nerd Font"
           # "IntoneMono Nerd Font"
           # "Martian Mono"
-          "GoMono Nerd Font"
+          # "GoMono Nerd Font"
           # "Noto Color Emoji"
         ];
         sansSerif = [
@@ -42,8 +42,8 @@
 
     packages = with pkgs; [
       nerd-fonts.go-mono
-      # nerd-fonts.intone-mono
-      # nerd-fonts.iosevka-term
+      nerd-fonts.intone-mono
+      nerd-fonts.iosevka-term
       # nerd-fonts.comic-shanns-mono
       # martian-mono
       noto-fonts-emoji

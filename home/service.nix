@@ -49,4 +49,8 @@ in
       (symLink "emacs")
     ];
   };
+
+  # services.emacs.enable = true;
+  # services.xserver.windowManager.exwm.enable = true;
+  # services.emacs.package = pkgs.emacs-pgtk;
 }

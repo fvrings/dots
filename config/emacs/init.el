@@ -7,12 +7,15 @@
 (setq custom-file (locate-user-emacs-file "custom-vars.el"))
 (load custom-file 'noerror 'nomessage)
 (setq use-dialog-box nil)
-(defvar elpaca-installer-version 0.8)
+
+
+;; Example Elpaca configuration -*- lexical-binding: t; -*-
+(defvar elpaca-installer-version 0.11)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
 (defvar elpaca-repos-directory (expand-file-name "repos/" elpaca-directory))
 (defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
-                              :ref nil :depth 1
+                              :ref nil :depth 1 :inherit ignore
                               :files (:defaults "elpaca-test.el" (:exclude "extensions"))
                               :build (:not elpaca--activate-package)))
 (let* ((repo  (expand-file-name "elpaca/" elpaca-repos-directory))
@@ -22,7 +25,7 @@
   (add-to-list 'load-path (if (file-exists-p build) build repo))
   (unless (file-exists-p repo)
     (make-directory repo t)
-    (when (< emacs-major-version 28) (require 'subr-x))
+    (when (<= emacs-major-version 28) (require 'subr-x))
     (condition-case-unless-debug err
         (if-let* ((buffer (pop-to-buffer-same-window "*elpaca-bootstrap*"))
                   ((zerop (apply #'call-process `("git" nil ,buffer t "clone"
@@ -42,9 +45,23 @@
   (unless (require 'elpaca-autoloads nil t)
     (require 'elpaca)
     (elpaca-generate-autoloads "elpaca" repo)
-    (load "./elpaca-autoloads")))
+    (let ((load-source-file-function nil)) (load "./elpaca-autoloads"))))
 (add-hook 'after-init-hook #'elpaca-process-queues)
 (elpaca `(,@elpaca-order))
+
+;; Uncomment for systems which cannot create symlinks:
+;; (elpaca-no-symlink-mode)
+
+;; Install a package via the elpaca macro
+;; See the "recipes" section of the manual for more details.
+
+;; (elpaca example-package)
+
+;; Install use-package support
+(elpaca elpaca-use-package
+  ;; Enable use-package :ensure support for Elpaca.
+  (elpaca-use-package-mode))
+
 
 (package-initialize)
 (setq org-directory (file-truename "~/notes/eorg/"))
@@ -64,10 +81,6 @@
 (when (display-graphic-p) (toggle-scroll-bar -1)) ; 图形界面时关闭滚动条
 
 (setq display-line-numbers-type 'relative)   ; （可选）显示相对行号
-(elpaca elpaca-use-package
-  ;; Enable use-package :ensure support for Elpaca.
-  (elpaca-use-package-mode))
-					; (setq use-package-always-ensure t)
 ;; Configure Tempel
 (use-package tempel
   :ensure t
@@ -95,14 +108,14 @@
 
   (add-hook 'conf-mode-hook 'tempel-setup-capf)
   (add-hook 'prog-mode-hook 'tempel-setup-capf)
-  (add-hook 'text-mode-hook 'tempel-setup-capf)
+  (add-hook 'text-mode-hook 'tempel-setup-capf))
   ;;(add-hook 'emacs-lisp-mode-hook 'tempel-setup-capf)
 
   ;; Optionally make the Tempel templates available to Abbrev,
   ;; either locally or globally. `expand-abbrev' is bound to C-x '.
   ;; (add-hook 'prog-mode-hook #'tempel-abbrev-mode)
   ;; (global-tempel-abbrev-mode)
-  )
+  
 
 ;; Optional: Add tempel-collection.
 ;; The package is young and doesn't have comprehensive coverage.
@@ -130,11 +143,6 @@
   ;; some red color (as defined by the color theme)
   ;; other faces such as `diff-added` will be used for other actions
   (evil-goggles-use-diff-faces))
-(use-package affe
-  :ensure t
-  :config
-  ;; Manual preview key for `affe-grep'
-  (consult-customize affe-grep :preview-key "M-."))
 (use-package which-key
   :ensure t
   :config
@@ -239,7 +247,7 @@
 
   ;; Optionally configure the narrowing key.
   ;; Both < and C-+ work reasonably well.
-  (setq consult-narrow-key "<") ;; "C-+"
+  (setq consult-narrow-key "<")) ;; "C-+"
 
   ;; Optionally make narrowing help available in the minibuffer.
   ;; You may want to use `embark-prefix-help-command' or which-key instead.
@@ -258,11 +266,11 @@
   ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
    ;;;; 5. No project support
   ;; (setq consult-project-function nil)
-  )
+  
 (use-package vertico
   :ensure t
   :init
-  (vertico-mode)
+  (vertico-mode))
 
   ;; Different scroll margin
   ;; (setq vertico-scroll-margin 0)
@@ -275,7 +283,7 @@
 
   ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
   ;; (setq vertico-cycle t)
-  )
+  
 ;; Optionally use the `orderless' completion style.
 (use-package orderless
   :ensure t
@@ -347,6 +355,7 @@
   (define-key evil-normal-state-map (kbd "<leader>nu") 'org-roam-ui-mode)
   (define-key evil-normal-state-map (kbd "<leader>nj") 'org-roam-dailies-capture-today)
   (evil-mode 1))
+
 ;;org
 (use-package org
   :custom
@@ -354,7 +363,7 @@
   (org-agenda-files `(,org-default-notes-file))
   (org-log-done 'time)
   (org-todo-keywords '
-   ((sequence "TODO(t)" "CANCELED(c)" "DONE(d)" )))
+   ((sequence "TODO(t)" "CANCELED(c)" "DONE(d)")))
   (org-todo-keyword-faces
    '(("TODO" . org-warning) ("DONE" . "gray")
      ("CANCELED" . (:foreground "pink" :weight bold))))
@@ -363,29 +372,30 @@
    '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
       "* TODO %?\n  %i\n  %T")))
   (org-tag-alist '(
-		   ("EARN" . ?E)
-				("w" "Weekly Review"
-				 ((agenda ""
-					  ((org-agenda-overriding-header "Completed Tasks")
-					   (org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo 'done))
-					   (org-agenda-span 'week)))
+                   ("EARN" . ?E)
+                   ("w" "Weekly Review"
+                        ((agenda ""
+                               ((org-agenda-overriding-header "Completed Tasks")
+                                (org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo 'done))
+                                (org-agenda-span 'week)))
 
-				  (agenda ""
-					  ((org-agenda-overriding-header "Unfinished Scheduled Tasks")
-					   (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-					   (org-agenda-span 'week)))))
-				("d" "Daily Agenda"
-				 ((agenda "" ((org-agenda-span 'day)
-					      (org-deadline-warning-days 1)))
-				  (tags-todo "+PRIORITY=\"A\"" ((org-agenda-overriding-header "High Priority Tasks")))))
-				("u" "Untagged Tasks" tags-todo "-{.*}")))
+                         (agenda ""
+                               ((org-agenda-overriding-header "Unfinished Scheduled Tasks")
+                                (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                                (org-agenda-span 'week)))))
+                   ("d" "Daily Agenda"
+                        ((agenda "" ((org-agenda-span 'day)
+                                     (org-deadline-warning-days 1)))
+                         (tags-todo "+PRIORITY=\"A\"" ((org-agenda-overriding-header "High Priority Tasks")))))
+                   ("u" "Untagged Tasks" tags-todo "-{.*}")))
   :ensure (:wait t))
 
 (use-package visual-fill-column
   :ensure t
   :config
   (setq-default visual-fill-column-width 110
-		visual-fill-column-center-text t))
+    visual-fill-column-center-text t))
+
 (use-package org-present
   :ensure t
   :config 
@@ -396,24 +406,25 @@
                                (shell . t)))
   (add-hook 'org-present-mode-hook
             (lambda ()
-	      ;;visual-fill-column
-	      (visual-fill-column-mode 1)
-	      (visual-line-mode 1)
+        ;;visual-fill-column
+             (visual-fill-column-mode 1)
+             (visual-line-mode 1)
 
-              ;;(org-present-big)
-              (org-display-inline-images)
-              (org-present-hide-cursor)
-              (org-present-read-only)))
+                    ;;(org-present-big)
+             (org-display-inline-images)
+             (org-present-hide-cursor)
+             (org-present-read-only)))
   (add-hook 'org-present-mode-quit-hook
             (lambda ()
-	      ;;visual-fill-column
-	      (visual-fill-column-mode 0)
-	      (visual-line-mode 0)
+        ;;visual-fill-column
+             (visual-fill-column-mode 0)
+             (visual-line-mode 0)
 
-              ;;(org-present-small)
-              (org-remove-inline-images)
-              (org-present-show-cursor)
-              (org-present-read-write))))
+                    ;;(org-present-small)
+             (org-remove-inline-images)
+             (org-present-show-cursor)
+             (org-present-read-write))))
+
 (use-package org-roam-ui
   :ensure
   (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
@@ -424,8 +435,10 @@
         org-roam-ui-follow t
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start t))
+
 (savehist-mode 1)
 (save-place-mode 1)
+
 ;;org-roam
 (use-package org-roam
   :ensure t
@@ -440,9 +453,9 @@
      ("p" "project" plain
       "* Goals\n\n%?\n\n* Tasks\n\n** TODO Add initial tasks\n\n* Dates\n\n"
       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetypes: Project\n")
-      :unnarrowed t)
+      :unnarrowed t)))
 
-     ))
+     
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n g" . org-roam-graph)
@@ -464,6 +477,7 @@
   :ensure t
   :config
   (evil-collection-init))
+
 (use-package elfeed
   :ensure t
   :config
@@ -479,6 +493,7 @@
     (elfeed-goodies/setup))
   (run-at-time nil (* 8 60 60) #'elfeed-update)
   :bind ( "C-c w" . elfeed))
+
 (use-package evil-org
   :ensure t
   :after org
@@ -505,62 +520,64 @@
   (doom-themes-visual-bell-config)
   ;; Enable custom neotree theme (all-the-icons must be installed!)
   (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-atom") ; use "doom-colors" for less minimal icon theme
-  (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
+
 (use-package avy
   :ensure t)
+
 ;;customize keymaps here
 (use-package paredit
   :ensure t)
+
 (use-package marginalia
   :ensure t
   :init (marginalia-mode)
   :bind (:map minibuffer-local-map
- 	      ("M-A" . marginalia-cycle)))
+         ("M-A" . marginalia-cycle)))
+
 (use-package lsp-mode
   :ensure t
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
   (setq lsp-keymap-prefix "C-c l"
- 	lsp-file-watch-threshold 500)
+   lsp-file-watch-threshold 500)
   :hook 
   (lsp-mode . lsp-enable-which-key-integration) ; which-key integration
   :commands (lsp lsp-deferred)
   :config
   (setq lsp-completion-provider :none) ;; 阻止 lsp 重新设置 company-backend 而覆盖我们 yasnippet 的设置
-  (setq lsp-headerline-breadcrumb-enable t)
-  :bind
-  ("C-c l s" . lsp-ivy-workspace-symbol))
+  (setq lsp-headerline-breadcrumb-enable t))
+
 (use-package lsp-ui
   :ensure t
   :config
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
   (setq lsp-ui-doc-position 'top))
-(use-package lsp-ivy
-  :ensure t
-  :after (lsp-mode))
+
+
 (use-package uiua-ts-mode
   :mode "\\.ua\\'"
   :ensure t)  
-(elpaca transient)
-(use-package magit
-  :ensure t)
+
+;; (use-package magit
+;;   :ensure t)
+
 (use-package c++-mode
   :ensure nil
-  :functions 			; suppress warnings
+  :functions       ; suppress warnings
   c-toggle-hungry-state
   :hook
   (c-mode . lsp-deferred)
   (c++-mode . lsp-deferred)
   (c++-mode . c-toggle-hungry-state))
+
 (use-package cargo
   :ensure t
   :hook
   (rust-mode . cargo-minor-mode))
+
 (use-package rust-mode
   :ensure t
   :functions dap-register-debug-template
@@ -568,53 +585,57 @@
   ("C-c C-c" . rust-run)
   :hook
   (rust-mode . lsp-deferred)
-  :config
+  :config)
   ;; debug
-  )
+  
 (use-package lsp-pyright
   :ensure t
   :custom (lsp-pyright-langserver-command "basedpyright")
   :hook
   (python-mode . (lambda ()
- 		   (require 'lsp-pyright)
- 		   (lsp-deferred))))
+                  (require 'lsp-pyright)
+                  (lsp-deferred))))
+
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1))
+
 (use-package pdf-tools
   :mode
   (("\\.pdf$" . pdf-view-mode))
   :ensure nil)
+
 (setq vc-follow-symlinks t)
-;;try !!use meow mode
-;;can't make this work
-;;(use-package rime
-;;  :custom
-;;  (default-input-method "rime"))
-(use-package hl-todo
+(use-package rime
   :ensure t
-  :init
-  (global-hl-todo-mode)
-  :config
-  (setq hl-todo-keyword-faces
-	'(("TODO"   . "#FF0000")
-          ("FIXME"  . "#FF0000")
-          ("BUG"  . "#FF0000")
-          ("DEBUG"  . "#A020F0")
-          ("GOTCHA" . "#FF4500")
-          ("STUB"   . "#1E90FF"))))
+  :custom
+  (default-input-method "rime"))
+
+;;(use-package hl-todo
+;;  :ensure t
+;;  :init
+;;  (global-hl-todo-mode)
+;;  :config
+;;  (setq hl-todo-keyword-faces
+;;   '(("TODO"   . "#FF0000")
+;;     ("FIXME"  . "#FF0000")
+;;     ("BUG"  . "#FF0000")
+;;     ("DEBUG"  . "#A020F0")
+;;     ("GOTCHA" . "#FF4500")
+;;     ("STUB"   . "#1E90FF"))))
+
 (use-package nerd-icons
   :ensure t
   :custom
-  (nerd-icons-font-family "IntoneMono Nerd Font")
-  )
+  (nerd-icons-font-family "IosevkaTerm Nerd Font"))
+  
 ;;(set-frame-font "IntoneMono Nerd Font-18" nil t)
-(add-to-list 'default-frame-alist '(font . "IntoneMono Nerd Font-15"))
+(add-to-list 'default-frame-alist '(font . "IosevkaTerm Nerd Font-15"))
+;; (use-package org-modern
+;;   :ensure t
+;;   :init
+;;   (with-eval-after-load 'org (global-org-modern-mode)))
 
-(use-package org-modern
-  :ensure t
-  :init
-  (with-eval-after-load 'org (global-org-modern-mode)))
 (use-package cape
   ;; Bind prefix keymap providing all Cape commands under a mnemonic key.
   ;; Press C-c p ? to for help.
@@ -632,10 +653,10 @@
   ;; completion functions takes precedence over the global list.
   (add-hook 'completion-at-point-functions #'cape-dabbrev)
   (add-hook 'completion-at-point-functions #'cape-file)
-  (add-hook 'completion-at-point-functions #'cape-elisp-block)
+  (add-hook 'completion-at-point-functions #'cape-elisp-block))
   ;; (add-hook 'completion-at-point-functions #'cape-history)
   ;; ...
-  )
+  
 (use-package corfu
   :ensure t
   ;; Optional customizations
@@ -693,24 +714,15 @@
   (setq git-gutter:update-interval 0.02))
 
 ;; use-package with Elpaca:
-(use-package dashboard
-  :ensure t
-  :config
-  (setq dashboard-banner-logo-title "Are you Mad !?")
-  (setq dashboard-startup-banner 4)
-  (add-hook 'elpaca-after-init-hook #'dashboard-insert-startupify-lists)
-  (add-hook 'elpaca-after-init-hook #'dashboard-initialize)
-  (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
-  (dashboard-setup-startup-hook))
 (use-package org-alert
   :ensure t
   :config
   (setq alert-default-style 'libnotify)
   (setq org-alert-interval 300
-	org-alert-notify-cutoff 10
-	org-alert-notify-after-event-cutoff 10))
+   org-alert-notify-cutoff 10
+   org-alert-notify-after-event-cutoff 10))
 (use-package org-download
-  ; :ensure t
+  :ensure t
   :config
   (setq-default org-download-heading-lvl nil)
   (setq-default org-download-image-dir "./images"))

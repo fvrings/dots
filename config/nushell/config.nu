@@ -114,7 +114,7 @@ $env.config = {
 
 
 alias e = nvim
-# alias em = emacsclient -c
+alias em = emacsclient -c
 alias asd = lazygit
 alias pa = paru --bottomup
 # alias se = sudoedit nvim
