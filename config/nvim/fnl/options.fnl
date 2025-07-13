@@ -62,6 +62,7 @@
 (set! o splitright)
 (set! o termguicolors)
 (set! o timeout)
+(set! o exrc)
 
 (set! o noruler)
 (set! o noequalalways)

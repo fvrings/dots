@@ -463,9 +463,9 @@ return {
           args = { 'format', '--indent-style=space', '--indent-width=2', '--stdin-file-path', '$FILENAME' },
         },
       },
-      format_after_save = function()
+      format_after_save = function(bufnr)
         -- Disable with a global or buffer-local variable
-        if not vim.g.conform_autoformat then
+        if not vim.g.conform_autoformat or not (vim.b[bufnr].conform_autoformat or true) then
           return
         end
         return { timeout_ms = 1000, lsp_format = 'fallback', quiet = true }
