@@ -12,7 +12,7 @@ local function config()
       'scheme',
       'blueprint',
       'qmljs',
-      'latex',
+      -- 'latex',
       'svelte',
       'vue',
       'c',

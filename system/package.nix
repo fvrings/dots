@@ -16,6 +16,7 @@ in
       vim
       emacs
       godot
+      texliveFull
       firefox
       pstree
       quickemu
