@@ -145,6 +145,7 @@ return {
         },
         {
           section = 'terminal',
+          enabled = vim.fn.executable 'nix' or vim.fn.executable 'nitch',
           cmd = 'nix run nixpkgs#nitch',
           height = 20,
           ttl = 60,
@@ -166,6 +167,7 @@ return {
         },
         {
           section = 'terminal',
+          enabled = vim.fn.exists '~/notes',
           cmd = 'nvim -u NONE --noplugin --headless -l ~/.config/nvim/lua/sum.lua e>| lolcat e> /dev/null',
           height = 2,
           ttl = 60,

@@ -277,7 +277,7 @@ binds {
     Mod+P                   { spawn "fuzzel"; }
     // Mod+F                   { spawn "firefox"; }
     Mod+Ctrl+L              { spawn "hyprlock"; }
-    Mod+Backslash           { spawn "nu" "-c" "cliphist list | fuzzel --dmenu| cliphist decode | wl-copy"; }
+    Mod+Backslash           { spawn "nu" "-c" "cliphist list | fuzzel --dmenu -w 120 | cliphist decode | wl-copy"; }
     Mod+Shift+P                   { spawn "qs" "ipc" "call" "panel" "fire"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.

@@ -46,6 +46,7 @@ in
       typst
       tinymist
       yq
+      cinny-desktop
       xdg-utils
       gnumake
       # this is super useful
