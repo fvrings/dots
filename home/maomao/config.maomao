@@ -23,7 +23,7 @@ shadowscolor= 0x000000ff
 border_radius=6
 no_radius_when_single=0
 focused_opacity=1.0
-unfocused_opacity=1.0
+unfocused_opacity=0.8
 
 # Animation Configuration(support type:zoom,slide)
 # tag_animation_direction: 0-horizontal,1-vertical
@@ -113,7 +113,7 @@ gappoh=10
 gappov=10
 scratchpad_width_ratio=0.8
 scratchpad_height_ratio=0.9
-borderpx=4
+borderpx=2
 rootcolor=0x201b14ff
 bordercolor=0x444444ff
 focuscolor=0xc9b890ff

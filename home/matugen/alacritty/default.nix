@@ -15,6 +15,7 @@
       };
       window = {
         decorations = "none";
+        opacity = 0.8;
       };
       general = {
         import = [

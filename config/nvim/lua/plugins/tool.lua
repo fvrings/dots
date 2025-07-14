@@ -452,6 +452,7 @@ return {
         fennel = { 'fnlfmt' },
         nix = { 'nixfmt' },
         qml = { 'qmlformat' },
+        tex = { 'latexindent' },
       },
       formatters = {
         fnlfmt = { command = 'fnlfmt', args = { '$FILENAME' }, stdin = true },
