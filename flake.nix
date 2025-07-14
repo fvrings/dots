@@ -141,6 +141,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    maomaowm.url = "github:DreamMaoMao/maomaowm";
     # ghostty = {
     #   url = "github:ghostty-org/ghostty";
     # };

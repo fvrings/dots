@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, inputs, ... }:
 let
   # Function to get all subdirectories in a given path
   # path: The directory path to scan (e.g., ./. for the current directory)
@@ -18,11 +18,19 @@ let
   # Call the function for the current directory
   # The '.' refers to the directory where this Nix file is located
   currentFolderDirs = getDirsInPath ./.;
+  modules = [
+    inputs.maomaowm.hmModules.maomaowm
+    inputs.self.nixosModules.theme
+  ];
 in
 {
-  imports = [
-    ./package.nix
-  ] ++ currentFolderDirs;
+  imports =
+    [
+      ./package.nix
+      ./theme.nix
+    ]
+    ++ currentFolderDirs
+    ++ modules;
   home = {
     username = "ring";
     homeDirectory = "/home/ring";

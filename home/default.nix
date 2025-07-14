@@ -2,7 +2,7 @@
 {
   imports = [
     inputs.self.nixosModules.theme
-    ./service.nix
+    ./link.nix
     ./theme.nix
   ];
 

@@ -10,6 +10,7 @@
     inputs.nur.modules.nixos.default
     inputs.sops-nix.nixosModules.sops
     inputs.lanzaboote.nixosModules.lanzaboote
+    inputs.maomaowm.nixosModules.maomaowm
     inputs.impermanence.nixosModules.impermanence
     inputs.chaotic.nixosModules.default
     inputs.lix-module.nixosModules.default

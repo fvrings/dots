@@ -626,4 +626,9 @@ return {
   --   'github/copilot.vim',
   --   cmd = 'Copilot',
   -- },
+  {
+    'farmergreg/vim-lastplace',
+    -- event = 'VeryLazy',
+    lazy = false,
+  },
 }

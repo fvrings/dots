@@ -2,6 +2,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }:
 let
@@ -34,8 +35,8 @@ let
   };
 in
 {
-  services.displayManager.sessionPackages = [ dwlSession ];
-  environment.systemPackages = [
+  services.displayManager.sessionPackages = lib.mkIf config.theme.dwl [ dwlSession ];
+  environment.systemPackages = lib.mkIf config.theme.dwl [
     pkgs.wmenu
     dwl'
   ];
