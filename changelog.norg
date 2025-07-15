@@ -1,4 +1,5 @@
 * TODO
+
 - (x) gtk
 - (x) matugen
 - (_) ignis
@@ -6,8 +7,9 @@
 - (x) add yazi tmux mpv package
 - (-) quickshell (also for dwl)
 - ( ) flake templates
+- ( ) stylix
 
 * CHANGELOG
 ** why not hjem anymore
-   hjem is lightweight while reduces the oppotinities to use variety of many projects which use hm internally such as stylix.
+   hjem is lightweight while it reduces the oppotinities to use variety of many projects which use hm internally such as stylix.
    So I'm going to drop support for hjem. 🥹
