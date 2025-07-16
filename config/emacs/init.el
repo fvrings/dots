@@ -132,17 +132,17 @@
               ("M-DEL" . vertico-directory-delete-word))
   ;; Tidy shadowed file names
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)); Enable vertico
-(use-package evil-goggles
-  :ensure t
-  :after evil
-  :config
-  (evil-goggles-mode)
+;; (use-package evil-goggles
+;;   :ensure t
+;;   :after evil
+;;   :config
+;;   (evil-goggles-mode)
 
-  ;; optionally use diff-mode's faces; as a result, deleted text
-  ;; will be highlighed with `diff-removed` face which is typically
-  ;; some red color (as defined by the color theme)
-  ;; other faces such as `diff-added` will be used for other actions
-  (evil-goggles-use-diff-faces))
+;;   ;; optionally use diff-mode's faces; as a result, deleted text
+;;   ;; will be highlighed with `diff-removed` face which is typically
+;;   ;; some red color (as defined by the color theme)
+;;   ;; other faces such as `diff-added` will be used for other actions
+;;   (evil-goggles-use-diff-faces))
 (use-package which-key
   :ensure t
   :config
@@ -327,34 +327,34 @@
   :if window-system          ; 在图形化界面时才使用这个插件
   :init (good-scroll-mode))
 
-(use-package evil
-  :ensure t
-  :init
-  (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
-  (setq evil-want-keybinding nil)
-  :config
-  (define-key evil-normal-state-map (kbd "s") 'avy-goto-char-timer)
-  (define-key evil-insert-state-map (kbd "C-s") 'avy-goto-char-timer)
-  (evil-set-leader 'normal (kbd "SPC"))
-  (define-key evil-normal-state-map (kbd "<leader>f") 'indent-region)
-  (define-key evil-normal-state-map (kbd "<leader>t") 'consult-theme)
-  (define-key evil-normal-state-map (kbd "<leader>SPC") 'consult-buffer)
-  ;; (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-  ;; (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-  ;; (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
-  ;; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-  ;; org
-  (define-key evil-normal-state-map (kbd "<leader>oa") 'org-agenda)
-  (define-key evil-normal-state-map (kbd "<leader>oc") 'org-capture)
-  ;; roam
-  (define-key evil-normal-state-map (kbd "<leader>nl") 'org-roam-buffer-toggle)
-  (define-key evil-normal-state-map (kbd "<leader>nf") 'org-roam-node-find)
-  (define-key evil-normal-state-map (kbd "<leader>ng") 'org-roam-graph)
-  (define-key evil-normal-state-map (kbd "<leader>ni") 'org-roam-node-insert)
-  (define-key evil-normal-state-map (kbd "<leader>nc") 'org-roam-capture)
-  (define-key evil-normal-state-map (kbd "<leader>nu") 'org-roam-ui-mode)
-  (define-key evil-normal-state-map (kbd "<leader>nj") 'org-roam-dailies-capture-today)
-  (evil-mode 1))
+;; (use-package evil
+;;   :ensure t
+;;   :init
+;;   (setq evil-want-integration t) ;; This is optional since it's already set to t by default.
+;;   (setq evil-want-keybinding nil)
+;;   :config
+;;   (define-key evil-normal-state-map (kbd "s") 'avy-goto-char-timer)
+;;   (define-key evil-insert-state-map (kbd "C-s") 'avy-goto-char-timer)
+;;   (evil-set-leader 'normal (kbd "SPC"))
+;;   (define-key evil-normal-state-map (kbd "<leader>f") 'indent-region)
+;;   (define-key evil-normal-state-map (kbd "<leader>t") 'consult-theme)
+;;   (define-key evil-normal-state-map (kbd "<leader>SPC") 'consult-buffer)
+;;   ;; (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+;;   ;; (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+;;   ;; (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+;;   ;; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+;;   ;; org
+;;   (define-key evil-normal-state-map (kbd "<leader>oa") 'org-agenda)
+;;   (define-key evil-normal-state-map (kbd "<leader>oc") 'org-capture)
+;;   ;; roam
+;;   (define-key evil-normal-state-map (kbd "<leader>nl") 'org-roam-buffer-toggle)
+;;   (define-key evil-normal-state-map (kbd "<leader>nf") 'org-roam-node-find)
+;;   (define-key evil-normal-state-map (kbd "<leader>ng") 'org-roam-graph)
+;;   (define-key evil-normal-state-map (kbd "<leader>ni") 'org-roam-node-insert)
+;;   (define-key evil-normal-state-map (kbd "<leader>nc") 'org-roam-capture)
+;;   (define-key evil-normal-state-map (kbd "<leader>nu") 'org-roam-ui-mode)
+;;   (define-key evil-normal-state-map (kbd "<leader>nj") 'org-roam-dailies-capture-today)
+;;   (evil-mode 1))
 
 ;;org
 (use-package org
@@ -472,11 +472,11 @@
   ;; If using org-roam-protocol
   (require 'org-roam-protocol))
 
-(use-package evil-collection
-  :after evil
-  :ensure t
-  :config
-  (evil-collection-init))
+;; (use-package evil-collection
+;;   :after evil
+;;   :ensure t
+;;   :config
+;;   (evil-collection-init))
 
 (use-package elfeed
   :ensure t
@@ -494,16 +494,16 @@
   (run-at-time nil (* 8 60 60) #'elfeed-update)
   :bind ( "C-c w" . elfeed))
 
-(use-package evil-org
-  :ensure t
-  :after org
-  :hook (org-mode . (lambda () evil-org-mode))
-  :init
-  (setq evil-org-use-additional-insert t)
-  ;;(evil-org-set-key-theme '(textobjects insert navigation additional shift todo heading))
-  :config
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
+;; (use-package evil-org
+;;   :ensure t
+;;   :after org
+;;   :hook (org-mode . (lambda () evil-org-mode))
+;;   :init
+;;   (setq evil-org-use-additional-insert t)
+;;   ;;(evil-org-set-key-theme '(textobjects insert navigation additional shift todo heading))
+;;   :config
+;;   (require 'evil-org-agenda)
+;;   (evil-org-agenda-set-keys))
 
 (use-package rainbow-delimiters
   :ensure t
@@ -727,3 +727,92 @@
   (setq-default org-download-heading-lvl nil)
   (setq-default org-download-image-dir "./images"))
  ;;; init.el ends here
+(defun meow-setup ()
+  (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
+  (meow-motion-define-key
+   '("j" . meow-next)
+   '("k" . meow-prev)
+   '("<escape>" . ignore))
+  (meow-leader-define-key
+   ;; Use SPC (0-9) for digit arguments.
+   '("1" . meow-digit-argument)
+   '("2" . meow-digit-argument)
+   '("3" . meow-digit-argument)
+   '("4" . meow-digit-argument)
+   '("5" . meow-digit-argument)
+   '("6" . meow-digit-argument)
+   '("7" . meow-digit-argument)
+   '("8" . meow-digit-argument)
+   '("9" . meow-digit-argument)
+   '("0" . meow-digit-argument)
+   '("/" . meow-keypad-describe-key)
+   '("?" . meow-cheatsheet))
+  (meow-normal-define-key
+   '("0" . meow-expand-0)
+   '("9" . meow-expand-9)
+   '("8" . meow-expand-8)
+   '("7" . meow-expand-7)
+   '("6" . meow-expand-6)
+   '("5" . meow-expand-5)
+   '("4" . meow-expand-4)
+   '("3" . meow-expand-3)
+   '("2" . meow-expand-2)
+   '("1" . meow-expand-1)
+   '("-" . negative-argument)
+   '(";" . meow-reverse)
+   '("," . meow-inner-of-thing)
+   '("." . meow-bounds-of-thing)
+   '("[" . meow-beginning-of-thing)
+   '("]" . meow-end-of-thing)
+   '("a" . meow-append)
+   '("A" . meow-open-below)
+   '("b" . meow-back-word)
+   '("B" . meow-back-symbol)
+   '("c" . meow-change)
+   '("d" . meow-delete)
+   '("D" . meow-backward-delete)
+   '("e" . meow-next-word)
+   '("E" . meow-next-symbol)
+   '("f" . meow-find)
+   '("g" . meow-cancel-selection)
+   '("G" . meow-grab)
+   '("h" . meow-left)
+   '("H" . meow-left-expand)
+   '("i" . meow-insert)
+   '("I" . meow-open-above)
+   '("j" . meow-next)
+   '("J" . meow-next-expand)
+   '("k" . meow-prev)
+   '("K" . meow-prev-expand)
+   '("l" . meow-right)
+   '("L" . meow-right-expand)
+   '("m" . meow-join)
+   '("n" . meow-search)
+   '("o" . meow-block)
+   '("O" . meow-to-block)
+   '("p" . meow-yank)
+   '("q" . meow-quit)
+   '("Q" . meow-goto-line)
+   '("r" . meow-replace)
+   '("R" . meow-swap-grab)
+   '("s" . meow-kill)
+   '("t" . meow-till)
+   '("u" . meow-undo)
+   '("U" . meow-undo-in-selection)
+   '("v" . meow-visit)
+   '("w" . meow-mark-word)
+   '("W" . meow-mark-symbol)
+   '("x" . meow-line)
+   '("X" . meow-goto-line)
+   '("y" . meow-save)
+   '("Y" . meow-sync-grab)
+   '("z" . meow-pop-selection)
+   '("'" . repeat)
+   '("<escape>" . ignore)))
+
+(use-package meow
+  :ensure t
+  :config
+  (meow-setup)
+  :init
+  (meow-global-mode 1))

@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 
 let
   user = "ring";
@@ -16,7 +16,9 @@ in
     ];
   };
 
-  # services.emacs.enable = true;
-  # services.xserver.windowManager.exwm.enable = true;
-  # services.emacs.package = pkgs.emacs-pgtk;
+  services = {
+    emacs.enable = true;
+    xserver.windowManager.exwm.enable = true;
+    emacs.package = pkgs.emacs-pgtk;
+  };
 }

@@ -3,11 +3,11 @@
   inputs,
   ...
 }:
-let
-  pkgs-stable = import inputs.nixpkgs-stable {
-    system = "x86_64-linux";
-  };
-in
+# let
+#   pkgs-stable = import inputs.nixpkgs-stable {
+#     system = "x86_64-linux";
+#   };
+# in
 {
   # TODO: only left must-have packages in systemPackages as it'll slow down man.generateCaches
   environment.systemPackages =
@@ -93,16 +93,17 @@ in
     ]
     ++ [
       # inputs.pwndbg.packages.${pkgs.system}.default
-      (inputs.quickshell.packages.${pkgs.system}.default.override {
-        withJemalloc = true;
-        withQtSvg = true;
-        withWayland = true;
-        withX11 = false;
-        withPipewire = true;
-        withPam = true;
-        withHyprland = false;
-        withI3 = false;
-      })
+      inputs.quickshell.packages.${pkgs.system}.default
+      # (inputs.quickshell.packages.${pkgs.system}.default.override {
+      #   withJemalloc = true;
+      #   withQtSvg = true;
+      #   withWayland = true;
+      #   withX11 = false;
+      #   withPipewire = true;
+      #   withPam = true;
+      #   withHyprland = false;
+      #   withI3 = false;
+      # })
     ];
   programs = {
     neovim = {
@@ -159,4 +160,6 @@ in
     };
     dev.enable = true;
   };
+
+  qt.enable = true;
 }
