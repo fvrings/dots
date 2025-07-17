@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
+let
+  pkgs-stable = import inputs.nixpkgs-stable {
+    system = "x86_64-linux";
+  };
+in
 {
   boot = {
     #NOTE: https://github.com/chaotic-cx/nyx/blob/ab2a92d8148e549b5fcdff81aea5c3e40672f733/shared/make-microarch.nix#L30
@@ -11,7 +16,9 @@
   };
   chaotic.mesa-git.enable = true;
   services.scx.enable = true;
-  services.scx.package = pkgs.scx_git.full;
+  # TODO : enable this after next release
+  # services.scx.package = pkgs.scx_git.rustscheds;
+  services.scx.package = pkgs-stable.scx.rustscheds;
   systemd.extraConfig = ''
     DefaultTimeoutStopSec=5s
   '';

@@ -9,6 +9,7 @@
   environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
 
   nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowBroken = true;
   # nixpkgs.config.permittedInsecurePackages = [
   #   "openssl-1.1.1w"
   #   # "electron-11.5.0"

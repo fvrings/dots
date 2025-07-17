@@ -13,7 +13,7 @@
     inputs.maomaowm.nixosModules.maomaowm
     inputs.impermanence.nixosModules.impermanence
     inputs.chaotic.nixosModules.default
-    inputs.lix-module.nixosModules.default
+    # inputs.lix-module.nixosModules.default
     inputs.home-manager.nixosModules.home-manager
   ];
 }

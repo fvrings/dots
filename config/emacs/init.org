@@ -384,8 +384,6 @@
     ;; Support opening new minibuffers from inside existing minibuffers.
     (setq enable-recursive-minibuffers t)
 
-    ;; Emacs 28 and newer: Hide commands in M-x which do not work in the current
-    ;; mode.  Vertico commands are hidden in normal buffers. This setting is
     ;; useful beyond Vertico.
     (setq read-extended-command-predicate #'command-completion-default-include-p))
 
@@ -431,12 +429,14 @@
     (define-key evil-normal-state-map (kbd "s") 'avy-goto-char-timer)
     (define-key evil-insert-state-map (kbd "C-s") 'avy-goto-char-timer)
     (evil-set-leader 'normal (kbd "SPC"))
+
     (define-key evil-normal-state-map (kbd "<leader>f") 'indent-region)
     (define-key evil-normal-state-map (kbd "<leader>h") 'consult-outline)
     (define-key evil-normal-state-map (kbd "<leader><leader>") 'recentf)
     (define-key evil-normal-state-map (kbd "<leader>t") 'consult-theme)
     (define-key evil-normal-state-map (kbd "<leader>b") 'consult-buffer)
     (define-key evil-normal-state-map (kbd "<leader>SPC") 'consult-recent-file)
+    (define-key evil-normal-state-map (kbd "M-a") 'eat)
 
     ;; GTD MODE
     ;; (define-key evil-normal-state-map (kbd "<leader>gc") 'org-gtd-capture)
@@ -702,8 +702,14 @@ orgmode is enough
   (use-package pdf-tools
     :mode
     (("\\.pdf$" . pdf-view-mode))
+    :custom
+    (pdf-view-use-scaling nil)
     :ensure t)
 
+  ;; (use-package eaf
+  ;;   :ensure t)
+  ;; (use-package epf-pdf-viewer
+  ;;   :ensure t)
   (use-package eat
     :ensure t)
 

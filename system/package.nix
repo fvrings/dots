@@ -16,7 +16,8 @@
       vim
       emacs
       godot
-      texliveFull
+      # texliveFull
+      texliveSmall
       firefox
       pstree
       quickemu
@@ -40,7 +41,8 @@
       # alacritty-graphics
       # vscode
       fzf
-      rich-cli
+      # TODO: enable this
+      # rich-cli
       cachix
       chafa
       just

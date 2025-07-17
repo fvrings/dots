@@ -16,9 +16,4 @@ in
     ];
   };
 
-  services = {
-    emacs.enable = true;
-    # xserver.windowManager.exwm.enable = true;
-    emacs.package = pkgs.emacs-pgtk;
-  };
 }
