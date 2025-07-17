@@ -216,12 +216,6 @@ return {
             return patch { 'crates' }
           elseif ft == 'codecompanion' then
             return patch { 'codecompanion' }
-          elseif ft == 'org' then
-            return patch {
-              'orgmode',
-              -- 'nerdfont',
-              'emoji',
-            }
           elseif ft == 'typr' then
             return {}
           else

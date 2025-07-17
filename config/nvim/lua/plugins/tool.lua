@@ -1,27 +1,4 @@
----@diagnostic disable: need-check-nil
-local org_path = function(path)
-  local org_directory = '~/notes/orgfiles'
-  return ('%s/%s'):format(org_directory, path)
-end
 return {
-  {
-    'chipsenkbeil/org-roam.nvim',
-    dependencies = 'nvim-orgmode/orgmode',
-    enabled = not vim.g.iswin,
-    opts = {
-      directory = org_path 'roam',
-    },
-    ft = 'org',
-    keys = {
-      {
-        '<leader>nc',
-        function()
-          require('org-roam').api.capture_node()
-        end,
-        desc = 'org roam capture',
-      },
-    },
-  },
   {
     'michaelb/sniprun',
     branch = 'master',
@@ -74,90 +51,6 @@ return {
         ft = { 'markdown', 'org', 'norg' },
       },
     },
-  },
-  {
-    'nvim-orgmode/orgmode',
-    ft = 'org',
-    event = 'VeryLazy',
-    enabled = not vim.g.iswin,
-    keys = {
-      -- { '<A-l>', '<c-o>>>', mode = 'i', ft = 'org', remap = true },
-      -- { '<A-h>', '<c-o><<', mode = 'i', ft = 'org', remap = true },
-      -- {
-      --   '<leader>a',
-      --   function()
-      --     require('orgmode').agenda:agenda()
-      --   end,
-      --   desc = 'org agenda',
-      -- },
-      -- {
-      --   '<leader>c',
-      --   function()
-      --     require('orgmode').capture:prompt()
-      --   end,
-      --   desc = 'org capture',
-      -- },
-    },
-    opts = {
-      mappings = {
-        -- org = {
-        --   org_toggle_checkbox = '<enter>',
-        -- },
-        -- prefix = '<c-c>',
-        -- global = {
-        --   org_agenda = '<prefix>a',
-        --   org_capture = '<prefix>c',
-        -- },
-        -- capture = {
-        --   org_capture_finalize = '<C-c><c-c>',
-        -- },
-        -- note = {
-        --   org_note_finalize = '<C-c><c-c>',
-        -- },
-        -- org = {
-        --   org_insert_link = '<prefix>il',
-        --   org_store_link = '<prefix>s',
-        --   org_add_note = '<prefix>n',
-        --   org_babel_tangle = '<prefix>b',
-        --   org_toggle_timestamp_type = '<prefix>d',
-        -- },
-      },
-      org_startup_folded = 'inherit',
-      win_split_mode = 'float',
-      org_agenda_files = '~/notes/orgfiles/**/*',
-      org_default_notes_file = '~/notes/orgfiles/refile.org',
-      org_startup_indented = true,
-      org_log_into_drawer = 'LOGBOOK',
-      org_todo_keywords = { 'TODO(t)', 'PROGRESS(p)', '|', 'DONE(d)', 'REJECTED(r)' },
-      org_capture_templates = {
-        t = {
-          description = '🌞 Today',
-          template = '* TODO %?\n\nEntered on %U\n',
-        },
-        w = {
-          description = '💪 Work',
-          template = '* TODO %?\n\nEntered on %U\n',
-          target = org_path 'work.org',
-        },
-        j = {
-          description = '📝 Journal',
-          template = '* %?\n\nEntered on %U\n',
-          datetree = true,
-          target = org_path 'journal.org',
-        },
-      },
-    },
-    init = function()
-      vim.api.nvim_create_autocmd('FileType', {
-        pattern = 'org',
-        callback = function()
-          vim.keymap.set('i', '<s-enter>', 'lua require("orgmode").action("org_mappings.meta_return")', {
-            silent = true,
-            buffer = true,
-          })
-        end,
-      })
-    end,
   },
   {
     'Bekaboo/dropbar.nvim',
