@@ -1,11 +1,4 @@
-auto-save-list/
-eln-cache/
-elpaca/
-transient/
-history
-recentf
-places
-\#init.el\#
-bookmarks
-url/
-eshell/
+*
+!init.org
+!early-init.el
+!elfeed.org

@@ -47,6 +47,8 @@
       # nerd-fonts.comic-shanns-mono
       # martian-mono
       noto-fonts-emoji
+      aporetic
+      nerd-fonts.symbols-only
       # ibm-plex
       # intel-one-mono
       # source-serif-pro
