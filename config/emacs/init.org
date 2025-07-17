@@ -437,6 +437,15 @@
     (define-key evil-normal-state-map (kbd "<leader>t") 'consult-theme)
     (define-key evil-normal-state-map (kbd "<leader>b") 'consult-buffer)
     (define-key evil-normal-state-map (kbd "<leader>SPC") 'consult-recent-file)
+
+    ;; GTD MODE
+    ;; (define-key evil-normal-state-map (kbd "<leader>gc") 'org-gtd-capture)
+    ;; (define-key evil-normal-state-map (kbd "<leader>gp") 'org-gtd-process-inbox)
+    ;; (define-key evil-normal-state-map (kbd "<leader>gi") 'org-gtd-clarify-item)
+    ;; (define-key evil-normal-state-map (kbd "<leader>go") 'org-gtd-organize)
+    ;; (define-key evil-normal-state-map (kbd "<leader>gg") 'org-gtd-engage)
+    ;; (define-key evil-normal-state-map (kbd "<leader>gs") 'org-gtd-oops)
+
     ;; (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
     ;; (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
     ;; (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
@@ -620,6 +629,15 @@
   	org-alert-notify-cutoff 10
   	org-alert-notify-after-event-cutoff 10))
 
+#+end_src
+** GTD
+this repo has not beed updated for two years.
+orgmode is enough
+#+begin_src emacs-lisp
+  ;; (use-package org-gtd
+  ;;   :custom
+  ;;   (org-gtd-directory (file-truename "~/notes/eorg/gtd/"))
+  ;;   :ensure t)
 #+end_src
 * UI
 #+begin_src emacs-lisp
