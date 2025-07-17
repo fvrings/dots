@@ -135,7 +135,7 @@
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # niri.url = "github:sodiboo/niri-flake";
+    niri.url = "github:sodiboo/niri-flake";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
