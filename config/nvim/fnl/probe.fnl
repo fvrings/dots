@@ -14,7 +14,7 @@
       (set! g isnixos true)))
 
 (when vim.g.neovide
-  (set! g neovide_transparency 0.8)
+  (set! g neovide_opacity 0.8)
   (set! g neovide_floating_blur_amount_x 2)
   (set! g floating_blur_amount_y 2)
   (set! g neovide_fullscreen true)
