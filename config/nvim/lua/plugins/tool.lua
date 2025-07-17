@@ -579,6 +579,9 @@ return {
     -- call setup method or set config = true
     config = true,
 
+    keys = {
+      { '<leader>q', ':ContinueLoad<CR>' },
+    },
     opts = {
       auto_restore = false,
     },
