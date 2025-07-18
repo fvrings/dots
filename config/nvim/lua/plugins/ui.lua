@@ -11,11 +11,11 @@ return {
       { '<leader>ut', ':TimerlyToggle<CR>', desc = 'toggle timerly ' },
     },
   },
-  {
-    'nvzone/typr',
-    cmd = 'Typr',
-    enabled = not vim.g.iswin,
-  },
+  -- {
+  --   'nvzone/typr',
+  --   cmd = 'Typr',
+  --   enabled = not vim.g.iswin,
+  -- },
   {
     'siduck/showkeys',
     cmd = 'ShowkeysToggle',

@@ -152,9 +152,9 @@ spawn-at-startup "quickshell"
 // spawn-at-startup "~/path/to/code/target/release/xwayland-satellite"
 
 environment {
-    DISPLAY ":0"
+    // DISPLAY ":0"
     // QT_IM_MODULES "wayland;fcitx"
-    QT_QPA_PLATFORMTHEME "qt6ct"
+    // QT_QPA_PLATFORMTHEME "qt6ct"
     QT_QPA_PLATFORM "wayland"
 }
 

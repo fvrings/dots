@@ -36,7 +36,7 @@ static const Menu menus[] = {
 };
 
 
-/* NOTE: ALWAYS keep a rule declared even if you don't use rules (e.g leave at least one example) */
+/*  ALWAYS keep a rule declared even if you don't use rules (e.g leave at least one example) */
 static const Rule rules[] = {
         /* app_id             title       tags mask     isfloating   monitor */
         /* examples: */
@@ -55,10 +55,10 @@ static const Layout layouts[] = {
 
 /* monitors */
 /* (x=-1, y=-1) is reserved as an "autoconfigure" monitor position indicator
- * WARNING: negative values other than (-1, -1) cause problems with Xwayland clients
+ *  negative values other than (-1, -1) cause problems with Xwayland clients
  * https://gitlab.freedesktop.org/xorg/xserver/-/issues/899
 */
-/* NOTE: ALWAYS add a fallback rule, even if you are completely sure it won't be used */
+/*  ALWAYS add a fallback rule, even if you are completely sure it won't be used */
 static const MonitorRule monrules[] = {
         /* name       mfact  nmaster scale layout       rotate/reflect                x    y */
         /* example of a HiDPI laptop monitor:

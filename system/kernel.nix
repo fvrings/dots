@@ -18,8 +18,8 @@ in
   chaotic.mesa-git.enable = true;
   services.scx.enable = true;
   # TODO : enable this after next release
-  # services.scx.package = pkgs.scx_git.rustscheds;
-  services.scx.package = pkgs-stable.scx.rustscheds;
+  services.scx.package = pkgs.scx_git.rustscheds;
+  # services.scx.package = pkgs-stable.scx.rustscheds;
   systemd.extraConfig = ''
     DefaultTimeoutStopSec=5s
   '';

@@ -9,7 +9,7 @@
 #   };
 # in
 {
-  # TODO: only left must-have packages in systemPackages as it'll slow down man.generateCaches
+  #  only left must-have packages in systemPackages as it'll slow down man.generateCaches
   environment.systemPackages =
     with pkgs;
     [

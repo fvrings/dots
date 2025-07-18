@@ -10,6 +10,7 @@
     ../disko
     ./power.nix
     ./fcitx.nix
+    ./stylix.nix
 
     ../core.nix
     ../dwl

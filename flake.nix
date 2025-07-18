@@ -142,6 +142,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     maomaowm.url = "github:DreamMaoMao/maomaowm";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # ghostty = {
     #   url = "github:ghostty-org/ghostty";
     # };

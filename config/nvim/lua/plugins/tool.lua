@@ -68,10 +68,10 @@ return {
   {
     'A7Lavinraj/fyler.nvim',
     dependencies = { 'echasnovski/mini.icons' },
-    event = 'VeryLazy',
+    -- event = 'VeryLazy',
     -- lazy = false,
     opts = {
-      default_explorer = true,
+      default_explorer = false,
       close_on_select = true,
       views = {
         file_tree = {

@@ -10,20 +10,21 @@
     enable = true;
     package = pkgs.alacritty_git;
     settings = {
-      font = {
-        size = 13;
-      };
+      # font = {
+      #   size = 13;
+      # };
       window = {
         decorations = "none";
-        opacity = 0.8;
+        # opacity = 0.8;
       };
-      general = {
-        import = [
-          "kanagawa.toml"
-          "matugen.toml"
-        ];
-      };
+      # general = {
+      #   import = [
+      #     "kanagawa.toml"
+      #     # "matugen.toml"
+      #   ];
+      # };
     };
 
   };
+  stylix.targets.alacritty.enable = true;
 }

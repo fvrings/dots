@@ -106,6 +106,148 @@
 
 #+end_src
 
+* Org
+
+#+begin_src emacs-lisp
+  ;;org
+  (use-package org
+    :custom
+    (org-default-notes-file (concat org-directory "notes.org"))
+    (org-agenda-files `(,org-default-notes-file))
+    (org-log-done 'time)
+    (org-todo-keywords
+     '((sequence
+        "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+       (sequence
+        "WAIT(w)" "HOLD(h)" "IDEA(i)" "|" "NOTE(o@/!)" "STOP(s@/!)")))
+    (org-todo-keyword-faces
+     '(("TODO" . (:foreground "#ee5396" :weight bold))    ; magenta/pink
+       ("NEXT" . (:foreground "#3ddbd9" :weight bold))    ; cyan
+       ("WAIT" . (:foreground "#be95ff" :slant italic))   ; purple
+       ("HOLD" . (:foreground "#33b1ff" :slant italic))   ; blue
+       ("IDEA" . (:foreground "#08bdba" :weight bold))    ; teal
+       ("STOP" . (:foreground "#fa4d56" :weight bold))    ; red
+       ("DONE" . (:foreground "#878d96" :strike-through t)))) ; gray (muted)
+    (org-agenda-start-with-log-mode t)
+    (org-capture-templates
+     '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
+        "* TODO %?\n  %i\n  %T")))
+    (org-tag-alist
+     '(("@earn" . ?e)
+       ("@canceled" . ?x)
+       ("@repeat" . ?r)
+       ("@planning" . ?p)))
+    (org-directory (file-truename "~/notes/eorg/"))
+    (org-agenda-custom-commands
+     '(("w" "Weekly Review"
+        ((agenda ""
+    	       ((org-agenda-overriding-header "Completed Tasks")
+    		(org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo 'done))
+    		(org-agenda-span 'week)))
+         (agenda ""
+    	       ((org-agenda-overriding-header "Unfinished Scheduled Tasks")
+    		(org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+    		(org-agenda-span 'week)))))
+       ("d" "Daily Agenda"
+        ((agenda ""
+    	       ((org-agenda-span 'day)
+    		(org-deadline-warning-days 1)))
+         (tags-todo "+PRIORITY=\"A\""
+    		  ((org-agenda-overriding-header "High Priority Tasks")))))
+       ("p" "Planning"
+        ((tags-todo "+@planning"
+                    ((org-agenda-overriding-header "Planning Tasks")))
+         (tags-todo "-{.*}"
+                    ((org-agenda-overriding-header "Unplanning Tasks")))))))
+    :ensure (:wait t)
+    :hook (org-trigger . save-buffer) 
+    :init
+    (add-hook 'org-mode-hook
+              (lambda ()
+    	      (org-indent-mode)
+                (add-hook 'after-save-hook #'org-babel-tangle
+                          :append :local))))
+
+  (use-package org-present
+    :ensure t
+    :config
+    ;;:after (visual-fill-column)
+    (setq org-confirm-babel-evaluate nil)
+    (org-babel-do-load-languages
+     'org-babel-load-languages '((python . t)
+    			       (shell . t)))
+    (add-hook 'org-present-mode-hook
+    	    (lambda ()
+    	      ;;visual-fill-column
+    	      (visual-fill-column-mode 1)
+    	      (visual-line-mode 1)
+
+    	      ;;(org-present-big)
+    	      (org-display-inline-images)
+    	      (org-present-hide-cursor))
+  	    :config
+  	    (setq org-roam-ui-sync-theme t
+    		  org-roam-ui-follow t
+    		  org-roam-ui-update-on-save t
+    		  org-roam-ui-open-on-start t)))
+
+  ;;org-roam
+  (use-package org-roam
+    :ensure t
+    :custom
+    (org-roam-directory (concat org-directory "roam/")) ; 设置 org-roam 目录
+    (org-roam-completion-everywhere t)
+    (org-roam-capture-templates
+     '(("d" "default" plain
+        "%?"
+        :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n")
+        :unnarrowed t)
+       ("p" "project" plain
+        "* Goals\n\n%?\n\n* Tasks\n\n** TODO Add initial tasks\n\n* Dates\n\n"
+        :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetypes: Project\n")
+        :unnarrowed t)))
+
+
+    :bind (("C-c n l" . org-roam-buffer-toggle)
+    	 ("C-c n f" . org-roam-node-find)
+    	 ("C-c n g" . org-roam-graph)
+    	 ("C-c n i" . org-roam-node-insert)
+    	 ("C-c n c" . org-roam-capture)
+    	 ("C-c o c" . org-capture)
+    	 ("C-c o a" . org-agenda)
+    	 ("C-c n u" . org-roam-ui-mode)
+    	 ("C-c n j" . org-roam-dailies-capture-today))
+    :config
+    ;; If you're using a vertical completion framework, you might want a more informative completion interface
+    (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+    (org-roam-db-autosync-mode)
+    ;; If using org-roam-protocol
+    (require 'org-roam-protocol))
+
+  (use-package org-download
+    :ensure t
+    :config
+    (setq-default org-download-heading-lvl nil)
+    (setq-default org-download-image-dir "./images"))
+  ;; use-package with Elpaca:
+  (use-package org-alert
+    :ensure t
+    :config
+    (setq alert-default-style 'libnotify)
+    (setq org-alert-interval 300
+    	org-alert-notify-cutoff 10
+    	org-alert-notify-after-event-cutoff 10))
+
+#+end_src
+** GTD
+this repo has not beed updated for two years.
+orgmode is enough
+#+begin_src emacs-lisp
+  ;; (use-package org-gtd
+  ;;   :custom
+  ;;   (org-gtd-directory (file-truename "~/notes/eorg/gtd/"))
+  ;;   :ensure t)
+#+end_src
 * Complete
 
 ** Search
@@ -398,6 +540,47 @@
 
 #+end_src
 
+* UI
+#+begin_src emacs-lisp
+  (use-package which-key
+      :config
+      (which-key-mode))
+  (use-package visual-fill-column
+    :ensure t
+    :config
+    (setq-default visual-fill-column-width 110
+  		visual-fill-column-center-text t))
+
+
+  (use-package rainbow-delimiters
+    :ensure t
+    :hook (prog-mode . rainbow-delimiters-mode))
+
+  (use-package doom-themes
+    :ensure t
+    :config
+    ;; Global settings (defaults)
+    (setq doom-themes-enable-bold t ; if nil, bold is universally disabled
+  	doom-themes-enable-italic t) ; if nil, italics is universally disabled
+    (load-theme 'doom-moonlight t)
+
+    ;; Enable flashing mode-line on errors
+    (doom-themes-visual-bell-config)
+    ;; Enable custom neotree theme (all-the-icons must be installed!)
+    (doom-themes-neotree-config)
+    ;; Corrects (and improves) org-mode's native fontification.
+    (doom-themes-org-config))
+
+  (use-package doom-modeline
+    :ensure t
+    :init (doom-modeline-mode 1))
+  (use-package nerd-icons
+    :ensure t
+    :custom
+    (nerd-icons-font-family "Symbols Nerd Font"))
+
+
+#+end_src
 * Evil
 #+begin_src emacs-lisp
   (use-package evil-mc
@@ -430,6 +613,10 @@
     (define-key evil-insert-state-map (kbd "C-s") 'avy-goto-char-timer)
     (evil-set-leader 'normal (kbd "SPC"))
 
+    (define-key evil-normal-state-map (kbd "M-j") 'evil-window-down)
+    (define-key evil-normal-state-map (kbd "M-k") 'evil-window-up)
+    (define-key evil-normal-state-map (kbd "M-h") 'evil-window-left)
+    (define-key evil-normal-state-map (kbd "M-l") 'evil-window-right)
     (define-key evil-normal-state-map (kbd "<leader>f") 'indent-region)
     (define-key evil-normal-state-map (kbd "<leader>h") 'consult-outline)
     (define-key evil-normal-state-map (kbd "<leader><leader>") 'recentf)
@@ -484,202 +671,6 @@
 
 #+end_src
 
-* Org
-
-#+begin_src emacs-lisp
-  ;;org
-  (use-package org
-    :custom
-    (org-default-notes-file (concat org-directory "notes.org"))
-    (org-agenda-files `(,org-default-notes-file))
-    (org-log-done 'time)
-    (org-todo-keywords
-     '((sequence
-        "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-       (sequence
-        "WAIT(w)" "HOLD(h)" "IDEA(i)" "|" "NOTE(o@/!)" "STOP(s@/!)")))
-    (org-todo-keyword-faces
-  	'(("TODO" . (:foreground "#ee5396" :weight bold))    ; magenta/pink
-            ("NEXT" . (:foreground "#3ddbd9" :weight bold))    ; cyan
-            ("WAIT" . (:foreground "#be95ff" :slant italic))   ; purple
-            ("HOLD" . (:foreground "#33b1ff" :slant italic))   ; blue
-            ("IDEA" . (:foreground "#08bdba" :weight bold))    ; teal
-            ("STOP" . (:foreground "#fa4d56" :weight bold))    ; red
-            ("DONE" . (:foreground "#878d96" :strike-through t)))) ; gray (muted)
-    (org-agenda-start-with-log-mode t)
-    (org-capture-templates
-     '(("t" "Todo" entry (file+headline org-default-notes-file "Tasks")
-        "* TODO %?\n  %i\n  %T")))
-    (org-tag-alist
-     '(("EARN" . ?E)
-       ("Weekly Review" . ?w)
-       ("Daily Agenda" . ?d)
-       ("Untagged Tasks" . ?u)))
-    (org-directory (file-truename "~/notes/eorg/"))
-    (org-agenda-custom-commands
-     '(("w" "Weekly Review"
-        ((agenda ""
-  	       ((org-agenda-overriding-header "Completed Tasks")
-  		(org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo 'done))
-  		(org-agenda-span 'week)))
-         (agenda ""
-  	       ((org-agenda-overriding-header "Unfinished Scheduled Tasks")
-  		(org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-  		(org-agenda-span 'week)))))
-       ("d" "Daily Agenda"
-        ((agenda ""
-  	       ((org-agenda-span 'day)
-  		(org-deadline-warning-days 1)))
-         (tags-todo "+PRIORITY=\"A\""
-  		  ((org-agenda-overriding-header "High Priority Tasks")))))
-       ("u" "Untagged Tasks"
-        ((tags-todo "-{.*}")))))
-    :ensure (:wait t)
-    :init
-    (add-hook 'org-mode-hook
-              (lambda ()
-  	      (org-indent-mode)
-                (add-hook 'after-save-hook #'org-babel-tangle
-                          :append :local))))
-
-  (use-package org-present
-    :ensure t
-    :config
-    ;;:after (visual-fill-column)
-    (setq org-confirm-babel-evaluate nil)
-    (org-babel-do-load-languages
-     'org-babel-load-languages '((python . t)
-  			       (shell . t)))
-    (add-hook 'org-present-mode-hook
-  	    (lambda ()
-  	      ;;visual-fill-column
-  	      (visual-fill-column-mode 1)
-  	      (visual-line-mode 1)
-
-  	      ;;(org-present-big)
-  	      (org-display-inline-images)
-  	      (org-present-hide-cursor)
-  	      (org-present-read-only)))
-    (add-hook 'org-present-mode-quit-hook
-  	    (lambda ()
-  	      ;;visual-fill-column
-  	      (visual-fill-column-mode 0)
-  	      (visual-line-mode 0)
-
-  	      ;;(org-present-small)
-  	      (org-remove-inline-images)
-  	      (org-present-show-cursor)
-  	      (org-present-read-write))))
-
-  (use-package org-roam-ui
-    :ensure
-    (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-    :after org-roam
-    :hook (after-init . org-roam-ui-mode)
-    :config
-    (setq org-roam-ui-sync-theme t
-  	org-roam-ui-follow t
-  	org-roam-ui-update-on-save t
-  	org-roam-ui-open-on-start t))
-
-  ;;org-roam
-  (use-package org-roam
-    :ensure t
-    :custom
-    (org-roam-directory (concat org-directory "roam/")) ; 设置 org-roam 目录
-    (org-roam-completion-everywhere t)
-    (org-roam-capture-templates
-     '(("d" "default" plain
-        "%?"
-        :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n")
-        :unnarrowed t)
-       ("p" "project" plain
-        "* Goals\n\n%?\n\n* Tasks\n\n** TODO Add initial tasks\n\n* Dates\n\n"
-        :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetypes: Project\n")
-        :unnarrowed t)))
-
-
-    :bind (("C-c n l" . org-roam-buffer-toggle)
-  	 ("C-c n f" . org-roam-node-find)
-  	 ("C-c n g" . org-roam-graph)
-  	 ("C-c n i" . org-roam-node-insert)
-  	 ("C-c n c" . org-roam-capture)
-  	 ("C-c o c" . org-capture)
-  	 ("C-c o a" . org-agenda)
-  	 ("C-c n u" . org-roam-ui-mode)
-  	 ("C-c n j" . org-roam-dailies-capture-today))
-    :config
-    ;; If you're using a vertical completion framework, you might want a more informative completion interface
-    (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
-    (org-roam-db-autosync-mode)
-    ;; If using org-roam-protocol
-    (require 'org-roam-protocol))
-
-  (use-package org-download
-    :ensure t
-    :config
-    (setq-default org-download-heading-lvl nil)
-    (setq-default org-download-image-dir "./images"))
-  ;; use-package with Elpaca:
-  (use-package org-alert
-    :ensure t
-    :config
-    (setq alert-default-style 'libnotify)
-    (setq org-alert-interval 300
-  	org-alert-notify-cutoff 10
-  	org-alert-notify-after-event-cutoff 10))
-
-#+end_src
-** GTD
-this repo has not beed updated for two years.
-orgmode is enough
-#+begin_src emacs-lisp
-  ;; (use-package org-gtd
-  ;;   :custom
-  ;;   (org-gtd-directory (file-truename "~/notes/eorg/gtd/"))
-  ;;   :ensure t)
-#+end_src
-* UI
-#+begin_src emacs-lisp
-  (use-package which-key
-      :config
-      (which-key-mode))
-  (use-package visual-fill-column
-    :ensure t
-    :config
-    (setq-default visual-fill-column-width 110
-  		visual-fill-column-center-text t))
-
-
-  (use-package rainbow-delimiters
-    :ensure t
-    :hook (prog-mode . rainbow-delimiters-mode))
-
-  (use-package doom-themes
-    :ensure t
-    :config
-    ;; Global settings (defaults)
-    (setq doom-themes-enable-bold t ; if nil, bold is universally disabled
-  	doom-themes-enable-italic t) ; if nil, italics is universally disabled
-    (load-theme 'doom-moonlight t)
-
-    ;; Enable flashing mode-line on errors
-    (doom-themes-visual-bell-config)
-    ;; Enable custom neotree theme (all-the-icons must be installed!)
-    (doom-themes-neotree-config)
-    ;; Corrects (and improves) org-mode's native fontification.
-    (doom-themes-org-config))
-
-  (use-package doom-modeline
-    :ensure t
-    :init (doom-modeline-mode 1))
-  (use-package nerd-icons
-    :ensure t
-    :custom
-    (nerd-icons-font-family "Symbols Nerd Font"))
-
-
-#+end_src
 * Tools
 #+begin_src emacs-lisp
     (use-package elfeed

@@ -10,8 +10,13 @@
   programs.niri = {
     enable = true;
     # use nyx
-    package = pkgs.niri-unstable;
+    # BUG:does not close window cleanly
+    # package = pkgs.niri-unstable;
+    package = pkgs.niri;
+
   };
+
+  # stylix.targets.niri.enable = false;
   programs.maomaowm.enable = true;
   # nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   # imports = [

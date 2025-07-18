@@ -1,4 +1,4 @@
-#NOTE: LESS IS MORE
+# LESS IS MORE
 {
   pkgs,
   config,

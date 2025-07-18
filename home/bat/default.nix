@@ -1,8 +1,8 @@
 {
   programs.bat = {
     enable = true;
-    config = {
-      theme = "1337";
-    };
+    # config = {
+    #   theme = "1337";
+    # };
   };
 }

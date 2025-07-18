@@ -141,7 +141,7 @@ return {
     },
   },
 
-  -- PERF:can't lazy load it
+  -- can't lazy load it
   -- {
   --   'Weissle/persistent-breakpoints.nvim',
   --   opts = {
