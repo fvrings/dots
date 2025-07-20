@@ -5,7 +5,6 @@
     inputs.daeuniverse.nixosModules.daed
     inputs.ucodenix.nixosModules.default
     inputs.disko.nixosModules.disko
-    inputs.nixos-wsl.nixosModules.default
     inputs.nix-index-database.nixosModules.nix-index
     inputs.nur.modules.nixos.default
     inputs.sops-nix.nixosModules.sops

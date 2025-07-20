@@ -31,8 +31,6 @@ in
   ++ currentFolderDirs
   ++ modules;
 
-  stylix.targets.niri.enable = false;
-  stylix.targets.emacs.enable = false;
   home = {
     username = "ring";
     homeDirectory = "/home/ring";

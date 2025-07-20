@@ -15,20 +15,6 @@
       systems = [ "x86_64-linux" ];
       flake = {
         nixosConfigurations = {
-          wsl = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            modules = [
-              ./host/wsl
-            ];
-            specialArgs = { inherit inputs; };
-          };
-          vm = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            modules = [
-              ./host/vm
-            ];
-            specialArgs = { inherit inputs; };
-          };
           art = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [
@@ -63,7 +49,6 @@
     };
   inputs = {
     impermanence.url = "github:nix-community/impermanence";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-release.url = "github:NixOS/nixpkgs/release-25.05";
