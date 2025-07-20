@@ -27,7 +27,8 @@
         position = "top";
         place-within-column = true;
         inactive.color = "#0F4532";
-        active.color = "#6666cc";
+        # active.color = "#6666cc";
+        active.color = "#ff3255";
       };
 
       center-focused-column = "never";
@@ -51,8 +52,13 @@
 
       border = {
         enable = true;
-        width = 4;
-        active.color = "#ffc87f";
+        width = 3;
+        active.gradient = {
+          from = "#ffc87f";
+          to = "#ff4662";
+          angle = 45;
+          relative-to = "workspace-view";
+        };
         inactive.color = "#505050";
       };
 
@@ -151,8 +157,12 @@
         open-maximized = true;
       }
       {
+        draw-border-with-background = false;
+      }
+      {
         matches = [
           { title = "^Picture-in-Picture$"; }
+          { app-id = "org.kde.polkit-kde-authentication-agent-1"; }
         ];
         open-floating = true;
       }

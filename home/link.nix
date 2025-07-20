@@ -10,6 +10,7 @@ in
       (symLink "nushell")
       (symLink "nvim")
       (symLink "emacs")
+      (symLink "quickshell")
     ];
   };
 

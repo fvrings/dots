@@ -41,8 +41,7 @@
       # alacritty-graphics
       # vscode
       fzf
-      # TODO: enable this
-      # rich-cli
+      rich-cli
       cachix
       chafa
       just
