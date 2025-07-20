@@ -13,8 +13,7 @@ PanelWindow {
         right: true
     }
 
-    implicitWidth: 300
-    implicitHeight: 100
+    implicitWidth: 360
     color: "transparent"
 
     WlrLayershell.layer: WlrLayershell.Overlay
@@ -31,18 +30,19 @@ PanelWindow {
         delegate: Item {
             id: notificationDelegate
             width: notificationListView.width
-            height: 100
+            implicitHeight: notificationBox.implicitHeight + 10
 
             Rectangle {
                 id: notificationBox
                 width: parent.width - 20
-                height: 90
-                anchors.horizontalCenter: parent.horizontalCenter
-                radius: 8
-                color: "#1f1f28" // Kanagawa Dragon background
-                opacity: 1
-                border.color: "#7e9cd8" // Lotus blue
+                color: "#1f1f28"
+                border.color: "#7e9cd8"
                 border.width: 1
+                radius: 8
+
+                anchors.horizontalCenter: parent.horizontalCenter
+
+                implicitHeight: contentColumn.implicitHeight + 20
 
                 Behavior on opacity {
                     PropertyAnimation {
@@ -50,50 +50,57 @@ PanelWindow {
                     }
                 }
 
-                Row {
-                    anchors.fill: parent
-                    anchors.margins: 10
-                    spacing: 10
-
-                    Image {
-                        source: model.appIcon
-                        width: 32
-                        height: 32
-                        fillMode: Image.PreserveAspectFit
+                Column {
+                    id: contentColumn
+                    spacing: 6
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                        margins: 10
                     }
 
-                    Column {
-                        spacing: 4
-                        width: parent.width - 60
+                    Row {
+                        spacing: 10
+
+                        Image {
+                            source: model.appIcon
+                            width: 32
+                            height: 32
+                            fillMode: Image.PreserveAspectFit
+                        }
 
                         Text {
                             text: model.appName
                             font.pixelSize: 20
                             font.bold: true
-                            color: "#957fb8" // Fuji purple
+                            color: "#957fb8"
                             elide: Text.ElideRight
+                            horizontalAlignment: Text.AlignLeft
+                            verticalAlignment: Text.AlignVCenter
                         }
+                    }
 
-                        Text {
-                            text: model.summary
-                            font.pixelSize: 16
-                            color: "#dcd7ba" // Light text
-                            wrapMode: Text.WordWrap
-                        }
+                    Text {
+                        text: model.summary
+                        font.pixelSize: 16
+                        color: "#dcd7ba"
+                        wrapMode: Text.Wrap
+                        width: parent.width - 20
+                    }
 
-                        Text {
-                            text: model.body
-                            font.pixelSize: 18
-                            color: "#7e9cd8" // Lotus blue
-                            wrapMode: Text.WordWrap
-                            visible: model.body.length > 0
-                        }
+                    Text {
+                        text: model.body
+                        font.pixelSize: 18
+                        color: "#7e9cd8"
+                        wrapMode: Text.Wrap
+                        width: parent.width - 20
+                        visible: model.body.length > 0
                     }
                 }
 
                 Timer {
                     id: dismissTimer
-                    interval: 3000
+                    interval: 5000
                     running: true
                     repeat: false
                     onTriggered: {
@@ -103,11 +110,7 @@ PanelWindow {
 
                 onOpacityChanged: {
                     if (opacity === 0) {
-                        Qt.callLater(() => {
-                            Qt.callLater(() => {
-                                notificationServer.removeNotification(index);
-                            });
-                        });
+                        Qt.callLater(() => notificationServer.removeNotification(index));
                     }
                 }
             }
