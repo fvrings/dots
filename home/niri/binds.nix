@@ -10,7 +10,7 @@
     "Mod+Backslash".action = spawn [
       "nu"
       "-c"
-      "cliphist list | fuzzel --dmenu -w 120 | cliphist decode | wl-copy"
+      "cliphist list | fuzzel --dmenu -w 90 | cliphist decode | wl-copy"
     ];
     "Mod+Shift+P".action = spawn [
       "qs"

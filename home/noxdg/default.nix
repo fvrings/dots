@@ -81,13 +81,11 @@ in
     file = {
       ".npmrc".text = "registry=https://registry.npmmirror.com";
       ".config/nix-extra/sqlite3.path".text = "${pkgs.sqlite.out}/lib/libsqlite3.so";
-      ".cargo/config.toml".text =
-        (builtins.readFile ./cargo.toml)
-        + ''
-          [target.x86_64-unknown-linux-gnu]
-          linker = "clang"
-            rustflags = ["-C", "link-arg=-fuse-ld=${pkgs.mold-wrapped}/bin/mold"]
-        '';
+      ".cargo/config.toml".text = (builtins.readFile ./cargo.toml) + ''
+        [target.x86_64-unknown-linux-gnu]
+        linker = "clang"
+          rustflags = ["-C", "link-arg=-fuse-ld=${pkgs.mold-wrapped}/bin/mold"]
+      '';
     };
   };
 

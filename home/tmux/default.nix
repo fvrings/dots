@@ -42,11 +42,9 @@
         resurrect
         fzf-tmux-url
       ];
-      extraConfig =
-        (builtins.readFile ./tmux.conf.common)
-        + ''
-          bind-key -n M-q run-shell "${./tmux-or-nvim-kill.sh}"
-        '';
+      extraConfig = (builtins.readFile ./tmux.conf.common) + ''
+        bind-key -n M-q run-shell "${./tmux-or-nvim-kill.sh}"
+      '';
     };
   };
 }

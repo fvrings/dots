@@ -24,13 +24,12 @@ let
   ];
 in
 {
-  imports =
-    [
-      ./package.nix
-      ./theme.nix
-    ]
-    ++ currentFolderDirs
-    ++ modules;
+  imports = [
+    ./package.nix
+    ./theme.nix
+  ]
+  ++ currentFolderDirs
+  ++ modules;
 
   stylix.targets.niri.enable = false;
   stylix.targets.emacs.enable = false;
