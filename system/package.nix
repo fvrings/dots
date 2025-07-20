@@ -58,8 +58,6 @@
       # rustup
       rust-bin.stable.latest.default
       libreoffice
-      #TODO: configure it with nix
-      kanagawa-gtk-theme
       lyra-cursors
       linux-manual
       ast-grep

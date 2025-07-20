@@ -35,7 +35,6 @@
       experimental-features = [
         "nix-command"
         "flakes"
-        # BUG: does not work
         # "coerce-integers"
         # "pipe-operators"
       ];

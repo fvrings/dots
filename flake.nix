@@ -62,7 +62,6 @@
         };
     };
   inputs = {
-    #TODO: https://github.com/nix-community/disko/issues/511
     impermanence.url = "github:nix-community/impermanence";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -78,7 +77,6 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #NOTE:https://flake.parts/best-practices-for-module-writing
     flake-parts.url = "github:hercules-ci/flake-parts";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";

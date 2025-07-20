@@ -43,6 +43,7 @@
       };
 
       focus-ring = {
+        enable = false;
         width = 1;
         inactive.color = "#61202d";
         active.color = "#d2788a";
@@ -151,7 +152,6 @@
       }
       {
         matches = [
-          { app-id = "firefox"; }
           { title = "^Picture-in-Picture$"; }
         ];
         open-floating = true;

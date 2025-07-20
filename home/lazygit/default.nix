@@ -12,7 +12,6 @@
         }
       ];
       disableStartupPopups = true;
-      # TODO: use stylix here
       gui = {
         authorColors = {
           "*" = "#b4befe";

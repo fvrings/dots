@@ -16,5 +16,4 @@
 
 (vim.fn.sign_define :DapBreakpoint {:text "🐞"})
 
-;;NOTE: https://github.com/neovim/neovim/issues/18282
 (map! n :<leader>k vim.diagnostic.open_float)

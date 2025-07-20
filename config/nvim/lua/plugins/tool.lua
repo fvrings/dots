@@ -17,34 +17,42 @@ return {
       {
         ',,',
         function()
-          --HACK: currently this function parse whole org file which is unnecessary
-          -- should be finding `block` parent in a loop
-          local captures_mappings = {
-            org = '(block) @sniprun',
-            markdown = '(fenced_code_block) @sniprun',
-            norg = '(ranged_verbatim_tag) @sniprun',
+          local ft = vim.bo.filetype
+          local capture_map = {
+            org = 'block',
+            markdown = 'fenced_code_block',
+            norg = 'ranged_verbatim_tag',
           }
-          local local_ft = vim.bo.filetype
-          local query = vim.treesitter.query.parse(local_ft, captures_mappings[local_ft])
-          local root = vim.treesitter.get_parser(0):parse()[1]:root()
-          local current = vim.fn.line '.' - 1
-          -- local ts_utils = require("nvim-treesitter.ts_utils")
-          for _, match, _ in query:iter_matches(root, 0, 0, -1, { all = true }) do
-            for _, nodes in pairs(match) do
-              for _, node in ipairs(nodes) do
-                local s = node:start()
-                local e = node:end_()
-                if s <= current and e >= current then
-                  -- ts_utils.update_selection(0, node)
-                  -- vim.cmd("lua require'sniprun'.run('v')")
-                  vim.cmd((s + 1) .. 'SnipRun')
-                  -- local key = vim.api.nvim_replace_termcodes("<ESC>", true, false, true)
-                  -- vim.api.nvim_feedkeys(key, "n", false)
-                  break
-                end
-              end
-            end
+
+          local target_capture = capture_map[ft]
+
+          local ok, parser = pcall(vim.treesitter.get_parser, 0, ft)
+          if not ok or not parser then
+            vim.notify('Treesitter parser not available for filetype: ' .. ft, vim.log.levels.ERROR)
+            return
           end
+
+          local tree = parser:parse()[1]
+          if not tree then
+            vim.notify('Failed to parse syntax tree', vim.log.levels.ERROR)
+            return
+          end
+
+          local root = tree:root()
+          local cursor_row = vim.fn.line '.' - 1
+          local cursor_col = vim.fn.col '.' - 1
+          local node = root:named_descendant_for_range(cursor_row, cursor_col, cursor_row, cursor_col)
+
+          while node do
+            if node:type() == target_capture then
+              local start_row = node:start()
+              vim.cmd((start_row + 1) .. 'SnipRun')
+              return
+            end
+            node = node:parent()
+          end
+
+          vim.notify('No executable code block found under cursor', vim.log.levels.INFO)
         end,
 
         desc = 'run codeblock',
@@ -853,7 +861,7 @@ return {
             search = marker,
             regex = false,
             live = false,
-            format = function(item, _picker) -- only display the grepped line
+            format = function(item) -- only display the grepped line
               local out = {}
               Snacks.picker.highlight.format(item, item.line, out)
               return out
@@ -956,7 +964,13 @@ return {
 
       mappings = {
         term = function(buf)
-          local esc_timer = vim.uv.new_timer()
+          local ok, esc_timer = pcall(vim.uv.new_timer)
+
+          if not ok or not esc_timer then
+            vim.notify('cannot create timer', vim.log.levels.ERROR)
+            return
+          end
+
           vim.keymap.set('t', '<Esc>', function()
             if esc_timer:is_active() then
               esc_timer:stop()

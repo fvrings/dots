@@ -9,10 +9,7 @@
   nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   programs.niri = {
     enable = true;
-    # use nyx
-    # BUG:does not close window cleanly
-    # package = pkgs.niri-unstable;
-    package = pkgs.niri;
+    package = pkgs.niri-unstable;
 
   };
 

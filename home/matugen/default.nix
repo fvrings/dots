@@ -41,7 +41,6 @@ in
       '')
     ];
     file = {
-      #TODO: remove this
       ".config/matugen/config.toml".source = pkgs.writers.writeTOML "config.toml" {
         config = {
           wallpaper = {

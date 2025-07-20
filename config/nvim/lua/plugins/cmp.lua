@@ -1,10 +1,4 @@
 -- NOTE: https://github.com/Saghen/blink.cmp/issues/1098
-local source_priority = {
-  snippets = 4,
-  lsp = 3,
-  path = 2,
-  buffer = 1,
-}
 
 return {
   {
@@ -300,8 +294,6 @@ return {
             score_offset = 2, -- Boost/penalize the score of the items
           },
           snippets = {
-            --NOTE:https://github.com/Saghen/blink.cmp/issues/291
-            --builtin snippets does not support framework
             enabled = true,
             should_show_items = function(ctx)
               return ctx.trigger.initial_character ~= '.'
