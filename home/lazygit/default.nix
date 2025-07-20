@@ -12,25 +12,25 @@
         }
       ];
       disableStartupPopups = true;
-      gui = {
-        authorColors = {
-          "*" = "#b4befe";
-        };
-        theme = {
-          activeBorderColor = [
-            "#f5e0dc"
-            "bold"
-          ];
-          cherryPickedCommitBgColor = [ "#45475a" ];
-          cherryPickedCommitFgColor = [ "#f5e0dc" ];
-          defaultFgColor = [ "#cdd6f4" ];
-          inactiveBorderColor = [ "#a6adc8" ];
-          optionsTextColor = [ "#89b4fa" ];
-          searchingActiveBorderColor = [ "#f9e2af" ];
-          selectedLineBgColor = [ "#313244" ];
-          unstagedChangesColor = [ "#f38ba8" ];
-        };
-      };
+      # gui = {
+      #   authorColors = {
+      #     "*" = "#b4befe";
+      #   };
+      #   theme = {
+      #     activeBorderColor = [
+      #       "#f5e0dc"
+      #       "bold"
+      #     ];
+      #     cherryPickedCommitBgColor = [ "#45475a" ];
+      #     cherryPickedCommitFgColor = [ "#f5e0dc" ];
+      #     defaultFgColor = [ "#cdd6f4" ];
+      #     inactiveBorderColor = [ "#a6adc8" ];
+      #     optionsTextColor = [ "#89b4fa" ];
+      #     searchingActiveBorderColor = [ "#f9e2af" ];
+      #     selectedLineBgColor = [ "#313244" ];
+      #     unstagedChangesColor = [ "#f38ba8" ];
+      #   };
+      # };
       keybinding = {
         commits = {
           moveDownCommit = "<c-n>";
