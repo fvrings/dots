@@ -22,7 +22,8 @@ in
       sha256 = "216cb5565f98b206a55681c3c75164e2b7f760b928d1fbb105ba12166754b547";
     };
     wallpaper-anime = genWallpaper {
-      url = "https://unsplash.com/photos/nymNqy2C4Q4/download?ixid=M3wxMjA3fDB8MXxhbGx8MXx8fHx8fHx8MTc1MjcyMjc0OXw&force=true";
+      url = "https://youke1.picui.cn/s1/2025/07/20/687ce95e31ea6.jpg";
+      # url = "https://unsplash.com/photos/nymNqy2C4Q4/download?ixid=M3wxMjA3fDB8MXxhbGx8MXx8fHx8fHx8MTc1MjcyMjc0OXw&force=true";
       sha256 = "e21b9807911ac95153ecb7291804571a520f18566a90e469a91950e16871abd7";
     };
     shell = "qs";

@@ -20,6 +20,8 @@ PanelWindow {
     WlrLayershell.exclusiveZone: -1
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
 
+    mask: Region {}
+
     ListView {
         id: notificationListView
         anchors.fill: parent
