@@ -14,7 +14,6 @@
     with pkgs;
     [
       vim
-      emacs
       godot
       # texliveFull
       texliveSmall
@@ -25,7 +24,6 @@
       ffmpeg-full
       bc
       jq
-      # emacs
       pnpm
       nodePackages.ts-node
       tree-sitter
@@ -44,6 +42,7 @@
       # TODO: enable this
       # rich-cli
       cachix
+      mu
       chafa
       just
       typst
