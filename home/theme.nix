@@ -26,6 +26,10 @@ in
       # url = "https://unsplash.com/photos/nymNqy2C4Q4/download?ixid=M3wxMjA3fDB8MXxhbGx8MXx8fHx8fHx8MTc1MjcyMjc0OXw&force=true";
       sha256 = "5bdfe90ac444ef663c4a2b1c75d161c13ec3af98d00cd4314d8052e469c88812";
     };
+    wallpaper-universe = genWallpaper {
+      url = "https://science.nasa.gov/wp-content/uploads/2023/09/ssc2006-02a-0.jpg";
+      sha256 = "bd483538b3e293561ea1f8e08b5955a5e348a178356a84b5ca75b7438f739485";
+    };
     shell = "qs";
     dwl = false;
   };
