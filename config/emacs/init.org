@@ -600,7 +600,10 @@ orgmode is enough
 
     ;; other faces such as `diff-added` will be used for other actions
     (evil-goggles-use-diff-faces))
-
+  (defun my/consult-books ()
+    "Consult books in the ~/Documents/ folder."
+    (interactive)
+    (consult-fd "~/Documents/"))
   (use-package evil
     :ensure t
     :custom
@@ -618,10 +621,10 @@ orgmode is enough
     (define-key evil-normal-state-map (kbd "M-h") 'evil-window-left)
     (define-key evil-normal-state-map (kbd "M-l") 'evil-window-right)
     (define-key evil-normal-state-map (kbd "<leader>f") 'indent-region)
-    (define-key evil-normal-state-map (kbd "<leader>h") 'consult-outline)
-    (define-key evil-normal-state-map (kbd "<leader><leader>") 'recentf)
-    (define-key evil-normal-state-map (kbd "<leader>t") 'consult-theme)
-    (define-key evil-normal-state-map (kbd "<leader>b") 'consult-buffer)
+    (define-key evil-normal-state-map (kbd "<leader>sh") 'consult-outline)
+    (define-key evil-normal-state-map (kbd "<leader>st") 'consult-theme)
+    (define-key evil-normal-state-map (kbd "<leader>sb") 'consult-buffer)
+    (define-key evil-normal-state-map (kbd "<leader>sk") 'my/consult-books)
     (define-key evil-normal-state-map (kbd "<leader>SPC") 'consult-recent-file)
     (define-key evil-normal-state-map (kbd "M-a") 'eat)
 

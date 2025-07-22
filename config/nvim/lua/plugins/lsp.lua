@@ -21,7 +21,8 @@ local function config()
       -- single_file_support = false,
     },
     denols = {
-      root_markers = { 'deno.json' },
+      workspace_required = true,
+      root_markers = { 'deno.json', 'deno.jsonc' },
     },
     zls = {},
     cssls = {

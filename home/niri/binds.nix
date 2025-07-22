@@ -4,6 +4,10 @@
   programs.niri.settings.binds = with config.lib.niri.actions; {
     "Mod+Shift+Slash".action = show-hotkey-overlay;
     "Mod+W".action = spawn [ "kitty" ];
+    "Mod+E".action = spawn [
+      "emacsclient"
+      "-nc"
+    ];
     "Mod+Return".action = spawn [ "alacritty" ];
     "Mod+P".action = spawn [ "fuzzel" ];
     "Mod+Ctrl+L".action = spawn [ "hyprlock" ];
