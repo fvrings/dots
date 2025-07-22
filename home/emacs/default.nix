@@ -7,6 +7,7 @@
   };
   programs.emacs = {
     enable = true;
+    package = pkgs.emacs-pgtk;
     #TODO: I'm not going to use this ATM as it requires phone number for gmail
     extraPackages = epkgs: [ epkgs.mu4e ];
   };
