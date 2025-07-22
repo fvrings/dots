@@ -99,7 +99,7 @@ $env.config = {
   {
     name: enter_path_with_fzf
     modifier: CONTROL
-    keycode: Char_f
+    keycode: Char_t
     mode: emacs
     event:[
         {
