@@ -16,18 +16,20 @@
       "alt+w" = "new_tab";
       "alt+n" = "next_tab";
       "alt+p" = "previous_tab";
-      "alt+q" = "kitten conditional_alt_q.py";
+      "alt+q" = "custom_alt_map q";
       "alt+s" = "kitty_scrollback_nvim";
       "alt+shift+s" = "kitty_scrollback_nvim --config ksb_builtin_last_cmd_output";
-      "alt+k" = "neighboring_window up";
-      "alt+h" = "neighboring_window left";
-      "alt+l" = "neighboring_window right";
-      "alt+j" = "neighboring_window down";
+      "alt+k" = "custom_alt_map k";
+      "alt+h" = "custom_alt_map h";
+      "alt+l" = "custom_alt_map l";
+      "alt+j" = "custom_alt_map j";
     };
 
     actionAliases = {
       "kitty_scrollback_nvim" =
         "kitten ~/.local/share/nvim/lazy/kitty-scrollback.nvim/python/kitty_scrollback_nvim.py";
+      "custom_alt_map" = "kitten ~/.config/kitty/custom_alt_map.py";
+
     };
     extraConfig = ''
       # include ${pkgs.kitty-themes}/share/kitty-themes/themes/kanagawa_dragon.conf
@@ -35,7 +37,7 @@
     '';
   };
   home.file = {
-    ".config/kitty/conditional_alt_q.py".text = builtins.readFile ./conditional_alt_q.py;
+    ".config/kitty/custom_alt_map.py".text = builtins.readFile ./custom_alt_map.py;
 
   };
 }

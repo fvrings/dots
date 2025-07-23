@@ -691,25 +691,44 @@ return {
       },
     },
   },
+  -- {
+  --   'christoomey/vim-tmux-navigator',
+  --   enabled = not vim.g.iswin,
+  --   cmd = {
+  --     'TmuxNavigateLeft',
+  --     'TmuxNavigateDown',
+  --     'TmuxNavigateUp',
+  --     'TmuxNavigateRight',
+  --     'TmuxNavigatePrevious',
+  --   },
+  --   keys = {
+  --     { '<a-h>', vim.cmd.TmuxNavigateLeft, mode = { 'n', 't', 'i' } },
+  --     { '<a-j>', vim.cmd.TmuxNavigateDown, mode = { 'n', 't', 'i' } },
+  --     { '<a-k>', vim.cmd.TmuxNavigateUp, mode = { 'n', 't', 'i' } },
+  --     { '<a-l>', vim.cmd.TmuxNavigateRight, mode = { 'n', 't', 'i' } },
+  --     -- { '<a-\\>', vim.cmd.TmuxNavigatePrevious, mode = { 'n', 't', 'i' } },
+  --   },
+  --   init = function()
+  --     vim.g.tmux_navigator_no_mappings = 1
+  --   end,
+  -- },
   {
-    'christoomey/vim-tmux-navigator',
+    'knubie/vim-kitty-navigator',
     enabled = not vim.g.iswin,
     cmd = {
-      'TmuxNavigateLeft',
-      'TmuxNavigateDown',
-      'TmuxNavigateUp',
-      'TmuxNavigateRight',
-      'TmuxNavigatePrevious',
+      'KittyNavigateLeft',
+      'KittyNavigateDown',
+      'KittyNavigateUp',
+      'KittyNavigateRight',
     },
     keys = {
-      { '<a-h>', vim.cmd.TmuxNavigateLeft, mode = { 'n', 't', 'i' } },
-      { '<a-j>', vim.cmd.TmuxNavigateDown, mode = { 'n', 't', 'i' } },
-      { '<a-k>', vim.cmd.TmuxNavigateUp, mode = { 'n', 't', 'i' } },
-      { '<a-l>', vim.cmd.TmuxNavigateRight, mode = { 'n', 't', 'i' } },
-      -- { '<a-\\>', vim.cmd.TmuxNavigatePrevious, mode = { 'n', 't', 'i' } },
+      { '<a-h>', vim.cmd.KittyNavigateLeft, mode = { 'n', 't', 'i' } },
+      { '<a-j>', vim.cmd.KittyNavigateDown, mode = { 'n', 't', 'i' } },
+      { '<a-k>', vim.cmd.KittyNavigateUp, mode = { 'n', 't', 'i' } },
+      { '<a-l>', vim.cmd.KittyNavigateRight, mode = { 'n', 't', 'i' } },
     },
     init = function()
-      vim.g.tmux_navigator_no_mappings = 1
+      vim.g.kitty_navigator_no_mappings = 1
     end,
   },
   -- {
