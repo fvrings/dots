@@ -5,19 +5,19 @@
 #+startup: overview
 
 * Setup
+** setup mirror for elpa
 #+begin_src emacs-lisp
-  ;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
-  (setq package-archives '(("gnu" . "http://1.15.88.122/gnu/")
-  			 ("nongnu" . "http://1.15.88.122/nongnu/")
-  			 ("org" . "http://1.15.88.122/org/")
-  			 ("melpa" . "http://1.15.88.122/melpa/")))
-
-
+  (setq package-archives '(("gnu" . "https://mirrors.ustc.edu.cn/elpa/gnu/")
+                           ("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
+                           ("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")))
+#+end_src
+** load custom variables
+#+begin_src emacs-lisp
   (setq custom-file (locate-user-emacs-file "custom-vars.el"))
   (load custom-file 'noerror 'nomessage)
-  (setq use-dialog-box nil)
-
-
+#+end_src
+** setup elpaca
+#+begin_src emacs-lisp
   ;; Example Elpaca configuration -*- lexical-binding: t; -*-
   (defvar elpaca-installer-version 0.11)
   (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
@@ -76,10 +76,13 @@
 
 * Builtin option
 #+begin_src emacs-lisp
+  (setq use-dialog-box nil)
 
   (setq vc-follow-symlinks t)
 
   (add-to-list 'default-frame-alist '(font . "Aporetic Sans Mono-18"))
+  (add-to-list 'default-frame-alist '(alpha-background . 80))
+
 
   (set-face-attribute 'default nil :height 200)
 
@@ -140,19 +143,19 @@
     (org-agenda-custom-commands
      '(("w" "Weekly Review"
         ((agenda ""
-    	       ((org-agenda-overriding-header "Completed Tasks")
-    		(org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo 'done))
-    		(org-agenda-span 'week)))
+        	       ((org-agenda-overriding-header "Completed Tasks")
+        		(org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo 'done))
+        		(org-agenda-span 'week)))
          (agenda ""
-    	       ((org-agenda-overriding-header "Unfinished Scheduled Tasks")
-    		(org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-    		(org-agenda-span 'week)))))
+        	       ((org-agenda-overriding-header "Unfinished Scheduled Tasks")
+        		(org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+        		(org-agenda-span 'week)))))
        ("d" "Daily Agenda"
         ((agenda ""
-    	       ((org-agenda-span 'day)
-    		(org-deadline-warning-days 1)))
+        	       ((org-agenda-span 'day)
+        		(org-deadline-warning-days 1)))
          (tags-todo "+PRIORITY=\"A\""
-    		  ((org-agenda-overriding-header "High Priority Tasks")))))
+        		  ((org-agenda-overriding-header "High Priority Tasks")))))
        ("p" "Planning"
         ((tags-todo "+@planning"
                     ((org-agenda-overriding-header "Planning Tasks")))
@@ -163,7 +166,7 @@
     :init
     (add-hook 'org-mode-hook
               (lambda ()
-    	      (org-indent-mode)
+        	      (org-indent-mode)
                 (add-hook 'after-save-hook #'org-babel-tangle
                           :append :local))))
 
@@ -174,55 +177,21 @@
     (setq org-confirm-babel-evaluate nil)
     (org-babel-do-load-languages
      'org-babel-load-languages '((python . t)
-    			       (shell . t)))
+        			       (shell . t)))
     (add-hook 'org-present-mode-hook
-    	    (lambda ()
-    	      ;;visual-fill-column
-    	      (visual-fill-column-mode 1)
-    	      (visual-line-mode 1)
+        	    (lambda ()
+        	      ;;visual-fill-column
+        	      (visual-fill-column-mode 1)
+        	      (visual-line-mode 1)
 
-    	      ;;(org-present-big)
-    	      (org-display-inline-images)
-    	      (org-present-hide-cursor))
-  	    :config
-  	    (setq org-roam-ui-sync-theme t
-    		  org-roam-ui-follow t
-    		  org-roam-ui-update-on-save t
-    		  org-roam-ui-open-on-start t)))
-
-  ;;org-roam
-  (use-package org-roam
-    :ensure t
-    :custom
-    (org-roam-directory (concat org-directory "roam/")) ; 设置 org-roam 目录
-    (org-roam-completion-everywhere t)
-    (org-roam-capture-templates
-     '(("d" "default" plain
-        "%?"
-        :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n")
-        :unnarrowed t)
-       ("p" "project" plain
-        "* Goals\n\n%?\n\n* Tasks\n\n** TODO Add initial tasks\n\n* Dates\n\n"
-        :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetypes: Project\n")
-        :unnarrowed t)))
-
-
-    :bind (("C-c n l" . org-roam-buffer-toggle)
-    	 ("C-c n f" . org-roam-node-find)
-    	 ("C-c n g" . org-roam-graph)
-    	 ("C-c n a" . org-roam-alias-add)
-    	 ("C-c n i" . org-roam-node-insert)
-    	 ("C-c n c" . org-roam-capture)
-    	 ("C-c o c" . org-capture)
-    	 ("C-c o a" . org-agenda)
-    	 ("C-c n u" . org-roam-ui-mode)
-    	 ("C-c n d" . org-roam-dailies-capture-today))
-    :config
-    ;; If you're using a vertical completion framework, you might want a more informative completion interface
-    (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
-    (org-roam-db-autosync-mode)
-    ;; If using org-roam-protocol
-    (require 'org-roam-protocol))
+        	      ;;(org-present-big)
+        	      (org-display-inline-images)
+        	      (org-present-hide-cursor))
+      	    :config
+      	    (setq org-roam-ui-sync-theme t
+        		  org-roam-ui-follow t
+        		  org-roam-ui-update-on-save t
+        		  org-roam-ui-open-on-start t)))
 
   (use-package org-download
     :ensure t
@@ -235,10 +204,63 @@
     :config
     (setq alert-default-style 'libnotify)
     (setq org-alert-interval 300
-    	org-alert-notify-cutoff 10
-    	org-alert-notify-after-event-cutoff 10))
+        	org-alert-notify-cutoff 10
+        	org-alert-notify-after-event-cutoff 10))
+  (use-package denote
+    :ensure t
+    :hook
+    ;; Apply colours to Denote names in Dired.  This applies to all
+    ;; directories.  Check `denote-dired-directories' for the specific
+    ;; directories you may prefer instead.  Then, instead of
+    ;; `denote-dired-mode', use `denote-dired-mode-in-directories'.
+    (dired-mode . denote-dired-mode)
+    :bind
+    ;; Denote DOES NOT define any key bindings.  This is for the user to
+    ;; decide.  For example:
+    ( :map global-map
+      ("C-c n n" . denote)
+      ("C-c n d" . denote-dired)
+      ("C-c n g" . denote-grep)
+      ;; If you intend to use Denote with a variety of file types, it is
+      ;; easier to bind the link-related commands to the `global-map', as
+      ;; shown here.  Otherwise follow the same pattern for `org-mode-map',
+      ;; `markdown-mode-map', and/or `text-mode-map'.
+      ("C-c n l" . denote-link)
+      ("C-c n L" . denote-add-links)
+      ("C-c n b" . denote-backlinks)
+      ("C-c n q c" . denote-query-contents-link) ; create link that triggers a grep
+      ("C-c n q f" . denote-query-filenames-link) ; create link that triggers a dired
+      ;; Note that `denote-rename-file' can work from any context, not just
+      ;; Dired bufffers.  That is why we bind it here to the `global-map'.
+      ("C-c n r" . denote-rename-file)
+      ("C-c n R" . denote-rename-file-using-front-matter)
 
-#+end_src
+      ;; Key bindings specifically for Dired.
+      :map dired-mode-map
+      ("C-c C-d C-i" . denote-dired-link-marked-notes)
+      ("C-c C-d C-r" . denote-dired-rename-files)
+      ("C-c C-d C-k" . denote-dired-rename-marked-files-with-keywords)
+      ("C-c C-d C-R" . denote-dired-rename-marked-files-using-front-matter))
+
+    :config
+    ;; Remember to check the doc string of each of those variables.
+    (setq denote-directory (concat org-directory "denote/"))
+    (setq denote-save-buffers nil)
+    (setq denote-known-keywords '("re" "dairy" "life"))
+    (setq denote-infer-keywords t)
+    (setq denote-sort-keywords t)
+    (setq denote-prompts '(title keywords))
+    (setq denote-excluded-directories-regexp nil)
+    (setq denote-excluded-keywords-regexp nil)
+    (setq denote-rename-confirmations '(rewrite-front-matter modify-file-name))
+
+    ;; Pick dates, where relevant, with Org's advanced interface:
+    (setq denote-date-prompt-use-org-read-date t)
+
+    ;; Automatically rename Denote buffers using the `denote-rename-buffer-format'.
+    (denote-rename-buffer-mode 1))
+
+        #+end_src
 ** GTD
 this repo has not beed updated for two years.
 orgmode is enough
@@ -372,56 +394,56 @@ orgmode is enough
     (add-hook 'completion-at-point-functions #'cape-dabbrev)
     (add-hook 'completion-at-point-functions #'cape-file)
     (add-hook 'completion-at-point-functions #'cape-elisp-block))
-    ;; (add-hook 'completion-at-point-functions #'cape-history)
-    ;; ...
-    
+  ;; (add-hook 'completion-at-point-functions #'cape-history)
+  ;; ...
+
 #+end_src
 
 ** UI
 #+begin_src emacs-lisp
-    (use-package corfu
-      :ensure t
-      ;; Optional customizations
-      :custom
-      (corfu-cycle t)      ;; Enable cycling for `corfu-next/previous'
-      (corfu-auto t)       ;; Enable auto completion
-      (corfu-separator ?\s)	      ;; Orderless field separator
-      (corfu-quit-at-boundary nil) ;; Never quit at completion boundary
-      (corfu-quit-no-match nil)  ;; Never quit, even if there is no match
-      (corfu-preview-current nil) ;; Disable current candidate preview
-      (corfu-preselect 'prompt)   ;; Preselect the prompt
-      (corfu-on-exact-match nil)  ;; Configure handling of exact matches
-      (corfu-scroll-margin 5)     ;; Use scroll margin
+  (use-package corfu
+    :ensure t
+    ;; Optional customizations
+    :custom
+    (corfu-cycle t)      ;; Enable cycling for `corfu-next/previous'
+    (corfu-auto t)       ;; Enable auto completion
+    (corfu-separator ?\s)	      ;; Orderless field separator
+    (corfu-quit-at-boundary nil) ;; Never quit at completion boundary
+    (corfu-quit-no-match nil)  ;; Never quit, even if there is no match
+    (corfu-preview-current nil) ;; Disable current candidate preview
+    (corfu-preselect 'prompt)   ;; Preselect the prompt
+    (corfu-on-exact-match nil)  ;; Configure handling of exact matches
+    (corfu-scroll-margin 5)     ;; Use scroll margin
 
-      ;; Enable Corfu only for certain modes.
-      ;;:hook ((prog-mode . corfu-mode)
-      ;;       (shell-mode . corfu-mode)
-      ;;       (eshell-mode . corfu-mode))
+    ;; Enable Corfu only for certain modes.
+    ;;:hook ((prog-mode . corfu-mode)
+    ;;       (shell-mode . corfu-mode)
+    ;;       (eshell-mode . corfu-mode))
 
-      ;; Recommended: Enable Corfu globally.  This is recommended since Dabbrev can
-      ;; be used globally (M-/).  See also the customization variable
-      ;; `global-corfu-modes' to exclude certain modes.
-      :init
-      (global-corfu-mode))
+    ;; Recommended: Enable Corfu globally.  This is recommended since Dabbrev can
+    ;; be used globally (M-/).  See also the customization variable
+    ;; `global-corfu-modes' to exclude certain modes.
+    :init
+    (global-corfu-mode))
 
-    ;; A few more useful configurations...
-    (use-package emacs
-      :init
-      ;; TAB cycle if there are only few candidates
-      ;; (setq completion-cycle-threshold 3)
+  ;; A few more useful configurations...
+  (use-package emacs
+    :init
+    ;; TAB cycle if there are only few candidates
+    ;; (setq completion-cycle-threshold 3)
 
-      ;; Enable indentation+completion using the TAB key.
-      ;; `completion-at-point' is often bound to M-TAB.
-      (setq tab-always-indent 'complete)
+    ;; Enable indentation+completion using the TAB key.
+    ;; `completion-at-point' is often bound to M-TAB.
+    (setq tab-always-indent 'complete)
 
-      ;; Emacs 30 and newer: Disable Ispell completion function. As an alternative,
-      ;; try `cape-dict'.
-      (setq text-mode-ispell-word-completion nil)
+    ;; Emacs 30 and newer: Disable Ispell completion function. As an alternative,
+    ;; try `cape-dict'.
+    (setq text-mode-ispell-word-completion nil)
 
-      ;; Emacs 28 and newer: Hide commands in M-x which do not apply to the current
-      ;; mode.  Corfu commands are hidden, since they are not used via M-x. This
-      ;; setting is useful beyond Corfu.
-      (setq read-extended-command-predicate #'command-completion-default-include-p))
+    ;; Emacs 28 and newer: Hide commands in M-x which do not apply to the current
+    ;; mode.  Corfu commands are hidden, since they are not used via M-x. This
+    ;; setting is useful beyond Corfu.
+    (setq read-extended-command-predicate #'command-completion-default-include-p))
   ;; Enable Vertico.
   (use-package vertico
     :ensure t
@@ -491,13 +513,13 @@ orgmode is enough
     (add-hook 'conf-mode-hook 'tempel-setup-capf)
     (add-hook 'prog-mode-hook 'tempel-setup-capf)
     (add-hook 'text-mode-hook 'tempel-setup-capf))
-    ;;(add-hook 'emacs-lisp-mode-hook 'tempel-setup-capf)
+  ;;(add-hook 'emacs-lisp-mode-hook 'tempel-setup-capf)
 
-    ;; Optionally make the Tempel templates available to Abbrev,
-    ;; either locally or globally. `expand-abbrev' is bound to C-x '.
-    ;; (add-hook 'prog-mode-hook #'tempel-abbrev-mode)
-    ;; (global-tempel-abbrev-mode)
-    
+  ;; Optionally make the Tempel templates available to Abbrev,
+  ;; either locally or globally. `expand-abbrev' is bound to C-x '.
+  ;; (add-hook 'prog-mode-hook #'tempel-abbrev-mode)
+  ;; (global-tempel-abbrev-mode)
+
 
   ;; Optional: Add tempel-collection.
   ;; The package is young and doesn't have comprehensive coverage.
@@ -543,13 +565,15 @@ orgmode is enough
 * UI
 #+begin_src emacs-lisp
   (use-package which-key
-      :config
-      (which-key-mode))
+    :config
+    (which-key-mode))
+
+
   (use-package visual-fill-column
     :ensure t
     :config
     (setq-default visual-fill-column-width 110
-  		visual-fill-column-center-text t))
+      		visual-fill-column-center-text t))
 
 
   (use-package rainbow-delimiters
@@ -561,7 +585,7 @@ orgmode is enough
     :config
     ;; Global settings (defaults)
     (setq doom-themes-enable-bold t ; if nil, bold is universally disabled
-  	doom-themes-enable-italic t) ; if nil, italics is universally disabled
+      	doom-themes-enable-italic t) ; if nil, italics is universally disabled
     (load-theme 'doom-moonlight t)
 
     ;; Enable flashing mode-line on errors
@@ -578,10 +602,18 @@ orgmode is enough
     :ensure t
     :custom
     (nerd-icons-font-family "Symbols Nerd Font"))
+  (use-package nerd-icons-dired
+    :ensure t
+    :hook
+    (dired-mode . nerd-icons-dired-mode))
+
+
 
 
 #+end_src
 * Evil
+Maybe I need to gradually disable evil mode in emacs.
+Do not care about mode in much more convenient in many circumstances.
 #+begin_src emacs-lisp
   (use-package evil-mc
     :after evil
@@ -600,10 +632,12 @@ orgmode is enough
 
     ;; other faces such as `diff-added` will be used for other actions
     (evil-goggles-use-diff-faces))
+
   (defun my/consult-books ()
     "Consult books in the ~/Documents/ folder."
     (interactive)
     (consult-fd "~/Documents/"))
+
   (use-package evil
     :ensure t
     :custom
@@ -628,29 +662,6 @@ orgmode is enough
     (define-key evil-normal-state-map (kbd "<leader>SPC") 'consult-recent-file)
     (define-key evil-normal-state-map (kbd "M-a") 'eat)
 
-    ;; GTD MODE
-    ;; (define-key evil-normal-state-map (kbd "<leader>gc") 'org-gtd-capture)
-    ;; (define-key evil-normal-state-map (kbd "<leader>gp") 'org-gtd-process-inbox)
-    ;; (define-key evil-normal-state-map (kbd "<leader>gi") 'org-gtd-clarify-item)
-    ;; (define-key evil-normal-state-map (kbd "<leader>go") 'org-gtd-organize)
-    ;; (define-key evil-normal-state-map (kbd "<leader>gg") 'org-gtd-engage)
-    ;; (define-key evil-normal-state-map (kbd "<leader>gs") 'org-gtd-oops)
-
-    ;; (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-    ;; (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-    ;; (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
-    ;; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-    ;; org
-    (define-key evil-normal-state-map (kbd "<leader>oa") 'org-agenda)
-    (define-key evil-normal-state-map (kbd "<leader>oc") 'org-capture)
-    ;; roam
-    (define-key evil-normal-state-map (kbd "<leader>nl") 'org-roam-buffer-toggle)
-    (define-key evil-normal-state-map (kbd "<leader>nf") 'org-roam-node-find)
-    (define-key evil-normal-state-map (kbd "<leader>ng") 'org-roam-graph)
-    (define-key evil-normal-state-map (kbd "<leader>ni") 'org-roam-node-insert)
-    (define-key evil-normal-state-map (kbd "<leader>nc") 'org-roam-capture)
-    (define-key evil-normal-state-map (kbd "<leader>nu") 'org-roam-ui-mode)
-    (define-key evil-normal-state-map (kbd "<leader>nj") 'org-roam-dailies-capture-today)
     (evil-mode 1))
 
   (use-package evil-collection
