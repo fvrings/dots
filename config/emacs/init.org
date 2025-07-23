@@ -260,7 +260,7 @@
     ;; Automatically rename Denote buffers using the `denote-rename-buffer-format'.
     (denote-rename-buffer-mode 1))
 
-        #+end_src
+#+end_src
 ** GTD
 this repo has not beed updated for two years.
 orgmode is enough

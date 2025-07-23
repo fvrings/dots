@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  # fonts
   fonts = {
     enableDefaultPackages = true;
     fontconfig = {
@@ -17,7 +16,7 @@
           # "JetBrainsMonoNL Nerd Font"
           # "Maple Mono NF"
           # "LXGW WenKai Mono"
-          "IosevkaTerm Nerd Font"
+          "Iosevka"
           # "IntoneMono Nerd Font"
           # "Martian Mono"
           # "GoMono Nerd Font"
@@ -25,14 +24,14 @@
         ];
         sansSerif = [
           # "Noto Sans CJK HK"
-          # "Source Serif Pro"
+          "Aporetic Sans"
           "LXGW WenKai"
           # "Source Han Sans SC"
           # "Noto Color Emoji"
         ];
         serif = [
           # "Noto Sans CJK HK"
-          # "Source Serif Pro"
+          "Aporetic Serif"
           "LXGW WenKai"
           # "Source Han Sans SC"
           # "Noto Color Emoji"
@@ -41,13 +40,14 @@
     };
 
     packages = with pkgs; [
-      nerd-fonts.go-mono
-      nerd-fonts.intone-mono
-      nerd-fonts.iosevka-term
+      # nerd-fonts.go-mono
+      # nerd-fonts.intone-mono
+      # nerd-fonts.iosevka-term
       # nerd-fonts.comic-shanns-mono
       # martian-mono
       noto-fonts-emoji
       aporetic
+      iosevka
       nerd-fonts.symbols-only
       # ibm-plex
       # intel-one-mono
