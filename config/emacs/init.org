@@ -219,6 +219,8 @@
     ;; decide.  For example:
     ( :map global-map
       ("C-c n n" . denote)
+      ("C-c o a" . org-agenda)
+      ("C-c o c" . org-capture)
       ("C-c n d" . denote-dired)
       ("C-c n g" . denote-grep)
       ;; If you intend to use Denote with a variety of file types, it is

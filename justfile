@@ -7,7 +7,7 @@ alias c:=clear
 alias b:=clear-boot
 alias t:=test
 
-update-os *args:
+update-os *args: update-flake
   nh os switch -H art . {{args}} -- --accept-flake-config
 update-vm *args:
   nh os switch -H vm . {{args}}
