@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ lib, inputs, ... }:
 {
   imports = [
     inputs.self.nixosModules.theme
@@ -12,4 +12,5 @@
     users.ring = ./hm.nix;
     extraSpecialArgs = { inherit inputs; };
   };
+
 }

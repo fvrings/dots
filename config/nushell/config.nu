@@ -153,8 +153,24 @@ $env.RUSTUP_DIST_SERVER = "https://rsproxy.cn"
 $env.RUSTUP_UPDATE_ROOT = "https://rsproxy.cn/rustup"
 $env.MANPAGER = "sh -c 'col -bx | bat -l man -p'"
 $env.MANROFFOPT = "-c"
+
+# Check if the /etc/specialisation file exists
+if ("/etc/specialisation" | path exists) {
+    # If it exists, read its content and trim whitespace
+    let file_content = (open /etc/specialisation | str trim)
+
+    # Check if the content is "light"
+    if ($file_content == "light") {
+        # If it's "light", set LS_COLORS
+        $env.LS_COLORS = (vivid generate gruvbox-light-soft)
+    }
+} else {
+    $env.LS_COLORS = (vivid generate gruvbox-dark-hard)
+}
+
 let starship_config_cache_file = ($nu.temp-path | path join "starship_config_path.tmp")
 
+# NOTE:https://github.com/nix-community/home-manager/issues/7297
 if ((sys host | get name) == "NixOS") {
   if ($starship_config_cache_file | path exists) {
     $env.STARSHIP_CONFIG = (open $starship_config_cache_file | str trim)
@@ -165,6 +181,7 @@ if ((sys host | get name) == "NixOS") {
     $config_path | save $starship_config_cache_file
   }
 }
+
 mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 zoxide init nushell | save -f ($nu.data-dir | path join "vendor/autoload/zoxide.nu")

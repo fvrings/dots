@@ -104,6 +104,22 @@ in
         # qq
         # nix related
         dconf
+        (pkgs.writeShellScriptBin "toggle-theme" ''
+          #!/bin/sh
+          # get current active system configuration
+          current_system=$(readlink /run/current-system)
+          # get the system path for the 'light' specialisation
+          light_specialisation=$(readlink /nix/var/nix/profiles/system/specialisation/light)
+          # check if the current system configuration matches the 'light' specialisation
+          if [ "$current_system" == "$light_specialisation" ]; then
+          notify-send "Switching to Dark" -a "Theme" -i ${pkgs.beauty-line-icon-theme}/share/icons/BeautyLine/apps/scalable/nixos.png
+          doas /nix/var/nix/profiles/system/bin/switch-to-configuration switch
+          else
+          notify-send "Switching to Light" -a "Theme" -i ${pkgs.beauty-line-icon-theme}/share/icons/BeautyLine/apps/scalable/nixos.png
+          doas /nix/var/nix/profiles/system/specialisation/light/bin/switch-to-configuration switch
+          fi
+
+        '')
       ]
       ++ shtools
       ++ tools

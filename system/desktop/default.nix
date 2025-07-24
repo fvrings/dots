@@ -15,6 +15,7 @@
     ../core.nix
     ../dwl
     ../dae.nix
+    ../special.nix
     ../package.nix
     ./desktop-package.nix
     ../fonts.nix

@@ -8,19 +8,38 @@ return {
 
   {
     'nyoom-engineering/oxocarbon.nvim',
+    -- config = function()
+    --   require('oxocarbon').setup()
+    --   vim.cmd.colorscheme 'oxocarbon'
+    --   -- FOR oxocarbon
+    --   -- vim.api.nvim_set_hl(0, 'Error', { bg = 'none' })
+    -- end,
+    -- lazy = false,
+    -- priority = 1000,
   },
 
   'olimorris/onedarkpro.nvim',
 
   'EdenEast/nightfox.nvim',
-
+  -- {
+  --   'ellisonleao/gruvbox.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {
+  --     contrast = 'soft',
+  --   },
+  --   config = function(_, opts)
+  --     require('gruvbox').setup(opts)
+  --     if vim.fn.filereadable '/etc/specialisation' then
+  --       -- vim.cmd.colorscheme 'gruvbox'
+  --     end
+  --   end,
+  -- },
   {
     'rebelot/kanagawa.nvim',
     config = function(_, opts)
       require('kanagawa').setup(opts)
       vim.cmd.colorscheme 'kanagawa-dragon'
-      -- FOR oxocarbon
-      -- vim.api.nvim_set_hl(0, 'Error', { bg = 'none' })
     end,
     lazy = false,
     priority = 1000,

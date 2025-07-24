@@ -42,6 +42,7 @@
       # TODO: enable this
       # rich-cli
       cachix
+      vivid
       mu
       chafa
       just

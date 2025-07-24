@@ -1,4 +1,5 @@
-_: {
+{ lib, ... }:
+{
   gtk = {
     enable = true;
     # font.name = "LXGW WenKai Bold";
@@ -10,4 +11,10 @@ _: {
 
   };
   stylix.targets.gtk.extraCss = "@import 'colors.css';";
+  dconf.settings = lib.mkForce {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
+
 }

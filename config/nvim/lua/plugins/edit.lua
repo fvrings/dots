@@ -205,7 +205,7 @@ return {
         before = true,
         after = false,
         rainbow = {
-          enabled = true,
+          enabled = false,
           -- number between 1 and 9
           shade = 5,
         },
