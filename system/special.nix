@@ -15,7 +15,13 @@
           color-scheme = lib.mkForce "prefer-light";
         };
       };
+      gtk = {
+        enable = true;
+        theme.name = lib.mkForce "Gruvbox-Light";
+        theme.package = lib.mkForce pkgs.gruvbox-gtk-theme;
+      };
     };
+
   };
   security.doas = {
     enable = true;

@@ -21,25 +21,27 @@ return {
   'olimorris/onedarkpro.nvim',
 
   'EdenEast/nightfox.nvim',
-  -- {
-  --   'ellisonleao/gruvbox.nvim',
-  --   lazy = false,
-  --   priority = 1000,
-  --   opts = {
-  --     contrast = 'soft',
-  --   },
-  --   config = function(_, opts)
-  --     require('gruvbox').setup(opts)
-  --     if vim.fn.filereadable '/etc/specialisation' then
-  --       -- vim.cmd.colorscheme 'gruvbox'
-  --     end
-  --   end,
-  -- },
+  {
+    'ellisonleao/gruvbox.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      contrast = 'soft',
+    },
+    config = function(_, opts)
+      require('gruvbox').setup(opts)
+      if vim.fn.filereadable '/etc/specialisation' == 1 then
+        vim.cmd.colorscheme 'gruvbox'
+      end
+    end,
+  },
   {
     'rebelot/kanagawa.nvim',
     config = function(_, opts)
       require('kanagawa').setup(opts)
-      vim.cmd.colorscheme 'kanagawa-dragon'
+      if vim.fn.filereadable '/etc/specialisation' == 0 then
+        vim.cmd.colorscheme 'kanagawa-dragon'
+      end
     end,
     lazy = false,
     priority = 1000,
