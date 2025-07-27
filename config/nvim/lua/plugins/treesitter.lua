@@ -69,7 +69,8 @@ return {
     config = function()
       require('nvim-treesitter').install(parsers)
     end,
-    event = { 'VeryLazy' },
+    event = 'VeryLazy',
+    -- lazy = false,
     branch = 'main',
     init = function()
       vim.api.nvim_create_autocmd('FileType', {

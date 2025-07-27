@@ -1,7 +1,13 @@
-_: {
+{ lib, ... }:
+{
   networking = {
     # wireless.enable = true; # Enables wireless support via wpa_supplicant.
-    networkmanager.enable = true; # Easiest to use and most distros use this by default.
+    networkmanager = {
+      enable = true;
+      insertNameservers = [
+        "10.223.207.1"
+      ];
+    };
     # networkmanager.wifi.backend = "iwd"; # Easiest to use and most distros use this by default.
     firewall.allowedTCPPorts = [
       3000
@@ -15,5 +21,10 @@ _: {
       "virbr0"
       "dae0"
     ];
+
+    # resolvconf.enable = false;
+    #
+    # search = [ "lxd" ];
   };
+
 }

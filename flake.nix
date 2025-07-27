@@ -115,7 +115,7 @@
     };
     # pwndbg.url = "github:pwndbg/pwndbg";
     quickshell = {
-      url = "github:outfoxxed/quickshell";
+      url = "github:outfoxxed/quickshell?ref=v0.2.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";

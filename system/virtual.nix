@@ -16,7 +16,19 @@
       };
     };
     spiceUSBRedirection.enable = true;
-    incus.enable = true;
+    incus = {
+      enable = true;
+      preseed.networks = [
+        {
+          config = {
+            "ipv4.address" = "10.0.100.1/24";
+            "ipv4.nat" = "true";
+          };
+          name = "incusbr0";
+          type = "bridge";
+        }
+      ];
+    };
     docker = {
       enable = true;
       daemon.settings = {
