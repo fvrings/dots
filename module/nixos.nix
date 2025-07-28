@@ -2,7 +2,7 @@
 {
   imports = [
     inputs.daeuniverse.nixosModules.dae
-    inputs.daeuniverse.nixosModules.daed
+    # inputs.daeuniverse.nixosModules.daed
     inputs.ucodenix.nixosModules.default
     inputs.disko.nixosModules.disko
     inputs.nix-index-database.nixosModules.nix-index

@@ -19,6 +19,9 @@
         enable = true;
         theme.name = lib.mkForce "Gruvbox-Light";
         theme.package = lib.mkForce pkgs.gruvbox-gtk-theme;
+
+        gtk3.extraConfig.gtk-application-prefer-dark-theme = lib.mkForce 0;
+        gtk4.extraConfig.gtk-application-prefer-dark-theme = lib.mkForce 0;
       };
     };
 

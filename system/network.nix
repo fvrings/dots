@@ -5,7 +5,7 @@
     networkmanager = {
       enable = true;
       insertNameservers = [
-        "10.223.207.1"
+        "10.0.100.1"
       ];
     };
     # networkmanager.wifi.backend = "iwd"; # Easiest to use and most distros use this by default.
