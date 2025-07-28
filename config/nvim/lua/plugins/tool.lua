@@ -437,7 +437,12 @@ return {
   },
   {
     'mg979/vim-visual-multi',
-    keys = { '<c-n>' },
+    keys = {
+      {
+        '<c-n>',
+        mode = { 'x', 'n' },
+      },
+    },
   },
   -- {
   --   'smoka7/multicursors.nvim',

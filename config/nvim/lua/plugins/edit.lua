@@ -54,20 +54,31 @@ return {
       }):map '<leader>um'
     end,
   },
-  -- {
-  --   'lukas-reineke/headlines.nvim',
-  --   dependencies = 'nvim-treesitter/nvim-treesitter',
-  --   ft = {
-  --     'org',
-  --     'norg',
-  --   },
-  --   enabled = not vim.g.iswin,
-  --   opts = {
-  --     markdown = {
-  --       headline_highlights = false,
-  --     },
-  --   },
-  -- },
+  {
+    'lukas-reineke/headlines.nvim',
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    ft = {
+      'org',
+      'norg',
+    },
+    enabled = not vim.g.iswin,
+    opts = {
+      markdown = {
+        headline_highlights = false,
+      },
+      org = {
+        headline_highlights = { 'Headline1', 'Headline2' },
+      },
+    },
+    config = function(_, opts)
+      vim.cmd [[highlight Headline1 guibg=#1e2718]]
+      vim.cmd [[highlight Headline2 guibg=#21262d]]
+      vim.cmd [[highlight CodeBlock guibg=#1c1c1c]]
+      vim.cmd [[highlight Dash guibg=#D19A66 gui=bold]]
+
+      require('headlines').setup(opts)
+    end,
+  },
   -- {
   --   'Olical/conjure',
   --   ft = { 'scheme', 'fennel' },
@@ -107,7 +118,7 @@ return {
         function()
           require('grug-far').open { prefills = { paths = vim.fn.expand '%' } }
         end,
-        desc = 'grugfar-file',
+        desc = 'grugfar-current-file',
       },
       {
         '<leader>sg',
@@ -129,7 +140,7 @@ return {
         function()
           require('grug-far').with_visual_selection { prefills = { paths = vim.fn.expand '%' } }
         end,
-        desc = 'grugfar-file',
+        desc = 'grugfar-current-file',
         mode = 'v',
       },
     },

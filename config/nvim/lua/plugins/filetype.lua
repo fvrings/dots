@@ -130,4 +130,17 @@ return {
       vim.g.vimtex_fold_enabled = true
     end,
   },
+  {
+    'nvim-orgmode/orgmode',
+    event = 'VeryLazy',
+    ft = { 'org' },
+    config = true,
+    -- config = function()
+    --   -- Setup orgmode
+    --   require('orgmode').setup {
+    --     -- org_agenda_files = '~/orgfiles/**/*',
+    --     -- org_default_notes_file = '~/orgfiles/refile.org',
+    --   }
+    -- end,
+  },
 }
