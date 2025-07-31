@@ -110,6 +110,12 @@ return {
   {
     'stevearc/oil.nvim',
     opts = {
+      columns = {
+        'icon',
+        -- "permissions",
+        -- "size",
+        -- "mtime",
+      },
       keymaps = {
         ['H'] = { 'actions.parent', mode = 'n' },
         ['L'] = 'actions.select',

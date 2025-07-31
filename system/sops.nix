@@ -11,6 +11,9 @@
       "configjp.dae" = {
         owner = config.users.users.ring.name;
       };
+      "configsg.dae" = {
+        owner = config.users.users.ring.name;
+      };
       "gh" = { };
       "gpt" = {
         owner = config.users.users.ring.name;

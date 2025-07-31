@@ -55,38 +55,6 @@ return {
     end,
   },
   {
-    'lukas-reineke/headlines.nvim',
-    dependencies = 'nvim-treesitter/nvim-treesitter',
-    ft = {
-      'org',
-      'norg',
-    },
-    enabled = not vim.g.iswin,
-    opts = {
-      markdown = {
-        headline_highlights = false,
-      },
-      org = {
-        headline_highlights = { 'Headline1', 'Headline2' },
-      },
-    },
-    config = function(_, opts)
-      vim.cmd [[highlight Headline1 guibg=#1e2718]]
-      vim.cmd [[highlight Headline2 guibg=#21262d]]
-      vim.cmd [[highlight CodeBlock guibg=#1c1c1c]]
-      vim.cmd [[highlight Dash guibg=#D19A66 gui=bold]]
-
-      require('headlines').setup(opts)
-    end,
-  },
-  -- {
-  --   'Olical/conjure',
-  --   ft = { 'scheme', 'fennel' },
-  --   init = function()
-  --     vim.g['conjure#client#fennel#aniseed#deprecation_warning'] = false
-  --   end,
-  -- },
-  {
     'h-hg/fcitx.nvim',
     enabled = not vim.g.iswin,
     event = 'InsertEnter',

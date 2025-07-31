@@ -134,7 +134,10 @@ return {
       },
       {
         'daliusd/incr.nvim',
-        config = true,
+        opts = {
+          incr_key = '<cr>', -- increment selection key
+          decr_key = '<bs>', -- decrement selection key
+        },
       },
     },
   },

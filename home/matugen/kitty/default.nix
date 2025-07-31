@@ -12,8 +12,8 @@
       listen_on = "unix:/tmp/kitty";
     };
     keybindings = {
-      "alt+shift+w" = "launch --location=split";
-      "alt+w" = "new_tab";
+      "alt+shift+w" = "launch --location=split --cwd=current";
+      "alt+w" = "new_tab_with_cwd";
       "alt+n" = "next_tab";
       "alt+p" = "previous_tab";
       "alt+q" = "custom_alt_map q";

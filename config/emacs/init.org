@@ -612,7 +612,7 @@ orgmode is enough
 
 
 
-#+end_src
+    #+end_src
 * Evil
 Maybe I need to gradually disable evil mode in emacs.
 Do not care about mode in much more convenient in many circumstances.
@@ -636,9 +636,9 @@ Do not care about mode in much more convenient in many circumstances.
     (evil-goggles-use-diff-faces))
 
   (defun my/consult-books ()
-    "Consult books in the ~/Documents/ folder."
+    "Consult books in the ~/Documents/books/ folder."
     (interactive)
-    (consult-fd "~/Documents/"))
+    (consult-fd "~/Documents/books/"))
 
   (use-package evil
     :ensure t
@@ -684,6 +684,34 @@ Do not care about mode in much more convenient in many circumstances.
     :config
     (require 'evil-org-agenda)
     (evil-org-agenda-set-keys))
+  ;; EVIL SURROUND
+  ;; The `evil-surround' package provides text object surround
+  ;; functionality for `evil-mode'. This allows for easily adding,
+  ;; changing, or deleting surrounding characters such as parentheses,
+  ;; quotes, and more.
+  ;;
+  ;; With this you can change 'hello there' with ci'" to have
+  ;; "hello there" and cs"<p> to get <p>hello there</p>.
+  ;; More examples here:
+  ;; - https://github.com/emacs-evil/evil-surround?tab=readme-ov-file#examples
+  (use-package evil-surround
+    :ensure t
+    :after evil-collection
+    :config
+    (global-evil-surround-mode 1))
+
+
+  ;; EVIL MATCHIT
+  ;; The `evil-matchit' package extends `evil-mode' by enabling
+  ;; text object matching for structures such as parentheses, HTML
+  ;; tags, and other paired delimiters. This makes it easier to
+  ;; navigate and manipulate code blocks.
+  ;; Just use % for jumping between matching structures to check it out.
+  (use-package evil-matchit
+    :ensure t
+    :after evil-collection
+    :config
+    (global-evil-matchit-mode 1))
 
 #+end_src
 

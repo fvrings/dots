@@ -40,14 +40,14 @@ _: {
         Type = "oneshot";
         ExecStart = ''
           /run/current-system/sw/bin/cryptsetup open \
-            --key-file /etc/nixos/second \
-            /dev/disk/by-uuid/856f0b63-1f7d-4b37-9713-883236e862ea \
+            --key-file /etc/nixos/black \
+            /dev/disk/by-uuid/08b0a4be-60c2-4c4c-a3ba-f9b90185fcff \
             black
         '';
         RemainAfterExit = true;
       };
       unitConfig = {
-        ConditionPathExists = "/dev/disk/by-uuid/856f0b63-1f7d-4b37-9713-883236e862ea";
+        ConditionPathExists = "/dev/disk/by-uuid/08b0a4be-60c2-4c4c-a3ba-f9b90185fcff";
       };
     };
 

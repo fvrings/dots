@@ -17,7 +17,15 @@ local function config()
     nushell = {},
     gopls = {},
     vtsls = {
-      -- root_dir = util.root_pattern 'package.json',
+      root_dir = function(bufnr, on_dir)
+        return not vim.fs.root(bufnr, { 'deno.json', 'deno.jsonc' })
+          and on_dir(vim.fs.root(bufnr, {
+            'tsconfig.json',
+            'jsconfig.json',
+            'package.json',
+            '.git',
+          }))
+      end,
       -- single_file_support = false,
     },
     denols = {
