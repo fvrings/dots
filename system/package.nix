@@ -49,7 +49,8 @@
       typst
       tinymist
       yq
-      cinny-desktop
+      #enable this
+      # cinny-desktop
       xdg-utils
       gnumake
       # this is super useful

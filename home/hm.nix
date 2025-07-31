@@ -19,7 +19,7 @@ let
   # The '.' refers to the directory where this Nix file is located
   currentFolderDirs = getDirsInPath ./.;
   modules = [
-    inputs.maomaowm.hmModules.maomaowm
+    inputs.mango.hmModules.mango
     inputs.self.nixosModules.theme
   ];
 in

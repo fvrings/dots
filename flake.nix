@@ -124,7 +124,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    maomaowm.url = "github:DreamMaoMao/maomaowm";
+    mango.url = "github:DreamMaoMao/mango";
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";

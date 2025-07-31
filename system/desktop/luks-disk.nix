@@ -75,10 +75,9 @@ _: {
 
   fileSystems."/home/ring/data/black" = {
     device = "/dev/mapper/black";
-    fsType = "bcachefs";
+    fsType = "xfs";
     options = [
       "noauto"
-      "compression=zstd"
     ];
     neededForBoot = false;
   };

@@ -4,7 +4,7 @@ _: {
     supportedFilesystems = [
       "ntfs"
       "bcachefs"
-      "zfs"
+      # "zfs"
       "xfs"
     ];
     tmp.useTmpfs = true;
@@ -17,7 +17,7 @@ _: {
         configurationLimit = 5;
       };
     };
-    zfs.forceImportRoot = false;
+    # zfs.forceImportRoot = false;
   };
   networking.hostId = "bdc578d5";
 }

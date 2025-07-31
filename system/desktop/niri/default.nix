@@ -14,7 +14,7 @@
   };
 
   # stylix.targets.niri.enable = false;
-  programs.maomaowm.enable = false;
+  programs.mango.enable = false;
   # nixpkgs.overlays = [ inputs.niri.overlays.niri ];
   # imports = [
   #   inputs.niri.nixosModules.niri

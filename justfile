@@ -8,7 +8,7 @@ alias b:=clear-boot
 alias t:=test
 
 update-os *args:
-  nh os switch -H art . {{args}} -- --accept-flake-config
+  nh os switch -H art . -- --accept-flake-config {{args}}
 update-vm *args:
   nh os switch -H vm . {{args}}
 update-flake:
