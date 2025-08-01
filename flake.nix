@@ -32,7 +32,6 @@
         {
           packages = {
             mpv = pkgs.callPackage ./home/mpv/pkg.nix { };
-            dwl = pkgs.callPackage ./system/dwl/pkg.nix { };
             tmux = self.nixosConfigurations.art.config.programs.tmux.package;
             yazi = self.nixosConfigurations.art.config.programs.yazi.package;
           };

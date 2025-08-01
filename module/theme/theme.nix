@@ -37,6 +37,5 @@
       type = lib.types.str;
       example = lib.literalExample "qs";
     };
-    dwl = lib.mkEnableOption "dwl";
   };
 }

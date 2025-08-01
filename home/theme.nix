@@ -31,6 +31,5 @@ in
       sha256 = "bd483538b3e293561ea1f8e08b5955a5e348a178356a84b5ca75b7438f739485";
     };
     shell = "qs";
-    dwl = false;
   };
 }
