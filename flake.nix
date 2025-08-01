@@ -50,7 +50,6 @@
     impermanence.url = "github:nix-community/impermanence";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-release.url = "github:NixOS/nixpkgs/release-25.05";
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     lanzaboote = {
