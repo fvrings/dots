@@ -13,6 +13,7 @@ let
     # typst-lsp
     marksman
     nodePackages_latest.typescript-language-server
+    awk-language-server
     vscode-langservers-extracted
     typescript
     vtsls

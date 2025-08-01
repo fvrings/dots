@@ -238,9 +238,19 @@ return {
   {
     'sindrets/diffview.nvim',
     config = true,
+    dependencies = {
+      { 'nvim-tree/nvim-web-devicons', opts = {} },
+    },
     keys = {
       { '<leader>go', vim.cmd.DiffviewOpen, desc = 'open diffview' },
       { '<leader>gc', vim.cmd.DiffviewClose, desc = 'close diffview' },
+      {
+        '<leader>gh',
+        function()
+          vim.cmd.DiffviewFileHistory '%'
+        end,
+        desc = 'current file diffview',
+      },
     },
   },
 
@@ -360,6 +370,7 @@ return {
         nix = { 'nixfmt' },
         qml = { 'qmlformat' },
         tex = { 'latexindent' },
+        awk = { 'gawk' },
       },
       formatters = {
         fnlfmt = { command = 'fnlfmt', args = { '$FILENAME' }, stdin = true },

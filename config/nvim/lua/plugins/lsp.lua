@@ -4,6 +4,7 @@ local function config()
     lua_ls = {},
     djlsp = {},
     kulala_ls = {},
+    awk_ls = {},
     -- ruff_lsp = {},
     basedpyright = {},
     gdscript = {},

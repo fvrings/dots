@@ -208,7 +208,7 @@ return {
   {
     'topaxi/pipeline.nvim',
     keys = {
-      { '<leader>gh', '<cmd>Pipeline<cr>', desc = 'Open Github Pipeline' },
+      { '<leader>gP', '<cmd>Pipeline<cr>', desc = 'Open Github Pipeline' },
     },
     opts = {},
   },
