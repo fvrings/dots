@@ -39,7 +39,7 @@ in
           fcitx5-gtk
           kdePackages.fcitx5-qt
           fcitx5-rime-with-addons
-          fcitx5-rose-pine
+          # fcitx5-rose-pine
         ];
       };
     };

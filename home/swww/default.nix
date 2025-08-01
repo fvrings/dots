@@ -26,7 +26,7 @@ in
       };
 
       Service = {
-        ExecStart = "${pkgs.swww}/bin/swww img --transition-type random --transition-fps 60 --transition-duration 2 ${config.theme.wallpaper-universe}";
+        ExecStart = "${pkgs.swww}/bin/swww img --transition-type random --transition-fps 60 --transition-duration 2 ${config.theme.wallpaper}";
         Restart = "on-failure";
         RestartSec = 1;
       };

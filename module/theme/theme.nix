@@ -8,6 +8,13 @@
       type = lib.types.path;
       example = lib.literalExample "./wallpaper.png";
     };
+    wallpaper-art = lib.mkOption {
+      description = ''
+        Location of the wallpaper to use throughout the system.
+      '';
+      type = lib.types.path;
+      example = lib.literalExample "./wallpaper.png";
+    };
     wallpaper-light = lib.mkOption {
       description = ''
         Location of the wallpaper to use throughout the system.
@@ -23,7 +30,14 @@
       example = lib.literalExample "./wallpaper.png";
     };
 
-    wallpaper-universe = lib.mkOption {
+    wallpaper-milkyway = lib.mkOption {
+      description = ''
+        Location of the wallpaper to use throughout the system.
+      '';
+      type = lib.types.path;
+      example = lib.literalExample "./wallpaper.png";
+    };
+    wallpaper-snow = lib.mkOption {
       description = ''
         Location of the wallpaper to use throughout the system.
       '';

@@ -38,7 +38,6 @@
       mitscheme
       # alacritty-graphics
       # vscode
-      fzf
       # TODO: enable this
       # rich-cli
       cachix
@@ -104,7 +103,7 @@
   programs = {
     neovim = {
       enable = true;
-      # package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+      package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
       # package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim-debug;
     };
     nh = {

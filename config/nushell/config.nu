@@ -144,7 +144,6 @@ $env.ANDROID_HOME = [$env.HOME "Android/Sdk/"] | path join
 $env.PATH = ($env.PATH | uniq)
 
 $env.FZF_DEFAULT_COMMAND = "fd --type f --strip-cwd-prefix"
-# $env.FZF_DEFAULT_OPTS = "--color=bg+:#2A2A37,bg:#1F1F28,spinner:#938AA9,hl:#76946A  --color=fg:#DCD7BA,header:#7E9CD8,info:#957FB8,pointer:#E46876  --color=marker:#C0A36E,fg+:#C8C093,prompt:#76946A,hl+:#85A88B  --color=selected-bg:#2D4F67  --color=border:#363646,label:#DCD7BA"
 $env.FZF_DEFAULT_OPTS = "--color=fg:#ffffff,bg:#161616,hl:#ee5396 --color=fg+:#f2f4f8,bg+:#262626,hl+:#ff7eb6 --color=info:#78a9ff,prompt:#33b1ff,pointer:#be95ff --color=marker:#08bdba,spinner:#3ddbd9,header:#42be65"
 $env.EDITOR = "nvim"
 $env.GOPROXY = "https://goproxy.cn,direct"
@@ -159,13 +158,15 @@ if ("/etc/specialisation" | path exists) {
     # If it exists, read its content and trim whitespace
     let file_content = (open /etc/specialisation | str trim)
 
-    # Check if the content is "light"
-    if ($file_content == "light") {
-        # If it's "light", set LS_COLORS
+    if ($file_content == "oxocarbon-dark") {
+        $env.LS_COLORS = (vivid generate jellybeans)
+    } else if ($file_content == "gruvbox-material-light-soft") {
         $env.LS_COLORS = (vivid generate gruvbox-light-soft)
+    } else if ($file_content == "catppuccin-latte") {
+        $env.LS_COLORS = (vivid generate catppuccin-latte)
     }
 } else {
-    $env.LS_COLORS = (vivid generate gruvbox-dark-hard)
+    $env.LS_COLORS = (vivid generate rose-pine-moon)
 }
 
 let starship_config_cache_file = ($nu.temp-path | path join "starship_config_path.tmp")

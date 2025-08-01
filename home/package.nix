@@ -106,21 +106,46 @@ in
         # qq
         # nix related
         dconf
+
         (pkgs.writeShellScriptBin "toggle-theme" ''
           #!/bin/sh
-          # get current active system configuration
-          current_system=$(readlink /run/current-system)
-          # get the system path for the 'light' specialisation
-          light_specialisation=$(readlink /nix/var/nix/profiles/system/specialisation/light)
-          # check if the current system configuration matches the 'light' specialisation
-          if [ "$current_system" == "$light_specialisation" ]; then
-          notify-send "Switching to Dark" -a "Theme" -i ${pkgs.beauty-line-icon-theme}/share/icons/BeautyLine/apps/scalable/nixos.png
-          doas /nix/var/nix/profiles/system/bin/switch-to-configuration switch
+
+          icon_path="${pkgs.beauty-line-icon-theme}/share/icons/BeautyLine/apps/scalable/nixos.png"
+
+          # Read current theme or fallback to 'default'
+          if [ -f /etc/specialisation ]; then
+            current_theme=$(cat /etc/specialisation)
           else
-          notify-send "Switching to Light" -a "Theme" -i ${pkgs.beauty-line-icon-theme}/share/icons/BeautyLine/apps/scalable/nixos.png
-          doas /nix/var/nix/profiles/system/specialisation/light/bin/switch-to-configuration switch
+            current_theme="default"
           fi
 
+          case "$current_theme" in
+            "default")
+              next_theme="gruvbox-material-light-soft"
+              notify="Switching to Gruvbox-Light"
+              switch_cmd="/nix/var/nix/profiles/system/specialisation/$next_theme/bin/switch-to-configuration switch"
+              ;;
+            "gruvbox-material-light-soft")
+              next_theme="catppuccin-latte"
+              notify="Switching to Catppuccin-Latte"
+              switch_cmd="/nix/var/nix/profiles/system/specialisation/$next_theme/bin/switch-to-configuration switch"
+              ;;
+            "catppuccin-latte")
+              next_theme="oxocarbon-dark"
+              notify="Switching to Oxocarbon-Dark"
+              switch_cmd="/nix/var/nix/profiles/system/specialisation/$next_theme/bin/switch-to-configuration switch"
+              ;;
+            "oxocarbon-dark")
+              next_theme="default"
+              notify="Switching to Kanagawa-Dark"
+              switch_cmd="/nix/var/nix/profiles/system/bin/switch-to-configuration switch"
+              ;;
+            *)
+              ;;
+          esac
+
+          notify-send "$notify" -a "Theme" -i "$icon_path"
+          doas $switch_cmd
         '')
       ]
       ++ shtools
@@ -128,4 +153,5 @@ in
       ++ lsp
       ++ formatter;
   };
+  programs.fzf.enable = true;
 }

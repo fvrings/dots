@@ -3,7 +3,7 @@
   stylix = {
     # base16Scheme = "${pkgs.base16-schemes}/share/themes/oxocarbon-dark.yaml";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa-dragon.yaml";
-    polarity = "dark";
+    # polarity = "dark";
     enable = true;
     autoEnable = true;
     cursor = {
@@ -39,7 +39,6 @@
 
     opacity.applications = 0.8;
     opacity.terminal = 0.88;
-    targets.console.enable = true;
   };
 
 }

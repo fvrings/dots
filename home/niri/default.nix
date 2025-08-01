@@ -1,3 +1,4 @@
+{ config, ... }:
 {
 
   imports = [
@@ -18,7 +19,7 @@
 
     layout = {
       gaps = 10;
-      tab-indicator = {
+      tab-indicator = with config.lib.stylix.colors.withHashtag; {
         width = 2;
         gap = 8;
         length = {
@@ -26,9 +27,8 @@
         };
         position = "top";
         place-within-column = true;
-        inactive.color = "#0F4532";
-        # active.color = "#6666cc";
-        active.color = "#ff3255";
+        inactive.color = base01;
+        active.color = base08;
       };
 
       center-focused-column = "never";
@@ -50,16 +50,16 @@
         active.color = "#d2788a";
       };
 
-      border = {
+      border = with config.lib.stylix.colors.withHashtag; {
         enable = true;
         width = 3;
         active.gradient = {
-          from = "#ffc87f";
-          to = "#ff4662";
+          from = base0D;
+          to = base0B;
           angle = 45;
           relative-to = "workspace-view";
         };
-        inactive.color = "#505050";
+        inactive.color = base03;
       };
 
       struts = { };

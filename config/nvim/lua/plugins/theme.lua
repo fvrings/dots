@@ -8,14 +8,18 @@ return {
 
   {
     'nyoom-engineering/oxocarbon.nvim',
-    -- config = function()
-    --   require('oxocarbon').setup()
-    --   vim.cmd.colorscheme 'oxocarbon'
-    --   -- FOR oxocarbon
-    --   -- vim.api.nvim_set_hl(0, 'Error', { bg = 'none' })
-    -- end,
-    -- lazy = false,
-    -- priority = 1000,
+    config = function()
+      if
+        vim.fn.filereadable '/etc/specialisation' == 1
+        and (vim.fn.readfile '/etc/specialisation')[1] == 'oxocarbon-dark'
+      then
+        vim.cmd.colorscheme 'oxocarbon'
+      end
+      -- FOR oxocarbon
+      vim.api.nvim_set_hl(0, 'Error', { bg = 'none' })
+    end,
+    lazy = false,
+    priority = 1000,
   },
 
   'olimorris/onedarkpro.nvim',
@@ -30,7 +34,10 @@ return {
     },
     config = function(_, opts)
       require('gruvbox').setup(opts)
-      if vim.fn.filereadable '/etc/specialisation' == 1 then
+      if
+        vim.fn.filereadable '/etc/specialisation' == 1
+        and (vim.fn.readfile '/etc/specialisation')[1] == 'gruvbox-material-light-soft'
+      then
         vim.cmd.colorscheme 'gruvbox'
       end
     end,
@@ -67,6 +74,16 @@ return {
   {
     'catppuccin/nvim',
     name = 'catppuccin',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      if
+        vim.fn.filereadable '/etc/specialisation' == 1
+        and (vim.fn.readfile '/etc/specialisation')[1] == 'catppuccin-latte'
+      then
+        vim.cmd.colorscheme 'catppuccin-latte'
+      end
+    end,
   },
   {
     'rose-pine/neovim',
