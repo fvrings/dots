@@ -69,6 +69,7 @@ let
     file
     which
     gnused
+    swww
     gnutar
     gawk
     zstd

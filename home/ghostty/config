@@ -4,7 +4,7 @@ gtk-single-instance = true
 # font-style = Bold
 # font-size = 13
 # theme = Kanagawa Dragon
-config-file = ?matugen
+# config-file = ?matugen
 # theme = Oxocarbon
 # keybind = unconsumed:alt+e=text:\x17yy\n
 keybind = ctrl+enter=unbind

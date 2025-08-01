@@ -33,7 +33,6 @@
     };
     extraConfig = ''
       # include ${pkgs.kitty-themes}/share/kitty-themes/themes/kanagawa_dragon.conf
-      # include matugen.conf
     '';
   };
   home.file = {

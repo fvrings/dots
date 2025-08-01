@@ -17,7 +17,6 @@
             "config/**/lazy-lock.json"
             "*.yml"
             "config/**/vs-snippets/*"
-            "home/matugen/templates/gtk-colors.css"
           ];
           settings.formatter = {
             indentStyle = "space";

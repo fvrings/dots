@@ -20,7 +20,6 @@
       # general = {
       #   import = [
       #     "kanagawa.toml"
-      #     # "matugen.toml"
       #   ];
       # };
     };
