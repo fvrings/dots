@@ -1050,4 +1050,21 @@ return {
     -- version = '^6.0.0', -- pin major version, include fixes and features that do not have breaking changes
     config = true,
   },
+  {
+    'fvrings/fff.nvim',
+    -- dir = '~/dev/fff.nvim',
+    build = 'nix run .#release',
+    opts = {
+      -- pass here all the options
+    },
+    keys = {
+      {
+        '<leader><leader>', -- try it if you didn't it is a banger keybinding for a picker
+        function()
+          require('fff').toggle()
+        end,
+        desc = 'Toggle FFF',
+      },
+    },
+  },
 }

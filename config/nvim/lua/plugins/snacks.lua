@@ -105,13 +105,13 @@ return {
     --   end,
     --   desc = 'Find Config File',
     -- },
-    {
-      '<leader><leader>',
-      function()
-        Snacks.picker.smart { layout = 'dropdown' }
-      end,
-      desc = 'Find Files',
-    },
+    -- {
+    --   '<leader><leader>',
+    --   function()
+    --     Snacks.picker.smart { layout = 'dropdown' }
+    --   end,
+    --   desc = 'Find Files',
+    -- },
     {
       '<leader>su',
       function()
