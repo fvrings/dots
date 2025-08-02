@@ -4,7 +4,7 @@
     # wireless.enable = true; # Enables wireless support via wpa_supplicant.
     networkmanager = {
       enable = true;
-      insertNameservers = [
+      appendNameservers = [
         "10.0.100.1"
       ];
     };
