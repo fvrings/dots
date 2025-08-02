@@ -3,6 +3,7 @@
   nixpkgs.overlays = [
     inputs.nur.overlays.default
     inputs.rust-overlay.overlays.default
+    #TODO: remove this
     (final: prev: {
       linux-manual = prev.linux-manual.overrideAttrs (old: {
         installCheckPhase = ''
