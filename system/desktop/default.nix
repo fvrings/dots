@@ -18,6 +18,7 @@
     ../package.nix
     ./desktop-package.nix
     ../fonts.nix
+    ../emacs
     ../nixconfig.nix
     ../sops.nix
     ../network.nix

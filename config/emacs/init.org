@@ -1,7 +1,7 @@
 #+title: lit config
 #+author: fvrings
 #+language: org
-#+PROPERTY: header-args:emacs-lisp :tangle init.el
+#+PROPERTY: header-args:emacs-lisp :tangle config.el
 #+startup: overview
 
 * Setup
@@ -11,13 +11,17 @@
                            ("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
                            ("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")))
 #+end_src
+** early init
+#+begin_src emacs-lisp :tangle early-init.el
+ (setq package-enable-at-startup nil)
+#+end_src
 ** load custom variables
 #+begin_src emacs-lisp
   (setq custom-file (locate-user-emacs-file "custom-vars.el"))
   (load custom-file 'noerror 'nomessage)
 #+end_src
 ** setup elpaca
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
   ;; Example Elpaca configuration -*- lexical-binding: t; -*-
   (defvar elpaca-installer-version 0.11)
   (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
@@ -716,6 +720,31 @@ Do not care about mode in much more convenient in many circumstances.
 #+end_src
 
 * Tools
+
+#+begin_src org :tangle elfeed.org
+  * Blogs                                                              :elfeed:
+  ** neovim
+  *** https://neovim.io/news.xml
+  *** https://dotfyle.com/this-week-in-neovim/rss.xml
+  ** emacs
+  *** https://planet.emacslife.com/
+  ** news 
+  *** https://v2ex.com/feed/python.xml
+  *** https://v2ex.com/feed/linux.xml
+  *** https://v2ex.com/feed/programmer.xml
+  *** https://rsshub.app/zhihu/hotlist
+  *** https://weekly.howie6879.com/rss/rss.xml
+  *** https://news.ycombinator.com/rss
+  *** https://plink.anyfeeder.com/weixin/DJ00123987
+  *** https://plink.anyfeeder.com/weixin/liweitan2014
+  *** https://plink.anyfeeder.com/weixin/runliu-pub
+  *** https://plink.anyfeeder.com/weixin/eeo-com-cn
+  ** blog 
+  *** https://mozillazg.com/feeds/all.atom.xml                             :ebpf:
+  *** https://1byte.io/articles/index.xml
+  *** https://www.ruanyifeng.com/blog/atom.xml
+#+end_src
+
 #+begin_src emacs-lisp
     (use-package elfeed
       :ensure t

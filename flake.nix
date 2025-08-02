@@ -105,6 +105,7 @@
       flake = false;
     };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
     # zjstatus = {
     #   url = "github:dj95/zjstatus";
     # };
