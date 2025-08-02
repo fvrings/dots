@@ -25,7 +25,8 @@
   services.scx.package = pkgs.scx_git.rustscheds;
   # services.scx.package = pkgs.scx.rustscheds;
   # services.scx.package = pkgs-stable.scx.rustscheds;
-  systemd.settings.Manager = {
-    DefaultTimeoutStopSec = "5s";
-  };
+  #TODO: enable this
+  # systemd.settings.Manager = {
+  #   DefaultTimeoutStopSec = "5s";
+  # };
 }

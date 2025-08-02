@@ -159,7 +159,7 @@ if ("/etc/specialisation" | path exists) {
     let file_content = (open /etc/specialisation | str trim)
 
     if ($file_content == "oxocarbon-dark") {
-        $env.LS_COLORS = (vivid generate jellybeans)
+        $env.LS_COLORS = (vivid generate dracula)
     } else if ($file_content == "gruvbox-material-light-soft") {
         $env.LS_COLORS = (vivid generate gruvbox-light-soft)
     } else if ($file_content == "catppuccin-latte") {
