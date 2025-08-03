@@ -1051,8 +1051,7 @@ return {
     config = true,
   },
   {
-    'fvrings/fff.nvim',
-    -- dir = '~/dev/fff.nvim',
+    'dmtrKovalenko/fff.nvim',
     build = 'nix run .#release',
     opts = {
       -- pass here all the options
@@ -1061,9 +1060,9 @@ return {
       {
         '<leader><leader>', -- try it if you didn't it is a banger keybinding for a picker
         function()
-          require('fff').toggle()
+          require('fff').find_files()
         end,
-        desc = 'Toggle FFF',
+        desc = 'find files',
       },
     },
   },

@@ -44,9 +44,10 @@ let
     # Optionally provide extra packages not in the configuration file.
     # This can also include extra executables to be run by Emacs (linters,
     # language servers, formatters, etc)
-    extraEmacsPackages = epkgs: [
-      epkgs.mu4e
-    ];
+    #TODO: add eaf and pdf tools
+    # extraEmacsPackages = epkgs: [
+    #   epkgs.mu4e
+    # ];
 
   };
 in
