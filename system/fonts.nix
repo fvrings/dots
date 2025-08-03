@@ -46,6 +46,7 @@
       # nerd-fonts.comic-shanns-mono
       # martian-mono
       noto-fonts-emoji
+      comic-mono
       aporetic
       iosevka
       nerd-fonts.symbols-only
