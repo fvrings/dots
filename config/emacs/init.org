@@ -13,6 +13,7 @@
 #+end_src
 ** early init
 #+begin_src emacs-lisp :tangle early-init.el
+ # -*- lexical-binding: t; -*-
  (setq package-enable-at-startup nil)
 #+end_src
 ** load custom variables
@@ -117,6 +118,7 @@
 #+begin_src emacs-lisp
   ;;org
   (use-package org
+    :ensure t
     :custom
     (org-default-notes-file (concat org-directory "notes.org"))
     (org-agenda-files `(,org-default-notes-file))
@@ -165,7 +167,6 @@
                     ((org-agenda-overriding-header "Planning Tasks")))
          (tags-todo "-{.*}"
                     ((org-agenda-overriding-header "Unplanning Tasks")))))))
-    :ensure (:wait t)
     :hook (org-trigger . save-buffer) 
     :init
     (add-hook 'org-mode-hook
@@ -571,6 +572,7 @@ orgmode is enough
 * UI
 #+begin_src emacs-lisp
   (use-package which-key
+    :ensure t
     :config
     (which-key-mode))
 
@@ -746,38 +748,39 @@ Do not care about mode in much more convenient in many circumstances.
 #+end_src
 
 #+begin_src emacs-lisp
-    (use-package elfeed
-      :ensure t
-      :config
-      (use-package elfeed-org
-        :ensure t
-        :custom
-        (rmh-elfeed-org-files (list "/home/ring/.config/emacs/elfeed.org"))
-        :config
-        (elfeed-org))
-      (use-package elfeed-goodies
+      (use-package elfeed
         :ensure t
         :config
-        (elfeed-goodies/setup))
-      (run-at-time nil (* 8 60 60) #'elfeed-update)
-      :bind ("C-c w" . elfeed))
+        (use-package elfeed-org
+          :ensure t
+          :custom
+          (rmh-elfeed-org-files (list "/home/ring/.config/emacs/elfeed.org"))
+          :config
+          (elfeed-org))
+        (use-package elfeed-goodies
+          :ensure t
+          :config
+          (elfeed-goodies/setup))
+        (run-at-time nil (* 8 60 60) #'elfeed-update)
+        :bind ("C-c w" . elfeed))
 
 
-  (use-package pdf-tools
-    :mode
-    (("\\.pdf$" . pdf-view-mode))
-    :custom
-    (pdf-view-use-scaling nil)
-    :ensure t)
+    (use-package pdf-tools
+      :mode
+      (("\\.pdf$" . pdf-view-mode))
+      :custom
+      (pdf-view-use-scaling nil)
+      :ensure t)
 
-  ;; (use-package eaf
-  ;;   :ensure t)
-  ;; (use-package epf-pdf-viewer
-  ;;   :ensure t)
-  (use-package eat
-    :ensure t)
+    ;; (use-package eaf
+    ;;   :ensure t)
+    ;; (use-package epf-pdf-viewer
+    ;;   :ensure t)
+    (use-package eat
+      :ensure t)
 
-  (use-package mu4e)
+    (use-package mu4e
+      :ensure t)
 
 #+end_src
 ** Git

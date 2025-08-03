@@ -9,7 +9,7 @@ in
     tmpfiles.users.ring.rules = [
       (symLink "nushell")
       (symLink "nvim")
-      (symLink "emacs")
+      # (symLink "emacs")
       (symLink "quickshell")
     ];
   };
