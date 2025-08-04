@@ -1066,4 +1066,21 @@ return {
       },
     },
   },
+  {
+    'allaman/emoji.nvim',
+    version = '1.0.0', -- optionally pin to a tag
+    dependencies = {
+      -- util for handling paths
+      'nvim-lua/plenary.nvim',
+    },
+    opts = {
+      -- default is false, also needed for blink.cmp integration!
+      -- enable_cmp_integration = true,
+    },
+    cmd = 'InsertEmoji',
+    keys = {
+      { '<leader>pe', vim.cmd.InsertEmoji, desc = 'insert emoji' },
+      { '<leader>pg', vim.cmd.InsertEmojiByGroup, desc = 'insert emoji by group' },
+    },
+  },
 }

@@ -116,14 +116,14 @@ Variants {
                 IconImage {
                     implicitWidth: 16
                     implicitHeight: 16
-                    source: Quickshell.iconPath("network-wireless")
-                    Layout.topMargin: 6
+                    source: Quickshell.iconPath("io.elementary.monitor")
+                    Layout.topMargin: 4
                     Layout.alignment: Qt.AlignTop
                 }
 
                 Text {
                     id: network
-                    color: "pink"
+                    color: "#87e1f8"
                     font.pointSize: 13
                     font.bold: true
                     font.family: "Comic Mono"
@@ -152,6 +152,105 @@ Variants {
 
                 Item {
                     Layout.fillWidth: true
+                }
+
+                // Bluetooth Widget (flattened)
+                IconImage {
+                    visible: Bluetooth.defaultAdapter?.devices?.values[0]?.state === 1
+                    implicitWidth: 15
+                    implicitHeight: 15
+                    source: Quickshell.iconPath(Bluetooth.defaultAdapter?.devices?.values[0]?.icon ?? "")
+                    Layout.topMargin: 6
+                    Layout.alignment: Qt.AlignTop
+                    // Component.onCompleted: {
+                    //     console.log(Bluetooth.defaultAdapter?.devices?.values[0]?.state);
+                    // }
+                }
+
+                Text {
+                    visible: Bluetooth.defaultAdapter?.devices?.values[0]?.state === 1
+                    text: {
+                        const device = Bluetooth.defaultAdapter?.devices?.values[0];
+                        return device && typeof device.battery === "number" ? Math.round(device.battery * 100) + "%" : "";
+                    }
+                    color: "cyan"
+                    font.pointSize: 12
+                    font.bold: true
+                    font.family: "Comic Mono"
+                    padding: 2
+                    Layout.alignment: Qt.AlignBaseline
+                }
+                IconImage {
+                    implicitWidth: 14
+                    implicitHeight: 14
+                    source: Quickshell.iconPath("kwalletmanager")
+                    Layout.topMargin: 6
+                    Layout.alignment: Qt.AlignTop
+                }
+
+                Text {
+                    id: bitcoin
+                    color: "#46ffff"
+                    font.pointSize: 13
+                    font.bold: true
+                    font.family: "Comic Mono"
+                    padding: 2
+                    Layout.alignment: Qt.AlignBaseline
+
+                    Process {
+                        id: bitcoinProc
+                        command: ["nu", "-c", "http get https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd | get bitcoin.usd"]
+                        running: true
+
+                        stdout: StdioCollector {
+                            onStreamFinished: {
+                                bitcoin.text = this.text.trim();
+                            }
+                        }
+                    }
+
+                    Timer {
+                        interval: 5000
+                        running: true
+                        repeat: true
+                        onTriggered: networkProc.running = true
+                    }
+                }
+                IconImage {
+                    implicitWidth: 14
+                    implicitHeight: 14
+                    source: Quickshell.iconPath("wallet-close")
+                    Layout.topMargin: 6
+                    Layout.alignment: Qt.AlignTop
+                }
+
+                Text {
+                    id: solana
+                    color: "pink"
+                    font.pointSize: 13
+                    font.bold: true
+                    font.family: "Comic Mono"
+                    padding: 2
+                    Layout.alignment: Qt.AlignBaseline
+
+                    Process {
+                        id: solanaProc
+                        command: ["nu", "-c", "http get https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd | get solana.usd"]
+                        running: true
+
+                        stdout: StdioCollector {
+                            onStreamFinished: {
+                                solana.text = this.text.trim();
+                            }
+                        }
+                    }
+
+                    Timer {
+                        interval: 5000
+                        running: true
+                        repeat: true
+                        onTriggered: networkProc.running = true
+                    }
                 }
 
                 IconImage {
@@ -190,29 +289,6 @@ Variants {
                     }
                 }
 
-                // Bluetooth Widget (flattened)
-                IconImage {
-                    visible: Bluetooth.defaultAdapter?.devices?.values[0]?.state === 1
-                    implicitWidth: 15
-                    implicitHeight: 15
-                    source: Quickshell.iconPath(Bluetooth.defaultAdapter?.devices?.values[0]?.icon ?? "")
-                    Layout.topMargin: 6
-                    Layout.alignment: Qt.AlignTop
-                }
-
-                Text {
-                    visible: Bluetooth.defaultAdapter?.devices?.values[0]?.state === 1
-                    text: {
-                        const device = Bluetooth.defaultAdapter?.devices?.values[0];
-                        return device && typeof device.battery === "number" ? Math.round(device.battery * 100) + "%" : "";
-                    }
-                    color: "cyan"
-                    font.pointSize: 12
-                    font.bold: true
-                    font.family: "Comic Mono"
-                    padding: 2
-                    Layout.alignment: Qt.AlignBaseline
-                }
                 IconImage {
                     implicitWidth: 14
                     implicitHeight: 14

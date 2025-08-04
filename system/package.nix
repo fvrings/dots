@@ -84,6 +84,7 @@
       gemini-cli
       tela-circle-icon-theme
       beauty-line-icon-theme
+      # (pkgs.callPackage ../pkgs/cryptocurrency-icons.nix { })
       python3
 
       kdePackages.qtdeclarative
