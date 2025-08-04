@@ -5,6 +5,7 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell.Bluetooth
 import Quickshell.Widgets
+import Quickshell.Services.UPower
 
 import "root:/Panel" as Panel
 
@@ -35,6 +36,29 @@ Variants {
                 anchors.fill: parent
                 anchors.topMargin: 3
                 anchors.bottomMargin: 3
+
+                IconImage {
+                    implicitWidth: 15
+                    implicitHeight: 15
+                    source: Quickshell.iconPath("battery")
+                    Layout.topMargin: 4
+                    Layout.alignment: Qt.AlignTop
+                }
+
+                Text {
+                    text: {
+                        // const timeToEmpty = UPower.displayDevice.timeToEmpty;
+                        const percentage = UPower.displayDevice.percentage;
+                        // return `${percentage * 100}% (${timeToEmpty})`;
+                        return `${percentage * 100}%`;
+                    }
+                    color: "#91dc91"
+                    font.pointSize: 13
+                    font.bold: true
+                    font.family: "Comic Mono"
+                    padding: 2
+                    Layout.alignment: Qt.AlignBaseline
+                }
 
                 // Memory Widget
                 IconImage {
@@ -162,19 +186,21 @@ Variants {
                     source: Quickshell.iconPath(Bluetooth.defaultAdapter?.devices?.values[0]?.icon ?? "")
                     Layout.topMargin: 6
                     Layout.alignment: Qt.AlignTop
-                    // Component.onCompleted: {
-                    //     console.log(Bluetooth.defaultAdapter?.devices?.values[0]?.state);
-                    // }
                 }
 
+                // Component.onCompleted: {
+                //     console.log(UPower.displayDevice.percentage);
+                //     console.log(UPower.displayDevice.energy);
+                //     console.log(UPower.displayDevice.iconName);
+                // }
                 Text {
                     visible: Bluetooth.defaultAdapter?.devices?.values[0]?.state === 1
                     text: {
                         const device = Bluetooth.defaultAdapter?.devices?.values[0];
                         return device && typeof device.battery === "number" ? Math.round(device.battery * 100) + "%" : "";
                     }
-                    color: "cyan"
-                    font.pointSize: 12
+                    color: "#ff73ff"
+                    font.pointSize: 13
                     font.bold: true
                     font.family: "Comic Mono"
                     padding: 2
