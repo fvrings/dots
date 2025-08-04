@@ -38,8 +38,8 @@ Variants {
                 anchors.bottomMargin: 3
 
                 IconImage {
-                    implicitWidth: 15
-                    implicitHeight: 15
+                    implicitWidth: 14
+                    implicitHeight: 14
                     source: Quickshell.iconPath("battery")
                     Layout.topMargin: 4
                     Layout.alignment: Qt.AlignTop
@@ -53,7 +53,7 @@ Variants {
                         return `${percentage * 100}%`;
                     }
                     color: "#91dc91"
-                    font.pointSize: 13
+                    font.pointSize: 14
                     font.bold: true
                     font.family: "Comic Mono"
                     padding: 2
@@ -118,7 +118,7 @@ Variants {
 
                     Process {
                         id: cpuProc
-                        command: ["sh", "-c", "cat /proc/loadavg | cut -d' ' -f1"]
+                        command: ["nu", "-c", "sys cpu -l | get cpu_usage | math avg | math round --precision 2"]
                         running: true
 
                         stdout: StdioCollector {
@@ -184,7 +184,7 @@ Variants {
                     implicitWidth: 15
                     implicitHeight: 15
                     source: Quickshell.iconPath(Bluetooth.defaultAdapter?.devices?.values[0]?.icon ?? "")
-                    Layout.topMargin: 6
+                    Layout.topMargin: 4
                     Layout.alignment: Qt.AlignTop
                 }
 
@@ -210,7 +210,7 @@ Variants {
                     implicitWidth: 14
                     implicitHeight: 14
                     source: Quickshell.iconPath("kwalletmanager")
-                    Layout.topMargin: 6
+                    Layout.topMargin: 4
                     Layout.alignment: Qt.AlignTop
                 }
 
@@ -246,7 +246,7 @@ Variants {
                     implicitWidth: 14
                     implicitHeight: 14
                     source: Quickshell.iconPath("wallet-close")
-                    Layout.topMargin: 6
+                    Layout.topMargin: 4
                     Layout.alignment: Qt.AlignTop
                 }
 
@@ -285,7 +285,7 @@ Variants {
                     implicitWidth: 16
                     implicitHeight: 16
                     source: Quickshell.iconPath("nixos")
-                    Layout.topMargin: 6
+                    Layout.topMargin: 4
                     Layout.alignment: Qt.AlignTop
                 }
 

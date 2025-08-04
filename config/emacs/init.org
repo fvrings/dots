@@ -748,39 +748,39 @@ Do not care about mode in much more convenient in many circumstances.
 #+end_src
 
 #+begin_src emacs-lisp
-      (use-package elfeed
+    (use-package elfeed
+      :ensure t
+      :config
+      (use-package elfeed-org
+        :ensure t
+        :custom
+        (rmh-elfeed-org-files (list "/home/ring/.config/emacs/elfeed.org"))
+        :config
+        (elfeed-org))
+      (use-package elfeed-goodies
         :ensure t
         :config
-        (use-package elfeed-org
-          :ensure t
-          :custom
-          (rmh-elfeed-org-files (list "/home/ring/.config/emacs/elfeed.org"))
-          :config
-          (elfeed-org))
-        (use-package elfeed-goodies
-          :ensure t
-          :config
-          (elfeed-goodies/setup))
-        (run-at-time nil (* 8 60 60) #'elfeed-update)
-        :bind ("C-c w" . elfeed))
+        (elfeed-goodies/setup))
+      (run-at-time nil (* 8 60 60) #'elfeed-update)
+      :bind ("C-c w" . elfeed))
 
 
-    (use-package pdf-tools
-      :mode
-      (("\\.pdf$" . pdf-view-mode))
-      :custom
-      (pdf-view-use-scaling nil)
-      :ensure t)
+  ;; (use-package pdf-tools
+  ;;   :mode
+  ;;   (("\\.pdf$" . pdf-view-mode))
+  ;;   :custom
+  ;;   (pdf-view-use-scaling nil)
+  ;;   :ensure t)
 
-    ;; (use-package eaf
-    ;;   :ensure t)
-    ;; (use-package epf-pdf-viewer
-    ;;   :ensure t)
-    (use-package eat
-      :ensure t)
+  ;; (use-package eaf
+  ;;   :ensure t)
+  ;; (use-package epf-pdf-viewer
+  ;;   :ensure t)
+  (use-package eat
+    :ensure t)
 
-    (use-package mu4e
-      :ensure t)
+  (use-package mu4e
+    :ensure t)
 
 #+end_src
 ** Git

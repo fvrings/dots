@@ -38,8 +38,7 @@
       mitscheme
       # alacritty-graphics
       # vscode
-      # TODO: enable this
-      # rich-cli
+      rich-cli
       cachix
       vivid
       mu

@@ -45,9 +45,10 @@ let
     # This can also include extra executables to be run by Emacs (linters,
     # language servers, formatters, etc)
     #TODO: add eaf and pdf tools
-    # extraEmacsPackages = epkgs: [
-    #   epkgs.mu4e
-    # ];
+    extraEmacsPackages = epkgs: [
+      epkgs.emacs-application-framework
+      epkgs.eaf-pdf-viewer
+    ];
 
   };
 in
@@ -57,6 +58,7 @@ in
     # xserver.windowManager.exwm.enable = true;
     emacs.package = emacs';
   };
+  # services.desktopManager.gnome.enable = true;
   nixpkgs.overlays = [
     inputs.emacs-overlay.overlays.default
   ];
