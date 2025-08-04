@@ -79,7 +79,7 @@
       onefetch
       # mate.atril
       wget
-      imagemagick
+      imagemagickBig
       luajitPackages.magick
       gemini-cli
       tela-circle-icon-theme

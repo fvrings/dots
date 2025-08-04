@@ -154,6 +154,42 @@ Variants {
                     Layout.fillWidth: true
                 }
 
+                IconImage {
+                    id: nixos
+                    visible: false
+                    implicitWidth: 16
+                    implicitHeight: 16
+                    source: Quickshell.iconPath("nixos")
+                    Layout.topMargin: 6
+                    Layout.alignment: Qt.AlignTop
+                }
+
+                Item {
+                    Process {
+                        id: nixosProc
+                        command: ["nu", "-c", 'http get "https://prometheus.nixos.org/api/v1/query?query=channel_update_time" | get data.result.0.value.1 | into int | into datetime -f "%s" | ($in | format date "%Y-%m-%d") == (date now | format date "%Y-%m-%d")']
+                        running: true
+
+                        stdout: StdioCollector {
+                            onStreamFinished: {
+                                let update_today = this.text.trim();
+                                if (update_today == "true") {
+                                    nixos.visible = true;
+                                } else {
+                                    nixos.visible = false;
+                                }
+                            }
+                        }
+                    }
+
+                    Timer {
+                        interval: 1000 * 60 * 60 * 4
+                        running: true
+                        repeat: true
+                        onTriggered: nixosProc.running = true
+                    }
+                }
+
                 // Bluetooth Widget (flattened)
                 IconImage {
                     visible: Bluetooth.defaultAdapter?.devices?.values[0]?.state === 1
