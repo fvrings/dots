@@ -5,6 +5,7 @@
     ./binds.nix
   ];
   programs.niri.settings = {
+    prefer-no-csd = true;
     input = {
       keyboard.xkb.options = "caps:swapescape";
       touchpad = {
