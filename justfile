@@ -37,3 +37,11 @@ enable-tpm:
   sudo systemd-cryptenroll --tpm2-device=auto /dev/nvme0n1p2
 test:
   nixos-rebuild dry-build --option eval-cache false --flake .#art
+genkey:
+  cp secrets/id_ed25519 secrets/key.txt.dec
+  ssh-keygen -p -N "" -f secrets/key.txt.dec
+  nix-shell -p ssh-to-age --run "ssh-to-age -private-key -i secrets/key.txt.dec > secrets/key.txt"
+  rm secrets/key.txt.dec
+  cp -f secrets/id_ed25519* ~/.ssh/
+pubkey:
+  nix-shell -p ssh-to-age --run 'cat ./secrets/id_ed25519.pub | ssh-to-age'

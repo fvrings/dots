@@ -1,5 +1,5 @@
 keys:
-  - &ring age1rwrvcxq6mgfm2hkek8rr3v882sphtd4eecx84cjvwr3k98xj2ssspffpxj
+  - &ring age1sfxn2067glzjl7g4yaczacyful83awycp30y7yqdyxmfqw6hd37sqk6e6v
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
