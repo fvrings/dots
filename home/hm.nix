@@ -27,6 +27,7 @@ in
   imports = [
     ./package.nix
     ./theme.nix
+    ./hypridle.nix
   ]
   ++ currentFolderDirs
   ++ modules;

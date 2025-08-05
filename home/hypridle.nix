@@ -1,4 +1,4 @@
-#TODO: remove this
+#TODO: replace this with QS
 {
   lib,
   config,
@@ -27,7 +27,7 @@ let
     }
     listener {
         timeout = ${builtins.toString (timeout * 2)};
-        on-timeout = "${pkgs.niri_git}/bin/niri msg action power-off-monitors";
+        on-timeout = "${pkgs.niri-unstable}/bin/niri msg action power-off-monitors";
     }
     # listener {
     #   timeout = ${builtins.toString (timeout * 6)};

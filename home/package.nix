@@ -146,6 +146,7 @@ in
 
           notify-send "$notify" -a "Theme" -i "$icon_path"
           doas $switch_cmd
+          systemctl restart --user swww
         '')
       ]
       ++ shtools

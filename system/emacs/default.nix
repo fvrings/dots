@@ -44,7 +44,7 @@ let
     # Optionally provide extra packages not in the configuration file.
     # This can also include extra executables to be run by Emacs (linters,
     # language servers, formatters, etc)
-    #TODO: add eaf and pdf tools
+    #BUG: cannot use ATM
     extraEmacsPackages = epkgs: [
       epkgs.emacs-application-framework
       epkgs.eaf-pdf-viewer
