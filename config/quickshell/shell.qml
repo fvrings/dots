@@ -21,21 +21,39 @@ Variants {
         }
 
         color: "transparent"
-        // color: "gray"
         implicitHeight: 36
 
         Rectangle {
             id: rt
             anchors.fill: parent
             anchors.margins: 2
-            color: "transparent"
+            color: "black"
 
-            radius: 20
+            radius: 10
+
+            // FileView {
+            //     path: Qt.resolvedUrl("./theme.json")
+            //     // Forces the file to be loaded by the time we call JSON.parse().
+            //     // see blockLoading's property documentation for details.
+            //     blockLoading: true
+            //     watchChanges: true
+            //     onLoaded: {
+            //         console.log(`onload is ${this.text()}`);
+            //     }
+            //     onFileChanged: {
+            //         let theme = this.text();
+            //         console.log(`theme is ${theme}`);
+            //         if (theme === "catppuccin-latte") {
+            //             rt.color = "transparent";
+            //         }
+            //     }
+            // }
 
             RowLayout {
                 anchors.fill: parent
                 anchors.topMargin: 3
                 anchors.bottomMargin: 3
+                anchors.margins: 10
 
                 IconImage {
                     implicitWidth: 14
