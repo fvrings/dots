@@ -4,7 +4,6 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import Quickshell.Widgets
-import Quickshell.Services.Notifications
 import Quickshell.Wayland
 
 PanelWindow {

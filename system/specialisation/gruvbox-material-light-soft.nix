@@ -12,7 +12,17 @@ in
     ./doas.nix
   ];
   specialisation.${theme}.configuration = {
-    environment.etc."specialisation".text = theme; # this is for 'nh' to correctly recognise the specialisation
+
+    environment.etc = {
+      "specialisation".text = theme;
+      "theme-config.qml".text = lib.mkForce ''
+        import QtQuick
+
+        QtObject {
+            readonly property color backgroundColor: "#2f283c"
+        }
+      '';
+    };
     # you have to force the values to override those declared in base configuration, which this specialisation automatically inherits
     stylix.base16Scheme = lib.mkForce "${pkgs.base16-schemes}/share/themes/${theme}.yaml";
     # feel free to add here more changes to base configuration from your Nixos options

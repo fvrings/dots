@@ -6,7 +6,7 @@ import QtQuick.Layouts
 
 import qs.Panel as Panel
 
-import "CustomWidgets" as Widget
+import qs.CustomWidgets as Widget
 
 Variants {
     model: Quickshell.screens
@@ -22,24 +22,47 @@ Variants {
         color: "transparent"
         implicitHeight: 36
 
+        Loader {
+            id: themeLoader
+            source: "/etc/theme-config.qml"
+        }
+
+        IpcHandler {
+            target: "themeLoader"
+            function reloadTheme(): void {
+                // HACK: https://forum.qt.io/post/606555
+                themeLoader.source = "/etc/theme-config.qml?" + Math.random();
+            }
+        }
+
         Rectangle {
             id: rt
             anchors.fill: parent
             anchors.margins: 2
-            color: "transparent"
+            color: themeLoader.item.backgroundColor
+            // Component.onCompleted: {
+            //     console.log("theme");
+            //     console.log(themeLoader.item.backgroundColor);
+            // }
 
             radius: 10
 
             // FileView {
-            //     path: Qt.resolvedUrl("./tmp")
+            //     path: Qt.resolvedUrl("/etc/specialisation")
             //     watchChanges: true
             //     onFileChanged: {
             //         reload();
             //         let theme = this.text();
             //         console.log(`theme is ${theme}`);
-            //         if (theme === "catppuccin-latte") {
+            //         if (theme.trim() === "catppuccin-latte") {
             //             rt.color = "#234687";
             //         }
+            //     }
+            //     onSaved: {
+            //         console.log("onsaved");
+            //     }
+            //     onLoaded: {
+            //         console.log("onloaded");
             //     }
             // }
 

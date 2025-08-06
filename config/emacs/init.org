@@ -142,9 +142,9 @@
         "* TODO %?\n  %i\n  %T")))
     (org-tag-alist
      '(("@earn" . ?e)
-       ("@canceled" . ?x)
+       ("@cancel" . ?x)
        ("@repeat" . ?r)
-       ("@planning" . ?p)))
+       ("@plan" . ?p)))
     (org-directory (file-truename "~/notes/eorg/"))
     (org-agenda-custom-commands
      '(("w" "Weekly Review"
@@ -162,11 +162,14 @@
         		(org-deadline-warning-days 1)))
          (tags-todo "+PRIORITY=\"A\""
         		  ((org-agenda-overriding-header "High Priority Tasks")))))
-       ("p" "Planning"
-        ((tags-todo "+@planning"
-                    ((org-agenda-overriding-header "Planning Tasks")))
+       ("A" "Archive: DONE/NOTE/STOP closed >1 months ago"
+         tags "+CLOSED<=\"<-m>\"+TODO={DONE\\|NOTE\\|STOP}"
+         ((org-agenda-overriding-header "Tasks to archive")))
+       ("p" "Plan"
+        ((tags-todo "+@plan"
+                    ((org-agenda-overriding-header "Plan Tasks")))
          (tags-todo "-{.*}"
-                    ((org-agenda-overriding-header "Unplanning Tasks")))))))
+                    ((org-agenda-overriding-header "Unplan Tasks")))))))
     :hook (org-trigger . save-buffer) 
     :init
     (add-hook 'org-mode-hook

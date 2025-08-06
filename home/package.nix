@@ -147,6 +147,7 @@ in
           notify-send "$notify" -a "Theme" -i "$icon_path"
           doas $switch_cmd
           systemctl restart --user swww
+          qs ipc call themeLoader reloadTheme
         '')
       ]
       ++ shtools
